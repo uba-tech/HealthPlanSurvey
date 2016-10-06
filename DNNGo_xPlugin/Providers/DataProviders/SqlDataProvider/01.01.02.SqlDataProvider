@@ -1,0 +1,35 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Create Table **/
+
+
+
+ 
+/** DNNGo_Megamenu_Content  **/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_Megamenu_Content]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	if not exists (select * from dbo.syscolumns where id=object_id(N'{databaseOwner}[{objectQualifier}DNNGo_Megamenu_Content]') and name='Globals_Breadcrumb' )
+	BEGIN
+			ALTER TABLE {databaseOwner}[{objectQualifier}DNNGo_Megamenu_Content] ADD
+			Globals_Background tinyint NOT NULL CONSTRAINT DF_{objectQualifier}DNNGo_Megamenu_Content_Globals_Background DEFAULT 1,
+			Globals_Breadcrumb tinyint NOT NULL CONSTRAINT DF_{objectQualifier}DNNGo_Megamenu_Content_Globals_Breadcrumb DEFAULT 1
+	END
+END
+
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+
+

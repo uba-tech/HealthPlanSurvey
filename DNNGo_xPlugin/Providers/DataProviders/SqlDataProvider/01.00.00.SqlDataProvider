@@ -1,0 +1,84 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Create Table **/
+
+ 
+/** DNNGo_xPlugin_Multimedia  **/
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_xPlugin_Multimedia]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+		CREATE TABLE {databaseOwner}[{objectQualifier}DNNGo_xPlugin_Multimedia](
+			[ID] [int] IDENTITY(1,1) NOT NULL,
+			[Name] [nvarchar](300) NULL,
+			[FileSize] [int] NOT NULL,
+			[ImageWidth] [int] NOT NULL,
+			[ImageHeight] [int] NOT NULL,
+			[Exif] [ntext] NULL,
+			[FileName] [nvarchar](300) NOT NULL,
+			[FileMate] [nvarchar](32) NOT NULL,
+			[FilePath] [nvarchar](500) NOT NULL,
+			[FileExtension] [nvarchar](32) NOT NULL,
+			[LastTime] [datetime] NOT NULL,
+			[LastUser] [int] NOT NULL,
+			[LastIP] [varchar](50) NOT NULL,
+			[ModuleId] [int] NOT NULL,
+			[PortalId] [int] NOT NULL,
+			[Status] [tinyint] NOT NULL,
+			[Sort] [int] NOT NULL,
+			[Extension1] [tinyint] NOT NULL,
+			[Extension2] [int] NOT NULL,
+			[Extension3] [nvarchar](512) NULL,
+			[Extension4] [ntext] NULL,
+		 CONSTRAINT [PK_{objectQualifier}DNNGo_xPlugin_Multimedia] PRIMARY KEY CLUSTERED 
+		(
+			[ID] ASC
+		)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+		) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	  
+END
+GO
+
+ 
+
+/**  DNNGo_xPlugin_Relationships **/
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_xPlugin_Relationships]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}DNNGo_xPlugin_Relationships](
+		[ID] [int] IDENTITY(1,1) NOT NULL,
+		[TabID] [int] NOT NULL,
+		[FileID] [int] NOT NULL,
+		[Type] [tinyint] NOT NULL,
+		[Sort] [int] NOT NULL,
+		[LastTime] [datetime] NOT NULL,
+		[LastUser] [int] NOT NULL,
+		[LastIP] [varchar](50) NOT NULL,
+	 CONSTRAINT [PK_{objectQualifier}DNNGo_xPlugin_Relationships] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+	  
+END
+GO
+
+
+
+
+
+
+
+ 
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+
+

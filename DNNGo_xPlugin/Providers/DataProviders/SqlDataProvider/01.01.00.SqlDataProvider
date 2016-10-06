@@ -1,0 +1,78 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Create Table **/
+
+
+
+ 
+/** DNNGo_Megamenu_Content  **/
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_Megamenu_Content]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}DNNGo_Megamenu_Content](
+		[ID] [int] IDENTITY(1,1) NOT NULL,
+		[TabID] [int] NOT NULL,
+		[Language] [nvarchar](50) NOT NULL,
+		[Title] [nvarchar](200) NOT NULL,
+		[ContentText] [ntext] NOT NULL,
+		[Position] [tinyint] NOT NULL,
+		[BindTabID] [int] NOT NULL,
+		[BindModuleID] [int] NOT NULL,
+		[Options] [ntext] NOT NULL,
+		[LastTime] [datetime] NOT NULL,
+		[LastUser] [int] NOT NULL,
+		[LastIP] [varchar](32) NOT NULL,
+		[ModuleId] [int] NOT NULL,
+		[PortalId] [int] NOT NULL,
+	 CONSTRAINT [PK_{objectQualifier}DNNGo_Megamenu_Content] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	  
+END
+
+GO
+
+
+ 
+/** DNNGo_Megamenu_Options  **/
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_Megamenu_Options]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}DNNGo_Megamenu_Options](
+		[ID] [int] IDENTITY(1,1) NOT NULL,
+		[TabID] [int] NOT NULL,
+		[TabType] [tinyint] NOT NULL,
+		[Options] [ntext] NOT NULL,
+		[LastTime] [datetime] NOT NULL,
+		[LastUser] [int] NOT NULL,
+		[LastIP] [varchar](32) NOT NULL,
+		[ModuleId] [int] NOT NULL,
+		[PortalId] [int] NOT NULL,
+	 CONSTRAINT [PK_{objectQualifier}DNNGo_Megamenu_Options_1] PRIMARY KEY CLUSTERED 
+	(
+		[ID] ASC
+	)WITH (PAD_INDEX  = ON, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 1) ON [PRIMARY]
+	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	  
+END
+GO
+ 
+
+
+
+ 
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+
+

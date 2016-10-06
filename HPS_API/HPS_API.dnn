@@ -1,0 +1,38 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="HPS_API" type="Module" version="00.00.01">
+      <friendlyName>HPS_API</friendlyName>
+      <description>HPS_API</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>ubabenefits.com</name>
+        <organization>ubabenefits.com</organization>
+        <url>http://www.ubabenefits.com/</url>
+        <email>modules@ubabenefits.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/HPS_API</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>HPS_API.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

@@ -1,0 +1,35 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Create Table **/
+
+
+
+ 
+/** DNNGo_xPlugin_Relationships  **/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DNNGo_xPlugin_Relationships]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	if not exists (select * from dbo.syscolumns where id=object_id(N'{databaseOwner}[{objectQualifier}DNNGo_xPlugin_Relationships]') and name='PortalId' )
+	BEGIN
+			ALTER TABLE {databaseOwner}[{objectQualifier}DNNGo_xPlugin_Relationships] ADD
+				ModuleId int NOT NULL CONSTRAINT DF_{objectQualifier}DNNGo_xPlugin_Relationships_ModuleId DEFAULT 0,
+				PortalId int NOT NULL CONSTRAINT DF_{objectQualifier}DNNGo_xPlugin_Relationships_PortalId DEFAULT 0
+	END
+END
+
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+
+
