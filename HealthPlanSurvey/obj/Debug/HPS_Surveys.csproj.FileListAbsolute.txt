@@ -1,0 +1,5 @@
+C:\websites\HealthPlanSurvey\bin\HPS_Surveys.dll
+C:\websites\HealthPlanSurvey\bin\HPS_Surveys.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_Surveys\obj\Debug\HPS_Surveys.csprojResolveAssemblyReference.cache
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_Surveys\obj\Debug\HPS_Surveys.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_Surveys\obj\Debug\HPS_Surveys.pdb

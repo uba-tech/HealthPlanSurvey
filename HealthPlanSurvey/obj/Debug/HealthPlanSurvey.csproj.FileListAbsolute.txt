@@ -1,0 +1,6 @@
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_Surveys\obj\Debug\HPS_Surveys.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_Surveys\obj\Debug\HPS_Surveys.pdb
+C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.dll
+C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Debug\HealthPlanSurvey.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Debug\HealthPlanSurvey.pdb

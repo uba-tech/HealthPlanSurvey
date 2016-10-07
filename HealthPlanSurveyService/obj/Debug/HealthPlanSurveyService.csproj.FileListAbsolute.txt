@@ -1,0 +1,8 @@
+C:\websites\HealthPlanSurvey\bin\HPS_API.dll.config
+C:\websites\HealthPlanSurvey\bin\HPS_API.dll
+C:\websites\HealthPlanSurvey\bin\HPS_API.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_API\obj\Debug\HPS_API.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_API\obj\Debug\HPS_API.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HPS_API.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HPS_API.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HealthPlanSurveyService.csprojResolveAssemblyReference.cache

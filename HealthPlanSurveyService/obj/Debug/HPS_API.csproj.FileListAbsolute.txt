@@ -1,0 +1,13 @@
+C:\websites\bin\HPS_API.dll.config
+C:\websites\bin\HPS_API.dll
+C:\websites\bin\HPS_API.pdb
+C:\websites\hps_scott\bin\HPS_API.dll.config
+C:\websites\hps_scott\bin\HPS_API.dll
+C:\websites\hps_scott\bin\HPS_API.pdb
+C:\websites\hps_scott\DesktopModules\HPS_API\obj\Debug\HPS_API.dll
+C:\websites\hps_scott\DesktopModules\HPS_API\obj\Debug\HPS_API.pdb
+C:\websites\HealthPlanSurvey\bin\HPS_API.dll.config
+C:\websites\HealthPlanSurvey\bin\HPS_API.dll
+C:\websites\HealthPlanSurvey\bin\HPS_API.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_API\obj\Debug\HPS_API.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HPS_API\obj\Debug\HPS_API.pdb
