@@ -1,1 +1,14 @@
-﻿<h1>Surveys Show</h1>
+﻿<div class="page-header">
+    <h3>{{survey.OrganizationName}}</h3><br>
+    <small>{{survey.PersonCompletingSurvey}} - {{survey.PersonCompletingSurvey_Email}}</small>
+</div>
+<p><span class="label label-info">{{survey.Broker}}</span></p>
+<p><span class="label label-info">{{survey.City}}, {{survey.US_StateId}}</span></p>
+<p><span class="label label-info">{{survey.ResponseStatus}}</span></p>
+<p><span class="label label-info">{{survey.CreatedOn | date : 'shortDate' }}</span></p>
+<p><span class="label label-info">{{survey.UpdatedOn | date : 'shortDate'}}</span></p>
+<p><span class="label label-info">Survey Link</span></p>
+<p><span class="label label-info">{{survey.CompletedOn | date : 'shortDate'}}</span></p>
+<p><span class="label label-info">{{survey.CompletedBy}}</span></p>
+<a ng-href="#/surveys/{{survey.ResponseId}}/edit" class="btn btn-default">Edit Survey</a>
+<a href="" ng-click="deleteSurvey(survey)" class="btn btn-danger">Delete</a>

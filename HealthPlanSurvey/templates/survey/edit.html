@@ -1,1 +1,24 @@
-﻿<h1>Surveys Edit</h1>
+﻿<div class="page-header">
+    <h3>Client Details</h3><br>
+</div>
+
+<fieldset class="form-group">
+    <label for="participating">If this client will no longer be part of the UBA Health Plan Survey, is it due to:</label>
+    <input class="form-control" type="radio" id="participating" name="participating" value="1" />  Terminated policy<br />
+    <input class="form-control" type="radio" id="participating" name="participating" value="2" />  No longer a client<br />
+    <input class="form-control" type="radio" id="participating" name="participating" value="3" />  Client moved policy to marketplace<br />
+    <input class="form-control" type="radio" id="participating" name="participating" value="4" />  Client is part of the Health Plan Survey<br />
+</fieldset>
+
+<fieldset class="form-group">
+    <label for="clientName">Client</label>
+    <input class="form-control" type="text" id="clientName" name="clientName" ng-model="survey.OrganizationName" />
+    <label for="createdBy">Name of Person Completing Survey</label>
+    <input class="form-control" type="text" id="createdBy" name="createdBy" ng-model="survey.PersonCompletingSurvey" />
+    <label for="createdByTitle">Title</label>
+    <input class="form-control" type="text" id="createdByTitle" name="createdByTitle" ng-model="survey.PersonCompletingSurvey" />
+    <label for="createdByEmail">Email Address</label>
+    <input class="form-control" type="text" id="createdByEmail" name="createdByEmail" ng-model="survey.OrganizationNameEmail" />
+</fieldset>
+
+<button id="Submit" class="btn btn-default" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Submit</button>

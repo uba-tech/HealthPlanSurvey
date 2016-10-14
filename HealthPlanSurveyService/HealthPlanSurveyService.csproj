@@ -130,9 +130,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\Settings.cs" />
-    <Compile Include="Models\SurveyItemModel.cs" />
+    <Compile Include="Models\SurveySummaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

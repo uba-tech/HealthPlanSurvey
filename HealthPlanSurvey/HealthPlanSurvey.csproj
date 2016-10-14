@@ -896,7 +896,12 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="services\surveys.js" />
+    <Content Include="services\SurveySummary.js" />
+    <Content Include="templates\Response\editGeneral.html" />
+    <Content Include="templates\Response\editMedicalPlanGeneral.html" />
+    <Content Include="templates\survey\edit_TABLE.html" />
     <Content Include="templates\survey\edit.html" />
+    <Content Include="templates\survey\edit_DIV.html" />
     <Content Include="templates\survey\create.html" />
     <Content Include="templates\survey\show.html" />
     <Content Include="templates\survey\index.html" />
