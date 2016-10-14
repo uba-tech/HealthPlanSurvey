@@ -897,8 +897,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="services\surveys.js" />
     <Content Include="services\SurveySummary.js" />
-    <Content Include="templates\Response\editGeneral.html" />
-    <Content Include="templates\Response\editMedicalPlanGeneral.html" />
+    <Content Include="templates\response\editCompany.html" />
+    <Content Include="templates\response\editMedicalPlan.html" />
+    <Content Include="templates\survey\edit_include.html" />
     <Content Include="templates\survey\edit_TABLE.html" />
     <Content Include="templates\survey\edit.html" />
     <Content Include="templates\survey\edit_DIV.html" />

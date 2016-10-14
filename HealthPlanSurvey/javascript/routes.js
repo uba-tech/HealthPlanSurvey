@@ -20,7 +20,7 @@
     })
 
     .when('/surveys/:id/edit', {
-        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/edit_DIV.html",
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/edit_include.html",
         controller: "SurveyEditController"
     })
 });
