@@ -904,6 +904,11 @@
     <Content Include="templates\survey\edit.html" />
     <Content Include="templates\survey\edit_DIV.html" />
     <Content Include="templates\survey\create.html" />
+    <Content Include="templates\response\MedicalPlan.html" />
+    <Content Include="templates\response\PlanDesign.html" />
+    <Content Include="templates\response\RetireePlan.html" />
+    <Content Include="templates\response\RxPlan.html" />
+    <Content Include="templates\response\Section125.html" />
     <Content Include="templates\survey\show.html" />
     <Content Include="templates\survey\index.html" />
     <Content Include="View.ascx" />

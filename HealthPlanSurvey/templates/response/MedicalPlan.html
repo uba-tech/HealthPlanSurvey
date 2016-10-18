@@ -1,0 +1,488 @@
+<!--<style>
+	/* DivTable.com */
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>-->
+<div class="page-header">
+    <h4>Medical Plan - {{survey.ActivePlan[0].PlanName}} (Active Employees)</h4><br>
+</div>
+
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px; color: black;"> Do you wish to enter information on this plan? </span> </strong></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;">&nbsp; <input id="d_EnterPlanData_0" tabindex="1" checked="checked" name="d_EnterPlanData" type="radio" value="1" /><label>Yes</label> </span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;">&nbsp; <input id="d_EnterPlanData_1" tabindex="1" checked="checked" name="d_EnterPlanData" type="radio" value="0" /><label>No</label> </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr style="width: 100%;" />
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 1.Plan Name Or Number: </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> <input id="d_PlanNameOrNo" tabindex="1" name="d_PlanNameOrNo" type="text" value="[|COALESCE,PlanNameOrNo,ActivePlans," /> </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 2.Type of Plan: </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><label><input id="d_TypeOfPlan_0" tabindex="1" checked="checked" name="d_TypeOfPlan" type="radio" value="PPO" /> PPO (Preferred Provider Organization)</label></div>
+                            <div class="divTableCell"><label><input id="d_TypeOfPlan_1" tabindex="2" checked="checked" name="d_TypeOfPlan" type="radio" value="HMO" /> HMO (Health Maintenance Organization)</label></div>
+                            <div class="divTableCell"><label><input id="d_TypeOfPlan_2" tabindex="3" checked="checked" name="d_TypeOfPlan" type="radio" value="POS" /> POS (Point-of-Service)</label></div>
+                            <div class="divTableCell"><label><input id="d_TypeOfPlan_3" tabindex="4" checked="checked" name="d_TypeOfPlan" type="radio" value="EPO" /> EPO (Exclusive Provider Organization)</label></div>
+                            <div class="divTableCell"><label><input id="d_TypeOfPlan_4" tabindex="5" checked="checked" name="d_TypeOfPlan" type="radio" value="FFS" /> FFS (Fee-for-Service/Indemnity)</label></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 3.Is this a grandfathered plan? </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandfathered_0" tabindex="6" checked="checked" name="d_IsPlanGrandfathered" type="radio" value="1" /> <label>Yes</label> </span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandfathered_1" tabindex="7" checked="checked" name="d_IsPlanGrandfathered" type="radio" value="0" /> <label>No</label> </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 4.Is this a grandmothered plan (pre-PPACA plan allowed by your state)? </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandmothered_0" tabindex="8" checked="checked" name="d_IsPlanGrandmothered" type="radio" value="1" /><label>Yes</label> </span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandmothered_1" tabindex="9" checked="checked" name="d_IsPlanGrandmothered" type="radio" value="0" /><label>No</label> </span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 5.Does this Plan Include: </span> </strong></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><label><input id="d_HRAIncluded" tabindex="10" checked="checked" name="d_HRAIncluded" type="checkbox" value="1" />HRA (Health Reimbursement Arrangement)</label></div>
+                            <div class="divTableCell"><label><input id="d_HSAIncluded" tabindex="11" checked="checked" name="d_HSAIncluded" type="checkbox" value="1" />HSA (Health Savings Account)</label></div>
+                            <div class="divTableCell"><label><input id="d_MERPIncluded" tabindex="12" checked="checked" name="d_MERPIncluded" type="checkbox" value="1" />MERP (Medical Expense Reimbursement Plan)</label></div>
+                            <div class="divTableCell"><label><input id="d_HRAHSAMERP_NoneOfTheAbove" tabindex="13" checked="checked" name="d_HRAHSAMERP_NoneOfTheAbove" type="checkbox" value="1" />None of the Above</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;"> 6.Funding Method: </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><label><input id="d_FundingMethod_0" tabindex="14" checked="checked" name="d_FundingMethod" type="radio" value="Fully Insured" />Fully Insured</label></div>
+        </div>
+    </div>
+</div>
+<p><label><input id="d_FundingMethod_1" tabindex="15" checked="checked" name="d_FundingMethod" type="radio" value="Self-Funded" />Self-Funded</label></p>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 7.Please indicate the Number of Health Plan Premium<br /> Tiers: </span> </strong></div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_2" tabindex="16" checked="checked" name="d_PremiumTiersOffered" type="radio" value="2" /> 2 (Single &amp; Family)</label></div>
+            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_3" tabindex="17" checked="checked" name="d_PremiumTiersOffered" type="radio" value="3" /> 3 (Single, Employee + 1, Employee + 2 or more)</label></div>
+            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_4" tabindex="18" checked="checked" name="d_PremiumTiersOffered" type="radio" value="4" /> 4 (Single, Employee + Child/Children, Employee + Spouse, Family)</label></div>
+            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_5" tabindex="19" checked="checked" name="d_PremiumTiersOffered" type="radio" value="5 or more" /> 5 or More</label></div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 8.Are the Unit Rates for this Plan based on Each Individual Employee's Age/Age Band or "Composite" Rates (i.e. the same for everyone in each tier of the plan regardless of age)? </span> </strong></div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_0" tabindex="20" checked="checked" name="d_UnitRateType" type="radio" value="1" /> Employee Age Banded Rated</label></div>
+            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_1" tabindex="21" checked="checked" name="d_UnitRateType" type="radio" value="2" /> Member Level Age Rated</label></div>
+            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_2" tabindex="22" checked="checked" name="d_UnitRateType" type="radio" value="3" /> Composite</label></div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;">9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate per Month (including Prescription Drugs) rounded to the nearest dollar. <span style="font-size: 10px; font-weight: normal;">(For Self-Funded Plans, use COBRA Premium Equivalent Rate minus the 2%, if otherwise included):</span></span></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;</div>
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Number Enrolled</span></strong></div>
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Monthly Premium Rate</span></strong></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_Single" maxlength="6" name="d_Enrolled_Single" size="13" type="text" value="[|COALESCE,Enrolled_Single,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_Single" maxlength="6" name="d_Premium_Single" size="13" type="text" value="[|COALESCE,Premium_Single,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee+1:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_1" maxlength="6" name="d_Enrolled_EE_1" size="13" type="text" value="[|COALESCE,Enrolled_EE_1,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_1" maxlength="6" name="d_Premium_EE_1" size="13" type="text" value="[|COALESCE,Premium_EE_1,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_SP" maxlength="6" name="d_Enrolled_EE_SP" size="13" type="text" value="[|COALESCE,Enrolled_EE_SP,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_SP" maxlength="6" name="d_Premium_EE_SP" size="13" type="text" value="[|COALESCE,Premium_EE_SP,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_CH" maxlength="6" name="d_Enrolled_EE_CH" size="13" type="text" value="[|COALESCE,Enrolled_EE_CH,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_CH" maxlength="6" name="d_Premium_EE_CH" size="13" type="text" value="[|COALESCE,Premium_EE_CH,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_Family" maxlength="6" name="d_Enrolled_Family" size="13" type="text" value="[|COALESCE,Enrolled_Family,ActivePlans," /> </span></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_Family" maxlength="6" name="d_Premium_Family" size="13" type="text" value="[|COALESCE,Premium_Family,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">10. Tobacco surcharge from carrier?</span></strong></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_HasTobaccoSurcharge_0" checked="checked" name="d_HasTobaccoSurcharge" type="radio" value="1" />Yes</label>&nbsp;&nbsp;&nbsp;<span style="font-family: Tahoma; font-size: 13px;"><input id="d_TobaccoSurcharge" maxlength="3" name="d_TobaccoSurcharge" size="3" type="text" value="[|COALESCE,TobaccoSurcharge,ActivePlans," /> <span class="icons">%</span></span></span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_HasTobaccoSurcharge_1" checked="checked" name="d_HasTobaccoSurcharge" type="radio" value="0" />No</label></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">11. Are Employee Contributions Based on a Percentage of Salary?</span></strong></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOnPercentageOfSalary_0" checked="checked" name="d_ContributionsBasedOnPercentageOfSalary" type="radio" value="1" />Yes</label></span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOnPercentageOfSalary_1" checked="checked" name="d_ContributionsBasedOnPercentageOfSalary" type="radio" value="0" />No</label></span></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">12. Are Employee Contributions to be entered based on:</span></strong></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOn_0" checked="checked" name="d_ContributionsBasedOn" type="radio" value="Dollar Amount" />Dollar Amount</label></span></div>
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOn_1" checked="checked" name="d_ContributionsBasedOn" type="radio" value="Percentage of Premium" />Percentage of Premium</label></span></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;">13. Employee Contributions per Month:&nbsp;<a href="Portals/0/UBAContributionCalculator.xls" target="_blank">Calculator</a><a href="Portals/0/UBAContributionCalculator.xls" target="_blank"><img src="Portals/0/calculator.png" alt="" border="0" /></a></span></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;</div>
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Dollar Amount</span></strong></div>
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Percentage of Premium</span></strong></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 2px; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_Single_Amt" maxlength="6" name="d_EmpCont_Single_Amt" size="13" type="text" value="[|COALESCE,EmpCont_Single_Amt,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 2px; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_Single_PcntOfPremium" maxlength="6" name="d_EmpCont_Single_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_Single_PcntOfPremium,ActivePlans," />% </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_1_Amt" maxlength="6" name="d_EmpCont_EE_1_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_1_Amt,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_1_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_1_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_1_PcntOfPremium,ActivePlans," />% </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_SP_Amt" maxlength="6" name="d_EmpCont_EE_SP_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_SP_Amt,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_SP_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_SP_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_SP_PcntOfPremium,ActivePlans," />% </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_CH_Amt" maxlength="6" name="d_EmpCont_EE_CH_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_CH_Amt,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_CH_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_CH_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_CH_PcntOfPremium,ActivePlans," />% </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_Family_Amt" maxlength="6" name="d_EmpCont_Family_Amt" size="13" type="text" value="[|COALESCE,EmpCont_Family_Amt,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 0px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_Family_PcntOfPremium" maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_Family_PcntOfPremium,ActivePlans," />% </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                [ALEStrategy,Action]
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;">15. Amount of Annual Employer HRA or HSA Contribution:</span></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;</div>
+                            <div class="divTableCell"><span style="font-weight: bold; font-family: Tahoma; font-size: 13px;"> HRA </span></div>
+                            <div class="divTableCell"><span style="font-weight: bold; font-family: Tahoma; font-size: 13px;"> HSA </span></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 4px; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_Single" maxlength="6" name="d_EmpHRACont_Single" size="13" type="text" value="[|COALESCE,EmpHRACont_Single,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 4px; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_Single" maxlength="6" name="d_EmpHSACont_Single" size="13" type="text" value="[|COALESCE,EmpHSACont_Single,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_1" maxlength="6" name="d_EmpHRACont_EE_1" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_1,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_1" maxlength="6" name="d_EmpHSACont_EE_1" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_1,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_SP" maxlength="6" name="d_EmpHRACont_EE_SP" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_SP,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_SP" maxlength="6" name="d_EmpHSACont_EE_SP" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_SP,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_CH" maxlength="6" name="d_EmpHRACont_EE_CH" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_CH,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_CH" maxlength="6" name="d_EmpHSACont_EE_CH" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_CH,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 4px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_Family" maxlength="6" name="d_EmpHRACont_Family" size="13" type="text" value="[|COALESCE,EmpHRACont_Family,ActivePlans," /> </span></p>
+                            </div>
+                            <div class="divTableCell">
+                                <p style="margin-top: 0; margin-bottom: 4px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_Family" maxlength="6" name="d_EmpHSACont_Family" size="13" type="text" value="[|COALESCE,EmpHSACont_Family,ActivePlans," /> </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 16. Does your Plan have Specific Stop-Loss Insurance? </span> </strong></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_SpecificStopLossCoverage_0" checked="checked" name="d_SpecificStopLossCoverage" type="radio" value="1" />Yes</label></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_SpecificStopLossCoverage_1" checked="checked" name="d_SpecificStopLossCoverage" type="radio" value="0" />No</label></span></div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 17. Does your Plan have Aggregate Stop-Loss Insurance? </span> </strong></div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_AggregateStopLossCoverage_0" checked="checked" name="d_AggregateStopLossCoverage" type="radio" value="1" />Yes</label></span></div>
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_AggregateStopLossCoverage_1" checked="checked" name="d_AggregateStopLossCoverage" type="radio" value="0" />No</label></span></div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong> 18. Specific Stop-Loss Level: </strong>$<input id="d_StopLossLevel" maxlength="6" name="d_StopLossLevel" type="text" value="[|COALESCE,StopLossLevel,ActivePlans," /> </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;">19.Specific Stop-Loss Premium:</span></div>
+        </div>
+    </div>
+</div>
+<p><span style="font-family: Tahoma; font-size: 13px;"> Single:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_Single_Amt" maxlength="6" name="d_StopLoss_Single_Amt" size="13" type="text" value="[|COALESCE,StopLoss_Single_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_1_Amt" maxlength="6" name="d_StopLoss_EE_1_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_1_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_CH_Amt" maxlength="6" name="d_StopLoss_EE_CH_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_CH_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_SP_Amt" maxlength="6" name="d_StopLoss_EE_SP_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_SP_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Family:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_Family_Amt" maxlength="6" name="d_StopLoss_Family_Amt" size="13" type="text" value="[|COALESCE,StopLoss_Family_Amt,ActivePlans," /> </span></p>
+<p><big><strong>Medical Plan #[|@PlanNo,Variable] (Active Employees)</strong></big></p>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 20. Initial Proposed Percentage Increase for most similar Plan or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date: </span> </strong></div>
+                            <div class="divTableCell">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_ProposedIncreasePct" tabindex="1" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" value="[|COALESCE,ProposedIncreasePct,ActivePlans," />% </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 21.Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date: </span> </strong></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FinalPcntIncrease" tabindex="2" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" value="[|COALESCE,FinalPcntIncrease,ActivePlans," />% </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>22. For Plans that include an HRA or HSA:</strong> </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><label><input id="d_HRAHSARenewalRatesApplyTo_0" tabindex="3" checked="checked" name="d_HRAHSARenewalRatesApplyTo" type="radio" value="Last Year" />Renewal Rates apply to an HRA/HSA plan that was in place last year</label></div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell"><label><input id="d_HRAHSARenewalRatesApplyTo_1" tabindex="4" checked="checked" name="d_HRAHSARenewalRatesApplyTo" type="radio" value="First Year" />Renewal Rates reflect a first-time move to a consumer-driven health plan (CDHP)</label></div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="divTable">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>23. Most Recent Plan Anniversary (Renewal) Date:</strong><br /> If a plan renews on or before the 15th of the month, please use the first of that month. If a plan renews after the 15th of the month, please use the first of the next month.) </span></div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <span style="font-family: Tahoma; font-size: 13px;">
+                    <select id="d_RenewalDate" tabindex="5" name="d_RenewalDate">
+                        <option selected="selected" value=""></option>
+                        {SUBQUERY, Name="RenewalDate", Query="EXEC svy_DropDownList_GetNamedList 'HPS_RenewalDate'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
+                        <option value="[DropDownValue]">[DropDownValue]", SelectedFormat="</option>
+                        <option selected="selected" value="[DropDownValue]">[DropDownValue]", SelectedField="DropDownValue", SelectedItems="[|Format,[|RenewalDate,ActivePlans],{0:MM/dd/yy}]", UseCache="True"}</option>
+                    </select>
+                </span>
+            </div>
+            <div class="divTableCell">&nbsp;</div>
+        </div>
+    </div>
+</div>
+<p>&nbsp;&nbsp;</p>
+<p><input id="SurveySection" name="CurrSurveySection" type="hidden" value="ActivePlans" /> <input id="SurveySectionPage" name="CurrSurveySectionPage" type="hidden" value="4" /> <input id="SurveySectionPlanNo" name="CurrSurveySectionPlanNo" type="hidden" value="[|@PlanNo,Variable]" /></p>
