@@ -28,9 +28,9 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
                         st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
-                        FROM hps_SurveyResponse_General r 
-                        INNER JOIN hps_US_State s on r.US_StateId = s.US_StateId 
-                        INNER JOIN hps_SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
+                        FROM SurveyResponse_General r 
+                        INNER JOIN US_State s on r.US_StateId = s.US_StateId 
+                        INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
                         ORDER BY OrganizationName");
                 t = result;
             }
@@ -49,9 +49,9 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
                         st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
-                        FROM hps_SurveyResponse_General r 
-                        INNER JOIN hps_US_State s on r.US_StateId = s.US_StateId 
-                        INNER JOIN hps_SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
+                        FROM SurveyResponse_General r 
+                        INNER JOIN US_State s on r.US_StateId = s.US_StateId 
+                        INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
                         WHERE r.ResponseId = @0", responseId);
                 t = result;
             }
@@ -59,65 +59,65 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         }
 
-        public hps_SurveyResponse_General GetSurveyResponse_General(int responseId)
+        public SurveyResponse_General GetSurveyResponse_General(int responseId)
         {
-            hps_SurveyResponse_General t;
+            SurveyResponse_General t;
             using (hpsDB db = new hpsDB())
             {
-                var result = db.SingleOrDefault<hps_SurveyResponse_General>(
+                var result = db.SingleOrDefault<SurveyResponse_General>(
                     @"SELECT [ResponseId]
-                      ,[SurveyId]
-                      ,[WebID]
-                      ,[MemberFirmId]
-                      ,[ClientId]
-                      ,[NotParticipatingReasonTypeId]
-                      ,[SurveyResponseStatusTypeId]
-                      ,[CreatedOn]
-                      ,[CreatedBy]
-                      ,[UpdatedOn]
-                      ,[UpdatedBy]
-                      ,[CompletedBy]
-                      ,[CompletedOn]
-                      ,[OrganizationName]
-                      ,[PersonCompletingSurvey]
-                      ,[PersonCompletingSurvey_Title]
-                      ,[PersonCompletingSurvey_Email]
-                      ,[PersonCompletingSurvey_Phone]
-                      ,[PersonCompletingSurvey_PhoneExt]
-                      ,[City]
-                      ,[US_StateId]
-                      ,[ZipCode]
-                      ,[LargestLocationCity]
-                      ,[LargestLocationStateId]
-                      ,[LargestLocationZipCode]
-                      ,[IsControlledGroup]
-                      ,[NAICSMasterCodeId]
-                      ,[OrganizationTypeId]
-                      ,[HasUnionEmployees]
-                      ,[HasLeasedStaff]
-                      ,[IsApplicableLargeEmployer]
-                      ,[ActiveEmployeesCount]
-                      ,[EligibleEmployeesCount]
-                      ,[HasVariableHourEmployees]
-                      ,[PartTimeEmployeesCount]
-                      ,[FullTimeEmployeeCount]
-                      ,[OtherEmployeeCount]
-                      ,[AreAncillaryProductsOffered]
-                      ,[NumberActivePlansOfferedTypeId]
-                      ,[NumberRetireePlansOfferedTypeId]
-                      ,[PremiumContributionStrategyTypeId]
-                      ,[FullTimeHoursPerWeekTypeId]
-                      ,[EligibleWaitingPeriodTypeId]
-                      ,[HasOptOutBonus]
-                      ,[OptOutBonusAmt_Single]
-                      ,[OptOutBonusAmt_Family]
-                      ,[DomesticPartnerCoverageTypeId]
-                      ,[HasEarlyRetireeCoverageInActivePlans]
-                      ,[EarlyRetireePremiumShareTypeId]
-                      ,[PresentationInterestTypeId]
-                      ,[ErrorCount]
-                      ,[CoverSameSexSpouses]
-                    FROM [dbo].[hps_SurveyResponse_General] 
+                            ,[SurveyId]
+                            ,[WebID]
+                            ,[MemberFirmId]
+                            ,[ClientId]
+                            ,[NotParticipatingReasonTypeId]
+                            ,[SurveyResponseStatusTypeId]
+                            ,[CreatedOn]
+                            ,[CreatedBy]
+                            ,[UpdatedOn]
+                            ,[UpdatedBy]
+                            ,[CompletedBy]
+                            ,[CompletedOn]
+                            ,[OrganizationName]
+                            ,[PersonCompletingSurvey]
+                            ,[PersonCompletingSurvey_Title]
+                            ,[PersonCompletingSurvey_Email]
+                            ,[PersonCompletingSurvey_Phone]
+                            ,[PersonCompletingSurvey_PhoneExt]
+                            ,[City]
+                            ,[US_StateId]
+                            ,[ZipCode]
+                            ,[LargestLocationCity]
+                            ,[LargestLocationStateId]
+                            ,[LargestLocationZipCode]
+                            ,[IsControlledGroup]
+                            ,[NAICSMasterCodeId]
+                            ,[OrganizationTypeId]
+                            ,[HasUnionEmployees]
+                            ,[HasLeasedStaffedEmployees]
+                            ,[IsApplicableLargeEmployer]
+                            ,[ActiveEmployeesCount]
+                            ,[EligibleEmployeesCount]
+                            ,[HasVariableHourEmployees]
+                            ,[PartTimeEmployeesCount]
+                            ,[FullTimeEmployeeCount]
+                            ,[OtherEmployeeCount]
+                            ,[AreAncillaryProductsOffered]
+                            ,[NumberActivePlansOfferedTypeId]
+                            ,[NumberRetireePlansOfferedTypeId]
+                            ,[PremiumContributionStrategyTypeId]
+                            ,[FullTimeHoursPerWeekTypeId]
+                            ,[EligibleWaitingPeriodTypeId]
+                            ,[HasOptOutBonus]
+                            ,[OptOutBonusAmt_Single]
+                            ,[OptOutBonusAmt_Family]
+                            ,[DomesticPartnerCoverageTypeId]
+                            ,[HasEarlyRetireeCoverageInActivePlans]
+                            ,[EarlyRetireePremiumShareTypeId]
+                            ,[PresentationInterestTypeId]
+                            ,[ErrorCount]
+                            ,[CoverSameSexSpouses]
+                    FROM [dbo].[SurveyResponse_General] 
                     WHERE ResponseId = @0", responseId);
                 t = result;
             }

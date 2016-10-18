@@ -3,7 +3,7 @@
 	// Settings
     ConnectionStringName = "CodeGenSqlServer";			// Uses last connection string in config if not specified
     Namespace = "UBA.Modules.HealthPlanSurveyService";
-    RepoName = "HPS";
+    RepoName = "hpsDB";
     GenerateOperations = true;
 	GeneratePocos = true;
 	GenerateCommon = true;
