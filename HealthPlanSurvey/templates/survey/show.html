@@ -1,14 +1,14 @@
 ﻿<div class="page-header">
-    <h3>{{survey.OrganizationName}}</h3><br>
-    <small>{{survey.PersonCompletingSurvey}} - {{survey.PersonCompletingSurvey_Email}}</small>
+    <h3>{{survey.GeneralResponse.OrganizationName}}</h3><br>
+    <small>{{survey.GeneralResponse.PersonCompletingSurvey}} - {{survey.GeneralResponse.PersonCompletingSurvey_Email}}</small>
 </div>
-<p><span class="label label-info">{{survey.Broker}}</span></p>
-<p><span class="label label-info">{{survey.City}}, {{survey.US_StateId}}</span></p>
-<p><span class="label label-info">{{survey.ResponseStatus}}</span></p>
-<p><span class="label label-info">{{survey.CreatedOn | date : 'shortDate' }}</span></p>
-<p><span class="label label-info">{{survey.UpdatedOn | date : 'shortDate'}}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.Broker}}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.City}}, {{survey.GeneralResponse.US_StateId}}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.ResponseStatus}}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.CreatedOn | date : 'shortDate' }}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.UpdatedOn | date : 'shortDate'}}</span></p>
 <p><span class="label label-info">Survey Link</span></p>
-<p><span class="label label-info">{{survey.CompletedOn | date : 'shortDate'}}</span></p>
-<p><span class="label label-info">{{survey.CompletedBy}}</span></p>
-<a ng-href="#/surveys/{{survey.ResponseId}}/edit" class="btn btn-default">Edit Survey</a>
+<p><span class="label label-info">{{survey.GeneralResponse.CompletedOn | date : 'shortDate'}}</span></p>
+<p><span class="label label-info">{{survey.GeneralResponse.CompletedBy}}</span></p>
+<a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default">Edit Survey</a>
 <a href="" ng-click="deleteSurvey(survey)" class="btn btn-danger">Delete</a>
