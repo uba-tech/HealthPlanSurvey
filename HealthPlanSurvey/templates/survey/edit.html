@@ -38,9 +38,9 @@
             <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">General Info</a></li>
             <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
                 <ul> 
-                    <li ng-class="{ active:tab === ($index + 3) }"><a href ng-click="setSelected($index + 3)">Medical Plan</a></li>
-                    <li ng-class="{ active:tab === ($index + 4) }"><a href ng-click="setSelected($index + 4)">Plan Design</a></li>
-                    <li ng-class="{ active:tab === ($index + 5) }"><a href ng-click="setSelected($index + 5)">Prescription Drug Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 100) }"><a href ng-click="setSelected($index + 100)">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 200) }"><a href ng-click="setSelected($index + 200)">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 300) }"><a href ng-click="setSelected($index + 300)">Prescription Drug Plan</a></li>
                 </ul>
             </li>
             <li ng-class="{ active:tab === 666 }"><a href ng-click="tab = 666">Retiree Plan</a></li>
@@ -51,13 +51,12 @@
         <sw-Company-Details class="panel" ng-show="tab === 1" ng-model="survey.GeneralResponse"></sw-Company-Details>
         <sw-General-Info class="panel" ng-show="tab === 2" ng-model="survey.GeneralResponse"></sw-General-Info>
         <div class="container" ng-repeat="plan in survey.ActivePlans">
-            <!--<sw-Medical-Plan class="panel" ng-show="tab === ($index + 3)" ng-model="plan.ActivePlan"></sw-Medical-Plan>-->
-            <div class="panel" ng-show="tab === ($index + 3)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/MedicalPlan.html'"></div>
-            <div class="panel" ng-show="tab === ($index + 4)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/PlanDesign.html'"></div>
-            <div class="panel" ng-show="tab === ($index + 5)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RxPlan.html'"></div>
+            <sw-Medical-Plan class="panel" ng-show="tab === ($index + 100)" ng-model="plan.ActivePlan"></sw-Medical-Plan>
+            <sw-Plan-Design class="panel" ng-show="tab === ($index + 200)" ng-model="plan.ActivePlan"></sw-Plan-Design>
+            <sw-Rx-Plan class="panel" ng-show="tab === ($index + 300)" ng-model="plan.RxPlan"></sw-Rx-Plan>
         </div>
-        <div class="panel" ng-show="tab === 666" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RetireePlan.html'"></div>
-        <div class="panel" ng-show="tab === 777" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/Section125.html'"></div>
+        <sw-Retiree-Plan class="panel" ng-show="tab === 666" ng-model="survey.RetireePlan"></sw-Retiree-Plan>
+        <sw-Section-125 class="panel" ng-show="tab === 777" ng-model="survey.Section125"></sw-Section-125>
         <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
     </div>
 </section>

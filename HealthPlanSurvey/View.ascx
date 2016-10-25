@@ -20,6 +20,12 @@
     <!-- Directives -->
     <script src="/DesktopModules/HealthPlanSurvey/directives/swCompanyDetails.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/directives/swGeneralInfo.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swMedicalPlan.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swPlanDesign.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swRxPlan.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swRetireePlan.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swSection125.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swActivePlan.js"></script>
     <!-- Controllers -->
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyIndexController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCreateController.js"></script>

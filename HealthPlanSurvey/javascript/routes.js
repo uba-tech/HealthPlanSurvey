@@ -4,6 +4,10 @@
             redirectTo: '/surveys'
         })
 
+        .when('/#', {
+            redirectTo: '/surveys'
+        })
+
     .when('/surveys', {
         templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/index.html",
         controller: "SurveyIndexController"
