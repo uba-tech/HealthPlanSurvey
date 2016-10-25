@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace UBA.Modules.HPS_API.Models
+namespace UBA.Modules.HealthPlanSurveyService.Models
 {
     public class PersonModel
     {

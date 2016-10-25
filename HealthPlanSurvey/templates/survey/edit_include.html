@@ -56,5 +56,6 @@
         <div class="panel" ng-show="tab === 5" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RxPlan.html'"></div>
         <div class="panel" ng-show="tab === 6" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RetireePlan.html'"></div>
         <div class="panel" ng-show="tab === 7" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/Section125.html'"></div>
+        <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
     </div>
 </section>

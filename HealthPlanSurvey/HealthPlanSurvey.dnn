@@ -47,7 +47,6 @@
           <desktopModule>
             <moduleName>HealthPlanSurvey</moduleName>
             <foldername>HealthPlanSurvey</foldername>
-            <businessControllerClass>UBA.Modules.HealthPlanSurvey.Components.FeatureController, HealthPlanSurvey</businessControllerClass>
             <supportedFeatures>
               <supportedFeature>IPortable</supportedFeature>
               <supportedFeature>ISearchable</supportedFeature>

@@ -1,7 +1,4 @@
-﻿using System;
-using DotNetNuke.Web.Api;
-using System.Web.Http;
-using System.Web.Mvc;
+﻿using DotNetNuke.Web.Api;
 
 namespace UBA.Modules.HealthPlanSurveyService.Services
 {
@@ -22,7 +19,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             new {
                 controller = "Survey",
                 action = "SurveySummary",
-                responseId = UrlParameter.Optional
+                //responseId = UrlParameter.Optional
             },
             new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
 

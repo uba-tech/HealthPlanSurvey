@@ -1,0 +1,8 @@
+C:\websites\bin\HealthPlanSurveyService.dll.config
+C:\websites\bin\HealthPlanSurveyService.dll
+C:\websites\bin\HealthPlanSurveyService.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Release\HealthPlanSurveyService.csprojResolveAssemblyReference.cache
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Release\UBA.Modules.HealthPlanSurveyService.Properties.Resources.resources
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Release\HealthPlanSurveyService.csproj.GenerateResource.Cache
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Release\HealthPlanSurveyService.dll
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Release\HealthPlanSurveyService.pdb

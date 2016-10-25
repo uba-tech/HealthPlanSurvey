@@ -1,24 +1,63 @@
-﻿<div class="page-header">
-    <h3>Client Details</h3><br>
-</div>
+﻿<style>
+    .navbar-fixed-left {
+        width: 140px;
+        position: fixed;
+        border-radius: 0;
+        height: 50%;
+    }
 
-<fieldset class="form-group">
-    <label for="participating">If this client will no longer be part of the UBA Health Plan Survey, is it due to:</label>
-    <input class="form-control" type="radio" id="participating" name="participating" value="1" />  Terminated policy<br />
-    <input class="form-control" type="radio" id="participating" name="participating" value="2" />  No longer a client<br />
-    <input class="form-control" type="radio" id="participating" name="participating" value="3" />  Client moved policy to marketplace<br />
-    <input class="form-control" type="radio" id="participating" name="participating" value="4" />  Client is part of the Health Plan Survey<br />
-</fieldset>
+        .navbar-fixed-left .navbar-nav > li {
+            float: none; /* Cancel default li float: left */
+            width: 139px;
+        }
 
-<fieldset class="form-group">
-    <label for="clientName">Client</label>
-    <input class="form-control" type="text" id="clientName" name="clientName" ng-model="survey.OrganizationName" />
-    <label for="createdBy">Name of Person Completing Survey</label>
-    <input class="form-control" type="text" id="createdBy" name="createdBy" ng-model="survey.PersonCompletingSurvey" />
-    <label for="createdByTitle">Title</label>
-    <input class="form-control" type="text" id="createdByTitle" name="createdByTitle" ng-model="survey.PersonCompletingSurvey" />
-    <label for="createdByEmail">Email Address</label>
-    <input class="form-control" type="text" id="createdByEmail" name="createdByEmail" ng-model="survey.OrganizationNameEmail" />
-</fieldset>
+        .navbar-fixed-left + .container {
+            padding-left: 160px;
+        }
 
-<button id="Submit" class="btn btn-default" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Submit</button>
+        /* On using dropdown menu (To right shift popuped) */
+        .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+            margin-top: -50px;
+            margin-left: 140px;
+        }
+</style>
+<!--<section ng-init="tab = 1">
+    <ul class="nav nav-pills">
+        <li ng-class="{ active:tab === 1 }">
+            <a href ng-click="tab = 1">Client Details</a>
+        </li>
+        <li ng-class="{ active:tab === 2 }">
+            <a href ng-click="tab = 2">Medical Plan - General Information</a>
+        </li>
+    </ul>
+</section>-->
+<section ng-init="tab = 1">
+    <div class="navbar navbar-fixed-left">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Client Details</a></li>
+            <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">General Info</a></li>
+            <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
+                <ul> 
+                    <li ng-class="{ active:tab === ($index + 3) }"><a href ng-click="setSelected($index + 3)">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 4) }"><a href ng-click="setSelected($index + 4)">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 5) }"><a href ng-click="setSelected($index + 5)">Prescription Drug Plan</a></li>
+                </ul>
+            </li>
+            <li ng-class="{ active:tab === 666 }"><a href ng-click="tab = 666">Retiree Plan</a></li>
+            <li ng-class="{ active:tab === 777 }"><a href ng-click="tab = 777">Section 125</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <sw-Company-Details class="panel" ng-show="tab === 1" ng-model="survey.GeneralResponse"></sw-Company-Details>
+        <sw-General-Info class="panel" ng-show="tab === 2" ng-model="survey.GeneralResponse"></sw-General-Info>
+        <div class="container" ng-repeat="plan in survey.ActivePlans">
+            <!--<sw-Medical-Plan class="panel" ng-show="tab === ($index + 3)" ng-model="plan.ActivePlan"></sw-Medical-Plan>-->
+            <div class="panel" ng-show="tab === ($index + 3)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/MedicalPlan.html'"></div>
+            <div class="panel" ng-show="tab === ($index + 4)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/PlanDesign.html'"></div>
+            <div class="panel" ng-show="tab === ($index + 5)" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RxPlan.html'"></div>
+        </div>
+        <div class="panel" ng-show="tab === 666" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/RetireePlan.html'"></div>
+        <div class="panel" ng-show="tab === 777" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/Section125.html'"></div>
+        <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
+    </div>
+</section>

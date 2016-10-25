@@ -10,7 +10,7 @@
     })
 
     .when('/surveys/new', {
-        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/new.html",
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/create.html",
         controller: "SurveyCreateController"
     })
 
@@ -20,7 +20,7 @@
     })
 
     .when('/surveys/:id/edit', {
-        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/edit_include.html",
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/edit.html",
         controller: "SurveyEditController"
     })
 });

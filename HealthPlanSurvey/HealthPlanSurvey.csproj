@@ -105,6 +105,9 @@
     <Content Include="controllers\SurveyCreateController.js" />
     <Content Include="controllers\SurveyShowController.js" />
     <Content Include="controllers\SurveyIndexController.js" />
+    <Content Include="directives\swMedicalPlan.js" />
+    <Content Include="directives\swGeneralInfo.js" />
+    <Content Include="directives\swCompanyDetails.js" />
     <Content Include="Documentation\Documentation.css" />
     <Content Include="Documentation\Documentation.html" />
     <Content Include="Edit.ascx" />
@@ -897,12 +900,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="services\surveys.js" />
     <Content Include="services\SurveySummary.js" />
+    <Content Include="templates\response\editCompany1.html" />
     <Content Include="templates\response\editCompany.html" />
+    <Content Include="templates\response\GeneralInfo.html" />
     <Content Include="templates\response\editMedicalPlan.html" />
+    <Content Include="templates\survey\edit - Copy.html" />
     <Content Include="templates\survey\edit_include.html" />
-    <Content Include="templates\survey\edit_TABLE.html" />
     <Content Include="templates\survey\edit.html" />
-    <Content Include="templates\survey\edit_DIV.html" />
     <Content Include="templates\survey\create.html" />
     <Content Include="templates\response\MedicalPlan.html" />
     <Content Include="templates\response\PlanDesign.html" />
@@ -984,7 +988,6 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="directives\" />
     <Folder Include="filters\" />
   </ItemGroup>
   <PropertyGroup>

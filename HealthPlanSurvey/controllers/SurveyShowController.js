@@ -3,8 +3,8 @@
     $scope.survey = Survey.get({ responseId: id });
     //console.log($scope.survey)
 
-    $scope.deleteSurvey = function (survey) {
-        survey.$remove().then(function () {
+    $scope.deleteSurvey = function (id) {
+        survey.$brokerDelete().then(function () {
             $location.path('/surveys');
         });
     }

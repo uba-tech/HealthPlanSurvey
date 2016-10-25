@@ -85,135 +85,136 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                             ,[CoverSameSexSpouses]
                     FROM [dbo].[SurveyResponse_General] 
                     WHERE ResponseId = @0";
-        string SurveyResponse_ActivePlanSql = @"SELECT [ActivePlanId]
-                          ,[ResponseId]
-                          ,[EnterPlanData]
-                          ,[PlanNumber]
-                          ,[PlanName]
-                          ,[ActivePlanTypeId]
-                          ,[IsPlanGrandfathered]
-                          ,[IsPlanGrandmothered]
-                          ,[HRAIncluded]
-                          ,[HSAIncluded]
-                          ,[MERPIncluded]
-                          ,[HRAHSAMERP_NoneOfTheAbove]
-                          ,[FundingMethodTypeId]
-                          ,[PremiumTierTypeId]
-                          ,[UnitRateTypeId]
-                          ,[NumberEnrolled_Single]
-                          ,[NumberEnrolled_EmployeePlusOne]
-                          ,[NumberEnrolled_EmployeePlusChild]
-                          ,[NumberEnrolled_EmployeePlusSpouse]
-                          ,[NumberEnrolled_Family]
-                          ,[MonthlyPremiumAmt_Single]
-                          ,[MonthlyPremiumAmt_EmployeePlusOne]
-                          ,[MonthlyPremiumAmt_EmployeePlusChild]
-                          ,[MonthlyPremiumAmt_EmployeePlusSpouse]
-                          ,[MonthlyPremiumAmt_Family]
-                          ,[HasTobaccoSurcharge]
-                          ,[TobaccoSurchargePct]
-                          ,[ContributionsBasedOnPercentageOfSalary]
-                          ,[ContributionBasisTypeId]
-                          ,[EmployeeContributionAmt_Single]
-                          ,[EmployeeContributionAmt_EmployeePlusOne]
-                          ,[EmployeeContributionAmt_EmployeePlusChild]
-                          ,[EmployeeContributionAmt_EmployeePlusSpouse]
-                          ,[EmployeeContributionAmt_Family]
-                          ,[EmployeeContributionPctOfPremium_Single]
-                          ,[EmployeeContributionPctOfPremium_EmployeePlusOne]
-                          ,[EmployeeContributionPctOfPremium_EmployeePlusChild]
-                          ,[EmployeeContributionPctOfPremium_EmployeePlusSpouse]
-                          ,[EmployeeContributionPctOfPremium_Family]
-                          ,[Employer_HRA_ContributionAmt_Single]
-                          ,[Employer_HRA_ContributionAmt_EmployeePlusOne]
-                          ,[Employer_HRA_ContributionAmt_EmployeePlusChild]
-                          ,[Employer_HRA_ContributionAmt_EmployeePlusSpouse]
-                          ,[Employer_HRA_ContributionAmt_Family]
-                          ,[Employer_HSA_ContributionAmt_Single]
-                          ,[Employer_HSA_ContributionAmt_EmployeePlusOne]
-                          ,[Employer_HSA_ContributionAmt_EmployeePlusChild]
-                          ,[Employer_HSA_ContributionAmt_EmployeePlusSpouse]
-                          ,[Employer_HSA_ContributionAmt_Family]
-                          ,[HasSpecificStopLossCoverage]
-                          ,[HasAggregateStopLossCoverage]
-                          ,[SpecificStopLossLevelAmt]
-                          ,[SpecificStopLossPremiumAmt_Single]
-                          ,[SpecificStopLossPremiumAmt_EmployeePlusOne]
-                          ,[SpecificStopLossPremiumAmt_EmployeePlusChild]
-                          ,[SpecificStopLossPremiumAmt_EmployeePlusSpouse]
-                          ,[SpecificStopLossPremiumAmt_Family]
-                          ,[ProposedIncreasePct]
-                          ,[FinalIncreasePct]
-                          ,[MedicalExpenseReimbursementRenewalRateTypeId]
-                          ,[RenewalDate]
-                          ,[CopayAmt_Inpatient_InNetwork]
-                          ,[HasCopay_Inpatient_InNetwork]
-                          ,[HasCopayPerDay_Inpatient_InNetwork]
-                          ,[CopayAmt_Inpatient_OutOfNetwork]
-                          ,[HasCopay_Inpatient_OutOfNetwork]
-                          ,[HasCopayPerDay_Inpatient_OutOfNetwork]
-                          ,[AnnualPlanDeductibleAmt_Single_InNetwork]
-                          ,[HasAnnualPlanDeductible_Single_InNetwork]
-                          ,[AnnualPlanDeductibleAmt_Single_OutOfNetwork]
-                          ,[HasAnnualPlanDeductible_Single_OutOfNetwork]
-                          ,[AnnualPlanDeductibleAmt_Family_InNetwork]
-                          ,[HasAnnualPlanDeductible_Family_InNetwork]
-                          ,[HasAnnualPlanDeductible_xEE_Family_InNetwork]
-                          ,[AnnualPlanDeductibleAmt_Family_OutOfNetwork]
-                          ,[HasAnnualPlanDeductible_Family_OutOfNetwork]
-                          ,[HasAnnualPlanDeductible_xEE_Family_OutOfNetwork]
-                          ,[PlanCoinsurancePct_InNetwork]
-                          ,[HasPlanCoinsurance_InNetwork]
-                          ,[PlanCoinsurancePct_OutOfNetwork]
-                          ,[HasPlanCoinsurance_OutOfNetwork]
-                          ,[AnnualOutOfPocketMaxAmt_Single_InNetwork]
-                          ,[HasAnnualOutOfPocketMax_Single_InNetwork]
-                          ,[AnnualOutOfPocketMaxAmt_Single_OutOfNetwork]
-                          ,[HasAnnualOutOfPocketMax_Single_OutOfNetwork]
-                          ,[AnnualOutOfPocketMaxAmt_Family_InNetwork]
-                          ,[HasAnnualOutOfPocketMax_Family_InNetwork]
-                          ,[HasAnnualOutOfPocketMax_xEE_Family_InNetwork]
-                          ,[AnnualOutOfPocketMaxAmt_Family_OutOfNetwork]
-                          ,[HasAnnualOutOfPocketMax_Family_OutOfNetwork]
-                          ,[HasAnnualOutOfPocketMax_xEE_Family_OutOfNetwork]
-                          ,[HasMinValueCoverage]
-                          ,[HasMinEssentialCoverage]
-                          ,[PlanDesignMetalLevelTypeId]
-                          ,[HasSkinnyPlan]
-                          ,[HasERHospitalCoverage]
-                          ,[HasPhysicianVisitsCoverage]
-                          ,[HasPharmacyCoverage]
-                          ,[HasLab_ImagingCoverage]
-                          ,[CopayAmt_PCP]
-                          ,[HasCopay_PCP]
-                          ,[CopayAmt_SCP]
-                          ,[HasCopay_SCP]
-                          ,[CopayAmt_UrgentCare]
-                          ,[HasCopay_UrgentCare]
-                          ,[CopayAmt_ER]
-                          ,[HasCopay_ER]
-                          ,[HRA_PreventiveSvcs]
-                          ,[HSA_PreventiveSvcs]
-                          ,[InfertilityCoverageTypeId]
-                          ,[HasWellnessProgram]
-                          ,[WellnessProgramProviderTypeId]
-                          ,[HasWellness_HealthRiskAssessment]
-                          ,[HasWellness_SeminarsWorkshops]
-                          ,[HasWellness_PhysicalExamBloodDraw]
-                          ,[HasWellness_Coaching]
-                          ,[HasWellness_Incentives]
-                          ,[HasWellness_WebPortal]
-                          ,[HasWellness_Other]
-                          ,[HasWellnessIncentives_PremiumReduction]
-                          ,[HasWellnessIncentives_HealthClubDues]
-                          ,[HasWellnessIncentives_PaidTimeOff]
-                          ,[HasWellnessIncentives_Min]
-                          ,[HasWellnessIncentives_Other]
-                          ,[HasRxPlan]
-                          ,[UpdatedByUserID]
-                          ,[SelfFundedDeductible]
-                          ,[HasReinsuranceCaptible]
-                          ,[AleEmployerStrategy]
+        string SurveyResponse_ActivePlanSql = @"SELECT 
+                       [ActivePlanId]
+                      ,[ResponseId]
+                      ,[EnterPlanData]
+                      ,[PlanNumber]
+                      ,[PlanName]
+                      ,[ActivePlanTypeId]
+                      ,[IsPlanGrandfathered]
+                      ,[IsPlanGrandmothered]
+                      ,[IsHRAIncluded]
+                      ,[IsHSAIncluded]
+                      ,[IsMERPIncluded]
+                      ,[IsHRAHSAMERP_NoneOfTheAbove]
+                      ,[FundingMethodTypeId]
+                      ,[PremiumTierTypeId]
+                      ,[UnitRateTypeId]
+                      ,[NumberEnrolled_Single]
+                      ,[NumberEnrolled_EmployeePlusOne]
+                      ,[NumberEnrolled_EmployeePlusChild]
+                      ,[NumberEnrolled_EmployeePlusSpouse]
+                      ,[NumberEnrolled_Family]
+                      ,[MonthlyPremiumAmt_Single]
+                      ,[MonthlyPremiumAmt_EmployeePlusOne]
+                      ,[MonthlyPremiumAmt_EmployeePlusChild]
+                      ,[MonthlyPremiumAmt_EmployeePlusSpouse]
+                      ,[MonthlyPremiumAmt_Family]
+                      ,[HasTobaccoSurcharge]
+                      ,[TobaccoSurchargePct]
+                      ,[AreContributionsBasedOnPercentageOfSalary]
+                      ,[ContributionBasisTypeId]
+                      ,[EmployeeContributionAmt_Single]
+                      ,[EmployeeContributionAmt_EmployeePlusOne]
+                      ,[EmployeeContributionAmt_EmployeePlusChild]
+                      ,[EmployeeContributionAmt_EmployeePlusSpouse]
+                      ,[EmployeeContributionAmt_Family]
+                      ,[EmployeeContributionPctOfPremium_Single]
+                      ,[EmployeeContributionPctOfPremium_EmployeePlusOne]
+                      ,[EmployeeContributionPctOfPremium_EmployeePlusChild]
+                      ,[EmployeeContributionPctOfPremium_EmployeePlusSpouse]
+                      ,[EmployeeContributionPctOfPremium_Family]
+                      ,[Employer_HRA_ContributionAmt_Single]
+                      ,[Employer_HRA_ContributionAmt_EmployeePlusOne]
+                      ,[Employer_HRA_ContributionAmt_EmployeePlusChild]
+                      ,[Employer_HRA_ContributionAmt_EmployeePlusSpouse]
+                      ,[Employer_HRA_ContributionAmt_Family]
+                      ,[Employer_HSA_ContributionAmt_Single]
+                      ,[Employer_HSA_ContributionAmt_EmployeePlusOne]
+                      ,[Employer_HSA_ContributionAmt_EmployeePlusChild]
+                      ,[Employer_HSA_ContributionAmt_EmployeePlusSpouse]
+                      ,[Employer_HSA_ContributionAmt_Family]
+                      ,[HasSpecificStopLossCoverage]
+                      ,[HasAggregateStopLossCoverage]
+                      ,[SpecificStopLossLevelAmt]
+                      ,[SpecificStopLossPremiumAmt_Single]
+                      ,[SpecificStopLossPremiumAmt_EmployeePlusOne]
+                      ,[SpecificStopLossPremiumAmt_EmployeePlusChild]
+                      ,[SpecificStopLossPremiumAmt_EmployeePlusSpouse]
+                      ,[SpecificStopLossPremiumAmt_Family]
+                      ,[ProposedIncreasePct]
+                      ,[FinalIncreasePct]
+                      ,[MedicalExpenseReimbursementRenewalRateTypeId]
+                      ,[RenewalDate]
+                      ,[CopayAmt_Inpatient_InNetwork]
+                      ,[HasCopay_Inpatient_InNetwork]
+                      ,[HasCopayPerDay_Inpatient_InNetwork]
+                      ,[CopayAmt_Inpatient_OutOfNetwork]
+                      ,[HasCopay_Inpatient_OutOfNetwork]
+                      ,[HasCopayPerDay_Inpatient_OutOfNetwork]
+                      ,[AnnualPlanDeductibleAmt_Single_InNetwork]
+                      ,[HasAnnualPlanDeductible_Single_InNetwork]
+                      ,[AnnualPlanDeductibleAmt_Single_OutOfNetwork]
+                      ,[HasAnnualPlanDeductible_Single_OutOfNetwork]
+                      ,[AnnualPlanDeductibleAmt_Family_InNetwork]
+                      ,[HasAnnualPlanDeductible_Family_InNetwork]
+                      ,[HasAnnualPlanDeductible_xEE_Family_InNetwork]
+                      ,[AnnualPlanDeductibleAmt_Family_OutOfNetwork]
+                      ,[HasAnnualPlanDeductible_Family_OutOfNetwork]
+                      ,[HasAnnualPlanDeductible_xEE_Family_OutOfNetwork]
+                      ,[PlanCoinsurancePct_InNetwork]
+                      ,[HasPlanCoinsurance_InNetwork]
+                      ,[PlanCoinsurancePct_OutOfNetwork]
+                      ,[HasPlanCoinsurance_OutOfNetwork]
+                      ,[AnnualOutOfPocketMaxAmt_Single_InNetwork]
+                      ,[HasAnnualOutOfPocketMax_Single_InNetwork]
+                      ,[AnnualOutOfPocketMaxAmt_Single_OutOfNetwork]
+                      ,[HasAnnualOutOfPocketMax_Single_OutOfNetwork]
+                      ,[AnnualOutOfPocketMaxAmt_Family_InNetwork]
+                      ,[HasAnnualOutOfPocketMax_Family_InNetwork]
+                      ,[HasAnnualOutOfPocketMax_xEE_Family_InNetwork]
+                      ,[AnnualOutOfPocketMaxAmt_Family_OutOfNetwork]
+                      ,[HasAnnualOutOfPocketMax_Family_OutOfNetwork]
+                      ,[HasAnnualOutOfPocketMax_xEE_Family_OutOfNetwork]
+                      ,[HasMinValueCoverage]
+                      ,[HasMinEssentialCoverage]
+                      ,[PlanDesignMetalLevelTypeId]
+                      ,[HasSkinnyPlan]
+                      ,[HasERHospitalCoverage]
+                      ,[HasPhysicianVisitsCoverage]
+                      ,[HasPharmacyCoverage]
+                      ,[HasLab_ImagingCoverage]
+                      ,[CopayAmt_PCP]
+                      ,[HasCopay_PCP]
+                      ,[CopayAmt_SCP]
+                      ,[HasCopay_SCP]
+                      ,[CopayAmt_UrgentCare]
+                      ,[HasCopay_UrgentCare]
+                      ,[CopayAmt_ER]
+                      ,[HasCopay_ER]
+                      ,[HRA_PreventiveSvcs]
+                      ,[HSA_PreventiveSvcs]
+                      ,[InfertilityCoverageTypeId]
+                      ,[HasWellnessProgram]
+                      ,[WellnessProgramProviderTypeId]
+                      ,[HasWellness_HealthRiskAssessment]
+                      ,[HasWellness_SeminarsWorkshops]
+                      ,[HasWellness_PhysicalExamBloodDraw]
+                      ,[HasWellness_Coaching]
+                      ,[HasWellness_Incentives]
+                      ,[HasWellness_WebPortal]
+                      ,[HasWellness_Other]
+                      ,[HasWellnessIncentives_PremiumReduction]
+                      ,[HasWellnessIncentives_HealthClubDues]
+                      ,[HasWellnessIncentives_PaidTimeOff]
+                      ,[HasWellnessIncentives_Min]
+                      ,[HasWellnessIncentives_Other]
+                      ,[HasRxPlan]
+                      ,[UpdatedByUserID]
+                      ,[SelfFundedDeductible]
+                      ,[HasReinsuranceCaptible]
+                      ,[AleEmployerStrategy]
                       FROM [dbo].[SurveyResponse_ActivePlan]
                     WHERE ResponseId = @0";
         string SurveyResponse_RxPlanSql = @"SELECT [RxPlanId]
@@ -221,7 +222,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                           ,[FundingMethodTypeId]
                           ,[IsCoveredUnderMajorMedical]
                           ,[DoesCoPay_CoinsApplyAfterMajorMedicalDeductible]
-                          ,[HasSeparateAnnualDeductibleAppliedToGenericsOnly]
+                          ,[HasSeparateAnnualDeductibleApplied]
                           ,[DoesSeparateAnnualDeductibleApplyForGeneric]
                           ,[SeparateAnnualDeductibleAmt_Single]
                           ,[HasSeparateAnnualDeductibleAmt_FamilyOnly]
@@ -414,8 +415,93 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             return item;
         }
 
-        public void SaveSurveySummaryData(SurveySummaryModel survey)
+        public void SaveSurveyResponse(SurveyResponseItem survey)
         {
+            using (hpsDB db = new hpsDB())
+            {
+                if(survey.GeneralResponse.ResponseId <= 0)
+                {
+                    // create SurveyResponse_General record
+                    db.Insert(survey.GeneralResponse);
+                    int responseId = survey.GeneralResponse.ResponseId;
+
+                    // create SurveyResponse_ActivePlan and Rx Plan records
+                    foreach (SurveyActivePlan plan in survey.ActivePlans)
+                    {
+                        // create Active Plan
+                        plan.ActivePlan.ResponseId = responseId;
+                        db.Insert(plan.ActivePlan);
+                        int planId = plan.ActivePlan.ActivePlanId;
+
+                        // create Rx plan record
+                        plan.RxPlan.RxPlan.ActivePlanId = planId;
+                        db.Insert(plan.RxPlan.RxPlan);
+                        int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
+
+                        // create Rx tier records
+                        foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
+                        {
+                            db.Insert(tier);
+                        }
+                    }
+
+                    // create retiree plan record
+                    if(survey.GeneralResponse.HasEarlyRetireeCoverageInActivePlans)
+                    {
+                        survey.RetireePlan.ResponseId = responseId;
+                        db.Insert(survey.RetireePlan);
+                    }
+
+                    // create section 125 record
+                    survey.Section125.ResponseId = responseId;
+                    db.Insert(survey.Section125);
+
+                }
+                else
+                {
+                    //db.Update(survey);
+                    // update SurveyResponse_General record
+                    db.Update(survey.GeneralResponse);
+
+                    // update SurveyResponse_ActivePlan and Rx Plan records
+                    foreach (SurveyActivePlan plan in survey.ActivePlans)
+                    {
+                        // update Active Plan
+                        db.Update(plan.ActivePlan);
+                        int planId = plan.ActivePlan.ActivePlanId;
+
+                        // update Rx plan record
+                        db.Update(plan.RxPlan.RxPlan);
+                        int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
+
+                        // update Rx tier records
+                        foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
+                        {
+                            db.Update(tier);
+                        }
+                    }
+
+                    // update retiree plan record
+                    if (survey.GeneralResponse.HasEarlyRetireeCoverageInActivePlans)
+                    {
+                        db.Update(survey.RetireePlan);
+                    }
+
+                    // update section 125 record
+                    db.Update(survey.Section125);
+
+                }
+            }
+
+        }
+
+        public void ChangeStatus(int responseId, int status)
+        {
+            using (hpsDB db = new hpsDB())
+            {
+                // set survey response status
+                db.Execute("UPDATE SurveyResponse_General SET [SurveyResponseStatusTypeId] = @0 WHERE ResponseId = @1", new { status, responseId } );
+            }
 
         }
         #endregion

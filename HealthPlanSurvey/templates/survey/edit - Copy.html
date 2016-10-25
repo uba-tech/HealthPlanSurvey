@@ -1,5 +1,4 @@
-﻿<h3>New Survey</h3>
-<style>
+﻿<style>
     .navbar-fixed-left {
         width: 140px;
         position: fixed;
@@ -38,19 +37,19 @@
             <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Client Details</a></li>
             <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">Medical Plan - General Information</a></li>
             <li class="dropdown" ng-repeat="plan in survey.ActivePlans">
-                <a href class="dropdown-toggle" data-toggle="dropdown">Active Plan - {{plan.PlanName}}<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
+               <!-- <a href class="dropdown-toggle" data-toggle="dropdown">Active Plan - {{plan.PlanName}}<span class="caret"></span></a>-->
+                <!--<ul class="dropdown-menu" role="menu"> -->
                     <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Medical Plan</a></li>
                     <li ng-class="{ active:tab === 4 }"><a href ng-click="tab = 4">Plan Design</a></li>
                     <li ng-class="{ active:tab === 5 }"><a href ng-click="tab = 5">Prescription Drug Plan</a></li>
-                </ul>
+                <!--</ul>-->
             </li>
             <li ng-class="{ active:tab === 6 }"><a href ng-click="tab = 6">Retiree Plan</a></li>
             <li ng-class="{ active:tab === 7 }"><a href ng-click="tab = 7">Section 125</a></li>
         </ul>
     </div>
     <div class="container">
-        <div class="panel" ng-show="tab === 1" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/editCompany.html'"></div>
+        <div class="panel" ng-show="tab === 1" ng-repeat="response in survey.GeneralResponse" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/editCompany1.html'"></div>
         <div class="panel" ng-show="tab === 2" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/editMedicalPlan.html'"></div>
         <div class="panel" ng-show="tab === 3" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/MedicalPlan.html'"></div>
         <div class="panel" ng-show="tab === 4" ng-include="'/DesktopModules/HealthPlanSurvey/templates/response/PlanDesign.html'"></div>

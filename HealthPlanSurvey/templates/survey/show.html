@@ -11,4 +11,5 @@
 <p><span class="label label-info">{{survey.GeneralResponse.CompletedOn | date : 'shortDate'}}</span></p>
 <p><span class="label label-info">{{survey.GeneralResponse.CompletedBy}}</span></p>
 <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default">Edit Survey</a>
-<a href="" ng-click="deleteSurvey(survey)" class="btn btn-danger">Delete</a>
+<a href="" ng-click="deleteSurvey(survey.GeneralResponse.ResponseId, 2)" class="btn btn-danger">Delete</a>
+<button id="Submit" class="btn btn-danger" ng-click="deleteSurvey(survey.GeneralResponse.ResponseId, 2)" ng-disabled="isSubmitting">Delete</button>

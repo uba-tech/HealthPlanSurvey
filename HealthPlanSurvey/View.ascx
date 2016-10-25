@@ -18,6 +18,8 @@
     <script src="/DesktopModules/HealthPlanSurvey/javascript/app.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/javascript/routes.js"></script>
     <!-- Directives -->
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swCompanyDetails.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/directives/swGeneralInfo.js"></script>
     <!-- Controllers -->
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyIndexController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCreateController.js"></script>

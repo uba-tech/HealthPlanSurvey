@@ -126,13 +126,32 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         //[DnnAuthorize()]
         [AllowAnonymous]
-        [HttpPut]
-        public HttpResponseMessage Survey(SurveySummaryModel survey)
+        [HttpPut()]
+        public HttpResponseMessage Survey(SurveyResponseItem survey)
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                dataController.SaveSurveySummaryData(survey);
+                dataController.SaveSurveyResponse(survey);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                //Log to DotNetNuke and reply with Error
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        //[DnnAuthorize()]
+        [AllowAnonymous]
+        [HttpPost()]
+        public HttpResponseMessage Survey(int responseId, int status)
+        {
+            try
+            {
+                HPSDataController dataController = new HPSDataController();
+                dataController.ChangeStatus(responseId, status);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)
