@@ -1,236 +1,452 @@
-<style>
-	/* DivTable.com */
-.divTable{
-	display: table;
-	width: 100%;
-}
-.divTableRow {
-	display: table-row;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-}
-.divTableCell, .divTableHead {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
-}
-</style>
 <div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell">
-                    <div class="divTable">
-                        <div class="divTableBody">
-                            <div class="divTableRow">
-                                <div class="divTableCell">&nbsp;</div>
-                                <div class="divTableCell">
-                                    <p style="margin-top: 0; margin-bottom: 8px; font-family: Tahoma; font-size: 13px;"><strong>24. Plan Design: Please enter a response in each of the spaces provided. If the plan does not include a provision (i.e. no <br /> deductible required), check "None." If the family deductible is equal to the single deductible times the number of covered members, check "xEE" respectively.</strong></p>
-                                </div>
-                                <div class="divTableCell">
-                                    <div class="divTable">
-                                        <div class="divTableBody">
-                                            <div class="divTableRow">
-                                                <div class="divTableCell">&nbsp;</div>
-                                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">In-Network</span></strong></div>
-                                                <div class="divTableCell">&nbsp;</div>
-                                                <div class="divTableCell">&nbsp;</div>
-                                                <div class="divTableCell"><strong><span style="font-family: Tahoma; font-size: 13px;">Out-of-Network</span></strong></div>
-                                                <div class="divTableCell">&nbsp;</div>
-                                                <div class="divTableCell">&nbsp;</div>
-                                            </div>
-                                            <div class="divTableRow">
-                                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"><strong>Separate In-Hospital Ded. or copay:</strong></span></div>
-                                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Inpatient_Copay_InNetwork" tabindex="1" maxlength="6" name="d_Inpatient_Copay_InNetwork" size="11" type="text" value="[|COALESCE,Inpatient_Copay_InNetwork,ActivePlans," /> </span></div>
-                                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Inpatient_Copay_InNetwork_None" tabindex="2" checked="checked" name="d_Inpatient_Copay_InNetwork_None" type="checkbox" value="1" /> <label for="d_Inpatient_Copay_InNetwork_None">None</label> </span></div>
-                                                <div class="divTableCell"><input id="d_Inpatient_Copay_InNetwork_PerDay" tabindex="3" checked="checked" name="d_Inpatient_Copay_InNetwork_PerDay" type="checkbox" value="1" /> <label for="d_Inpatient_Copay_InNetwork_PerDay">Per&nbsp;Day</label></div>
-                                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Inpatient_Copay_OutNetwork" tabindex="4" maxlength="6" name="d_Inpatient_Copay_OutNetwork" size="11" type="text" value="[|COALESCE,Inpatient_Copay_OutNetwork,ActivePlans," /> </span></div>
-                                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Inpatient_Copay_OutNetwork_None" tabindex="5" checked="checked" name="d_Inpatient_Copay_OutNetwork_None" type="checkbox" value="1" /> <label for="d_Inpatient_Copay_OutNetwork_None">None</label> </span></div>
-                                                <div class="divTableCell"><input id="d_Inpatient_Copay_OutNetwork_PerDay" tabindex="6" checked="checked" name="d_Inpatient_Copay_OutNetwork_PerDay" type="checkbox" value="1" /> <label for="d_Inpatient_Copay_OutNetwork_PerDay">Per&nbsp;Day</label></div>
-                                                <div class="divTableCell">&nbsp;</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Annual Plan Deductible (Single):</span></strong></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_SingleDeductible_InNetwork" tabindex="7" maxlength="6" name="d_SingleDeductible_InNetwork" size="11" type="text" value="[|COALESCE,SingleDeductible_InNetwork,ActivePlans," /> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_SingleDeductible_InNetwork_None" tabindex="8" checked="checked" name="d_SingleDeductible_InNetwork_None" type="checkbox" value="1" /> <label for="d_SingleDeductible_InNetwork_None">None</label> </span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_SingleDeductible_OutNetwork" tabindex="9" maxlength="6" name="d_SingleDeductible_OutNetwork" size="11" type="text" value="[|COALESCE,SingleDeductible_OutNetwork,ActivePlans," /> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_SingleDeductible_OutNetwork_None" tabindex="10" checked="checked" name="d_SingleDeductible_OutNetwork_None" type="checkbox" value="1" /> <label for="d_SingleDeductible_OutNetwork_None">None</label> </span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Annual Plan Deductible (Family):</span></strong></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FamilyDeductible_InNetwork" tabindex="11" maxlength="6" name="d_FamilyDeductible_InNetwork" size="11" type="text" value="[|COALESCE,FamilyDeductible_InNetwork,ActivePlans," /> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FamilyDeductible_InNetwork_None" tabindex="12" checked="checked" name="d_FamilyDeductible_InNetwork_None" type="checkbox" value="1" /> <label for="d_FamilyDeductible_InNetwork_None">None</label> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FamilyDeductible_InNetwork_xEE" tabindex="13" checked="checked" name="d_FamilyDeductible_InNetwork_xEE" type="checkbox" value="1" /> <label for="d_FamilyDeductible_InNetwork_xEE">xEE</label> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FamilyDeductible_OutNetwork" tabindex="14" maxlength="6" name="d_FamilyDeductible_OutNetwork" size="11" type="text" value="[|COALESCE,FamilyDeductible_OutNetwork,ActivePlans," /> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FamilyDeductible_OutNetwork_None" tabindex="15" checked="checked" name="d_FamilyDeductible_OutNetwork_None" type="checkbox" value="1" /> <label for="d_FamilyDeductible_OutNetwork_None">None</label> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FamilyDeductible_OutNetwork_xEE" tabindex="16" checked="checked" name="d_FamilyDeductible_OutNetwork_xEE" type="checkbox" value="1" /> <label for="d_FamilyDeductible_OutNetwork_xEE">xEE</label> </span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                        </div>
+    <div class="page-header">
+        <h4>Plan Design</h4>
+    </div>
+
+    <form action="">
+        <div class="form-group">
+            <label for="">
+                24. Please enter a response in each of the spaces provided. If the plan does not include a provision (i.e. no deductible required), check "None."
+                If the family deductible is equal to the single deductible times the number of covered members, check "xEE" respectively.
+            </label>
+            <br><br>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">In-Network</div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">Out-of-Network</div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Separate In-Hospital Ded. or copay</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Inpatient_Copay_InNetwork" class="form-control" tabindex="1" maxlength="6" name="d_Inpatient_Copay_InNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_InNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_Inpatient_Copay_InNetwork_None" tabindex="2" checked="checked" name="d_Inpatient_Copay_InNetwork_None" type="checkbox" value="1" ng-model="design.HasCopay_Inpatient_InNetwork" />None
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_Inpatient_Copay_InNetwork_PerDay" tabindex="3" checked="checked" name="d_Inpatient_Copay_InNetwork_PerDay" type="checkbox" value="1" ng-model="design.HasCopayPerDay_Inpatient_InNetwork" />Per Day
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Inpatient_Copay_OutNetwork" class="form-control" tabindex="4" maxlength="6" name="d_Inpatient_Copay_OutNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_OutOfNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_Inpatient_Copay_OutNetwork_None" tabindex="5" checked="checked" name="d_Inpatient_Copay_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasCopay_Inpatient_OutOfNetwork" />None
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_Inpatient_Copay_OutNetwork_PerDay" tabindex="6" checked="checked" name="d_Inpatient_Copay_OutNetwork_PerDay" type="checkbox" value="1" ng-model="design.HasCopayPerDay_Inpatient_OutOfNetwork" />Per Day
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Annual Plan Deductible (Single)</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_SingleDeductible_InNetwork" class="form-control" tabindex="7" maxlength="6" name="d_SingleDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_InNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input id="d_SingleDeductible_InNetwork_None" tabindex="8" checked="checked" name="d_SingleDeductible_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_Single_InNetwork" />None
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_SingleDeductible_OutNetwork" class="form-control" tabindex="9" maxlength="6" name="d_SingleDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_OutOfNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input id="d_SingleDeductible_OutNetwork_None" tabindex="10" checked="checked" name="d_SingleDeductible_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_Single_OutOfNetwork" />None
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Annual Plan Deductible (Family)</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FamilyDeductible_InNetwork" class="form-control" tabindex="11" maxlength="6" name="d_FamilyDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_InNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input id="d_FamilyDeductible_InNetwork_None" tabindex="12" checked="checked" name="d_FamilyDeductible_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_Family_InNetwork" /> None
+                </div>
+                <div class="col-md-2">
+                    <input id="d_FamilyDeductible_InNetwork_xEE" tabindex="13" checked="checked" name="d_FamilyDeductible_InNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_xEE_Family_InNetwork" /> xEE
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FamilyDeductible_OutNetwork" class="form-control" tabindex="14" maxlength="6" name="d_FamilyDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_OutOfNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input id="d_FamilyDeductible_OutNetwork_None" tabindex="15" checked="checked" name="d_FamilyDeductible_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_Family_OutOfNetwork" /> None
+                </div>
+                <div class="col-md-2">
+                    <input id="d_FamilyDeductible_OutNetwork_xEE" tabindex="16" checked="checked" name="d_FamilyDeductible_OutNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualPlanDeductible_xEE_Family_OutOfNetwork" /> xEE
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">
+                25. Please enter a response in each of the spaces provided. If the plan does not include a provision (i.e. no out-of-pocket limit), check "None."
+            </label>
+            <span id="HelpBlock" class="help-block">
+                <p>Plan Co-insurance is the level of co-insurance paid by the plan (example: 80%, not the employee share of 20%).</p>
+                <p><strong>Out-of-Pocket Maximum</strong> = The annual maximum amount an employee (or family) actually pays out of their pocket in <u>deductible</u> costs plus their share of co-insurance (and copays, unless excluded).</strong></p>
+                <p>
+                    If there is no out-of-pocket maximum (i.e. if the employee pays the co-insurance percentage on all claim costs above the deductible), check "None."
+                    If the family out-of-pocket maximum is equal to the single out-of-pocket maximum times the number of covered members, check "xEE" respectively.
+                </p>
+            </span>
+            <br>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">In-Network</div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">Out-of-Network</div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p for="">Plan Co-insurance %</p>
+                </div>
+                <div class="col-md-2">
+                    <select id="basic" class="selectpicker form-control show-tick" ng-model="design.PlanCoinsurancePct_InNetwork" ng-options="x for (x,y) in PlanCoinsurancePct_InNetwork"></select>
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <select id="basic" class="selectpicker form-control show-tick" ng-model="design.PlanCoinsurancePct_OutOfNetwork" ng-options="x for (x,y) in PlanCoinsurancePct_OutOfNetwork"></select>
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p for="">Annual Out-of-Pocket Maximum (Single)</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input class="form-control" id="d_AnnualOOPMax_Single_InNetwork" tabindex="19" name="d_AnnualOOPMax_Single_InNetwork" type="text" ng-model="design.AnnualOutOfPocketMaxAmt_Single_InNetwork">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_AnnualOOPMax_Single_InNetwork_None" tabindex="20" checked="checked" name="d_AnnualOOPMax_Single_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Single_InNetwork" /> None
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input id="d_AnnualOOPMax_Single_OutNetwork" class="form-control" tabindex="21" name="d_AnnualOOPMax_Single_OutNetwork" type="text" ng-model="design.AnnualOutOfPocketMaxAmt_Single_OutOfNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <label for="">
+                            <input id="d_AnnualOOPMax_Single_OutNetwork_None" tabindex="22" checked="checked" name="d_AnnualOOPMax_Single_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Single_OutOfNetwork" />None
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">Annual Out-of-Pocket Maximum (Family)</div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input id="d_AnnualOOPMax_Family_InNetwork" class="form-control" tabindex="23" name="d_AnnualOOPMax_Family_InNetwork" type="text" ng-model="design.AnnualOutOfPocketMaxAmt_Family_InNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <input id="d_AnnualOOPMax_Family_InNetwork_None" tabindex="24" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_InNetwork" /> None
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="checkbox">
+                        <input id="d_AnnualOOPMax_Family_InNetwork_xEE" tabindex="25" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_InNetwork" /> xEE
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input id="d_AnnualOOPMax_Family_OutNetwork" class="form-control" tabindex="26" name="d_AnnualOOPMax_Family_OutNetwork" type="text" ng-model="design.AnnualOutOfPocketMaxAmt_Family_OutOfNetwork" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="checkbox">
+                        <input id="d_AnnualOOPMax_Family_OutNetwork_None" tabindex="27" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_OutOfNetwork" /> None
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="checkbox">
+                        <input id="d_AnnualOOPMax_Family_OutNetwork_xEE" tabindex="28" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_OutOfNetwork" /> xEE
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell">
-                    <p style="margin-top: 0; margin-bottom: 8px;"><span style="font-family: Tahoma; font-size: 13px;"><strong> 25. Plan Design:</strong> Please enter a response in each of the spaces provided. If the plan does not include a provision (i.e. no out-of-pocket limit), check "None."</span></p>
-                    <p style="margin-top: 0; margin-bottom: 8px;"><span style="font-family: Tahoma; font-size: 13px;"> Plan Co-insurance is the level of co-insurance paid by the plan (example:&nbsp; 80%, not the employee share of 20%).</span></p>
-                    <p style="margin-top: 0; margin-bottom: 8px;"><span style="font-family: Tahoma; font-size: 13px;"> <strong>Out-of-Pocket Maximum = The annual maximum amount an employee (or family) actually pays out of their pocket in <u>deductible</u> costs plus their share of co-insurance (and copays, unless excluded).</strong></span></p>
-                    <p style="margin-top: 0; margin-bottom: 8px;"><span style="font-family: Tahoma; font-size: 13px;"> If there is no out-of-pocket maximum (i.e. if the employee pays the co-insurance percentage on all claim costs above the deductible), check "None."</span></p>
-                    <p style="margin-top: 0; margin-bottom: 8px;"><span style="font-family: Tahoma; font-size: 13px;"> If the family out-of-pocket maximum is equal to the single out-of-pocket maximum times the number of covered members, check "xEE" respectively.</span></p>
+        <br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2">Minimum Value Coverage</div>
+                <div class="col-md-2">
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" ng-model="design.HasMinValueCoverage" value="1">Yes
+                        </label>
+                        <label for="">
+                            <input type="radio" ng-model="design.HasMinValueCoverage" value="0">No
+                        </label>
+                    </div>
                 </div>
-                <div class="divTableCell">&nbsp;</div>
             </div>
-            <div class="divTableRow">
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">In-Network</span></strong></div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell"><strong><span style="font-family: Tahoma; font-size: 13px;">Out-of-Network</span></strong></div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>Plan Co-insurance %:</strong></span></div>
-                <div class="divTableCell">
-                    <span style="font-family: Tahoma; font-size: 13px;">
-                        <select id="d_CoinsurancePcnt_InNetwork" tabindex="17" name="d_CoinsurancePcnt_InNetwork" size="1">
-                            <option id="option_CoinsurancePcnt_InNetwork" value=""></option>
-                            {SUBQUERY, Name="CoinsurancePcnt_InNetwork", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                            <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                            <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|CoinsurancePcnt_InNetwork,ActivePlans]", UseCache="True"}</option>
-                        </select>
-                    </span>
+            <br>
+            <div class="row">
+                <div class="col-md-2">Minimum Essential Coverage</div>
+                <div class="col-md-2">
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" ng-model="design.HasMinEssentialCoverage" value="1">Yes
+                        </label>
+                        <label for="">
+                            <input type="radio" ng-model="design.HasMinEssentialCoverage" value="0">No
+                        </label>
+                    </div>
                 </div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">
-                    <span style="font-family: Tahoma; font-size: 13px;">
-                        <select id="d_CoinsurancePcnt_OutNetwork" tabindex="18" name="d_CoinsurancePcnt_OutNetwork" size="1">
-                            <option value=""></option>
-                            {SUBQUERY, Name="CoinsurancePcnt_OutNetwork", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                            <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                            <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|CoinsurancePcnt_OutNetwork,ActivePlans]", UseCache="True"}</option>
-                        </select>
-                    </span>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">Metal Level (for groups of fewer than 50)</div>
+                <div class="col-md-2">
+                    <select name="" id="basic" class="selectpicker form-control show-tick" data-width="fit">
+                        <option value="0">Nothing Selected</option>
+                        <option value="1" ng-model="design.HasMinValueCoverage">Platinum</option>
+                        <option value="2" ng-model="design.HasMinValueCoverage">Gold</option>
+                        <option value="3" ng-model="design.HasMinValueCoverage">Silver</option>
+                        <option value="4" ng-model="design.HasMinValueCoverage">Bronze</option>
+                    </select>
                 </div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
             </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><strong><span style="font-family: Tahoma; font-size: 13px;">Annual Out-of-Pocket Maximum (Single):</span></strong></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_AnnualOOPMax_Single_InNetwork" tabindex="19" name="d_AnnualOOPMax_Single_InNetwork" type="text" value="[|COALESCE,AnnualOOPMax_Single_InNetwork,ActivePlans," /> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Single_InNetwork_None" tabindex="20" checked="checked" name="d_AnnualOOPMax_Single_InNetwork_None" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Single_InNetwork_None">None</label></span></div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> $<input id="d_AnnualOOPMax_Single_OutNetwork" tabindex="21" name="d_AnnualOOPMax_Single_OutNetwork" type="text" value="[|COALESCE,AnnualOOPMax_Single_OutNetwork,ActivePlans," /> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Single_OutNetwork_None" tabindex="22" checked="checked" name="d_AnnualOOPMax_Single_OutNetwork_None" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Single_OutNetwork_None">None</label></span></div>
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell">&nbsp;</div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">Skinny plan (covering wellness only)</div>
+                <div class="col-md-2">
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" ng-model="design.HasSkinnyPlan" value="1">Yes
+                        </label>
+                        <label for="">
+                            <input type="radio" ng-model="design.HasSkinnyPlan" value="0">No
+                        </label>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <p><strong><span style="font-family: Tahoma; font-size: 13px;">Annual Out-of-Pocket Maximum (Family):</span></strong><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_AnnualOOPMax_Family_InNetwork" tabindex="23" name="d_AnnualOOPMax_Family_InNetwork" type="text" value="[|COALESCE,AnnualOOPMax_Family_InNetwork,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Family_InNetwork_None" tabindex="24" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_None" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Family_InNetwork_None">None</label></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Family_InNetwork_xEE" tabindex="25" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_xEE" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Family_InNetwork_xEE">xEE</label></span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_AnnualOOPMax_Family_OutNetwork" tabindex="26" name="d_AnnualOOPMax_Family_OutNetwork" type="text" value="[|COALESCE,AnnualOOPMax_Family_OutNetwork,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Family_OutNetwork_None" tabindex="27" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_None" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Family_OutNetwork_None">None</label></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_AnnualOOPMax_Family_OutNetwork_xEE" tabindex="28" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_xEE" type="checkbox" value="1" /> <label for="d_AnnualOOPMax_Family_OutNetwork_xEE">xEE</label></span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Minimum Value Coverage:</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_MinimumValue_0" tabindex="29" checked="checked" name="d_MinimumValue" type="radio" value="1" /> <label for="d_MinimumValue_0">Yes</label> <input id="d_MinimumValue_1" tabindex="30" checked="checked" name="d_MinimumValue" type="radio" value="0" /> <label for="d_MinimumValue_1">No</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Minimum Essential Coverage:</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_ActuarialValue_0" tabindex="31" checked="checked" name="d_ActuarialValue" type="radio" value="1" /> <label for="d_ActuarialValue_0">Yes</label> <input id="d_ActuarialValue_1" tabindex="32" checked="checked" name="d_ActuarialValue" type="radio" value="0" /> <label for="d_ActuarialValue_1">No</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Metal level (for groups of fewer than 50):</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_MetalLevel_0" tabindex="33" checked="checked" name="d_MetalLevel" type="radio" value="1" /> <label for="d_MetalLevel_0">Platinum</label> <input id="d_MetalLevel_1" tabindex="34" checked="checked" name="d_MetalLevel" type="radio" value="2" /> <label for="d_MetalLevel_1">Gold</label> <input id="d_MetalLevel_2" tabindex="35" checked="checked" name="d_MetalLevel" type="radio" value="3" /> <label for="d_MetalLevel_0">Silver</label> <input id="d_MetalLevel_3" tabindex="36" checked="checked" name="d_MetalLevel" type="radio" value="4" /> <label for="d_MetalLevel_3">Bronze</label> </span><span style="font-family: Tahoma; font-size: 13px;"> <strong>Skinny plan (covering wellness only):</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_SkinnyPlan_0" tabindex="37" checked="checked" name="d_SkinnyPlan" type="radio" value="1" /> <label for="d_SkinnyPlan_0">Yes</label> <input id="d_SkinnyPlan_1" tabindex="38" checked="checked" name="d_SkinnyPlan" type="radio" value="0" /> <label for="d_SkinnyPlan_1">No</label> </span>&nbsp;<strong><span style="font-family: Tahoma; font-size: 13px;">Does Plan cover:</span></strong>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Hospital</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_CoversERHospital_0" tabindex="39" checked="checked" name="d_CoversERHospital" type="radio" value="1" /> <label for="d_CoversERHospital_0">Yes</label> <input id="d_CoversERHospital_1" tabindex="40" checked="checked" name="d_CoversERHospital" type="radio" value="0" /> <label for="d_CoversERHospital_1">No</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Physician Visits</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_CoversPhysicianVisits_0" tabindex="41" checked="checked" name="d_CoversPhysicianVisits" type="radio" value="1" /> <label for="d_CoversPhysicianVisits_0">Yes</label> <input id="d_CoversPhysicianVisits_1" tabindex="42" checked="checked" name="d_CoversPhysicianVisits" type="radio" value="0" /> <label for="d_CoversPhysicianVisits_1">No</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Pharmacy</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_CoversPharmacy_0" tabindex="43" checked="checked" name="d_CoversPharmacy" type="radio" value="1" /> <label for="d_PharmacyCover_0">Yes</label> <input id="d_CoversPharmacy_1" tabindex="44" checked="checked" name="d_CoversPharmacy" type="radio" value="0" /> <label for="d_PharmacyCover_1">No</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong>Lab/Imaging</strong></span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_CoversLabImaging_0" tabindex="45" checked="checked" name="d_CoversLabImaging" type="radio" value="1" /> <label for="d_CoversLabImaging_0">Yes</label> <input id="d_CoversLabImaging_1" tabindex="46" checked="checked" name="d_CoversLabImaging" type="radio" value="0" /> <label for="d_CoversLabImaging_1">No</label> </span>&nbsp;</p>
-    <p>&nbsp;</p>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>26. Copay amounts for in-network benefits (if your plan does not require a copay for the copay service listed, please check the "No Copay" box): </strong></span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <p>&nbsp;<strong> <span style="font-family: Tahoma; font-size: 13px;"> Copay </span> </strong>&nbsp;&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong> Primary Care Physician (PCP) copay: </strong> </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Copay_PCP" tabindex="47" maxlength="4" name="d_Copay_PCP" size="13" type="text" value="[|COALESCE,Copay_PCP,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Copay_PCP_None" tabindex="48" checked="checked" name="d_Copay_PCP_None" type="checkbox" value="1" /> <label for="d_Copay_PCP_None">No copay</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong> Specialty Care Physician (SCP) copay: </strong> </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Copay_SCP" tabindex="49" maxlength="4" name="d_Copay_SCP" size="13" type="text" value="[|COALESCE,Copay_SCP,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Copay_SCP_None" tabindex="50" checked="checked" name="d_Copay_SCP_None" type="checkbox" value="1" /> <label for="d_Copay_SCP_None">No copay</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong> Urgent Care copay: </strong> </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Copay_UR" tabindex="51" maxlength="4" name="d_Copay_UR" size="13" type="text" value="[|COALESCE,Copay_UR,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Copay_UR_None" tabindex="52" checked="checked" name="d_Copay_UR_None" type="checkbox" value="1" /> <label for="d_Copay_UR_None">No copay</label> </span>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"> <strong> Emergency Room (ER) copay: </strong> </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Copay_ER" tabindex="53" maxlength="4" name="d_Copay_ER" size="13" type="text" value="[|COALESCE,Copay_ER,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Copay_ER_None" tabindex="54" checked="checked" name="d_Copay_ER_None" type="checkbox" value="1" /> <label for="d_Copay_ER_None">No copay</label> </span>&nbsp;</p>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell">
-                    [|HDHPPlans,Action]
-                    <div class="divTable">
-                        <div class="divTableBody">
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 29. Infertility Coverage:</span></strong></div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Infertility_0" tabindex="10" checked="checked" name="d_Infertility" type="radio" value="None" /> None</label><br /> <label><input id="d_Infertility_1" tabindex="11" checked="checked" name="d_Infertility" type="radio" value="Evaluation Only" /> Evaluation Only</label><br /> <label><input id="d_Infertility_2" tabindex="12" checked="checked" name="d_Infertility" type="radio" value="Evaluation and Treatment" /> Evaluation and Treatment</label> </span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 30. Has your Company implemented a Wellness Program that contains any of these: Health Risk Assessment Seminars/Workshops, Physical Exam, Blood Draw, or Other Biometric Testing, Coaching - either telephone or on-site, or Incentives/Rewards? </span> </strong></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_WellnessProgram_0" tabindex="13" checked="checked" name="d_WellnessProgram" type="radio" value="1" /> Yes</label></span></span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_WellnessProgram_1" tabindex="14" checked="checked" name="d_WellnessProgram" type="radio" value="0" /> No</label></span></span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
+            <br>
+            <p>Does Plan Cover:</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-inline">
+                        <p>Hospital</p>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="1" />Yes</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="0" />No</label>
                         </div>
                     </div>
-                    <div class="divTable">
-                        <div class="divTableBody">
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> <strong>31. Is wellness plan through carrier or free-standing/independent?</strong> </span> </strong></div>
-                            </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="form-inline">
+                        <p>Physician Visits</p>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="1" />Yes</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="0" />No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-inline">
+                        <p>Pharmacy</p>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="1" />Yes</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="0" />No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-inline">
+                        <p>Lab/Imaging</p>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="1" />Yes</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" ng-model="design.HasERHospitalCoverage" value="0" />No</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_WellnessProgram_Through_0" tabindex="15" checked="checked" name="d_WellnessProgram_Through" type="radio" value="carrier" /> Carrier</label></span></span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_WellnessProgram_Through_1" tabindex="15" checked="checked" name="d_WellnessProgram_Through" type="radio" value="independent" /> Free Standing/Independent</label> </span></div>
+            <br>
+            <div class="form-group">
+                <label for="">26. Copay amounts for in-network benefits (if your plan does not require a copay for the copay service listed, please check the "No Copay" box)</label>
+                <div class="row">
+                    <div class="col-md-4">&nbsp;</div>
+                    <div class="col-md-4">
+                        <p class="text-center"><strong>Copay</strong></p>
+                    </div>
+                    <div class="col-md-4">&nbsp;</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Primary Care Physician PCP copay</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input id="d_Copay_PCP" class="form-control" tabindex="47" maxlength="4" name="d_Copay_PCP" size="13" type="text" ng-model="design.CopayAmt_PCP" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="d_Copay_PCP_None" tabindex="48" checked="checked" name="d_Copay_PCP_None" type="checkbox" value="1" ng-model="design.HasCopay_PCP" /> No copay
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">Specialty Care Physician (SCP) copay</div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input id="d_Copay_SCP" class="form-control" tabindex="49" maxlength="4" name="d_Copay_SCP" size="13" type="text" ng-model="design.CopayAmt_SCP" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="d_Copay_SCP_None" tabindex="50" checked="checked" name="d_Copay_SCP_None" type="checkbox" value="1" ng-model="design.HasCopay_SCP" /> No copay
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">Urgent Care copay</div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input id="d_Copay_UR" class="form-control" tabindex="51" maxlength="4" name="d_Copay_UR" size="13" type="text" ng-model="design.CopayAmt_UrgentCare" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="d_Copay_UR_None" tabindex="52" checked="checked" name="d_Copay_UR_None" type="checkbox" value="1" ng-model="design.HasCopay_UrgentCare" /> No copay
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">Emergency Room (ER) copay</div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input id="d_Copay_ER" class="form-control" tabindex="53" maxlength="4" name="d_Copay_ER" size="13" type="text" ng-model="design.CopayAmt_ER" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="d_Copay_ER_None" tabindex="54" checked="checked" name="d_Copay_ER_None" type="checkbox" value="1" ng-model="design.HasCopay_ER" /> No copay
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 32.&nbsp; What Components are Included in the Wellness Program? (check all that apply)</span></strong></div>
+            <div class="form-group">
+                <label for="">29. Infertility Coverage</label>
+                <select name="" id="basic" class="selectpicker form-control show-tick">
+                    <option value="0">Nothing selected</option>
+                    <option value="3" ng-model="design.InfertilityCoverageTypeId">None</option>
+                    <option value="2" ng-model="design.InfertilityCoverageTypeId">Evaluation Only</option>
+                    <option value="1" ng-model="design.InfertilityCoverageTypeId">Evaluation and Treatment</option>
+                </select>
             </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Wellness_HealthRiskAssessment" tabindex="15" checked="checked" name="d_Wellness_HealthRiskAssessment" type="checkbox" value="1" /> Health Risk Assessment</label><br /> <label><input id="d_Wellness_SeminarsWorkshops" tabindex="16" checked="checked" name="d_Wellness_SeminarsWorkshops" type="checkbox" value="1" /> Seminars/Workshops</label><br /> <label><input id="d_Wellness_PhysicalExamBloodDraw" tabindex="17" checked="checked" name="d_Wellness_PhysicalExamBloodDraw" type="checkbox" value="1" /> Physical Exam, Blood Draw, or Other Biometric Testing</label><br /> <label><input id="d_Wellness_Coaching" tabindex="18" checked="checked" name="d_Wellness_Coaching" type="checkbox" value="1" /> Coaching - either telephone or on-site</label><br /> <label><input id="d_Wellness_Incentives" tabindex="19" checked="checked" name="d_Wellness_Incentives" type="checkbox" value="1" /> Incentives/Rewards</label><br /> <label><input id="d_Wellness_WebPortal" tabindex="20" checked="checked" name="d_Wellness_WebPortal" type="checkbox" value="1" /> Web Portal</label><br /> <label><input id="d_Wellness_Other" tabindex="21" checked="checked" name="d_Wellness_Other" type="checkbox" value="1" /> Other</label> </span></div>
+            <div class="form-group">
+                <label for="">30. Has your Company implemented a Wellness Program that contains any of these: Health Risk Assessment Seminars/Workshops, Physical Exam, Blood Draw, or Other Biometric Testing, Coaching - either telephone or on-site, or Incentives/Rewards?</label>
+                <div class="radio">
+                    <label><input type="radio" ng-model="design.HasWellnessProgram" value="1" />Yes</label>
+                    <label><input type="radio" ng-model="design.HasWellnessProgram" value="0" />No</label>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 33. What Incentives are Included?</span></strong></div>
+            <div class="form-group">
+                <label for="">31. Is wellness plan through carrier or free-standing/independent?</label>
+                <div class="radio">
+                    <label><input type="radio" ng-model="design.WellnessProgramProviderTypeId" value="1" />Carrier</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" ng-model="design.WellnessProgramProviderTypeId" value="2" />Free Standing/Independent</label>
+                </div>
             </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_WellnessIncentives_EmployeeBenefits" tabindex="21" checked="checked" name="d_WellnessIncentives_EmployeeBenefits" type="checkbox" value="1" /> Contribution to Employee Benefits (premium reduction contributions to Section 125, 401(k), etc.)</label><br /> <label><input id="d_WellnessIncentives_HealthClubDues" tabindex="22" checked="checked" name="d_WellnessIncentives_HealthClubDues" type="checkbox" value="1" /> Gift Certificates or Health Club Dues</label><br /> <label><input id="d_WellnessIncentives_PaidTimeOff" tabindex="23" checked="checked" name="d_WellnessIncentives_PaidTimeOff" type="checkbox" value="1" /> Paid Time Off (sick pay, vacation pay)</label><br /> <label><input id="d_WellnessIncentives_Min" tabindex="24" checked="checked" name="d_WellnessIncentives_Min" type="checkbox" value="1" /> Minimum Incentive</label><br /> <label><input id="d_WellnessIncentives_Other" tabindex="24" checked="checked" name="d_WellnessIncentives_Other" type="checkbox" value="1" /> Other</label><br /> </span></div>
+            <div class="form-group">
+                <label for="">32. What Components are Included in the Wellness Program? (check all that apply)</label>
+                <div class="checkbox">
+                    <label><input id="d_Wellness_HealthRiskAssessment" tabindex="15" checked="checked" name="d_Wellness_HealthRiskAssessment" type="checkbox" value="1" ng-model="design.HasWellness_HealthRiskAssessment" /> Health Risk Assessment</label><br />
+                    <label><input id="d_Wellness_SeminarsWorkshops" tabindex="16" checked="checked" name="d_Wellness_SeminarsWorkshops" type="checkbox" value="1" ng-model="design.HasWellness_SeminarsWorkshops" /> Seminars/Workshops</label><br />
+                    <label><input id="d_Wellness_PhysicalExamBloodDraw" tabindex="17" checked="checked" name="d_Wellness_PhysicalExamBloodDraw" type="checkbox" value="1" ng-model="design.HasWellness_PhysicalExamBloodDraw" /> Physical Exam, Blood Draw, or Other Biometric Testing</label><br />
+                    <label><input id="d_Wellness_Coaching" tabindex="18" checked="checked" name="d_Wellness_Coaching" type="checkbox" value="1" ng-model="design.HasWellness_Coaching" /> Coaching - either telephone or on-site</label><br />
+                    <label><input id="d_Wellness_Incentives" tabindex="19" checked="checked" name="d_Wellness_Incentives" type="checkbox" value="1" ng-model="design.HasWellness_Incentives" /> Incentives/Rewards</label><br />
+                    <label><input id="d_Wellness_WebPortal" tabindex="20" checked="checked" name="d_Wellness_WebPortal" type="checkbox" value="1" ng-model="design.HasWellness_WebPortal" /> Web Portal</label><br />
+                    <label><input id="d_Wellness_Other" tabindex="21" checked="checked" name="d_Wellness_Other" type="checkbox" value="1" ng-model="design.HasWellness_Other" /> Other</label>
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="form-group">
+                <label for="">33. What Incentives are Included?</label>
+                <div class="checkbox">
+                    <label><input id="d_WellnessIncentives_EmployeeBenefits" tabindex="21" checked="checked" name="d_WellnessIncentives_EmployeeBenefits" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PremiumReduction" /> Contribution to Employee Benefits (premium reduction contributions to Section 125, 401(k), etc.)</label><br />
+                    <label><input id="d_WellnessIncentives_HealthClubDues" tabindex="22" checked="checked" name="d_WellnessIncentives_HealthClubDues" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_HealthClubDues" /> Gift Certificates or Health Club Dues</label><br />
+                    <label><input id="d_WellnessIncentives_PaidTimeOff" tabindex="23" checked="checked" name="d_WellnessIncentives_PaidTimeOff" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PaidTimeOff" /> Paid Time Off (sick pay, vacation pay)</label><br />
+                    <label><input id="d_WellnessIncentives_Min" tabindex="24" checked="checked" name="d_WellnessIncentives_Min" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_Min" /> Minimum Incentive</label><br>
+                    <label><input id="d_WellnessIncentives_Other" tabindex="24" checked="checked" name="d_WellnessIncentives_Other" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_Other" /> Other</label>
+                </div>
+            </div>
+    </form>
 </div>

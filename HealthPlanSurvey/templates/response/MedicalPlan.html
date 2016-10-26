@@ -1,8 +1,8 @@
 <div>
-
     <div class="page-header">
         <h4>Medical Plan - {{activePlan.PlanName}} (Active Employees)</h4><br>
     </div>
+
     <form action="">
         <div class="form-group">
             <label for="">Do you wish to enter information on this plan?</label>
@@ -22,7 +22,8 @@
         </div>
         <div class="form-group">
             <label for="">2.Type of Plan</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="basic" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option value="1" ng-model="activePlan.ActivePlanTypeId">EPO (Exclusive Provider Organization)</option>
                 <option value="2" ng-model="activePlan.ActivePlanTypeId">FFS (Fee-for-Service/Indemnity)</option>
                 <option value="3" ng-model="activePlan.ActivePlanTypeId">HMO (Health Maintenance Organization)</option>
@@ -54,7 +55,8 @@
         </div>
         <div class="form-group">
             <label for="">5. Does this Plan Include:</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="basic" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">HRA (Health Reimbursement Arrangement)</option>
                 <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">HSA (Health Savings Account)</option>
                 <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">MERP (Medical Expense Reimbursement Plan)</option>
@@ -74,7 +76,8 @@
         </div>
         <div class="form-group">
             <label for="">7. Please indicate the Number of Health Plan Premium Tiers</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="basic" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option value="1" ng-model="activePlan.PremiumTierTypeId">2 (Single &amp; Family)</option>
                 <option value="2" ng-model="activePlan.PremiumTierTypeId">3 (Single, Employee + 1, Employee + 2 or more)</option>
                 <option value="3" ng-model="activePlan.PremiumTierTypeId">4 (Single, Employee + Child/Children, Employee + Spouse, Family)</option>
@@ -214,7 +217,8 @@
             <label for="">
                 12. Are Employee Contributions to be entered based on
             </label>
-            <select name="" id="" class="form-control">
+            <select name="" id="basic" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option value="1" ng-model="activePlan.ContributionBasisTypeId">Dollar Amount</option>
                 <option value="2" ng-model="activePlan.ContributionBasisTypeId">Percentage of Premium</option>
             </select>
@@ -317,7 +321,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
-                        <input id="d_EmpCont_Family_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" value=ng-model ="activePlan.EmployeeContributionPctOfPremium_Family" />
+                        <input id="d_EmpCont_Family_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_Family" />
                         <div class="input-group-addon">%</div>
                     </div>
                 </div>
@@ -339,8 +343,18 @@
                 <div class="col-md-4">
                     <p>Single</p>
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_Single" class="form-control" maxlength="6" name="d_EmpHRACont_Single" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Single" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_Single" class="form-control" maxlength="6" name="d_EmpHSACont_Single" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Single" />
+                    </div>
+                </div>
             </div>
             <br>
             <div class="row">
@@ -350,11 +364,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_1" class="form-control" maxlength="6" name="d_EmpHRACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusOne" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_1" class="form-control" maxlength="6" name="d_EmpHSACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusOne" />
                     </div>
                 </div>
             </div>
@@ -366,11 +382,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_SP" class="form-control" maxlength="6" name="d_EmpHRACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusSpouse" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_SP" class="form-control" maxlength="6" name="d_EmpHSACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusSpouse" />
                     </div>
                 </div>
             </div>
@@ -382,11 +400,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_CH" class="form-control" maxlength="6" name="d_EmpHRACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusChild" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_CH" class="form-control" maxlength="6" name="d_EmpHSACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusChild" />
                     </div>
                 </div>
             </div>
@@ -398,24 +418,172 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_Family" class="form-control" maxlength="6" name="d_EmpHRACont_Family" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Family" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_Family" class="form-control" maxlength="6" name="d_EmpHSACont_Family" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Family" />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
-        <div class="form-group"><label for=""></label></div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">16. Does your Plan have Specific Stop-Loss Insurance?</label>
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" ng-model="activePlan.HasSpecificStopLossCoverage" value="1">Yes
+                        </label>
+                        <label for="">
+                            <input type="radio" ng-model="activePlan.HasSpecificStopLossCoverage" value="0">No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">17. Does your Plan have Aggregate Stop-Loss Insurance?</label>
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" ng-model="activePlan.HasAggregateStopLossCoverage" value="1">Yes
+                        </label>
+                        <label for="">
+                            <input type="radio" ng-model="activePlan.HasAggregateStopLossCoverage" value="0">No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">18. Specific Stop-Loss Level</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLossLevel" class="form-control" maxlength="6" name="d_StopLossLevel" type="text" ng-model="activePlan.SpecificStopLossLevelAmt" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">19.Specific Stop-Loss Premium</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Single</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_Single_Amt" class="form-control" maxlength="6" name="d_StopLoss_Single_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Single" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Employee + 1</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_1_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_1_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusOne" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Employee + Child/Children</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_CH_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_CH_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Employee + Spouse</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_SP_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_SP_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusSpouse" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Family</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_Family_Amt" class="form-control" maxlength="6" name="d_StopLoss_Family_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Family" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">20. Initial Proposed Percentage Increase for most similar Plan or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date</label>
+                    <div class="input-group">
+                        <input id="d_ProposedIncreasePct" class="form-control" tabindex="1" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="activePlan.ProposedIncreasePct" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                    <span id="helpBlock" class="help-block"><strong>Prior to</strong> Any Plan or Carrier Changes</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">21. Final Percentage Increase or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date</label>
+                    <br><br>
+                    <div class="input-group">
+                        <input id="d_FinalPcntIncrease" class="form-control" tabindex="2" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="activePlan.FinalIncreasePct" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                    <span id="helpBlock" class="help-block"><strong>After</strong> Any Plan or Carrier Changes</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">
+                        22. For Plans that include an HRA or HSA
+                    </label>
+                    <select name="" id="basic" class="selectpicker form-control show-tick">
+                        <option value="0">Nothing Selected</option>
+                        <option value="1" ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId">Renewal Rates apply to an HRA/HSA plan that was in place last year</option>
+                        <option value="2" ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId">Renewal Rates reflect a first-time move to a consumer-driven health plan (CDHP)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">
+                        23. Most Recent Plan Anniversary (Renewal) Date
+                    </label>
+                    <select name="" id="basic" class="selectpicker form-control show-tick" ng-model="survey.GeneralResponse.RenewalDate" ng-options="x for (x,y) in RenewalDate"></select>
+                    <span id="helpBlock" class="help-block">
+                        If a plan renews <strong>on or before</strong> the 15th of the month, please use the first of that month. If a plan renews <strong>after</strong> the 15th of the month, please use the first of the <strong>next</strong> month.
+                    </span>
+                </div>
+            </div>
+        </div>
     </form>
-
 </div>

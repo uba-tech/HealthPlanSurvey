@@ -113,6 +113,7 @@
     <Content Include="directives\swMedicalPlan.js" />
     <Content Include="directives\swGeneralInfo.js" />
     <Content Include="directives\swCompanyDetails.js" />
+    <Content Include="directives\swSurveyFilter.js" />
     <Content Include="Documentation\Documentation.css" />
     <Content Include="Documentation\Documentation.html" />
     <Content Include="Edit.ascx" />
@@ -903,16 +904,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="services\clients.js" />
+    <Content Include="services\broker.js" />
     <Content Include="services\surveys.js" />
     <Content Include="services\SurveySummary.js" />
     <Content Include="templates\response\ActivePlan.html" />
-    <Content Include="templates\response\editCompany1.html" />
     <Content Include="templates\response\editCompany.html" />
     <Content Include="templates\response\GeneralInfo.html" />
     <Content Include="templates\response\editMedicalPlan.html" />
     <Content Include="templates\response\MedicalPlan - Copy.html" />
-    <Content Include="templates\survey\edit - Copy.html" />
-    <Content Include="templates\survey\edit_include.html" />
     <Content Include="templates\survey\edit.html" />
     <Content Include="templates\survey\create.html" />
     <Content Include="templates\response\MedicalPlan.html" />
@@ -922,6 +922,7 @@
     <Content Include="templates\response\Section125.html" />
     <Content Include="templates\survey\show.html" />
     <Content Include="templates\survey\index.html" />
+    <Content Include="templates\utility\SurveyFilter.html" />
     <Content Include="View.ascx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

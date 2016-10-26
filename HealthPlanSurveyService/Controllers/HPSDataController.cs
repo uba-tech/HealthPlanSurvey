@@ -31,6 +31,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                         INNER JOIN US_State s on r.US_StateId = s.US_StateId 
                         INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
                         WHERE r.ResponseId = @0";
+        string SurveyFilteredListSql = @"SELECT TOP 25 r.ResponseId, '' as 'Broker', r.OrganizationName, r.City, s.StateCode, 
+                        r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
+                        r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
+                        st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
+                        FROM SurveyResponse_General r 
+                        INNER JOIN US_State s on r.US_StateId = s.US_StateId 
+                        INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
+                        WHERE 1 = 1 ";
         string SurveyResponseItemSql = @"SELECT [ResponseId]
                             ,[SurveyId]
                             ,[WebID]
@@ -285,6 +293,37 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                           ,[AvgAnnualContribution_DependentCare_FSA]
                       FROM [dbo].[SurveyResponse_Section125]
                       WHERE ResponseId = @0";
+        string BrokersSql = @"SELECT [BrokerNo]
+                      ,[WebID]
+                      ,[BrokerName]
+                      ,[SurveyContactName]
+                      ,[SurveyContactEmail]
+                      ,[InProcessCount]
+                      ,[FinishedCount]
+                      ,[CompletedCount]
+                      ,[BrokerDeletedCount]
+                      ,[DontSendSaveEmail]
+                      ,[AllowPTG]
+                      ,b.[MemberFirmID]
+                      FROM[dbo].[Brokers]  b 
+                      INNER JOIN wm4dnn_scott.[dbo].[uba_MemberFirm] f 
+                      ON b.[MemberFirmID] = f.[MemberFirmID] 
+                      WHERE f.[Active] = 1
+                      ORDER BY b.[BrokerName] ";
+        string BrokersByMemberFirmIdSql = @"SELECT [BrokerNo]
+                      ,[WebID]
+                      ,[BrokerName]
+                      ,[SurveyContactName]
+                      ,[SurveyContactEmail]
+                      ,[InProcessCount]
+                      ,[FinishedCount]
+                      ,[CompletedCount]
+                      ,[BrokerDeletedCount]
+                      ,[DontSendSaveEmail]
+                      ,[AllowPTG]
+                      ,[MemberFirmID]
+                  FROM[dbo].[Brokers]
+                  WHERE [MemberFirmID] = @0";
 
         #endregion
 
@@ -311,6 +350,27 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             using (hpsDB db = new hpsDB())
             {
                 var result = db.SingleOrDefault<SurveySummaryModel>(SurveySummaryModelSql, responseId);
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the SurveyResponseGeneral data.
+        public IEnumerable<SurveySummaryModel> GetSurveyResponse_Summary(SurveyFilter filter)
+        {
+            //TODO:  build qry
+            string qry = SurveyFilteredListSql;
+            if (filter.BrokerNo > 0)
+                qry = qry + string.Format(" AND r.MemberFirmId = {0}", filter.BrokerNo);
+            if (filter.ResponseStatusId > 0)
+                qry += string.Format(" AND r.SurveyResponseStatusTypeId = {0}", filter.ResponseStatusId);
+            qry += string.Format(" AND r.OrganizationName LIKE '%{0}%'", filter.ClientName);
+            //TODO:  convert this to use pagination
+            IEnumerable<SurveySummaryModel> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<SurveySummaryModel>(qry);
                 t = result;
             }
             return t;
@@ -504,6 +564,93 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
 
         }
+        #endregion
+
+        #region Brokers
+        //Get the list of brokers.
+        public IEnumerable<Broker> GetBrokers()
+        {
+            IEnumerable<Broker> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Broker>(BrokersSql);
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the list of brokers.
+        public IEnumerable<Broker> GetBrokers(int memberFirmId)
+        {
+            IEnumerable<Broker> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Broker>(BrokersByMemberFirmIdSql, memberFirmId);
+                t = result;
+            }
+            return t;
+
+        }
+        #endregion
+
+        #region Clients
+        //Get the list of Clients.
+        public IEnumerable<Client> GetClients()
+        {
+            IEnumerable<Client> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Client>(@"SELECT DISTINCT OrganizationName as Name
+                                                FROM SurveyResponse_General rg 
+                                                INNER JOIN Survey s on rg.SurveyId = s.SurveyId 
+                                                WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
+                                                ORDER BY OrganizationName ");
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the list of Clients.
+        public IEnumerable<Client> GetClients(int memberFirmId)
+        {
+            IEnumerable<Client> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Client>(@"SELECT DISTINCT OrganizationName as Name
+                                                FROM SurveyResponse_General rg 
+                                                INNER JOIN Survey s on rg.SurveyId = s.SurveyId 
+                                                WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
+                                                AND MemberFirmId = @0 
+                                                ORDER BY OrganizationName ", memberFirmId);
+                t = result;
+            }
+            return t;
+
+        }
+        #endregion
+
+        #region Miscellaneous
+
+        //Get the list of brokers.
+        public IEnumerable<US_State> GetUsStates()
+        {
+            IEnumerable<US_State> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<US_State>(@"SELECT [US_StateId]
+                                                  ,[Name]
+                                                  ,[StateCode]
+                                                  ,[Description]
+                                                  ,[RegionId]
+                                              FROM [dbo].[US_State]");
+                t = result;
+            }
+            return t;
+
+        }
+
         #endregion
     }
 }

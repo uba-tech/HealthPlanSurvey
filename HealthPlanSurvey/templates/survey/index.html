@@ -1,7 +1,30 @@
-﻿<h3>Surveys  <a class="btn btn-default" href="#/surveys/new">New Survey</a></h3>
+﻿<h3>Surveys</h3>
+
+<fieldset>
+    <legend>Filter</legend>
+    <label for="">Broker</label>
+    <select ng-options="broker.value as broker.BrokerName for broker in brokers" ng-model="surveyFilter.BrokerNo">
+        <option value="" selected>-All-</option>
+    </select>
+    <label for="">Survey Status</label>
+    <select ng-model="surveyFilter.ResponseStatusId">
+        <option value="">-All-</option>
+        <!--<option value="1">Archived</option>-->
+        <option value="2">Broker-Deleted</option>
+        <option value="3">Complete</option>
+        <option value="4">In-Progress</option>
+        <option value="5">Validated</option>
+    </select>
+    <label for="">Client</label>
+    <input type="text" ng-model="surveyFilter.ClientName">
+    <button class="btn btn-default" value="{{isFiltering ? 'searching...' : 'Apply Filter'}}" ng-click="filterSurvey(surveyFilter)" ng-disabled="isSubmitting">Apply Filter</button>
+    <button>Clear Filter</button>
+</fieldset>
+
+<a class="btn btn-default" href="#/surveys/new">New Survey</a>
 <div class="row">
     <div ng-repeat="survey in surveys" class="col-sm-6">
         <h3><a ng-href="#/surveys/{{survey.ResponseId}}">{{survey.OrganizationName}}</a></h3>
-        <h5>Created ON {{survey.CreatedOn}}</h5>
+        <h5>Created on {{survey.CreatedOn | date:'MM/dd/yyyy'}}</h5>
     </div>
 </div>

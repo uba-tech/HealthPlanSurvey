@@ -33,5 +33,6 @@
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyShowController.js"></script>
     <!-- Services -->
     <script src="/DesktopModules/HealthPlanSurvey/services/surveys.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/services/broker.js"></script>
     
 </html>

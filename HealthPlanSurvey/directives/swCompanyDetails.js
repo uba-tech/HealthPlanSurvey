@@ -2,7 +2,7 @@
     return {
         replace: true,
         restrict:'E',
-        templateUrl: '/DesktopModules/HealthPlanSurvey/templates/response/editCompany1.html',
+        templateUrl: '/DesktopModules/HealthPlanSurvey/templates/response/editCompany.html',
         scope: {
             response: '=ngModel'
         }

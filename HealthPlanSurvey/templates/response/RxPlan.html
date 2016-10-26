@@ -1,153 +1,119 @@
-<style>
-	/* DivTable.com */
-.divTable{
-	display: table;
-	width: 100%;
-}
-.divTableRow {
-	display: table-row;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-}
-.divTableCell, .divTableHead {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
-}
-</style>
 <div>
+    <div class="page-header">
+        <h4>Prescription Drug Plan</h4><br>
+    </div>
+
+    <form action="">
+        <div class="form-group">
+            <label for="">34. Does This Plan Provide Any Form of Prescription Drug Coverage?</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="1" />Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="0" />No</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">35. Funding Method</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="1" />Fully-Insured</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="2" />Self-Funded</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">36. Are Prescription Drugs Covered under Major Medical Deductible and Co-insurance (i.e. No Separate Prescription Drug Card Plans)?</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.IsCoveredUnderMajorMedical" value="1" />Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.IsCoveredUnderMajorMedical" value="0" />No</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">37. Does Rx copay/co-insurance apply after Major Medical Deductible has been met?</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.DoesCoPay_CoinsApplyAfterMajorMedicalDeductible" value="1" />Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.DoesCoPay_CoinsApplyAfterMajorMedicalDeductible" value="0" />No</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">38. Is a Separate Annual Deductible Applied to Prescription Drugs Only?</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.HasSeparateAnnualDeductibleApplied" value="1" />Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.HasSeparateAnnualDeductibleApplied" value="0" />No</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">39. Does the Separate Rx Deductible Apply For Generic Drugs?</label>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.DoesSeparateAnnualDeductibleApplyForGeneric" value="1" />Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="rxPlan.DoesSeparateAnnualDeductibleApplyForGeneric" value="0" />No</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">40. What is the Separate Annual Prescription Drug Deductible Amount?</label>
+        </div>
+        <div class="form-group"><label for=""></label></div>
+        <div class="form-group"><label for=""></label></div>
+        <div class="form-group"><label for=""></label></div>
+    </form>
+
+
+    <div class="divTableRow">
+        <div class="divTableCell"> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Single</strong> </div>
+        <div class="divTableCell">$ <input class="form-control" id="d_Rx_Deductible_Single" tabindex="11" maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" ng-model="rxPlan.SeparateAnnualDeductibleAmt_Single" /> </div>
+        <div class="divTableCell">
+            &nbsp;&nbsp;&nbsp;
+            <input id="d_Rx_Deductible_FamilyOnly" tabindex="12" checked="checked" name="d_Rx_Deductible_FamilyOnly" type="checkbox" value="1" ng-model="rxPlan.HasSeparateAnnualDeductibleAmt_FamilyOnly" /> <label for="d_Rx_Deductible_FamilyOnly">Family Only</label>
+        </div>
+    </div>
+    <div class="divTableRow">
+        <div class="divTableCell">&nbsp;&nbsp;&nbsp;&nbsp; <strong>Family</strong></div>
+        <div class="divTableCell">$ <input class="form-control" id="d_Rx_Deductible_Family" tabindex="13" maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" ng-model="rxPlan.SeparateAnnualDeductibleAmt_Family" /> </div>
+        <div class="divTableCell">&nbsp;&nbsp;&nbsp; <input id="d_Rx_Deductible_xEE" tabindex="14" checked="checked" name="d_Rx_Deductible_xEE" type="checkbox" value="1" ng-model="rxPlan.HasSeparateAnnualDeductibleAmt_xEE" /> <label for="d_Rx_Deductible_xEE">xEE</label> </div>
+        <div class="divTableCell">&nbsp;</div>
+    </div>
     <div class="divTable">
         <div class="divTableBody">
             <div class="divTableRow">
+                <div class="divTableCell"><strong> <strong>  41. Does your Prescription Drug Plan have:  </strong> </strong></div>
+                <div class="divTableCell">&nbsp;</div>
+            </div>
+            <div class="divTableRow">
                 <div class="divTableCell">
-                    <div class="divTable">
-                        <div class="divTableBody">
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong><span style="font-family: Tahoma; font-size: 13px;">34. Does This Plan Provide Any Form of Prescription Drug Coverage?</span></strong></div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_EnterPlanData_0" tabindex="1" checked="checked" name="d_Rx_EnterPlanData" type="radio" value="1" /> Yes</label> </span></div>
-                                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_EnterPlanData_1" tabindex="2" checked="checked" name="d_Rx_EnterPlanData" type="radio" value="0" /> No</label> </span></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId" value="1" />CoPays Only for Each Tier</label>
                         </div>
-                    </div>
-                    <div class="divTable">
-                        <div class="divTableBody">
-                            <div class="divTableRow">
-                                <div class="divTableCell"><strong><span style="font-family: Tahoma; font-size: 13px;">35. Funding Method:</span></strong></div>
-                                <div class="divTableCell">&nbsp;</div>
-                            </div>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId" value="2" />Co-insurance Only for Each Tier</label>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_FundingMethod_0" tabindex="3" checked="checked" name="d_Rx_FundingMethod" type="radio" value="Fully Insured" /> Fully Insured</label> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_FundingMethod_2" tabindex="4" checked="checked" name="d_Rx_FundingMethod" type="radio" value="Self-Funded" /> Self-Funded</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 36. Are Prescription Drugs Covered under Major Medical Deductible and Co-insurance (i.e. No Separate Prescription Drug Card Plans)? </span> </strong></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoveredUnderMajorMedical_0" tabindex="5" checked="checked" name="d_Rx_CoveredUnderMajorMedical" type="radio" value="1" /> Yes</label> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_CoveredUnderMajorMedical_1" tabindex="5" checked="checked" name="d_Rx_CoveredUnderMajorMedical" type="radio" value="0" /> No</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 37. Does Rx copay/co-insurance apply after Major Medical Deductible has been met? </span> </strong></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsApplyAfterMMDed_0" tabindex="5" checked="checked" name="d_Rx_CoPayCoinsApplyAfterMMDed" type="radio" value="1" /> Yes</label> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_CoPayCoinsApplyAfterMMDed_1" tabindex="6" checked="checked" name="d_Rx_CoPayCoinsApplyAfterMMDed" type="radio" value="0" /> No</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 38. Is a Separate Annual Deductible Applied to Prescription Drugs Only? </span> </strong></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_SeparateAnnualDeductible_0" tabindex="8" checked="checked" name="d_Rx_SeparateAnnualDeductible" type="radio" value="1" /> Yes</label> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_SeparateAnnualDeductible_1" tabindex="8" checked="checked" name="d_Rx_SeparateAnnualDeductible" type="radio" value="0" /> No</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 39. Does the Separate Rx Deductible Apply For Generic Drugs? </span> </strong></div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_SeparateAnnualDeductibleGeneric_0" tabindex="9" checked="checked" name="d_Rx_SeparateAnnualDeductibleGeneric" type="radio" value="1" /> Yes</label> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_Rx_SeparateAnnualDeductibleGeneric_1" tabindex="9" checked="checked" name="d_Rx_SeparateAnnualDeductibleGeneric" type="radio" value="0" /> No</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <!-- MSCellFormattingType="content" -->
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 40. What is the Separate Annual Prescription Drug Deductible Amount? </span> </strong></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Single</strong> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Rx_Deductible_Single" tabindex="11" maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" value="[|COALESCE,DeductibleSingle,RXPlans," /> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_Rx_Deductible_FamilyOnly" tabindex="12" checked="checked" name="d_Rx_Deductible_FamilyOnly" type="checkbox" value="1" /> <label for="d_Rx_Deductible_FamilyOnly">Family Only</label> </span></div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp; <strong>Family</strong></span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Rx_Deductible_Family" tabindex="13" maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" value="[|COALESCE,DeductibleFamily,RXPlans," /> </span></div>
-                <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_Rx_Deductible_xEE" tabindex="14" checked="checked" name="d_Rx_Deductible_xEE" type="checkbox" value="1" /> <label for="d_Rx_Deductible_xEE">xEE</label> </span></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-                <div class="divTableCell"><strong> <strong> <span style="font-family: Tahoma; font-size: 13px;"> 41. Does your Prescription Drug Plan have: </span> </strong> </strong></div>
-                <div class="divTableCell">&nbsp;</div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell">
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsuranceStructure_0" tabindex="15" checked="checked" name="d_Rx_CoPayCoinsuranceStructure" type="radio" value="CoPays Only" /> Copays Only for each tier</label> </span></p>
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsuranceStructure_1" tabindex="16" checked="checked" name="d_Rx_CoPayCoinsuranceStructure" type="radio" value="Co-insurance Only" /> Co-insurance only for each tier</label> </span></p>
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsuranceStructure_2" tabindex="17" checked="checked" name="d_Rx_CoPayCoinsuranceStructure" type="radio" value="Both" /> Some tiers with copays and other tiers with co-insurance</label> </span></p>
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsuranceStructure_3" tabindex="18" checked="checked" name="d_Rx_CoPayCoinsuranceStructure" type="radio" value="Both on Same Tier" /> One or more tiers that have both copays and co-insurance in a single tier</label> </span></p>
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_CoPayCoinsuranceStructure_4" tabindex="18" checked="checked" name="d_Rx_CoPayCoinsuranceStructure" type="radio" value="Some with CoPays and Some with Both" /> Some tiers with copays and some tiers with copays and co-insurance in a single tier</label> </span></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId" value="3" />Some tiers with copays and other tiers with co-insurance</label>
+                        </div>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId" value="4" />One or more tiers that have both copays and co-insurance in a single tier</label>
+                        </div>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId" value="5" />Some tiers with copays and some tiers with copays and co-insurance in a single tier</label>
+                        </div>
                 </div>
             </div>
         </div>
@@ -156,13 +122,28 @@
         <div class="divTableBody">
             <div class="divTableRow">
                 <div class="divTableCell">
-                    <p style="margin-top: 0; margin-bottom: 0;"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 42. Please indicate the Number of Separate Prescription Drug CoPay and/or Co-insurance Tiers: </span> </strong></p>
+                    <p style="margin-top: 0; margin-bottom: 0;"><strong>  42. Please indicate the Number of Separate Prescription Drug CoPay and/or Co-insurance Tiers:  </strong></p>
                 </div>
                 <div class="divTableCell">&nbsp;</div>
             </div>
             <div class="divTableRow">
                 <div class="divTableCell">
-                    <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_0" tabindex="19" checked="checked" name="d_Rx_Tiers" type="radio" value="1" /> 1</label> </span> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_1" tabindex="20" checked="checked" name="d_Rx_Tiers" type="radio" value="2" /> 2</label> </span> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_2" tabindex="21" checked="checked" name="d_Rx_Tiers" type="radio" value="3" /> 3</label> </span> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_3" tabindex="22" checked="checked" name="d_Rx_Tiers" type="radio" value="4" /> 4</label> </span> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_4" tabindex="22" checked="checked" name="d_Rx_Tiers" type="radio" value="5" /> 5</label> </span> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <label><input id="d_Rx_Tiers_5" tabindex="22" checked="checked" name="d_Rx_Tiers" type="radio" value="6" /> More than 5</label> </span></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="1" />1</label>
+                        </div><div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="2" />2</label>
+                        </div><div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="3" />3</label>
+                        </div><div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="4" />4</label>
+                        </div><div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="5" />5</label>
+                        </div><div class="radio">
+                            <label><input type="radio" ng-model="rxPlan.RxPlanTierCountTypeId" value="6" />More than 5</label>
+                        </div>
+                    </p>
                 </div>
             </div>
         </div>
@@ -170,117 +151,100 @@
     <p>&nbsp;</p>
     <p>&nbsp;&nbsp;&nbsp;</p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>43. Retail Plan Design: (If any category is not applicable, please check the "None" box.)</strong></span><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp; </span><strong><span style="font-family: Tahoma; font-size: 13px;">Rx Type</span></strong><strong><span style="font-family: Tahoma; font-size: 13px;">Employee Copay</span></strong>&nbsp;<strong><span style="font-family: Tahoma; font-size: 13px;">Employee Co-insurance</span></strong><strong><span style="font-family: Tahoma; font-size: 13px;">&nbsp; </span></strong><strong><span style="font-family: Tahoma; font-size: 13px;">Max</span></strong>&nbsp;<span style="font-family: Tahoma; font-size: 13px;"><strong>Tier One:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier1TypeID" tabindex="1" name="d_Tier1TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier1Copay" tabindex="2" maxlength="6" name="d_Tier1Copay" size="13" type="text" value="[|COALESCE,Tier1Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier1CopayNone" tabindex="3" checked="checked" name="d_Tier1CopayNone" type="checkbox" value="1" /> <label for="d_Tier1CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier1Coinsurance" tabindex="4" name="d_Tier1Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier1Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier1Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier1CoinsuranceNone" tabindex="5" checked="checked" name="d_Tier1CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier1Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier1CoinsuranceMax" tabindex="6" maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier1CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>43. Retail Plan Design: (If any category is not applicable, please check the "None" box.)</strong>&nbsp;&nbsp; <strong>Rx Type</strong><strong>Employee Copay</strong>&nbsp;<strong>Employee Co-insurance</strong><strong>&nbsp; </strong><strong>Max</strong>&nbsp;
+        <strong>Tier One:</strong>
+        <select id="d_Tier1TypeID" tabindex="1" name="d_Tier1TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier1Copay" tabindex="2" maxlength="6" name="d_Tier1Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].EmployeeCopayAmt" />
+        <input id="d_Tier1CopayNone" tabindex="3" checked="checked" name="d_Tier1CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].HasEmployeeCopay" /> <label for="d_Tier1CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in EmployeeCoinsurancePctTypeId" class="form-control"></select>
+        <input id="d_Tier1CoinsuranceNone" tabindex="5" checked="checked" name="d_Tier1CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].HasEmployeeCoinsurance" /> <label for="d_Tier1Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier1CoinsuranceMax" tabindex="6" maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].MaxCoinsuranceAmt" /> &nbsp;
     </p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>Tier Two:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier2TypeID" tabindex="7" name="d_Tier2TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier2Copay" tabindex="8" maxlength="6" name="d_Tier2Copay" size="13" type="text" value="[|COALESCE,Tier2Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier2CopayNone" tabindex="9" checked="checked" name="d_Tier2CopayNone" type="checkbox" value="1" /> <label for="d_Tier2CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier2Coinsurance" tabindex="10" name="d_Tier2Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier2Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier2Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier2CoinsuranceNone" tabindex="11" checked="checked" name="d_Tier2CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier2Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier2CoinsuranceMax" tabindex="12" maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier2CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>Tier Two:</strong>
+        <select id="d_Tier2TypeID" tabindex="7" name="d_Tier2TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier2Copay" tabindex="8" maxlength="6" name="d_Tier2Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].EmployeeCopayAmt" />
+        <input id="d_Tier2CopayNone" tabindex="9" checked="checked" name="d_Tier2CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].HasEmployeeCopay" /> <label for="d_Tier2CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+        <input id="d_Tier2CoinsuranceNone" tabindex="11" checked="checked" name="d_Tier2CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].HasEmployeeCoinsurance" /> <label for="d_Tier2Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier2CoinsuranceMax" tabindex="12" maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].MaxCoinsuranceAmt" /> &nbsp;
     </p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>Tier Three:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier3TypeID" tabindex="13" name="d_Tier3TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier3Copay" tabindex="14" maxlength="6" name="d_Tier3Copay" size="13" type="text" value="[|COALESCE,Tier3Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier3CopayNone" tabindex="15" checked="checked" name="d_Tier3CopayNone" type="checkbox" value="1" /> <label for="d_Tier3CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier3Coinsurance" tabindex="16" name="d_Tier3Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier3Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier3Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier3CoinsuranceNone" tabindex="17" checked="checked" name="d_Tier3CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier3Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier3CoinsuranceMax" tabindex="18" maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier3CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>Tier Three:</strong>
+        <select id="d_Tier3TypeID" tabindex="13" name="d_Tier3TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier3Copay" tabindex="14" maxlength="6" name="d_Tier3Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].EmployeeCopayAmt" />
+        <input id="d_Tier3CopayNone" tabindex="15" checked="checked" name="d_Tier3CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].HasEmployeeCopay" /> <label for="d_Tier3CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+        <input id="d_Tier3CoinsuranceNone" tabindex="17" checked="checked" name="d_Tier3CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].HasEmployeeCoinsurance" /> <label for="d_Tier3Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier3CoinsuranceMax" tabindex="18" maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].MaxCoinsuranceAmt" /> &nbsp;
     </p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>Tier Four:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier4TypeID" tabindex="19" name="d_Tier4TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier4Copay" tabindex="20" maxlength="6" name="d_Tier4Copay" size="13" type="text" value="[|COALESCE,Tier4Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier4CopayNone" tabindex="21" checked="checked" name="d_Tier4CopayNone" type="checkbox" value="1" /> <label for="d_Tier4CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier4Coinsurance" tabindex="22" name="d_Tier4Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier4Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier4Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier4CoinsuranceNone" tabindex="23" checked="checked" name="d_Tier4CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier4Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier4CoinsuranceMax" tabindex="24" maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier4CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>Tier Four:</strong>
+        <select id="d_Tier4TypeID" tabindex="19" name="d_Tier4TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier4Copay" tabindex="20" maxlength="6" name="d_Tier4Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].EmployeeCopayAmt" />
+        <input id="d_Tier4CopayNone" tabindex="21" checked="checked" name="d_Tier4CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].HasEmployeeCopay" /> <label for="d_Tier4CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+        <input id="d_Tier4CoinsuranceNone" tabindex="23" checked="checked" name="d_Tier4CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].HasEmployeeCoinsurance" /> <label for="d_Tier4Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier4CoinsuranceMax" tabindex="24" maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].MaxCoinsuranceAmt" /> &nbsp;
     </p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>Tier Five:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier5TypeID" tabindex="25" name="d_Tier5TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier5Copay" tabindex="26" maxlength="6" name="d_Tier5Copay" size="13" type="text" value="[|COALESCE,Tier5Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier5CopayNone" tabindex="27" checked="checked" name="d_Tier5CopayNone" type="checkbox" value="1" /> <label for="d_Tier5CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier5Coinsurance" tabindex="28" name="d_Tier5Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier5Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier5Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier5CoinsuranceNone" tabindex="29" checked="checked" name="d_Tier5CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier5Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier5CoinsuranceMax" tabindex="30" maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier5CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>Tier Five:</strong>
+        <select id="d_Tier5TypeID" tabindex="25" name="d_Tier5TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier5Copay" tabindex="26" maxlength="6" name="d_Tier5Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].EmployeeCopayAmt" />
+        <input id="d_Tier5CopayNone" tabindex="27" checked="checked" name="d_Tier5CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].HasEmployeeCopay" /> <label for="d_Tier5CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+        <input id="d_Tier5CoinsuranceNone" tabindex="29" checked="checked" name="d_Tier5CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].HasEmployeeCoinsurance" /> <label for="d_Tier5Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier5CoinsuranceMax" tabindex="30" maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].MaxCoinsuranceAmt" /> &nbsp;
     </p>
     <p>
-        <span style="font-family: Tahoma; font-size: 13px;"><strong>Tier Six:</strong></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier6TypeID" tabindex="31" name="d_Tier6TypeID" size="1">
-                <option selected="selected" value="1">Non-Preferred Generic</option>
-                <option selected="selected" value="2">Preferred Generic</option>
-                <option selected="selected" value="3">Non-Preferred Brand</option>
-                <option selected="selected" value="4">Preferred Brand</option>
-                <option selected="selected" value="5">Specialty</option>
-                <option selected="selected" value="6">Other</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier6Copay" tabindex="32" maxlength="6" name="d_Tier6Copay" size="13" type="text" value="[|COALESCE,Tier6Copay,RXPlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier6CopayNone" tabindex="33" checked="checked" name="d_Tier6CopayNone" type="checkbox" value="1" /> <label for="d_Tier6CopayNone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">
-            <select id="d_Tier6Coinsurance" tabindex="34" name="d_Tier6Coinsurance" size="1">
-                <option value=""></option>
-                {SUBQUERY, Name="option_Tier6Coinsurance", Query="EXEC svy_DropDownList_GetNamedList 'HPS_Percent_Low'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                <option value="[DropDownValue]">[DropDownValue]%", SelectedFormat="</option>
-                <option selected="selected" value="[DropDownValue]">[DropDownValue]%", SelectedField="DropDownValue", SelectedItems="[|Tier6Coinsurance,RXPlans]", UseCache="True"}</option>
-            </select>
-        </span><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Tier6CoinsuranceNone" tabindex="35" checked="checked" name="d_Tier6CoinsuranceNone" type="checkbox" value="1" /> <label for="d_Tier6Coinsuranceone">None</label></span><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_Tier6CoinsuranceMax" tabindex="36" maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" value="[|COALESCE,Tier6CoinsuranceMax,RxPlans," /> </span>&nbsp;
+        <strong>Tier Six:</strong>
+        <select id="d_Tier6TypeID" tabindex="31" name="d_Tier6TypeID" size="1" class="form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId">
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="1">Non-Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="2">Preferred Generic</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="3">Non-Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="4">Preferred Brand</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="5">Specialty</option>
+            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="6">Other</option>
+        </select>
+        $ <input class="form-control" id="d_Tier6Copay" tabindex="32" maxlength="6" name="d_Tier6Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].EmployeeCopayAmt" />
+        <input id="d_Tier6CopayNone" tabindex="33" checked="checked" name="d_Tier6CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].HasEmployeeCopay" /> <label for="d_Tier6CopayNone">None</label>
+        <select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+        <input id="d_Tier6CoinsuranceNone" tabindex="35" checked="checked" name="d_Tier6CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[5].RxPlan.PlanTiers[5].HasEmployeeCoinsurance" /> <label for="d_Tier6Coinsuranceone">None</label>
+        $ <input class="form-control" id="d_Tier6CoinsuranceMax" tabindex="36" maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].MaxCoinsuranceAmt" /> &nbsp;
     </p>
 </div>
