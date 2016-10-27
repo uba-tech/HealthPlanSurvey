@@ -5,15 +5,22 @@ using System.Web.Http;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using UBA.Modules.HealthPlanSurveyService.Models;
+using DotNetNuke.Security;
+using DotNetNuke.Entities.Users;
 
 namespace UBA.Modules.HealthPlanSurveyService.Services
 {
     public class ClientController : ControllerBase
     {
+        private UserInfo _currentUser =
+                   DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
+        //private int _userId = _currentUser.UserID;
+        //TODO: remove hardcoded userid
+        private int _userId = 2900;
+
         #region "Web Methods"
 
-        //[DnnAuthorize()]
-        [AllowAnonymous] 
+        [AllowAnonymous]
         [HttpGet()]
         public HttpResponseMessage HelloWorld()
         {
@@ -30,15 +37,18 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
-        //[DnnAuthorize()]
-        [AllowAnonymous] 
+        [AllowAnonymous]
+        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet()]
         public HttpResponseMessage Client()
         {
+            //TODO:  figure out security
+            
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetClients();
+                //var item = dataController.GetClients(currentUser.UserID);
+                var item = dataController.GetClients(_userId);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -56,15 +66,17 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="brokerId"></param>
         /// <returns></returns>
-        //[DnnAuthorize()]
         [AllowAnonymous]
+        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet()]
         public HttpResponseMessage Client(int brokerId)
         {
+            UserInfo currentUser =
+                   DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetClients(brokerId);
+                var item = dataController.GetClientsByBroker(currentUser.UserID, brokerId);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)

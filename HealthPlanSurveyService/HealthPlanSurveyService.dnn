@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="HealthPlanSurveyService" type="Module" version="00.00.02">
+    <package name="HealthPlanSurveyService" type="Module" version="00.00.03">
       <friendlyName>HealthPlanSurveyService</friendlyName>
       <description>HealthPlanSurveyService</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>

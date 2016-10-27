@@ -27,4 +27,9 @@
         templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/edit.html",
         controller: "SurveyEditController"
     })
+
+    .when('/surveys/:id/carryforward', {
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/carryForward.html",
+        controller: "SurveyCarryForwardController"
+    })
 });

@@ -97,10 +97,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ui-grid.css" />
+    <Content Include="Content\ui-grid.min.css" />
+    <Content Include="Content\ui-grid.svg" />
+    <Content Include="controllers\SurveyCarryForwardController.js" />
     <Content Include="controllers\SurveyEditController.js" />
     <Content Include="controllers\SurveyCreateController.js" />
     <Content Include="controllers\SurveyShowController.js" />
@@ -150,6 +155,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -904,8 +910,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="services\clients.js" />
+    <Content Include="Scripts\ui-grid.js" />
+    <Content Include="Scripts\ui-grid.min.js" />
+    <Content Include="services\client.js" />
     <Content Include="services\broker.js" />
+    <Content Include="services\surveyCarryForward.js" />
     <Content Include="services\surveys.js" />
     <Content Include="services\SurveySummary.js" />
     <Content Include="templates\response\ActivePlan.html" />
@@ -913,6 +922,7 @@
     <Content Include="templates\response\GeneralInfo.html" />
     <Content Include="templates\response\editMedicalPlan.html" />
     <Content Include="templates\response\MedicalPlan - Copy.html" />
+    <Content Include="templates\survey\carryForward.html" />
     <Content Include="templates\survey\edit.html" />
     <Content Include="templates\survey\create.html" />
     <Content Include="templates\response\MedicalPlan.html" />
@@ -924,6 +934,9 @@
     <Content Include="templates\survey\index.html" />
     <Content Include="templates\utility\SurveyFilter.html" />
     <Content Include="View.ascx" />
+    <Content Include="Content\ui-grid.woff" />
+    <Content Include="Content\ui-grid.ttf" />
+    <Content Include="Content\ui-grid.eot" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

@@ -27,9 +27,8 @@
         <ul class="nav navbar-nav">
             <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Client Details</a></li>
             <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">General Info</a></li>
-            <li ng-repeat="plan in survey.ActivePlans">
-                {{plan.ActivePlan.PlanName}}
-                <ul>
+            <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
+                <ul> 
                     <li ng-class="{ active:tab === ($index + 100) }"><a href ng-click="setSelected($index + 100)">Medical Plan</a></li>
                     <li ng-class="{ active:tab === ($index + 200) }"><a href ng-click="setSelected($index + 200)">Plan Design</a></li>
                     <li ng-class="{ active:tab === ($index + 300) }"><a href ng-click="setSelected($index + 300)">Prescription Drug Plan</a></li>

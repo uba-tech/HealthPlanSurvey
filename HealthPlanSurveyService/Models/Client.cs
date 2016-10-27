@@ -7,6 +7,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Models
 {
     public class Client
     {
+        public int ResponseId { get; set; }
         public string Name { get; set; }
     }
 }

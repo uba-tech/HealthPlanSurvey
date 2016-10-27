@@ -127,6 +127,31 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //[DnnAuthorize()]
         [AllowAnonymous]
         [HttpGet()]
+        public HttpResponseMessage SurveyCarryForward(int responseId)
+        {
+            try
+            {
+                HPSDataController dataController = new HPSDataController();
+                var item = dataController.GetSurvey(responseId);
+                item.GeneralResponse.ResponseId = 0;
+                return Request.CreateResponse(HttpStatusCode.OK, item);
+            }
+            catch (Exception ex)
+            {
+                //Log to DotNetNuke and reply with Error
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// Get Survey Summary Item
+        /// </summary>
+        /// <param name="responseId"></param>
+        /// <returns></returns>
+        //[DnnAuthorize()]
+        [AllowAnonymous]
+        [HttpGet()]
         public HttpResponseMessage SurveySummary(int responseId)
         {
             try

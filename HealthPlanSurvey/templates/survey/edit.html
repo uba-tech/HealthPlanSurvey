@@ -60,3 +60,12 @@
         <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
     </div>
 </section>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({
+            placement : 'top',
+            trigger : 'hover'
+        })
+    });
+</script>

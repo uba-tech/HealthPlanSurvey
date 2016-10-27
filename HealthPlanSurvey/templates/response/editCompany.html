@@ -5,7 +5,7 @@
                 <h4>Client Details</h4>
             </div>
             <div class="col-md-2">
-                <p class="lead">ID: {{response.ClientId}}  <a href="http://hps-test.ubabenefits.com/ManageSurveys?ResponseID=\[|ResponseID,SurveyResponses\]&amp;Action=ChangeClientID&amp;FromSurvey=True" id="btnEditClientId" class="glyphicon glyphicon-pencil" style="font-size:10pt;" alt="Edit"></a></p>
+                <p class="lead">ResponseId: {{response.ResponseId}}  <a href="http://hps-test.ubabenefits.com/ManageSurveys?ResponseID=\[|ResponseID,SurveyResponses\]&amp;Action=ChangeClientID&amp;FromSurvey=True" id="btnEditClientId" class="glyphicon glyphicon-pencil" style="font-size:10pt;" alt="Edit"></a></p>
             </div>
         </div>
     </div>
@@ -246,11 +246,12 @@
         </div>
 
     </form>
-
     <script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                placement : 'top',
+                trigger : 'hover'
+            })
+        });
     </script>
-
 </div>

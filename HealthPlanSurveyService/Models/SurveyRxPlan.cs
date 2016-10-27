@@ -7,6 +7,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Models
 {
     public class SurveyRxPlan
     {
+        public SurveyRxPlan() { }
+
         public SurveyRxPlan(SurveyResponse_RxPlan rxPlan, List<SurveyResponse_RxPlanTier> rxTiers)
         {
             this.RxPlan = rxPlan;

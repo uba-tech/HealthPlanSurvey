@@ -460,7 +460,9 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                     var rxTiers = db.Fetch<SurveyResponse_RxPlanTier>(SurveyResponse_RxPlanTierSql, plan.ActivePlanId);
                     var surveyRxPlan = new SurveyRxPlan(rxPlan, rxTiers);
                     // create new SurveyActivePlan(plan, rxPlan) 
-                    var surveyActivePlan = new SurveyActivePlan(plan, surveyRxPlan);
+                    var surveyActivePlan = new SurveyActivePlan();
+                    surveyActivePlan.ActivePlan = plan;
+                    surveyActivePlan.RxPlan = surveyRxPlan;
                     item.ActivePlans.Add(surveyActivePlan);
                 }
 
@@ -613,7 +615,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         }
 
         //Get the list of Clients.
-        public IEnumerable<Client> GetClients(int memberFirmId)
+        public IEnumerable<Client> GetClientsByBroker(int userId, int memberFirmId)
         {
             IEnumerable<Client> t;
             using (hpsDB db = new hpsDB())
@@ -624,6 +626,25 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                                                 WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
                                                 AND MemberFirmId = @0 
                                                 ORDER BY OrganizationName ", memberFirmId);
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the list of Clients.
+        public IEnumerable<Client> GetClients(int userId)
+        {
+            IEnumerable<Client> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Client>(@"SELECT DISTINCT rg.ResponseId, rg.OrganizationName as Name
+                                                FROM SurveyResponse_General rg 
+                                                INNER JOIN Survey s on rg.SurveyId = s.SurveyId 
+												INNER JOIN wm4dnn_scott.dbo.uba_Users u ON rg.MemberFirmId = u.MemberFirmId 
+                                                WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
+                                                AND u.UserID = @0 
+                                                ORDER BY OrganizationName ", userId);
                 t = result;
             }
             return t;

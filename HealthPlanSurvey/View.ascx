@@ -4,15 +4,18 @@
         <title>Note Wrangler</title>
         <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap.css" />
         <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap-theme.css" />
+        <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap-select.min.css" />
+        <link rel="styleSheet" href="/DesktopModules/HealthPlanSurvey/Content/ui-grid.min.css"/>
     </head>
     <body>
-        <h3>Manage Surveys</h3>
         <div ng-view class="container-fluid"></div>
     </body>
     <!-- vendor -->
+    <script src="/DesktopModules/HealthPlanSurvey/Scripts/bootstrap-select.min.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular-route.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular-resource.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/Scripts/ui-grid.min.js"></script>
 
     <!-- App -->
     <script src="/DesktopModules/HealthPlanSurvey/javascript/app.js"></script>
@@ -31,8 +34,15 @@
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCreateController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyEditController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyShowController.js"></script>
+    <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCarryForwardController.js"></script>
     <!-- Services -->
     <script src="/DesktopModules/HealthPlanSurvey/services/surveys.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/services/broker.js"></script>
-    
+    <script src="/DesktopModules/HealthPlanSurvey/services/client.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/services/surveyCarryForward.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+    </script>
 </html>
