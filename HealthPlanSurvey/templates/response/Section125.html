@@ -6,7 +6,11 @@
     <form action="">
         <!-- Q1 Does Your Organization Offer? -->
         <div class="form-group">
-            <label for="">1. Does Your Organization Offer?</label>
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A simple Section 125 plan known as a 'premium-only plan' or 'P.O.P' is not a Medical FSA (Flexible Spending Account). If the plan provides only this type of plan, please answer 'Premium-Only Plan.'<br /><br />
+					The survey allows the choice of 'Limited Purpose Medical FSA' only if you indicated that the employer offers a plan which enables participation in an HSA (Healthcare Savings Account).">
+				1. Does Your Organization Offer?
+			</a></label>
             <div class="checkbox">
                 <label for="d_FSA_Offered_PremiumOnlyPlan">
                     <input id="d_FSA_Offered_PremiumOnlyPlan" tabindex="1" checked="checked" name="d_FSA_Offered_PremiumOnlyPlan" type="checkbox" value="1" ng-model="section.Offers_FSA_PremiumOnlyPlan">Premium-Only Plan
@@ -152,7 +156,8 @@
                 </p>
             </div>
             <label for="">I would prefer to be presented any Applicable Metropolitan Area, State or Regional Results Via:</label>
-            <select class="form-control">
+            <select class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_PresentationInterest_0" tabindex="15" name="d_PresentationInterest" value="1" ng-model="survey.GeneralResponse.PresentationInterestTypeId">
                     A Seminar Highlighting Aggregate Results for All Area Survey Participants
                 </option>

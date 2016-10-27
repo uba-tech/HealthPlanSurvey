@@ -8,6 +8,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Models
     public class SurveySummaryModel
     {
         public int ResponseId { get; set; }
+        public int MemberFirmId { get; set; }
         public string Broker { get; set; }
         public string OrganizationName { get; set; }
         public string City { get; set; }

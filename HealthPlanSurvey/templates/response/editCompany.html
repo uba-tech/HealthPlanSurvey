@@ -5,7 +5,7 @@
                 <h4>Client Details</h4>
             </div>
             <div class="col-md-2">
-                <p class="lead">ResponseId: {{response.ResponseId}}  <a href="http://hps-test.ubabenefits.com/ManageSurveys?ResponseID=\[|ResponseID,SurveyResponses\]&amp;Action=ChangeClientID&amp;FromSurvey=True" id="btnEditClientId" class="glyphicon glyphicon-pencil" style="font-size:10pt;" alt="Edit"></a></p>
+                <p class="lead">ResponseId: {{response.ResponseId}}</p>
             </div>
         </div>
     </div>
@@ -13,11 +13,11 @@
     <form>
         <div class="form-group">
             <label for="">
-                <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This question applies to UBA partners only. The primary purpose of this question is to track what percentage of the respondents move to the marketplace">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This question applies to UBA partners only. The primary purpose of this question is to track what percentage of the respondents move to the marketplace">
                     1.If this client will no longer be part of the UBA Health Plan Survey, is it due to:
                 </a>
             </label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
                 <option ng-model="response.NotParticipatingReasonTypeId" value="1">Terminated policy</option>
                 <option ng-model="response.NotParticipatingReasonTypeId" value="2">No longer a client</option>
                 <option ng-model="response.NotParticipatingReasonTypeId" value="3">Client moved policy to marketplace</option>
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="">
-                <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Your contact information will only be shared with the UBA Member Firm who invited you to participate in this Survey. In order to insure the integrity of the database, all responses must be validated by a UBA Member Firm.">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Your contact information will only be shared with the UBA Member Firm who invited you to participate in this Survey. In order to insure the integrity of the database, all responses must be validated by a UBA Member Firm.">
                     2. Name of Organization:
                 </a>
             </label>
@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label for="">
-                <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
                     3. Name of Person Completing Survey:
                 </a>
             </label>
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             <label for="">
-                <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
                     5. Email Address:
                 </a>
             </label>
@@ -62,7 +62,7 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="">
-                    <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
                         6. Phone Number:
                     </a>
                 </label>
@@ -80,16 +80,16 @@
 
             <div class="form-group" style="padding-right:30px;">
                 <label for="">
-                    <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
                         8. State:
                     </a>
                 </label>
-                <select ng-model="response.US_StateId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+                <select ng-model="response.US_StateId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
             </div>
 
             <div class="form-group">
                 <label for="">
-                    <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
                         9. Zip Code:
                     </a>
                 </label>
@@ -99,7 +99,7 @@
         <br>
 
         <label for="">
-            <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="For employers with multiple locations, the Survey attributes data based on the location with the largest employee population. This information is essential in order to develop accurate regional benchmarks.">
+            <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="For employers with multiple locations, the Survey attributes data based on the location with the largest employee population. This information is essential in order to develop accurate regional benchmarks.">
                 10. For organizations with multiple locations, please provide the city, state, and ZIP code of your location with the largest employee enrollment (only if other than the location noted above).
             </a>
         </label>
@@ -110,7 +110,7 @@
             </div>
             <div class="form-group" style="padding-right:45px;">
                 <label for="">State:</label>
-                <select ng-model="response.LargestLocationStateId" ng-options="x for (x,y) in usStates" class="form-control"></select>
+                <select ng-model="response.LargestLocationStateId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
             </div>
             <div class="form-group" style="padding-right:50px;">
                 <label for="">Zip Code:</label>
@@ -118,7 +118,7 @@
             </div>
             <div class="form-group">
                 <label for="">
-                    <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Controlled groups are where there is common ownership of multiple companies, as defined by the IRS Section 414.">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Controlled groups are where there is common ownership of multiple companies, as defined by the IRS Section 414.">
                         10a. Is this a Controlled Group:
                     </a>
                 </label>
@@ -135,7 +135,7 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="">
-                    <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="If you need help determining your NAICS code or in converting an old SIC code into the correct NAICS code, please click on the button provided.  Note: The survey only uses the primary categories which are represented by the first 2 digits of any NAICS code.">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="If you need help determining your NAICS code or in converting an old SIC code into the correct NAICS code, please click on the button provided.  Note: The survey only uses the primary categories which are represented by the first 2 digits of any NAICS code.">
                         11.NAICS Code:
                     </a>
                 </label>
@@ -148,7 +148,7 @@
         <br>
         <div class="form-group">
             <label for="">12. Type of Organization:</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
                 <option value="1" ng-model="response.OrganizationTypeId">Union</option>
                 <option value="2" ng-model="response.OrganizationTypeId">For-Profit</option>
                 <option value="3" ng-model="response.OrganizationTypeId">Non-for-Profit</option>
@@ -207,7 +207,7 @@
 
         <div class="form-group">
             <label for="">
-                <a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Employees not where number of hours is difficult to determine.">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Employees not where number of hours is difficult to determine.">
                     14a. Are there employees that work variable hours?
                 </a>
             </label>
@@ -247,12 +247,6 @@
 
     </form>
     <script>
-        //$(document).ready(function(){
-        //    $('[data-toggle="popover"]').popover({
-        //        placement : 'right',
-        //        trigger : 'hover'
-        //    })
-        //});
         $("[data-toggle=popover]").popover();
     </script>
 </div>

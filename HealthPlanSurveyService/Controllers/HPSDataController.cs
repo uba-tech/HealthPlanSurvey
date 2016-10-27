@@ -15,11 +15,12 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         #endregion
 
         #region SQL Strings
-        string SurveyListSql = @"SELECT top 25 r.ResponseId, '' as 'Broker', r.OrganizationName, r.City, s.StateCode, 
+        string SurveyListSql = @"SELECT top 25 r.ResponseId,  r.MemberFirmId, f.Name as 'Broker', r.OrganizationName, r.City, s.StateCode, 
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
                         st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
                         FROM SurveyResponse_General r 
+						INNER JOIN wm4dnn_scott.dbo.uba_MemberFirm f on r.MemberFirmId = f.MemberFirmId 
                         INNER JOIN US_State s on r.US_StateId = s.US_StateId 
                         INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.SurveyResponseStatusTypeId 
                         ORDER BY OrganizationName";

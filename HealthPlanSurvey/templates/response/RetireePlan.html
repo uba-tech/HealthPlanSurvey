@@ -17,8 +17,16 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="">2. What is the Early Retiree's Share of the Premium?</label>
-            <select name="" id="" class="form-control">
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this Survey, plan types are defined as:<br /><br />
+					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.<br /><br />
+					HMO (Health Maintenance Organization) - A plan which provides benefits ONLY when care is obtained from network providers.  Benefits are not provided for care obtained from non-network providers.  In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br /><br />
+					POS (Point-of-Service) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.  This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br /><br />
+					FFS (Fee-for-Service/Indemnity) - A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network.  By definition, then, there can be no 'out-of-network' benefits.">
+				2. What is the Early Retiree's Share of the Premium?
+			</a></label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_EarlyRetireeSharePremium_0" tabindex="3" name="d_EarlyRetireeSharePremium" value="4" ng-model="retireePlan.RetireePlanTypeId">The same percentage or dollar amount as Active Employees</option>
                 <option id="d_EarlyRetireeSharePremium_1" tabindex="4" name="d_EarlyRetireeSharePremium" value="2" ng-model="retireePlan.RetireePlanTypeId">Less than Active Employees</option>
                 <option id="d_EarlyRetireeSharePremium_2" tabindex="5" name="d_EarlyRetireeSharePremium" value="3" ng-model="retireePlan.RetireePlanTypeId">More than the percentage or dollar amount of Active Employees, but less than 100%</option>
@@ -47,7 +55,8 @@
         </div>
         <div class="form-group">
             <label for="">2. Type of Plan?</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_TypeOfPlan_0" tabindex="9" name="d_TypeOfPlan" value="4" ng-model="retireePlan.RetireePlanTypeId">PPO (Preferred Provider Organization)</option>
                 <option id="d_TypeOfPlan_1" tabindex="10" name="d_TypeOfPlan" value="1" ng-model="retireePlan.RetireePlanTypeId">HMO (Health Maintenance Organization)</option>
                 <option id="d_TypeOfPlan_2" tabindex="11" name="d_TypeOfPlan" value="3" ng-model="retireePlan.RetireePlanTypeId">POS (Point-of-Service)</option>
@@ -69,7 +78,8 @@
         </div>
         <div class="form-group">
             <label for="">4. Plan Arrangement</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_PlanArrangement_0" tabindex="15" name="d_PlanArrangement" value="1" ng-model="retireePlan.RetireePlanArrangementTypeId">Private Plan</option>
                 <option id="d_PlanArrangement_1" tabindex="15" name="d_PlanArrangement" value="2" ng-model="retireePlan.RetireePlanArrangementTypeId">Medicare</option>
                 <option id="d_PlanArrangement_2" tabindex="15" name="d_PlanArrangement" value="3" ng-model="retireePlan.RetireePlanArrangementTypeId">Medigap</option>
@@ -78,7 +88,8 @@
         </div>
         <div class="form-group">
             <label for="">5. To Whom Offered</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_OfferedTo_0" tabindex="15" name="d_OfferedTo" value="1" ng-model="retireePlan.RetireePlanOfferedToTypeId">All Qualified (including Current Employees)</option>
                 <option id="d_OfferedTo_1" tabindex="16" name="d_OfferedTo" value="4" ng-model="retireePlan.RetireePlanOfferedToTypeId">Only those Hired and/or Retired Prior to Certain Year</option>
                 <option id="d_OfferedTo_2" tabindex="17" name="d_OfferedTo" value="3" ng-model="retireePlan.RetireePlanOfferedToTypeId">Grandfathered Prior Retirees Only</option>
@@ -209,7 +220,8 @@
         </div>
         <div class="form-group">
             <label for="">2. Type of Plan?</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_TypeOfPlan_0" tabindex="9" name="d_TypeOfPlan" value="4" ng-model="retireePlan.RetireePlanTypeId">PPO (Preferred Provider Organization)</option>
                 <option id="d_TypeOfPlan_1" tabindex="10" name="d_TypeOfPlan" value="1" ng-model="retireePlan.RetireePlanTypeId">HMO (Health Maintenance Organization)</option>
                 <option id="d_TypeOfPlan_2" tabindex="11" name="d_TypeOfPlan" value="3" ng-model="retireePlan.RetireePlanTypeId">POS (Point-of-Service)</option>
@@ -231,7 +243,8 @@
         </div>
         <div class="form-group">
             <label for="">4. To Whom Offered</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
                 <option id="d_OfferedTo_0" tabindex="15" name="d_OfferedTo" value="1" ng-model="retireePlan.RetireePlanOfferedToTypeId">All Qualified (including Current Employees)</option>
                 <option id="d_OfferedTo_1" tabindex="16" name="d_OfferedTo" value="4" ng-model="retireePlan.RetireePlanOfferedToTypeId">Only those Hired and/or Retired Prior to Certain Year</option>
                 <option id="d_OfferedTo_2" tabindex="17" name="d_OfferedTo" value="3" ng-model="retireePlan.RetireePlanOfferedToTypeId">Grandfathered Prior Retirees Only</option>
@@ -340,4 +353,5 @@
             </div>
         </div>
     </form>
+
 </div>

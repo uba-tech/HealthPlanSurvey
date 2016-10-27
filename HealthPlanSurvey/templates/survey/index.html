@@ -1,41 +1,17 @@
 ﻿<style>
     .surveyGrid {
-        width: 500px;
-        height: 250px;
+        width: 95%;
+        height: 450px;
       }
+    .header-filtered {
+        color: darkgreen;
+     }
 </style>
 <div class="container" ng-init="isNewSurvey=false">
     <h3>Surveys</h3>
     <button type="button" class="btn btn-primary btn-lg" ng-click="isNewSurvey = !isNewSurvey">New Survey</button>
     <div ng-show="!isNewSurvey">
-        <fieldset>
-            <legend>Filter</legend>
-            <label for="">Broker</label>
-            <select ng-options="broker as broker.BrokerName for broker in brokers" ng-model="surveyFilterBrokerNo">
-                <option value="">-All-</option>
-            </select>
-            <label for="">Survey Status</label>
-            <select ng-model="surveyFilter.ResponseStatusId">
-                <option value="">-All-</option>
-                <!--<option value="1">Archived</option>-->
-                <option value="2">Broker-Deleted</option>
-                <option value="3">Complete</option>
-                <option value="4">In-Progress</option>
-                <option value="5">Validated</option>
-            </select>
-            <label for=""><a title="Help" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Select a Client from the list">Client</a></label>
-            <input type="text" ng-model="surveyFilter.ClientName">
-            <button class="btn btn-default" value="{{isFiltering ? 'searching...' : 'Apply Filter'}}" ng-click="filterSurvey(surveyFilter)" ng-disabled="isSubmitting">Apply Filter</button>
-            <button>Clear Filter</button>
-        </fieldset>
-
-        <div class="row">
-            <div ng-repeat="survey in surveys" class="col-sm-6">
-                <h3><a ng-href="#/surveys/{{survey.ResponseId}}">{{survey.OrganizationName}}</a></h3>
-                <h5>Created on {{survey.CreatedOn | date:'MM/dd/yyyy'}}</h5>
-            </div>
-        </div>
-        <div ui-grid="{ data: surveys }" class="surveyGrid"></div>
+        <div id="grid1" ui-grid="gridOptions" class="surveyGrid"></div>
     </div>
     <div ng-show="isNewSurvey">
         <h4>Start a New Survey</h4>
