@@ -1,0 +1,13 @@
+<!-- <select name="" id="" class="selectpicker form-control show-tick" ng-model="response.NotParticipatingReasonTypeId">
+                <option ng-model="response.NotParticipatingReasonTypeId" ng-value="1">Terminated policy</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" ng-value="2">No longer a client</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" ng-value="3">Client moved policy to marketplace</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" ng-value="4">Client is part of the Health Plan Survey</option>
+            </select> -->
+
+<select name="" id="" class="selectpicker form-control show-tick">
+                <option ng-model="response.NotParticipatingReasonTypeId" value="1">Terminated policy</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" value="2">No longer a client</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" value="3">Client moved policy to marketplace</option>
+                <option ng-model="response.NotParticipatingReasonTypeId" value="4">Client is part of the Health Plan Survey</option>
+            </select>

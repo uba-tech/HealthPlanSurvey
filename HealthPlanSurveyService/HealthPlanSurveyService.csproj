@@ -121,12 +121,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ReferenceController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HPSDataController.cs" />
     <Compile Include="Controllers\RouteMapper.cs" />
     <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Models\ReferenceTable.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\SurveyActivePlan.cs" />
     <Compile Include="Models\Generated\Database.cs">

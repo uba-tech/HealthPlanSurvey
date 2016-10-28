@@ -10,13 +10,13 @@ using DotNetNuke.Entities.Users;
 
 namespace UBA.Modules.HealthPlanSurveyService.Services
 {
-    public class ClientController : ControllerBase
+    public class ReferenceController : ControllerBase
     {
-        private UserInfo _currentUser =
-                   DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
-        //private int _userId = _currentUser.UserID;
-        //TODO: remove hardcoded userid
-        private int _userId = 2900;
+        //private UserInfo _currentUser =
+        //           DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
+        ////private int _userId = _currentUser.UserID;
+        ////TODO: remove hardcoded userid
+        //private int _userId = 2900;
 
         #region "Web Methods"
 
@@ -40,15 +40,15 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         [AllowAnonymous]
         //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet()]
-        public HttpResponseMessage Client()
+        public HttpResponseMessage Reference()
         {
             //TODO:  figure out security
-            
+
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                //var item = dataController.GetClients(currentUser.UserID);
-                var item = dataController.GetClients(_userId);
+                //var item = dataController.GetReferences(currentUser.UserID);
+                var item = dataController.GetReferences();
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -62,21 +62,21 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
 
         /// <summary>
-        /// Get Client Item
+        /// Get Survey Summary Item
         /// </summary>
-        /// <param name="brokerId"></param>
+        /// <param name="TableName"></param>
         /// <returns></returns>
         [AllowAnonymous]
         //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet()]
-        public HttpResponseMessage Client(int brokerId)
+        public HttpResponseMessage Reference(string tbl)
         {
             UserInfo currentUser =
                    DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetClientsByBroker(currentUser.UserID, brokerId);
+                var item = dataController.GetReferencesByName(tbl);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)

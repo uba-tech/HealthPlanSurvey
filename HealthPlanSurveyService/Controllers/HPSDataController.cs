@@ -655,7 +655,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         #region Miscellaneous
 
-        //Get the list of brokers.
+        //Get the list of US States.
         public IEnumerable<US_State> GetUsStates()
         {
             IEnumerable<US_State> t;
@@ -673,6 +673,51 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         }
 
+        //Get the key/value pair from selected reference table.
+        public IEnumerable<ReferenceTable> GetReferences()
+        {
+            IEnumerable<ReferenceTable> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<ReferenceTable>(@"SELECT [TableId]
+                                                  ,[TableName]
+                                              FROM ReferenceTable");
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the key/value pair from selected reference table.
+        public IEnumerable<ReferenceTable> GetReferencesByName(string TableName)
+        {
+            IEnumerable<ReferenceTable> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<ReferenceTable>(@"SELECT [TypeId]
+                                                  ,[Name]
+                                              FROM " + TableName);
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get the key/value pair from selected reference table.
+        public IEnumerable<ReferenceTable> GetReferencesById(int TableId)
+        {
+            IEnumerable<ReferenceTable> t;
+            using (hpsDB db = new hpsDB())
+            {
+                string tableName = db.ExecuteScalar<string>(@"SELECT TableName FROM ReferenceTable WHERE TableId = @0", TableId);
+                var result = db.Fetch<ReferenceTable>(@"SELECT [TypeId]
+                                                  ,[Name]
+                                              FROM @0", tableName);
+                t = result;
+            }
+            return t;
+
+        }
         #endregion
     }
 }

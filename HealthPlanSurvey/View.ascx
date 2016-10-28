@@ -30,16 +30,18 @@
     <script src="/DesktopModules/HealthPlanSurvey/directives/swSection125.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/directives/swActivePlan.js"></script>
     <!-- Controllers -->
+    <script src="DesktopModules/HealthPlanSurvey/controllers/ReferenceController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyIndexController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCreateController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyEditController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyShowController.js"></script>
     <script src="DesktopModules/HealthPlanSurvey/controllers/SurveyCarryForwardController.js"></script>
     <!-- Services -->
-    <script src="/DesktopModules/HealthPlanSurvey/services/surveys.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/services/broker.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/services/client.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/services/reference.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/services/surveyCarryForward.js"></script>
+    <script src="/DesktopModules/HealthPlanSurvey/services/surveys.js"></script>
     <script>
         $(function () {
             $('[data-toggle="popover"]').popover()

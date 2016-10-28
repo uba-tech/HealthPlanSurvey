@@ -11,17 +11,14 @@
     </div>
 
     <form>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as  ref1" tablename="NotParticipatingReasonType">
             <label for="">
                 <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This question applies to UBA partners only. The primary purpose of this question is to track what percentage of the respondents move to the marketplace">
                     1.If this client will no longer be part of the UBA Health Plan Survey, is it due to:
                 </a>
             </label>
-            <select name="" id="" class="selectpicker form-control show-tick">
-                <option ng-model="response.NotParticipatingReasonTypeId" value="1">Terminated policy</option>
-                <option ng-model="response.NotParticipatingReasonTypeId" value="2">No longer a client</option>
-                <option ng-model="response.NotParticipatingReasonTypeId" value="3">Client moved policy to marketplace</option>
-                <option ng-model="response.NotParticipatingReasonTypeId" value="4">Client is part of the Health Plan Survey</option>
+            <select ng-model="response.NotParticipatingReasonTypeId">
+                <option ng-repeat="item in ref1.items" value="{{item.TypeId}}" ng-selected="response.NotParticipatingReasonTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
 

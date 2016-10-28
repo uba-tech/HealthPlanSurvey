@@ -1,7 +1,7 @@
 ﻿<style>
     .surveyGrid {
         width: 95%;
-        height: 450px;
+        height: 650px;
       }
     .header-filtered {
         color: darkgreen;
@@ -13,7 +13,7 @@
     <div ng-show="!isNewSurvey">
         <div id="grid1" ui-grid="gridOptions" class="surveyGrid"></div>
     </div>
-    <div ng-show="isNewSurvey">
+    <div ng-show="isNewSurvey" ng-init="startType=0">
         <h4>Start a New Survey</h4>
         <div class="form-group">
             <h5>Welcome to the Survey</h5>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <button type="button" class="btn btn-secondary" ng-click="isNewSurvey=false">Cancel</button>
-        <button type="button" class="btn btn-primary" ng-click="startSurvey(startType, slientList.ResponseId)" data-dismiss="modal" data-backdrop="false">New Survey</button>
+        <button type="button" class="btn btn-primary" ng-click="startSurvey(startType, slientList.ResponseId)">Start Survey</button>
     </div>
 </div>
     <script>
