@@ -12,11 +12,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 {
     public class ClientController : ControllerBase
     {
-        private UserInfo _currentUser =
-                   DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
-        //private int _userId = _currentUser.UserID;
-        //TODO: remove hardcoded userid
-        private int _userId = 2900;
+        private UserInfo _currentUser;
+
+        private ClientController()
+        {
+            _currentUser = DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
+            //_userId = _currentUser.UserID;
+            //_isAdminUser = _currentUser.IsInRole("Administrators") | _currentUser.IsInRole("");
+        }
 
         #region "Web Methods"
 
@@ -37,8 +40,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
-        [AllowAnonymous]
-        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Client()
         {
@@ -47,8 +49,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                //var item = dataController.GetClients(currentUser.UserID);
-                var item = dataController.GetClients(_userId);
+                var item = dataController.GetClients(_currentUser);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -66,8 +67,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="brokerId"></param>
         /// <returns></returns>
-        [AllowAnonymous]
-        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Client(int brokerId)
         {

@@ -120,8 +120,6 @@
     <Content Include="directives\swGeneralInfo.js" />
     <Content Include="directives\swCompanyDetails.js" />
     <Content Include="directives\swSurveyFilter.js" />
-    <Content Include="Documentation\Documentation.css" />
-    <Content Include="Documentation\Documentation.html" />
     <Content Include="Edit.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="javascript\app.js" />

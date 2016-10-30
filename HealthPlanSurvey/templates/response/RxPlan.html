@@ -7,10 +7,7 @@
         <div class="form-group">
             <label for="">34. Does This Plan Provide Any Form of Prescription Drug Coverage?</label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="1" />Yes</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="0" />No</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.FundingMethodTypeId" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -19,10 +16,7 @@
 				35. Funding Method
 			</a></label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="1" />Fully-Insured</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.FundingMethodTypeId" value="2" />Self-Funded</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.FundingMethodTypeId" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -31,19 +25,13 @@
 				36. Are Prescription Drugs Covered under Major Medical Deductible and Co-insurance (i.e. No Separate Prescription Drug Card Plans)?
 			</a></label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.IsCoveredUnderMajorMedical" value="1" />Yes</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.IsCoveredUnderMajorMedical" value="0" />No</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.IsCoveredUnderMajorMedical" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
             <label for="">37. Does Rx copay/co-insurance apply after Major Medical Deductible has been met?</label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.DoesCoPay_CoinsApplyAfterMajorMedicalDeductible" value="1" />Yes</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.DoesCoPay_CoinsApplyAfterMajorMedicalDeductible" value="0" />No</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.DoesCoPay_CoinsApplyAfterMajorMedicalDeductible" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -52,19 +40,13 @@
 				38. Is a Separate Annual Deductible Applied to Prescription Drugs Only?
 			</a></label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.HasSeparateAnnualDeductibleApplied" value="1" />Yes</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.HasSeparateAnnualDeductibleApplied" value="0" />No</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.HasSeparateAnnualDeductibleApplied" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
             <label for="">39. Does the Separate Rx Deductible Apply For Generic Drugs?</label>
             <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.DoesSeparateAnnualDeductibleApplyForGeneric" value="1" />Yes</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="rxPlan.DoesSeparateAnnualDeductibleApplyForGeneric" value="0" />No</label>
+              <input type="checkbox" ng-model="rxPlan.RxPlan.DoesSeparateAnnualDeductibleApplyForGeneric" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -79,11 +61,11 @@
 							<div class="col-md-3">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-								  <input class="form-control" id="d_Rx_Deductible_Single" tabindex="11" maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" ng-model="rxPlan.SeparateAnnualDeductibleAmt_Single" />
+								  <input class="form-control" id="d_Rx_Deductible_Single" tabindex="11" maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Single" />
 								</div>
 							</div>
 							<div class="col-md-3">
-								<input id="d_Rx_Deductible_FamilyOnly" tabindex="12" checked="checked" name="d_Rx_Deductible_FamilyOnly" type="checkbox" value="1" ng-model="rxPlan.HasSeparateAnnualDeductibleAmt_FamilyOnly" /> Family Only
+								<input id="d_Rx_Deductible_FamilyOnly" tabindex="12" checked="checked" name="d_Rx_Deductible_FamilyOnly" type="checkbox" value="1" ng-model="rxPlan.RxPlan.HasSeparateAnnualDeductibleAmt_FamilyOnly" /> Family Only
 							</div>
 						</div>
 						<br>
@@ -94,43 +76,32 @@
 							<div class="col-md-3">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-									<input class="form-control" id="d_Rx_Deductible_Family" tabindex="13" maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" ng-model="rxPlan.SeparateAnnualDeductibleAmt_Family" />
+									<input class="form-control" id="d_Rx_Deductible_Family" tabindex="13" maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Family" />
 								</div>
 							</div>
 							<div class="col-md-3">
-								<input id="d_Rx_Deductible_xEE" tabindex="14" checked="checked" name="d_Rx_Deductible_xEE" type="checkbox" value="1" ng-model="rxPlan.HasSeparateAnnualDeductibleAmt_xEE" /> xEE
+								<input id="d_Rx_Deductible_xEE" tabindex="14" checked="checked" name="d_Rx_Deductible_xEE" type="checkbox" value="1" ng-model="rxPlan.RxPlan.HasSeparateAnnualDeductibleAmt_xEE" /> xEE
 							</div>
 						</div>
         </div>
 				<div class="row">
 					<div class="col-md-6">
-						<div class="form-group">
+						<div class="form-group" ng-controller="ReferenceController as coPayCoinsuranceStructure" tablename="CoPayCoinsuranceStructureType">
 							<label for="">41. Does your Prescription Drug Plan have</label>
 							<br><br>
-							<select name="" id="" class="selectpicker form-control show-tick">
-								<option value="0" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">Nothing Selected</option>
-								<option value="1" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">CoPays Only for Each Tier</option>
-								<option value="2" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">Co-insurance Only for Each Tier</option>
-								<option value="3" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">Some tiers with copays and other tiers with co-insurance</option>
-								<option value="4" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">One or more tiers that have both copays and co-insurance in a single tier</option>
-								<option value="5" ng-model="rxPlan.CoPayCoinsuranceStructureTypeId">Some tiers with copays and some tiers with copays and co-insurance in a single tier</option>
+							<select ng-model="rxPlan.RxPlan.CoPayCoinsuranceStructureTypeId" class="selectpicker form-control show-tick">
+								<option ng-repeat="item in coPayCoinsuranceStructure.items" value="{{item.TypeId}}" ng-selected="rxPlan.RxPlan.CoPayCoinsuranceStructureTypeId == item.TypeId">{{item.Name}}</option>
 							</select>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="form-group">
+						<div class="form-group" ng-controller="ReferenceController as rxPlanTierCount" tablename="RxPlanTierCountType">
 							<label for="">
 							<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">
 								42. Please indicate the Number of Separate Prescription Drug CoPay and/or Co-insurance Tiers
 							</a></label>
-								<select class="selectpicker form-control show-tick">
-									<option value="0">Nothing Selected</option>
-									<option value="1" ng-model="rxPlan.RxPlanTierCountTypeId">1</option>
-									<option value="2" ng-model="rxPlan.RxPlanTierCountTypeId">2</option>
-									<option value="3" ng-model="rxPlan.RxPlanTierCountTypeId">3</option>
-									<option value="4" ng-model="rxPlan.RxPlanTierCountTypeId">4</option>
-									<option value="5" ng-model="rxPlan.RxPlanTierCountTypeId">5</option>
-									<option value="6" ng-model="rxPlan.RxPlanTierCountTypeId">More than 5</option>
+							<select ng-model="rxPlan.RxPlan.RxPlanTierCountTypeId" class="selectpicker form-control show-tick">
+								<option ng-repeat="item in rxPlanTierCount.items" value="{{item.TypeId}}" ng-selected="rxPlan.RxPlan.RxPlanTierCountTypeId == item.TypeId">{{item.Name}}</option>
 							</select>
 						</div>
 					</div>
@@ -159,36 +130,33 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier One</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier1TypeID" tabindex="1" name="d_Tier1TypeID" size="1" class="selectpicker form-control show-tick" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="2">Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="4">Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="5">Specialty</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId" value="6">Other</option>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType1" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[0].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType1.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[0].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 			        </select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier1Copay" tabindex="2" maxlength="6" name="d_Tier1Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier1Copay" tabindex="2" maxlength="6" name="d_Tier1Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[0].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier1CopayNone" tabindex="3" checked="checked" name="d_Tier1CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].HasEmployeeCopay" /> None
+							<input id="d_Tier1CopayNone" tabindex="3" checked="checked" name="d_Tier1CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[0].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct0" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[0].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct0.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[0].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier1CoinsuranceNone" tabindex="5" checked="checked" name="d_Tier1CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier1CoinsuranceNone" tabindex="5" checked="checked" name="d_Tier1CoinsuranceNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[0].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier1CoinsuranceMax" tabindex="6" maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier1CoinsuranceMax" tabindex="6" maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
@@ -197,36 +165,32 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier Two</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier2TypeID" tabindex="7" name="d_Tier2TypeID" size="1" class="selectpicker show-tick form-control" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="2">Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="4">Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="5">Specialty</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].RxPlanTypeId" value="6">Other</option>
-			        </select>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType2" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[1].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType2.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[1].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-							  <input class="form-control" id="d_Tier2Copay" tabindex="8" maxlength="6" name="d_Tier2Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].EmployeeCopayAmt" />
+							  <input class="form-control" id="d_Tier2Copay" tabindex="8" maxlength="6" name="d_Tier2Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[1].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier2CopayNone" tabindex="9" checked="checked" name="d_Tier2CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].HasEmployeeCopay" /> None
+							<input id="d_Tier2CopayNone" tabindex="9" checked="checked" name="d_Tier2CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[1].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct1" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[1].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct1.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[1].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier2CoinsuranceNone" tabindex="11" checked="checked" name="d_Tier2CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier2CoinsuranceNone" tabindex="11" checked="checked" name="d_Tier2CoinsuranceNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[1].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier2CoinsuranceMax" tabindex="12" maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[1].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier2CoinsuranceMax" tabindex="12" maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[1].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
@@ -235,36 +199,32 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier Three</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier3TypeID" tabindex="13" name="d_Tier3TypeID" size="1" class="selectpicker form-control show-tick" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="2">Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="4">Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="5">Specialty</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].RxPlanTypeId" value="6">Other</option>
-			        </select>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType3" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[2].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType3.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[2].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier3Copay" tabindex="14" maxlength="6" name="d_Tier3Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier3Copay" tabindex="14" maxlength="6" name="d_Tier3Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[2].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier3CopayNone" tabindex="15" checked="checked" name="d_Tier3CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].HasEmployeeCopay" /> None
+							<input id="d_Tier3CopayNone" tabindex="15" checked="checked" name="d_Tier3CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[2].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct2" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[2].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct2.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[2].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier3CoinsuranceNone" tabindex="17" checked="checked" name="d_Tier3CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier3CoinsuranceNone" tabindex="17" checked="checked" name="d_Tier3CoinsuranceNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[2].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier3CoinsuranceMax" tabindex="18" maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[2].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier3CoinsuranceMax" tabindex="18" maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[2].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
@@ -273,36 +233,32 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier Four</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier4TypeID" tabindex="19" name="d_Tier4TypeID" size="1" class="selectpicker form-control show-tick" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="2">Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="4">Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="5">Specialty</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].RxPlanTypeId" value="6">Other</option>
-			        </select>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType4" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[3].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType4.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[3].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier4Copay" tabindex="20" maxlength="6" name="d_Tier4Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier4Copay" tabindex="20" maxlength="6" name="d_Tier4Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[3].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier4CopayNone" tabindex="21" checked="checked" name="d_Tier4CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].HasEmployeeCopay" /> None
+							<input id="d_Tier4CopayNone" tabindex="21" checked="checked" name="d_Tier4CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[3].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct3" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[3].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct3.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[3].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier4CoinsuranceNone" tabindex="23" checked="checked" name="d_Tier4CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier4CoinsuranceNone" tabindex="23" checked="checked" name="d_Tier4CoinsuranceNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[3].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier4CoinsuranceMax" tabindex="24" maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[3].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier4CoinsuranceMax" tabindex="24" maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[3].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
@@ -311,36 +267,32 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier Five</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier5TypeID" tabindex="25" name="d_Tier5TypeID" size="1" class="selectpicker form-control show-tick" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="2">Preferred Generic</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="4">Preferred Brand</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="5">Specialty</option>
-			            <option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].RxPlanTypeId" value="6">Other</option>
-			        </select>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType5" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[4].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType5.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[4].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-							  <input class="form-control" id="d_Tier5Copay" tabindex="26" maxlength="6" name="d_Tier5Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].EmployeeCopayAmt" />
+							  <input class="form-control" id="d_Tier5Copay" tabindex="26" maxlength="6" name="d_Tier5Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[4].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier5CopayNone" tabindex="27" checked="checked" name="d_Tier5CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].HasEmployeeCopay" /> None
+							<input id="d_Tier5CopayNone" tabindex="27" checked="checked" name="d_Tier5CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[4].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct4" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[4].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct4.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[4].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier5CoinsuranceNone" tabindex="29" checked="checked" name="d_Tier5CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier5CoinsuranceNone" tabindex="29" checked="checked" name="d_Tier5CoinsuranceNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[4].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier5CoinsuranceMax" tabindex="30" maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[4].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier5CoinsuranceMax" tabindex="30" maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[4].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
@@ -349,45 +301,34 @@
 						<div class="col-md-1">
 							<p><a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="">Tier Six</a></p>
 						</div>
-						<div class="col-md-2">
-							<select id="d_Tier6TypeID" tabindex="31" name="d_Tier6TypeID" size="1" class="selectpicker form-control show-tick" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId">
-									<option value="0">Nothing Selected</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="1">Non-Preferred Generic</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="2">Preferred Generic</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="3">Non-Preferred Brand</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="4">Preferred Brand</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="5">Specialty</option>
-									<option ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].RxPlanTypeId" value="6">Other</option>
-							</select>
+						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType6" tablename="RxPlanType">
+						<select ng-model="rxPlan.PlanTiers[5].RxPlanTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in rxPlanType6.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[5].RxPlanTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier6Copay" tabindex="32" maxlength="6" name="d_Tier6Copay" size="13" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier6Copay" tabindex="32" maxlength="6" name="d_Tier6Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[5].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier6CopayNone" tabindex="33" checked="checked" name="d_Tier6CopayNone" type="checkbox" value="1" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].HasEmployeeCopay" /> None
+							<input id="d_Tier6CopayNone" tabindex="33" checked="checked" name="d_Tier6CopayNone" type="checkbox" value="1" ng-model="rxPlan.PlanTiers[5].HasEmployeeCopay" /> None
 						</div>
-						<div class="col-md-2">
-							<select ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[5].EmployeeCoinsurancePctTypeId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+						<div class="col-md-2" ng-controller="ReferenceController as EmployeeCoinsurancePct5" tablename="EmployeeCoinsurancePctType">
+						<select ng-model="rxPlan.PlanTiers[5].EmployeeCoinsurancePctTypeId" class="selectpicker form-control show-tick">
+							<option ng-repeat="item in EmployeeCoinsurancePct5.items" value="{{item.TypeId}}" ng-selected="rxPlan.PlanTiers[5].EmployeeCoinsurancePctTypeId == item.TypeId">{{item.Name}}</option>
+						</select>
 						</div>
 						<div class="col-md-1">
-							<input id="d_Tier6CoinsuranceNone" tabindex="35" checked="checked" name="d_Tier6CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[5].RxPlan.PlanTiers[5].HasEmployeeCoinsurance" /> None
+							<input id="d_Tier6CoinsuranceNone" tabindex="35" checked="checked" name="d_Tier6CoinsuranceNone" type="checkbox" value="1" ng-model="survey.ActivePlans[5].rxPlan.RxPlan.PlanTiers[5].HasEmployeeCoinsurance" /> None
 						</div>
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier6CoinsuranceMax" tabindex="36" maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" ng-model="survey.ActivePlans[0].RxPlan.PlanTiers[0].MaxCoinsuranceAmt" /> 
+								<input class="form-control" id="d_Tier6CoinsuranceMax" tabindex="36" maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>
 				</div>
     </form>
-
-
-
-
-    </p>
-
-</div>

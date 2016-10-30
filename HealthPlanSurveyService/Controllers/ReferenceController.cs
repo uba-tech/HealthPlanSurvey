@@ -37,17 +37,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
-        [AllowAnonymous]
-        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Reference()
         {
-            //TODO:  figure out security
-
+            // not likely to be called without a table name
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                //var item = dataController.GetReferences(currentUser.UserID);
                 var item = dataController.GetReferences();
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
@@ -66,8 +63,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="TableName"></param>
         /// <returns></returns>
-        [AllowAnonymous]
-        //[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Reference(string tbl)
         {

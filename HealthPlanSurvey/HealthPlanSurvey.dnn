@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="HealthPlanSurvey" type="Module" version="00.00.01">
+    <package name="HealthPlanSurvey" type="Module" version="00.00.05">
       <friendlyName>HealthPlanSurvey</friendlyName>
       <description>ubabenefits.com HealthPlanSurvey module</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>

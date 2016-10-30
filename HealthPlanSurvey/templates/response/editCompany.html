@@ -11,14 +11,14 @@
     </div>
 
     <form>
-        <div class="form-group" ng-controller="ReferenceController as  ref1" tablename="NotParticipatingReasonType">
+        <div class="form-group" ng-controller="ReferenceController as notParticipatingReason" tablename="NotParticipatingReasonType">
             <label for="">
                 <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This question applies to UBA partners only. The primary purpose of this question is to track what percentage of the respondents move to the marketplace">
                     1.If this client will no longer be part of the UBA Health Plan Survey, is it due to:
                 </a>
             </label>
-            <select ng-model="response.NotParticipatingReasonTypeId">
-                <option ng-repeat="item in ref1.items" value="{{item.TypeId}}" ng-selected="response.NotParticipatingReasonTypeId == item.TypeId">{{item.Name}}</option>
+            <select ng-model="response.NotParticipatingReasonTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in notParticipatingReason.items" value="{{item.TypeId}}" ng-selected="response.NotParticipatingReasonTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
 
@@ -75,13 +75,15 @@
                 <input class="form-control" id="d_City" tabindex="12" maxlength="50" name="d_City" size="26" type="text" ng-model="response.City" />
             </div>
 
-            <div class="form-group" style="padding-right:30px;">
+            <div class="form-group" ng-controller="ReferenceController as states" tablename="US_State" style="padding-right:30px;">
                 <label for="">
                     <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
                         8. State:
                     </a>
                 </label>
-                <select ng-model="response.US_StateId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+            <select ng-model="response.US_StateId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in states.items" value="{{item.TypeId}}" ng-selected="response.US_StateId == item.TypeId">{{item.Name}}</option>
+            </select>
             </div>
 
             <div class="form-group">
@@ -105,9 +107,11 @@
                 <label for="">City:</label>
                 <input class="form-control" id="d_LargestLocCity" tabindex="15" maxlength="50" name="d_LargestLocCity" size="26" type="text" ng-model="response.LargestLocationCity" />
             </div>
-            <div class="form-group" style="padding-right:45px;">
+            <div class="form-group" ng-controller="ReferenceController as largeStates" tablename="US_State" style="padding-right:45px;">
                 <label for="">State:</label>
-                <select ng-model="response.LargestLocationStateId" ng-options="x for (x,y) in usStates" class="selectpicker form-control show-tick"></select>
+            <select ng-model="response.LargestLocationStateId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in largeStates.items" value="{{item.TypeId}}" ng-selected="response.LargestLocationStateId == item.TypeId">{{item.Name}}</option>
+            </select>
             </div>
             <div class="form-group" style="padding-right:50px;">
                 <label for="">Zip Code:</label>
@@ -139,47 +143,39 @@
                 <span style="font-size: 13px;"> <input class="form-control" id="d_NAICSMaster" style="width: 75px;" tabindex="20" maxlength="6" name="d_NAICSMaster" type="text" ng-model="response.NAICSMasterCodeId" /> (enter all 6 characters) </span><span id="naicsLookup" style="color: #0000bc;"></span>
             </div>
             <div class="form-group">
-                <button class="btn btn-default"> NAICS Webpage </button> &nbsp;<span class="icons help" data-questionid="11"> <span id="vcNAICSMaster" class="spanValidation" style="position: relative; display: inline; left: 0px;" data-targettable="response.esponses" data-errortype="Severe"> <img class="displayValidationError" style="position: absolute; left: 0px; background-color: #ffffff; z-index: 1;" src="/Portals/_default/bolton/images/severe_t.png" alt="" /> </span> </span>
+                <button class="btn btn-default"> NAICS Webpage </button>
             </div>
         </div>
         <br>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as organizationId" tablename="OrganizationType">
             <label for="">12. Type of Organization:</label>
-            <select name="" id="" class="selectpicker form-control show-tick">
-                <option value="1" ng-model="response.OrganizationTypeId">Union</option>
-                <option value="2" ng-model="response.OrganizationTypeId">For-Profit</option>
-                <option value="3" ng-model="response.OrganizationTypeId">Non-for-Profit</option>
-                <option value="4" ng-model="response.OrganizationTypeId">Public/Governmental</option>
+            <select ng-model="response.OrganizationTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in organizationId.items" value="{{item.TypeId}}" ng-selected="response.OrganizationTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">12a. Do the employees of this organization belong to a union?</label>
-                    <div class="radio">
-                        <label><input type="radio" ng-model="response.HasUnionEmployees" value="1" />Yes</label>
-                        <label><input type="radio" ng-model="response.HasUnionEmployees" value="0" />No</label>
-                    </div>
+					<br><br>
+
+                    <input type="checkbox" ng-model="response.HasUnionEmployees" data-on-text="Yes" data-off-text="No" bs-switch>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">12b. Does this organization employ Leased/Staffed employees?</label>
-                    <div class="radio">
-                        <label for=""><input type="radio" ng-model="response.HasLeasedStaffed" value="1" />Yes</label>
-                        <label for=""><input type="radio" ng-model="response.HasLeasedStaffed" value="0" />No</label>
-                    </div>
+                   <br><br>
+
+                    <input type="checkbox" ng-model="response.HasLeasedStaffed" data-on-text="Yes" data-off-text="No" bs-switch>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">12c. Is this an Applicable Large Employer (100 or more full-time equivalent employees)?</label>
-                    <div class="radio">
-                        <label for=""><input type="radio" ng-model="response.IsApplicableLargeEmployer" value="1" />Yes</label>
-                        <label for=""><input type="radio" ng-model="response.IsApplicableLargeEmployer" value="0" />No</label>
-                    </div>
+                    <input type="checkbox" ng-model="response.IsApplicableLargeEmployer" data-on-text="Yes" data-off-text="No" bs-switch>
                 </div>
             </div>
         </div>
@@ -208,10 +204,7 @@
                     14a. Are there employees that work variable hours?
                 </a>
             </label>
-            <div class="radio">
-                <label><input type="radio" ng-model="response.HasVariableHourEmployees" value="1" />Yes</label>
-                <label><input type="radio" ng-model="response.HasVariableHourEmployees" value="0" />No</label>
-            </div>
+            <input type="checkbox" ng-model="response.HasVariableHourEmployees" data-on-text="Yes" data-off-text="No" bs-switch>
         </div>
         <div class="form-inline">
             <div class="form-group">
@@ -224,22 +217,7 @@
         <br>
         <div class="form-group">
             <label for="">15. Are Ancillary Products Offered?</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="response.AreAncillaryProductsOffered" value="1" />
-                    Yes
-                </label>
-                <label>
-                    <input type="radio" ng-model="response.AreAncillaryProductsOffered" value="0" />
-                    No
-                </label>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <button id="Submit" class="btn btn-success" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
-            <button id="Next" class="btn btn-default" ng-click="nextPage(survey)" ng-disabled="isSubmitting">Next</button>
-            <!--TODO Navigation bar -->
+            <input type="checkbox" ng-model="response.AreAncillaryProductsOffered" data-on-text="Yes" data-off-text="No" bs-switch>
         </div>
 
     </form>

@@ -6,14 +6,7 @@
         <div class="form-group">
             <label for="">1. Do you allow Early (Non-Medicare-Eligible) Retirees to continue coverage under your active plan(s) until they become Medicare-Eligible?</label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="retireePlan.HasEarlyRetireeCoverageInActivePlans" value="1">Yes
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="retireePlan.HasEarlyRetireeCoverageInActivePlans" value="0">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.HasEarlyRetireeCoverageInActivePlans" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -43,14 +36,7 @@
         <div class="form-group">
             <label for="">1. Do you wish to enter benefits for this plan?</label>
             <div class="radio">
-                <label for="">
-                    <input id="d_EnterPlanData_0" tabindex="7" checked="checked" name="d_EnterPlanData" type="radio" value="1" ng-model="retireePlan.EnterPlanData">Yes
-                </label>
-            </div>
-            <div class="radio">
-                <label for="">
-                    <input id="d_EnterPlanData_1" tabindex="8" checked="checked" name="d_EnterPlanData" type="radio" value="0" ng-model="retireePlan.EnterPlanData">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -132,14 +118,7 @@
         <div class="form-group">
             <label for="">7. Are Employer Contributions Based on the Retiree's Age or Years of Service?</label>
             <div class="radio">
-                <label for="">
-                    <input id="d_EmpContBasedOnAgeOrYearsOfSvc_0" tabindex="4" checked="checked" name="d_EmpContBasedOnAgeOrYearsOfSvc" type="radio" value="1" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc">Yes
-                </label>
-            </div>
-            <div class="radio">
-                <label for="">
-                    <input id="d_EmpContBasedOnAgeOrYearsOfSvc_1" tabindex="5" checked="checked" name="d_EmpContBasedOnAgeOrYearsOfSvc" type="radio" value="0" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -185,19 +164,13 @@
         <div class="form-group">
             <label for="">11. Is Prescription Drug Coverage Provided by Retiree Plan?</label>
             <div class="radio">
-                <label for=""><input id="d_RxCoverage_0" tabindex="10" checked="checked" name="d_RxCoverage" type="radio" value="1" ng-model="retireePlan.HasRxPlan">Yes</label>
-                <label for=""><input id="d_RxCoverage_1" tabindex="11" checked="checked" name="d_RxCoverage" type="radio" value="0" ng-model="retireePlan.HasRxPlan">No</label>
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
             <label for="">12. Is your plan reimbursed for Prescription Drugs by Medicare Part D?</label>
             <div class="radio">
-                <label for="">
-                    <input id="d_MedicarePartDReimbursment_0" tabindex="12" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="1" ng-model="retireePlan.HasMedicarePartDReimbursment">Yes
-                </label>
-                <label for="">
-                    <input id="d_MedicarePartDReimbursment_1" tabindex="13" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="0" ng-model="retireePlan.HasMedicarePartDReimbursment">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.HasMedicarePartDReimbursment" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
 
@@ -210,12 +183,7 @@
         <div class="form-group">
             <label for="">1. Do you wish to enter benefits for this plan?</label>
             <div class="radio">
-                <label for="">
-                    <input id="d_EnterPlanData_0" tabindex="1" checked="checked" name="d_EnterPlanData" type="radio" value="1" ng-model="retireePlan.EnterPlanData">Yes
-                </label>
-                <label for="">
-                    <input id="d_EnterPlanData_1" tabindex="2" checked="checked" name="d_EnterPlanData" type="radio" value="0" ng-model="retireePlan.EnterPlanData">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -287,14 +255,7 @@
         <div class="form-group">
             <label for="">6. Are Employer Contributions Based on the Retiree's Age or Years of Service?</label>
             <div class="radio">
-                <label for="">
-                    <input id="d_EmpContBasedOnAgeOrYearsOfSvc_0" tabindex="4" checked="checked" name="d_EmpContBasedOnAgeOrYearsOfSvc" type="radio" value="1" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc">Yes
-                </label>
-            </div>
-            <div class="radio">
-                <label for="">
-                    <input id="d_EmpContBasedOnAgeOrYearsOfSvc_1" tabindex="5" checked="checked" name="d_EmpContBasedOnAgeOrYearsOfSvc" type="radio" value="0" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc">No
-                </label>
+              <input type="checkbox" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -340,14 +301,14 @@
         <div class="form-group">
             <label for="">10. Is Prescription Drug Coverage Provided by Retiree Plan?</label>
             <div class="radio">
-                <label for=""><input id="d_RxCoverage_0" tabindex="10" checked="checked" name="d_RxCoverage" type="radio" value="1" ng-model="retireePlan.HasRxPlan">Yes</label>
-                <label for=""><input id="d_RxCoverage_1" tabindex="11" checked="checked" name="d_RxCoverage" type="radio" value="0" ng-model="retireePlan.HasRxPlan">No</label>
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <!-- TODO Connect ng-model -->
         <div class="form-group">
             <label for="">11. Is your plan reimbursed for Prescription Drugs by Medicare Part D?</label>
             <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
                 <label for=""><input id="d_MedicarePartDReimbursment_0" tabindex="12" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="1" ng-model="">Yes</label>
                 <label for=""><input id="d_MedicarePartDReimbursment_0" tabindex="12" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="0" ng-model="">No</label>
             </div>

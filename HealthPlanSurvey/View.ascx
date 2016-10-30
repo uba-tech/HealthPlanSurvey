@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap.css" />
         <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap-theme.css" />
         <link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap-select.min.css" />
+		<link rel="stylesheet" href="/DesktopModules/HealthPlanSurvey/Content/bootstrap-switch.min.css" />
         <link rel="styleSheet" href="/DesktopModules/HealthPlanSurvey/Content/ui-grid.min.css"/>
     </head>
     <body>
@@ -12,6 +13,7 @@
     </body>
     <!-- vendor -->
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/bootstrap-select.min.js"></script>
+	<script src="/DesktopModules/HealthPlanSurvey/Scripts/bootstrap-switch.min.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular-route.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/Scripts/angular-resource.js"></script>
@@ -21,6 +23,7 @@
     <script src="/DesktopModules/HealthPlanSurvey/javascript/app.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/javascript/routes.js"></script>
     <!-- Directives -->
+	<script src="/DesktopModules/HealthPlanSurvey/directives/bsSwitch.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/directives/swCompanyDetails.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/directives/swGeneralInfo.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/directives/swMedicalPlan.js"></script>

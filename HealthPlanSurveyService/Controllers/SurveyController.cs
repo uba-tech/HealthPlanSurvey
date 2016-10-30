@@ -4,15 +4,25 @@ using System.Net.Http;
 using System.Web.Http;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
+using DotNetNuke.Security;
+using DotNetNuke.Entities.Users;
 using UBA.Modules.HealthPlanSurveyService.Models;
 
 namespace UBA.Modules.HealthPlanSurveyService.Services
 {
     public class SurveyController : ControllerBase
     {
+        private UserInfo _currentUser;
+
+        private SurveyController()
+        {
+            _currentUser = DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
+            //_userId = _currentUser.UserID;
+            //_isAdminUser = _currentUser.IsInRole("Administrators") | _currentUser.IsInRole("");
+        }
+
         #region "Web Methods"
 
-        //[DnnAuthorize()]
         [AllowAnonymous] 
         [HttpGet()]
         public HttpResponseMessage HelloWorld()
@@ -30,7 +40,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
-        //[DnnAuthorize()]
+
+
         [AllowAnonymous]
         [HttpGet()]
         public HttpResponseMessage UsStates()
@@ -50,15 +61,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         }
 
-        //[DnnAuthorize()]
-        [AllowAnonymous] 
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Survey()
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetSurveyListData();
+                var item = dataController.GetSurveyListData(_currentUser);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -75,14 +85,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <returns></returns>
         ///  //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage SurveySummary()
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetSurveyListData();
+                var item = dataController.GetSurveyListData(_currentUser);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -124,8 +134,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="responseId"></param>
         /// <returns></returns>
-        //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage SurveyCarryForward(int responseId)
         {
@@ -149,8 +158,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="responseId"></param>
         /// <returns></returns>
-        //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage SurveySummary(int responseId)
         {
@@ -195,8 +203,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //}
 
 
-        //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpPut()]
         public HttpResponseMessage Survey(SurveyResponseItem survey)
         {
@@ -214,8 +221,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
-        //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpPost()]
         public HttpResponseMessage Survey(int responseId, int status)
         {

@@ -7,12 +7,7 @@
         <div class="form-group">
             <label for="">Do you wish to enter information on this plan?</label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="activePlan.EnterPlanData" value="1">Yes
-                </label>
-                <label for="">
-                    <input type="radio" ng-model="activePlan.EnterPlanData" value="0">No
-                </label>
+              <input type="checkbox" ng-model="activePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <hr>
@@ -23,7 +18,7 @@
 			</a></label>
             <input id="d_PlanNameOrNo" class="form-control" tabindex="1" name="d_PlanNameOrNo" type="text" ng-model="activePlan.PlanName" />
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as anActivePlan" tablename="ActivePlanType">
             <label for="">
 			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this Survey, plan types are defined as:<br /><br />
 					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level.<br /><br />
@@ -34,20 +29,15 @@
 					Note: Plans will be designated CDHP (Consumer Directed Health Plans) if they include either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account). All CDHP plans will also be reported as PPO, HMO, POS, EPO, or FFS, as defined above.">
 				2.Type of Plan
 			</a></label>
-            <select name="" id="basic" class="selectpicker form-control show-tick">
-                <option value="0">Nothing Selected</option>
-                <option value="1" ng-model="activePlan.ActivePlanTypeId">EPO (Exclusive Provider Organization)</option>
-                <option value="2" ng-model="activePlan.ActivePlanTypeId">FFS (Fee-for-Service/Indemnity)</option>
-                <option value="3" ng-model="activePlan.ActivePlanTypeId">HMO (Health Maintenance Organization)</option>
-                <option value="4" ng-model="activePlan.ActivePlanTypeId">POS (Point-of-Service)</option>
-                <option value="5" ng-model="activePlan.ActivePlanTypeId">PPO (Preferred Provider Organization)</option>
+            <select ng-model="activePlan.ActivePlanTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in anActivePlan.items" value="{{item.TypeId}}" ng-selected="activePlan.ActivePlanTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="">
 			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A plan is considered grandfathered if it met all PPACA requirements to remain grandfathered for the year that is being reported. <br /><br />
 					To be considered grandfathered, a plan must look at its benefits and contribution levels as of March 23, 2010 and must not: <br /><br />
-					Eliminate or substantially eliminate benefits for a particular condition<br /><br /> 
+					Eliminate or substantially eliminate benefits for a particular condition<br /><br />
 					-  For example, if a plan covered counseling and prescription drugs to treat certain mental and nervous disorders and eliminates coverage for counseling, the plan will lose grandfathered status. <br /><br />
 					Increase cost-sharing percentages <br /><br />
 					-  For example, if the plan had an 80 percent coinsurance rate in March 2010 and decreases the rate to 70 percent, the plan will lose grandfathered status. <br /><br />
@@ -62,12 +52,7 @@
 				3.Is this a grandfathered plan?
 			</a></label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="activePlan.IsPlanGrandfathered" value="1">Yes
-                </label>
-                <label for="">
-                    <input type="radio" ng-model="activePlan.IsPlanGrandfathered" value="0">No
-                </label>
+              <input type="checkbox" ng-model="activePlan.IsPlanGrandfathered" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -76,12 +61,7 @@
 			4.Is this a grandmothered plan (pre-PPACA plan allowed by your state)?
 			</a></label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="activePlan.IsPlanGrandmothered" value="1">Yes
-                </label>
-                <label>
-                    <input type="radio" ng-model="activePlan.IsPlanGrandmothered" value="0">No
-                </label>
+              <input type="checkbox" ng-model="activePlan.IsPlanGrandmothered" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -90,13 +70,10 @@
 					A MERP is a Medical Expense Reimbursement Plan (Section 105(h))">
 				5. Does this Plan Include:
 			</a></label>
-            <select name="" id="basic" class="selectpicker form-control show-tick">
-                <option value="0">Nothing Selected</option>
-                <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">HRA (Health Reimbursement Arrangement)</option>
-                <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">HSA (Health Savings Account)</option>
-                <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">MERP (Medical Expense Reimbursement Plan)</option>
-                <option value="1" id="d_HRAIncluded" tabindex="10" name="d_HRAIncluded" ng-model="activePlan.IsHRAIncluded">None of the Above</option>
-            </select>
+			<div><input id="d_HRAIncluded" checked="checked" name="d_HRAIncluded" type="checkbox" ng-model="activePlan.IsHRAIncluded" /> HRA (Health Reimbursement Arrangement)</div>
+			<div><input id="d_HSAIncluded" checked="checked" name="d_HSAIncluded" type="checkbox" ng-model="activePlan.IsHSAIncluded" /> HSA (Health Savings Account)</div>
+			<div><input id="d_MERPIncluded" checked="checked" name="d_MERPIncluded" type="checkbox" ng-model="activePlan.IsMERPIncluded" /> MERP (Medical Expense Reimbursement Plan)</div>
+			<div><input id="d_IsHRAHSAMERP_NoneOfTheAbove" checked="checked" name="d_IsHRAHSAMERP_NoneOfTheAbove" type="checkbox" ng-model="activePlan.IsHRAHSAMERP_NoneOfTheAbove" /> None of the Above</div>
         </div>
         <div class="form-group">
             <label for="">
@@ -113,18 +90,14 @@
                 </label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as premiumTier" tablename="PremiumTierType">
             <label for="">
 			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="You may select one of three types of premium tier structures:  Two-Tier, Three-Tier, or Four-Tier.  You may submit data on plans which have more than four tiers by converting all enrollment, premium rates, and contribution information into a Four-Tier format.<br /><br />
 					For example, if your plan has five tiers: Employee Only, Employee + one child, Employee + two or more children, Employee + Spouse, and Employee + Spouse + Child(ren), combine the two EE+CH tiers into one by multiplying the rate for each EE+CH tier by the number of employees electing that tier, add the results, and then divide by the total number of employees electing the two tiers.">
 				7. Please indicate the Number of Health Plan Premium Tiers
 			</a></label>
-            <select name="" id="basic" class="selectpicker form-control show-tick">
-                <option value="0">Nothing Selected</option>
-                <option value="1" ng-model="activePlan.PremiumTierTypeId">2 (Single &amp; Family)</option>
-                <option value="2" ng-model="activePlan.PremiumTierTypeId">3 (Single, Employee + 1, Employee + 2 or more)</option>
-                <option value="3" ng-model="activePlan.PremiumTierTypeId">4 (Single, Employee + Child/Children, Employee + Spouse, Family)</option>
-                <option value="4" ng-model="activePlan.PremiumTierTypeId">5 or More</option>
+            <select ng-model="response.PremiumTierTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in premiumTier.items" value="{{item.TypeId}}" ng-selected="response.PremiumTierTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -152,7 +125,7 @@
 			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the most common errors made when entering Premium information are:<br /><br />
 					1)  Not rounding to the nearest dollar amount.  2)  Entering the total premium for all employees enrolled in a tier, rather than the premium rate per unit applicable to each employee.  3)  For Self-Funded plans, entering only the fixed costs (administration and/or stop-loss premium), rather than the total premium equivalent rates (i.e. COBRA rates less 2%).<br /><br />
 					For purposes of this survey, all non-single premium rates should include the premium rate for single coverage.  For example, if the Employee Only rate is $200 and the ADDITIONAL premium for the Spouse is $210, <u>the Employee + Spouse rate is $410</u>.">
-				9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate per Month (including Prescription Drugs) rounded to the nearest dollar. 
+				9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate per Month (including Prescription Drugs) rounded to the nearest dollar.
 			</a></label>
             <div class="row">
                 <div class="col-md-4">&nbsp;</div>
@@ -247,12 +220,7 @@
                 10. Tobacco surcharge from carrier?
             </a></label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="activePlan.HasTobaccoSurcharge" value="1">Yes
-                </label>
-                <label for="">
-                    <input type="radio" ng-model="activePlan.HasTobaccoSurcharge" value="0">No
-                </label>
+              <input type="checkbox" ng-model="activePlan.HasTobaccoSurcharge" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
         <div class="form-group">
@@ -261,23 +229,16 @@
                 11. Are Employee Contributions Based on a Percentage of Salary?
             </a></label>
             <div class="radio">
-                <label for="">
-                    <input type="radio" ng-model="activePlan.AreContributionsBasedOnPercentageOfSalary" value="1">Yes
-                </label>
-                <label for="">
-                    <input type="radio" ng-model="activePlan.AreContributionsBasedOnPercentageOfSalary" value="0">No
-                </label>
+              <input type="checkbox" ng-model="activePlan.AreContributionsBasedOnPercentageOfSalary" data-on-text="Yes" data-off-text="No" bs-switch>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as contributionBasis" tablename="ContributionBasisType">
             <label for="">
 			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Remember that the question requests employEE contributions, not the employER share of premium.">
                 12. Are Employee Contributions to be entered based on
             </a></label>
-            <select name="" id="basic" class="selectpicker form-control show-tick">
-                <option value="0">Nothing Selected</option>
-                <option value="1" ng-model="activePlan.ContributionBasisTypeId">Dollar Amount</option>
-                <option value="2" ng-model="activePlan.ContributionBasisTypeId">Percentage of Premium</option>
+            <select ng-model="activePlan.ContributionBasisTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in contributionBasis.items" value="{{item.TypeId}}" ng-selected="activePlan.ContributionBasisTypeId == item.TypeId">{{item.Name}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -496,12 +457,7 @@
                 <div class="form-group">
                     <label for="">16. Does your Plan have Specific Stop-Loss Insurance?</label>
                     <div class="radio">
-                        <label for="">
-                            <input type="radio" ng-model="activePlan.HasSpecificStopLossCoverage" value="1">Yes
-                        </label>
-                        <label for="">
-                            <input type="radio" ng-model="activePlan.HasSpecificStopLossCoverage" value="0">No
-                        </label>
+                      <input type="checkbox" ng-model="activePlan.HasSpecificStopLossCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
                     </div>
                 </div>
             </div>
@@ -509,12 +465,7 @@
                 <div class="form-group">
                     <label for="">17. Does your Plan have Aggregate Stop-Loss Insurance?</label>
                     <div class="radio">
-                        <label for="">
-                            <input type="radio" ng-model="activePlan.HasAggregateStopLossCoverage" value="1">Yes
-                        </label>
-                        <label for="">
-                            <input type="radio" ng-model="activePlan.HasAggregateStopLossCoverage" value="0">No
-                        </label>
+                      <input type="checkbox" ng-model="activePlan.HasAggregateStopLossCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
                     </div>
                 </div>
             </div>
@@ -629,16 +580,14 @@
         <br>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" ng-controller="ReferenceController as medicalExpenseReimbursementRenewalRate" tablename="MedicalExpenseReimbursementRenewalRateType">
                     <label for="">
 					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For HRA or HSA plan renewal rates, is this the first year for the HRA/HSA plan?">
                         22. For Plans that include an HRA or HSA
                     </a></label>
-                    <select name="" id="basic" class="selectpicker form-control show-tick">
-                        <option value="0">Nothing Selected</option>
-                        <option value="1" ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId">Renewal Rates apply to an HRA/HSA plan that was in place last year</option>
-                        <option value="2" ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId">Renewal Rates reflect a first-time move to a consumer-driven health plan (CDHP)</option>
-                    </select>
+            <select ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in medicalExpenseReimbursementRenewalRate.items" value="{{item.TypeId}}" ng-selected="activePlan.MedicalExpenseReimbursementRenewalRateTypeId == item.TypeId">{{item.Name}}</option>
+            </select>
                 </div>
             </div>
             <div class="col-md-6">
