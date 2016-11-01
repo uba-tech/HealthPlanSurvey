@@ -4,4 +4,4 @@ C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.dll
 C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.pdb
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Debug\HealthPlanSurvey.dll
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Debug\HealthPlanSurvey.pdb
-C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Debug\HealthPlanSurvey.csprojResolveAssemblyReference.cache
+C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.dll.config

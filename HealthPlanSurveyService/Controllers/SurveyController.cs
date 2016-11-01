@@ -223,12 +223,12 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpPost()]
-        public HttpResponseMessage Survey(int responseId, int status)
+        public HttpResponseMessage BrokerDelete(int responseId)
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                dataController.ChangeStatus(responseId, status);
+                dataController.ChangeStatus(responseId, 2);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)

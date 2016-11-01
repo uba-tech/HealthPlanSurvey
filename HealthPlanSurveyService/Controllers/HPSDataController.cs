@@ -70,6 +70,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                             ,[LargestLocationStateId]
                             ,[LargestLocationZipCode]
                             ,[IsControlledGroup]
+                            ,[NAICSCode]
                             ,[NAICSMasterCodeId]
                             ,[OrganizationTypeId]
                             ,[HasUnionEmployees]
@@ -227,7 +228,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                       ,[UpdatedByUserID]
                       ,[SelfFundedDeductible]
                       ,[HasReinsuranceCaptible]
-                      ,[AleEmployerStrategy]
+                      ,[AleEmployerStrategyTypeId]
                       FROM [dbo].[SurveyResponse_ActivePlan]
                     WHERE ResponseId = @0";
         string SurveyResponse_RxPlanSql = @"SELECT [RxPlanId]
@@ -688,6 +689,48 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         }
         #endregion
 
+        #region Users
+        //Get the list of Users.
+        public IEnumerable<Person> GetUsers()
+        {
+            IEnumerable<Person> t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.Fetch<Person>(@"SELECT
+                                                u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
+                                                u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId, 
+                                                FROM Users u 
+                                                LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
+                                                ORDER BY u.LastName, u.FirstName");
+                t = result;
+            }
+            return t;
+
+        }
+
+        //Get this User.
+        public Person GetUserById(int userId)
+        {
+            string sql = string.Format(@"SELECT
+                            u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
+                            u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId, 
+                            FROM Users u 
+                            LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
+                            AND u.UserID = {0}
+                            ORDER BY u.LastName, u.FirstName", userId);
+
+            Person t;
+            using (hpsDB db = new hpsDB())
+            {
+                var result = db.SingleOrDefault<Person>(sql);
+                t = result;
+            }
+            return t;
+
+        }
+
+        #endregion
+
         #region Miscellaneous
 
         //Get the list of US States.
@@ -753,6 +796,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             return t;
 
         }
+
+
         #endregion
     }
 }

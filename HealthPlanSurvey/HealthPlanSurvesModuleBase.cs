@@ -11,6 +11,7 @@
 */
 
 using System;
+using DotNetNuke;
 using DotNetNuke.Entities.Modules;
 
 namespace UBA.Modules.HealthPlanSurvey
