@@ -23,7 +23,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="">3. Premium Contribution Strategy (for companies offering multiple plans)</label>
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="ER means employer. EE means employee.">
+				3. Premium Contribution Strategy (for companies offering multiple plans)
+			</a></label>
             <select name="" id="" class="form-control">
                 <option ng-model="response.PremiumContributionStrategyTypeId" value="1">ER pays same dollar amount for each plan</option>
                 <option ng-model="response.PremiumContributionStrategyTypeId" value="2">ER pays same percentage amount for each plan</option>
@@ -35,11 +38,17 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="">4. Minimum Number of Hours per Week for Full-Time Eligibility <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)</label>
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The minimum number of hours per week required for an employee to be considered a full-time employee.  If your company's definition of full-time eligibility is based on a period other than per week, please convert the number of hours to a per week equivalent.<br /><br />For example, if the company's definition of full-time eligibility is '80 hours within a two-week period', please select '40 hours per week'.">
+				4. Minimum Number of Hours per Week for Full-Time Eligibility <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
+			</a></label>
             <select ng-model="response.FullTimeHoursPerWeekTypeId" ng-options="x for (x,y) in FullTimeHoursPerWeekType" class="form-control"></select>
         </div>
         <div class="form-group">
-            <label for="">5. Eligibility Waiting Period for Full-Time Employees: <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)</label>
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The period of time between the date hired and the earliest date coverage under the medical plan can begin.">
+				5. Eligibility Waiting Period for Full-Time Employees: <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
+			</a></label>
             <select ng-model="response.EligibleWaitingPeriodTypeId" ng-options="x for (x,y) in EligibleWaitingPeriodType" class="form-control"></select>
         </div>
         <div class="form-group">
@@ -54,7 +63,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="">7. If yes, how much per year? (round to nearest dollar)</label>
+            <label for="">
+        			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the question requests an ANNUAL amount, not a monthly or per-pay amount.">
+        				7. If yes, how much per year? (round to nearest dollar)
+        			</a>
+            </label><br />
             <label for="">Single</label>
             <input id="d_OptOutBonus_Single" tabindex="20" maxlength="6" name="d_OptOutBonus_Single" size="13" type="text" ng-model="response.OptOutBonusAmt_Single" class="form-control">
             <label for="">Family</label>

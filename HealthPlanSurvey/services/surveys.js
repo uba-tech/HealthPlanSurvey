@@ -6,8 +6,15 @@
         update: {
             method: "PUT"
         },
-        changeStatus: {
-            method: "POST"
+        getTemplate:{
+           url: '/DesktopModules/HealthPlanSurveyService/API/survey/ResponseTemplate/',
+           method: "GET",
+           isArray:false
+        },
+        brokerDelete:{
+           url: '/DesktopModules/HealthPlanSurveyService/API/survey/brokerdelete/',
+           method: "POST",
+           isArray:false
         }
     });
 });

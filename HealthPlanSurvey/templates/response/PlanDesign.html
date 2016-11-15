@@ -1,6 +1,13 @@
 <div>
     <div class="page-header">
-        <h4>Plan Design</h4>
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Plan Design - {{design.PlanName}}</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{design.ResponseId}}</h4>
+            </div>
+        </div>
     </div>
 
     <form action="">
@@ -23,8 +30,8 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A Separate Inpatient Deductible or CoPay is a portion of the covered expenses for each hospital stay which must be paid by the patient. It is separate from, and in addition to the plan's annual deductible. Some plans (many HMO's, for example) have a Separate In-Hospital Deductible or CoPay, but no annual deductible.<br /><br />
-							If the plan has a Separate In-Hospital Deductible or CoPay that is assessed per day of the stay, check the 'Per Day' box.<br /><br />
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A Separate Inpatient Deductible or CoPay is a portion of the covered expenses for each hospital stay which must be paid by the patient. It is separate from, and in addition to the plan's annual deductible. Some plans (many HMO's, for example) have a Separate In-Hospital Deductible or CoPay, but no annual deductible.<br><br>
+							If the plan has a Separate In-Hospital Deductible or CoPay that is assessed per day of the stay, check the 'Per Day' box.<br><br>
 							If the plan has no Separate In-Hospital Deductible or CoPay, check the 'None' box.">
 						Separate In-Hospital Ded. or copay
 					</a></p>
@@ -74,7 +81,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.<br /><br />
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.<br><br>
 							If the plan does not require an Annual Deductible before Co-insurance is applied, check the 'None' box.">
 						Annual Plan Deductible (Single)
 					</a></p>
@@ -104,7 +111,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.  If the family deductible is equal to the single deductible times the number of covered members, check the box labled 'xEE.'<br /><br />
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.  If the family deductible is equal to the single deductible times the number of covered members, check the box labled 'xEE.'<br><br>
 							If the plan does not require an Annual Deductible before Co-insurance is applied, check the 'None' box.">
 						Annual Plan Deductible (Family)
 					</a></p>
@@ -164,12 +171,18 @@
                     <p for="">Plan Co-insurance %</p>
                 </div>
                 <div class="col-md-2">
-                    <select id="basic" class="selectpicker form-control show-tick" ng-model="design.PlanCoinsurancePct_InNetwork" ng-options="x for (x,y) in PlanCoinsurancePct_InNetwork"></select>
+                  <div class="input-group">
+                    <input id="d_PlanCoinsurancePct_InNetwork" tabindex="17" class="form-control"name="d_PlanCoinsurancePct_InNetwork" type="text" ng-model="design.PlanCoinsurancePct_InNetwork" />
+                    <div class="input-group-addon">%</div>
+                  </div>
                 </div>
                 <div class="col-md-1">&nbsp;</div>
                 <div class="col-md-2">&nbsp;</div>
                 <div class="col-md-2">
-                    <select id="basic" class="selectpicker form-control show-tick" ng-model="design.PlanCoinsurancePct_OutOfNetwork" ng-options="x for (x,y) in PlanCoinsurancePct_OutOfNetwork"></select>
+                  <div class="input-group">
+                    <input id="d_PlanCoinsurancePct_OutOfNetwork" tabindex="18" class="form-control" name="d_PlanCoinsurancePct_OutOfNetwork" type="text" ng-model="design.PlanCoinsurancePct_OutOfNetwork" />
+                    <div class="input-group-addon">%</div>
+                  </div>
                 </div>
                 <div class="col-md-1">&nbsp;</div>
                 <div class="col-md-2">&nbsp;</div>
@@ -178,8 +191,8 @@
             <div class="row">
                 <div class="col-md-2">
                     <p for="">
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the definition of Annual Out-of-Pocket Maximum (Single) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Annual Out-of-Pocket Maximum means the annual maximum amount an employee actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).  It is very important to enter an amount consistent with the definition provided for this Survey.<br /><br />
-							Example: The Plan has a $500 deductible, then pays 80% of the next $5,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $1,500 ($500 deductible plus $1,000 (the employee's 20% share of the next $5,000)).<br /><br />
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the definition of Annual Out-of-Pocket Maximum (Single) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Annual Out-of-Pocket Maximum means the annual maximum amount an employee actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).  It is very important to enter an amount consistent with the definition provided for this Survey.<br><br>
+							Example: The Plan has a $500 deductible, then pays 80% of the next $5,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $1,500 ($500 deductible plus $1,000 (the employee's 20% share of the next $5,000)).<br><br>
 							If there is no Out-of-Pocket Maximum, check 'None'.">
 						Annual Out-of-Pocket Maximum (Single)
 					</a></p>
@@ -193,7 +206,7 @@
                 <div class="col-md-1">
                     <div class="checkbox">
                         <label for="">
-                            <input id="d_AnnualOOPMax_Single_InNetwork_None" tabindex="20" checked="checked" name="d_AnnualOOPMax_Single_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Single_InNetwork" /> None
+                            <input id="d_AnnualOOPMax_Single_InNetwork_None" tabindex="20" checked="checked" name="d_AnnualOOPMax_Single_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Single_InNetwork" />None
                         </label>
                     </div>
                 </div>
@@ -216,10 +229,10 @@
             <hr>
             <div class="row">
                 <div class="col-md-2">
-				<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the definition of Annual Out-of-Pocket Maximum (Family) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Out-of-Pocket = The annual maximum amount a family actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).<br /><br />
-						The Annual Out-of-Pocket Maximum (Family) limit is often two times or three times the single Annual Out-of-Pocket Maximum (Single).<br /><br />
-						Example: The Plan has a $1,000 family deductible, then pays 80% of the next $10,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $3,000 ($1,000 deductible plus $2,000 (the family's 20% share of the next $10,000)).<br /><br />
-						If the Family Out-of-Pocket Maximum is equal to the Single Out-of-Pocket Maximum times the number of covered members, check the box labeled 'xEE.'<br /><br />
+				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the definition of Annual Out-of-Pocket Maximum (Family) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Out-of-Pocket = The annual maximum amount a family actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).<br><br>
+						The Annual Out-of-Pocket Maximum (Family) limit is often two times or three times the single Annual Out-of-Pocket Maximum (Single).<br><br>
+						Example: The Plan has a $1,000 family deductible, then pays 80% of the next $10,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $3,000 ($1,000 deductible plus $2,000 (the family's 20% share of the next $10,000)).<br><br>
+						If the Family Out-of-Pocket Maximum is equal to the Single Out-of-Pocket Maximum times the number of covered members, check the box labeled 'xEE.'<br><br>
 						If there is no Out-of-Pocket Maximum, check 'None'.">
 					Annual Out-of-Pocket Maximum (Family)
 				</a></div>
@@ -231,12 +244,16 @@
                 </div>
                 <div class="col-md-1">
                     <div class="checkbox">
-                        <input id="d_AnnualOOPMax_Family_InNetwork_None" tabindex="24" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_InNetwork" /> None
+                      <label for="">
+                        <input id="d_AnnualOOPMax_Family_InNetwork_None" tabindex="24" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_InNetwork" />None
+                      </label>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="checkbox">
-                        <input id="d_AnnualOOPMax_Family_InNetwork_xEE" tabindex="25" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_InNetwork" /> xEE
+                      <label for="">
+                        <input id="d_AnnualOOPMax_Family_InNetwork_xEE" tabindex="25" checked="checked" name="d_AnnualOOPMax_Family_InNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_InNetwork" />xEE
+                      </label>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -247,12 +264,16 @@
                 </div>
                 <div class="col-md-1">
                     <div class="checkbox">
-                        <input id="d_AnnualOOPMax_Family_OutNetwork_None" tabindex="27" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_OutOfNetwork" /> None
+                      <label for="">
+                        <input id="d_AnnualOOPMax_Family_OutNetwork_None" tabindex="27" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_None" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_Family_OutOfNetwork" />None
+                      </label>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="checkbox">
-                        <input id="d_AnnualOOPMax_Family_OutNetwork_xEE" tabindex="28" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_OutOfNetwork" /> xEE
+                      <label for="">
+                        <input id="d_AnnualOOPMax_Family_OutNetwork_xEE" tabindex="28" checked="checked" name="d_AnnualOOPMax_Family_OutNetwork_xEE" type="checkbox" value="1" ng-model="design.HasAnnualOutOfPocketMax_xEE_Family_OutOfNetwork" />xEE
+                      </label>
                     </div>
                 </div>
             </div>
@@ -261,9 +282,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2">
-				<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="'Minimum value coverage' is coverage with an actuarial value of at least 60% – this means that on average the plan is designed to pay at least 60% of covered charges.">
-					Minimum Value Coverage
-				</a></div>
+          				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="'Minimum value coverage' is coverage with an actuarial value of at least 60% – this means that on average the plan is designed to pay at least 60% of covered charges.">
+          					Minimum Value Coverage
+          				</a>
+                </div>
                 <div class="col-md-2">
                     <div class="radio">
                       <input type="checkbox" ng-model="design.HasMinValueCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -273,7 +295,7 @@
             <br>
             <div class="row">
                 <div class="col-md-2">
-				<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="'Minimum essential coverage' includes any plan offered in the small or large group market in a state, as well as self-funded plans, unless the plan only provides “excepted benefits.” Excepted benefits are those that provide very limited medical coverage, like hospital indemnity, long-term care and cancer plans, on-site medical clinics, disability income and accident plans, and dental- and vision-only coverage. A health reimbursement arrangement (HRA) is considered minimum essential coverage.">
+				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="'Minimum essential coverage' includes any plan offered in the small or large group market in a state, as well as self-funded plans, unless the plan only provides “excepted benefits.” Excepted benefits are those that provide very limited medical coverage, like hospital indemnity, long-term care and cancer plans, on-site medical clinics, disability income and accident plans, and dental- and vision-only coverage. A health reimbursement arrangement (HRA) is considered minimum essential coverage.">
 					Minimum Essential Coverage
 				</a></div>
                 <div class="col-md-2">
@@ -285,14 +307,8 @@
             <br>
             <div class="row">
                 <div class="col-md-2">Metal Level (for groups of fewer than 50)</div>
-                <div class="col-md-2">
-                    <select name="" id="basic" class="selectpicker form-control show-tick" data-width="fit">
-                        <option value="0">Nothing Selected</option>
-                        <option value="1" ng-model="design.HasMinValueCoverage">Platinum</option>
-                        <option value="2" ng-model="design.HasMinValueCoverage">Gold</option>
-                        <option value="3" ng-model="design.HasMinValueCoverage">Silver</option>
-                        <option value="4" ng-model="design.HasMinValueCoverage">Bronze</option>
-                    </select>
+                <div class="col-md-2" ng-controller="ReferenceController as planDesignMetalLevel" tablename="PlanDesignMetalLevelType">
+                  <select ng-model="design.PlanDesignMetalLevelTypeId" ng-options="item.TypeId as item.Name for item in planDesignMetalLevel.items" class="selectpicker form-control show-tick"></select>
                 </div>
             </div>
             <br>
@@ -344,80 +360,78 @@
             <br>
             <div class="form-group">
                 <label for="">
-				<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A CoPay is a small payment required each time a service is provided.  Covered charges in excess of the CoPay amount do not apply to the annual deductible and may be covered and reimbursed at 100% or less.<br /><br />
+				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A CoPay is a small payment required each time a service is provided.  Covered charges in excess of the CoPay amount do not apply to the annual deductible and may be covered and reimbursed at 100% or less.<br><br>
 						If the services are subject to the annual deductible and Co-insurance, check 'No CoPay.'">
 					26. Copay amounts for in-network benefits (if your plan does not require a copay for the copay service listed, please check the "No Copay" box)
 				</a></label>
                 <div class="row">
-                    <div class="col-md-4">&nbsp;</div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">&nbsp;</div>
+                    <div class="col-md-3">
                         <p class="text-center"><strong>Copay</strong></p>
                     </div>
-                    <div class="col-md-4">&nbsp;</div>
+                    <div class="col-md-3">&nbsp;</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <p>Primary Care Physician PCP copay</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input id="d_Copay_PCP" class="form-control" tabindex="47" maxlength="4" name="d_Copay_PCP" size="13" type="text" ng-model="design.CopayAmt_PCP" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input id="d_Copay_PCP_None" tabindex="48" checked="checked" name="d_Copay_PCP_None" type="checkbox" value="1" ng-model="design.HasCopay_PCP" /> No copay
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">Specialty Care Physician (SCP) copay</div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">Specialty Care Physician (SCP) copay</div>
+                    <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input id="d_Copay_SCP" class="form-control" tabindex="49" maxlength="4" name="d_Copay_SCP" size="13" type="text" ng-model="design.CopayAmt_SCP" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input id="d_Copay_SCP_None" tabindex="50" checked="checked" name="d_Copay_SCP_None" type="checkbox" value="1" ng-model="design.HasCopay_SCP" /> No copay
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">Urgent Care copay</div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">Urgent Care copay</div>
+                    <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input id="d_Copay_UR" class="form-control" tabindex="51" maxlength="4" name="d_Copay_UR" size="13" type="text" ng-model="design.CopayAmt_UrgentCare" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input id="d_Copay_UR_None" tabindex="52" checked="checked" name="d_Copay_UR_None" type="checkbox" value="1" ng-model="design.HasCopay_UrgentCare" /> No copay
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">Emergency Room (ER) copay</div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">Emergency Room (ER) copay</div>
+                    <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input id="d_Copay_ER" class="form-control" tabindex="53" maxlength="4" name="d_Copay_ER" size="13" type="text" ng-model="design.CopayAmt_ER" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input id="d_Copay_ER_None" tabindex="54" checked="checked" name="d_Copay_ER_None" type="checkbox" value="1" ng-model="design.HasCopay_ER" /> No copay
                     </div>
                 </div>
             </div>
             <div class="form-group" ng-controller="ReferenceController as infertilityCoverage" tablename="InfertilityCoverageType">
                 <label for="">29. Infertility Coverage</label>
-            <select ng-model="design.InfertilityCoverageTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in infertilityCoverage.items" value="{{item.TypeId}}" ng-selected="design.InfertilityCoverageTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+                <select ng-model="design.InfertilityCoverageTypeId" ng-options="item.TypeId as item.Name for item in infertilityCoverage.items" class="selectpicker form-control show-tick"></select>
             </div>
             <div class="form-group">
                 <label for="">
-				<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this survey, a wellness plan must contain at least one of the elements noted in the question.  If your plan does not contain any of these elements, please select 'No'.">
+				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For purposes of this survey, a wellness plan must contain at least one of the elements noted in the question.  If your plan does not contain any of these elements, please select 'No'.">
 					30. Has your Company implemented a Wellness Program that contains any of these: Health Risk Assessment Seminars/Workshops, Physical Exam, Blood Draw, or Other Biometric Testing, Coaching - either telephone or on-site, or Incentives/Rewards?
 				</a></label>
                 <div class="radio">
@@ -436,21 +450,21 @@
             <div class="form-group">
                 <label for="">32. What Components are Included in the Wellness Program? (check all that apply)</label>
                 <div class="checkbox">
-                    <label><input id="d_Wellness_HealthRiskAssessment" tabindex="15" checked="checked" name="d_Wellness_HealthRiskAssessment" type="checkbox" value="1" ng-model="design.HasWellness_HealthRiskAssessment" /> Health Risk Assessment</label><br />
-                    <label><input id="d_Wellness_SeminarsWorkshops" tabindex="16" checked="checked" name="d_Wellness_SeminarsWorkshops" type="checkbox" value="1" ng-model="design.HasWellness_SeminarsWorkshops" /> Seminars/Workshops</label><br />
-                    <label><input id="d_Wellness_PhysicalExamBloodDraw" tabindex="17" checked="checked" name="d_Wellness_PhysicalExamBloodDraw" type="checkbox" value="1" ng-model="design.HasWellness_PhysicalExamBloodDraw" /> Physical Exam, Blood Draw, or Other Biometric Testing</label><br />
-                    <label><input id="d_Wellness_Coaching" tabindex="18" checked="checked" name="d_Wellness_Coaching" type="checkbox" value="1" ng-model="design.HasWellness_Coaching" /> Coaching - either telephone or on-site</label><br />
-                    <label><input id="d_Wellness_Incentives" tabindex="19" checked="checked" name="d_Wellness_Incentives" type="checkbox" value="1" ng-model="design.HasWellness_Incentives" /> Incentives/Rewards</label><br />
-                    <label><input id="d_Wellness_WebPortal" tabindex="20" checked="checked" name="d_Wellness_WebPortal" type="checkbox" value="1" ng-model="design.HasWellness_WebPortal" /> Web Portal</label><br />
+                    <label><input id="d_Wellness_HealthRiskAssessment" tabindex="15" checked="checked" name="d_Wellness_HealthRiskAssessment" type="checkbox" value="1" ng-model="design.HasWellness_HealthRiskAssessment" /> Health Risk Assessment</label><br>
+                    <label><input id="d_Wellness_SeminarsWorkshops" tabindex="16" checked="checked" name="d_Wellness_SeminarsWorkshops" type="checkbox" value="1" ng-model="design.HasWellness_SeminarsWorkshops" /> Seminars/Workshops</label><br>
+                    <label><input id="d_Wellness_PhysicalExamBloodDraw" tabindex="17" checked="checked" name="d_Wellness_PhysicalExamBloodDraw" type="checkbox" value="1" ng-model="design.HasWellness_PhysicalExamBloodDraw" /> Physical Exam, Blood Draw, or Other Biometric Testing</label><br>
+                    <label><input id="d_Wellness_Coaching" tabindex="18" checked="checked" name="d_Wellness_Coaching" type="checkbox" value="1" ng-model="design.HasWellness_Coaching" /> Coaching - either telephone or on-site</label><br>
+                    <label><input id="d_Wellness_Incentives" tabindex="19" checked="checked" name="d_Wellness_Incentives" type="checkbox" value="1" ng-model="design.HasWellness_Incentives" /> Incentives/Rewards</label><br>
+                    <label><input id="d_Wellness_WebPortal" tabindex="20" checked="checked" name="d_Wellness_WebPortal" type="checkbox" value="1" ng-model="design.HasWellness_WebPortal" /> Web Portal</label><br>
                     <label><input id="d_Wellness_Other" tabindex="21" checked="checked" name="d_Wellness_Other" type="checkbox" value="1" ng-model="design.HasWellness_Other" /> Other</label>
                 </div>
             </div>
             <div class="form-group">
                 <label for="">33. What Incentives are Included?</label>
                 <div class="checkbox">
-                    <label><input id="d_WellnessIncentives_EmployeeBenefits" tabindex="21" checked="checked" name="d_WellnessIncentives_EmployeeBenefits" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PremiumReduction" /> Contribution to Employee Benefits (premium reduction contributions to Section 125, 401(k), etc.)</label><br />
-                    <label><input id="d_WellnessIncentives_HealthClubDues" tabindex="22" checked="checked" name="d_WellnessIncentives_HealthClubDues" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_HealthClubDues" /> Gift Certificates or Health Club Dues</label><br />
-                    <label><input id="d_WellnessIncentives_PaidTimeOff" tabindex="23" checked="checked" name="d_WellnessIncentives_PaidTimeOff" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PaidTimeOff" /> Paid Time Off (sick pay, vacation pay)</label><br />
+                    <label><input id="d_WellnessIncentives_EmployeeBenefits" tabindex="21" checked="checked" name="d_WellnessIncentives_EmployeeBenefits" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PremiumReduction" /> Contribution to Employee Benefits (premium reduction contributions to Section 125, 401(k), etc.)</label><br>
+                    <label><input id="d_WellnessIncentives_HealthClubDues" tabindex="22" checked="checked" name="d_WellnessIncentives_HealthClubDues" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_HealthClubDues" /> Gift Certificates or Health Club Dues</label><br>
+                    <label><input id="d_WellnessIncentives_PaidTimeOff" tabindex="23" checked="checked" name="d_WellnessIncentives_PaidTimeOff" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_PaidTimeOff" /> Paid Time Off (sick pay, vacation pay)</label><br>
                     <label><input id="d_WellnessIncentives_Min" tabindex="24" checked="checked" name="d_WellnessIncentives_Min" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_Min" /> Minimum Incentive</label><br>
                     <label><input id="d_WellnessIncentives_Other" tabindex="24" checked="checked" name="d_WellnessIncentives_Other" type="checkbox" value="1" ng-model="design.HasWellnessIncentives_Other" /> Other</label>
                 </div>

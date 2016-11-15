@@ -1,4 +1,64 @@
 ﻿<style>
+.fixed {
+position: fixed;
+}
+
+/* sidebar */
+.bs-docs-sidebar {
+padding-left: 20px;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+/* all links */
+.bs-docs-sidebar .nav>li>a {
+color: #999;
+border-left: 2px solid transparent;
+padding: 4px 20px;
+font-size: 13px;
+font-weight: 400;
+}
+
+/* nested links */
+.bs-docs-sidebar .nav .nav>li>a {
+padding-top: 1px;
+padding-bottom: 1px;
+padding-left: 30px;
+font-size: 12px;
+}
+
+/* active & hover links */
+.bs-docs-sidebar .nav>.active>a,
+.bs-docs-sidebar .nav>li>a:hover,
+.bs-docs-sidebar .nav>li>a:focus {
+color: #2486c7;
+text-decoration: none;
+background-color: transparent;
+border-left-color: #2486c7;
+}
+/* all active links */
+.bs-docs-sidebar .nav>.active>a,
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+font-weight: 700;
+}
+/* nested active links */
+.bs-docs-sidebar .nav .nav>.active>a,
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+font-weight: 500;
+}
+
+/* hide inactive nested list */
+.bs-docs-sidebar .nav ul.nav {
+display: none;
+}
+/* show active nested list */
+.bs-docs-sidebar .nav>.active>ul.nav {
+display: block;
+}
+
+
     .navbar-fixed-left {
         width: 140px;
         position: fixed;
@@ -31,41 +91,97 @@
         </li>
     </ul>
 </section>-->
-<section ng-init="tab = 1">
+
+
+<section ng-init="tab = 10">
     <div class="navbar navbar-fixed-left">
         <ul class="nav navbar-nav">
-            <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Client Details</a></li>
-            <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">General Info</a></li>
+            <li ng-class="{ active:tab === 10 }"><a href ng-click="tab = 10">Client Details</a></li>
+            <li ng-class="{ active:tab === 20 }"><a href ng-click="tab = 20">General Info</a></li>
             <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
-                <ul> 
-                    <li ng-class="{ active:tab === ($index + 100) }"><a href ng-click="setSelected($index + 100)">Medical Plan</a></li>
-                    <li ng-class="{ active:tab === ($index + 200) }"><a href ng-click="setSelected($index + 200)">Plan Design</a></li>
-                    <li ng-class="{ active:tab === ($index + 300) }"><a href ng-click="setSelected($index + 300)">Prescription Drug Plan</a></li>
+                <ul>
+                    <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30)">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40)">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50)">Prescription Drug Plan</a></li>
                 </ul>
             </li>
-            <li ng-class="{ active:tab === 666 }"><a href ng-click="tab = 666">Retiree Plan</a></li>
-            <li ng-class="{ active:tab === 777 }"><a href ng-click="tab = 777">Section 125</a></li>
+            <li ng-class="{ active:tab === 600 }"><a href ng-click="tab = 600">Retiree Plan</a></li>
+            <li ng-class="{ active:tab === 700 }"><a href ng-click="tab = 700">Section 125</a></li>
         </ul>
     </div>
+
+    <!-- ////////////// DO NOT TOUCH THIS CONTAINER!! ////////////// -->
     <div class="container">
-        <sw-Company-Details class="panel" ng-show="tab === 1" ng-model="survey.GeneralResponse"></sw-Company-Details>
-        <sw-General-Info class="panel" ng-show="tab === 2" ng-model="survey.GeneralResponse"></sw-General-Info>
+        <sw-Company-Details class="panel" ng-show="tab === 10" ng-model="survey.GeneralResponse"></sw-Company-Details>
+        <sw-General-Info class="panel" ng-show="tab === 20" ng-model="survey.GeneralResponse" action="changePlanCount()"></sw-General-Info>
         <div class="container" ng-repeat="plan in survey.ActivePlans">
-            <sw-Medical-Plan class="panel" ng-show="tab === ($index + 100)" ng-model="plan.ActivePlan"></sw-Medical-Plan>
-            <sw-Plan-Design class="panel" ng-show="tab === ($index + 200)" ng-model="plan.ActivePlan"></sw-Plan-Design>
-            <sw-Rx-Plan class="panel" ng-show="tab === ($index + 300)" ng-model="plan.RxPlan"></sw-Rx-Plan>
+            <sw-Medical-Plan class="panel" ng-show="tab === ($index + 30)" ng-model="plan.ActivePlan"></sw-Medical-Plan>
+            <sw-Plan-Design class="panel" ng-show="tab === ($index + 40)" ng-model="plan.ActivePlan"></sw-Plan-Design>
+            <sw-Rx-Plan class="panel" ng-show="tab === ($index + 50)" ng-model="plan.RxPlan"></sw-Rx-Plan>
         </div>
-        <sw-Retiree-Plan class="panel" ng-show="tab === 666" ng-model="survey.RetireePlan"></sw-Retiree-Plan>
-        <sw-Section-125 class="panel" ng-show="tab === 777" ng-model="survey.Section125"></sw-Section-125>
+        <sw-Retiree-Plan class="panel" ng-show="tab === 600" ng-model="survey"></sw-Retiree-Plan>
+        <sw-Section-125 class="panel" ng-show="tab === 700" ng-model="survey.Section125"></sw-Section-125>
         <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
+        <!-- <a class="btn btn-default" ng-click="(tab > 50)? setSelected(600) : setSelected(tab+10)">Next</a> -->
     </div>
 </section>
 
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="popover"]').popover({
-            placement : 'top',
-            trigger : 'hover'
-        })
-    });
-</script>
+<!--<section ng-init="tab = 10">
+  <nav class="col-xs-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked"> <!-- ADD BACK CLASS 'FIXED' -->
+            <!--<li ng-class="{ active:tab === 10 }">
+              <a href ng-click="tab = 10">Client Details</a>
+            </li>
+            <li ng-class="{ active:tab === 20 }">
+              <a href ng-click="tab = 20">General Info</a>
+            </li>
+            <li ng-repeat="plan in survey.ActivePlans">
+              <a href ng-click="#">{{plan.ActivePlan.PlanName}}</a>
+              <ul class="nav nav-stacked">
+                  <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30)">Medical Plan</a></li>
+                  <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40)">Plan Design</a></li>
+                  <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50)">Prescription Drug Plan</a></li>
+              </ul>
+            </li>
+            <li ng-class="{ active:tab === 600 }">
+              <a href ng-click="tab = 600">Retiree Plan</a>
+            </li>
+            <li ng-class="{ active:tab === 700 }">
+              <a href ng-click="tab = 700">Section 125</a>
+            </li>
+        </ul>
+    </nav>
+  </section>-->
+
+
+
+<!--<section ng-init="tab = 10">
+    <div class="navbar navbar-fixed-left">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active:tab === 10 }"><a href ng-click="tab = 10">Client Details</a></li>
+            <li ng-class="{ active:tab === 20 }"><a href ng-click="tab = 20">General Info</a></li>
+            <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
+                <ul>
+                    <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30)">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40)">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50)">Prescription Drug Plan</a></li>
+                </ul>
+            </li>
+            <li ng-class="{ active:tab === 600 }"><a href ng-click="tab = 600">Retiree Plan</a></li>
+            <li ng-class="{ active:tab === 700 }"><a href ng-click="tab = 700">Section 125</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <sw-Company-Details class="panel" ng-show="tab === 10" ng-model="survey.GeneralResponse"></sw-Company-Details>
+        <sw-General-Info class="panel" ng-show="tab === 20" ng-model="survey.GeneralResponse" action="changePlanCount()"></sw-General-Info>
+        <div class="container" ng-repeat="plan in survey.ActivePlans">
+            <sw-Medical-Plan class="panel" ng-show="tab === ($index + 30)" ng-model="plan.ActivePlan"></sw-Medical-Plan>
+            <sw-Plan-Design class="panel" ng-show="tab === ($index + 40)" ng-model="plan.ActivePlan"></sw-Plan-Design>
+            <sw-Rx-Plan class="panel" ng-show="tab === ($index + 50)" ng-model="plan.RxPlan"></sw-Rx-Plan>
+        </div>
+        <sw-Retiree-Plan class="panel" ng-show="tab === 600" ng-model="survey"></sw-Retiree-Plan>
+        <sw-Section-125 class="panel" ng-show="tab === 700" ng-model="survey.Section125"></sw-Section-125>
+        <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>-->
+        <!-- <a class="btn btn-default" ng-click="(tab > 50)? setSelected(600) : setSelected(tab+10)">Next</a> -->
+    <!--</div>
+</section>-->

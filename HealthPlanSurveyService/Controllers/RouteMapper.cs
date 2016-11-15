@@ -18,16 +18,16 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
 
             mapRouteManager.MapHttpRoute(
-            moduleFolderName: "HealthPlanSurveyService",
-            routeName: "Client",
-            url: "client/{action}/{id}",
-            defaults: new
-            {
-                controller = "Client",
-                action = "Client",
-                id = "0"
-            },
-            namespaces: new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+            "HealthPlanSurveyService",
+            "ById",
+            "{controller}/{action}/{id}",
+            new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+
+            //mapRouteManager.MapHttpRoute(
+            //moduleFolderName: "HealthPlanSurveyService",
+            //routeName: "ById",
+            //url: "{controller}/{action}/{id}",
+            //namespaces: new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
 
             mapRouteManager.MapHttpRoute(
             "HealthPlanSurveyService",

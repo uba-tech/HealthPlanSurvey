@@ -1,6 +1,13 @@
 <div>
     <div class="page-header">
-        <h4>Medical Plan - {{activePlan.PlanName}} (Active Employees)</h4><br>
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Medical Plan - {{activePlan.PlanName}} (Active Employees)</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{activePlan.ResponseId}}</h4>
+            </div>
+        </div>
     </div>
 
     <form action="">
@@ -13,41 +20,49 @@
         <hr>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Enter a name or number for the plan.">
-				1.Plan Name Or Number
-			</a></label>
-            <input id="d_PlanNameOrNo" class="form-control" tabindex="1" name="d_PlanNameOrNo" type="text" ng-model="activePlan.PlanName" />
+        			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Enter a name or number for the plan.">
+        				1.Plan Name Or Number
+        			</a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <input id="d_PlanNameOrNo" class="form-control" tabindex="1" name="d_PlanNameOrNo" type="text" ng-model="activePlan.PlanName" />
+              </div>
+            </div>
         </div>
         <div class="form-group" ng-controller="ReferenceController as anActivePlan" tablename="ActivePlanType">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this Survey, plan types are defined as:<br /><br />
-					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level.<br /><br />
-					HMO (Health Maintenance Organization) - A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br /><br />
-					POS (Point-of-Service) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level. This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br /><br />
-					EPO (Exclusive Provider Organization) - A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. Generally, no referral is required for specialty care.<br /><br />
-					FFS (Fee-for-Service/Indemnity) - A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network. By definition, then, there can be no 'out-of-network' benefits.<br /><br />
-					Note: Plans will be designated CDHP (Consumer Directed Health Plans) if they include either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account). All CDHP plans will also be reported as PPO, HMO, POS, EPO, or FFS, as defined above.">
-				2.Type of Plan
-			</a></label>
-            <select ng-model="activePlan.ActivePlanTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in anActivePlan.items" value="{{item.TypeId}}" ng-selected="activePlan.ActivePlanTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+        			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For purposes of this Survey, plan types are defined as:<br><br>
+        					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level.<br><br>
+        					HMO (Health Maintenance Organization) - A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br><br>
+        					POS (Point-of-Service) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level. This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br><br>
+        					EPO (Exclusive Provider Organization) - A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. Generally, no referral is required for specialty care.<br><br>
+        					FFS (Fee-for-Service/Indemnity) - A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network. By definition, then, there can be no 'out-of-network' benefits.<br><br>
+        					Note: Plans will be designated CDHP (Consumer Directed Health Plans) if they include either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account). All CDHP plans will also be reported as PPO, HMO, POS, EPO, or FFS, as defined above.">
+        				2.Type of Plan
+        			</a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.ActivePlanTypeId" ng-options="item.TypeId as item.Name for item in anActivePlan.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A plan is considered grandfathered if it met all PPACA requirements to remain grandfathered for the year that is being reported. <br /><br />
-					To be considered grandfathered, a plan must look at its benefits and contribution levels as of March 23, 2010 and must not: <br /><br />
-					Eliminate or substantially eliminate benefits for a particular condition<br /><br />
-					-  For example, if a plan covered counseling and prescription drugs to treat certain mental and nervous disorders and eliminates coverage for counseling, the plan will lose grandfathered status. <br /><br />
-					Increase cost-sharing percentages <br /><br />
-					-  For example, if the plan had an 80 percent coinsurance rate in March 2010 and decreases the rate to 70 percent, the plan will lose grandfathered status. <br /><br />
-					Increase co-pays by more than $5 or a percentage equal to medical inflation (currently 9.5 percent*) plus 15 percent, whichever is greater <br /><br />
-					-  For example, if the plan had an office visit copay of $30 in March 2010, it could increase it to $37.35 without losing grandfathered status. <br /><br />
-					Raise fixed amount cost-sharing other than co-pays by more than medical inflation (currently 9.5 percent*) plus 15 percent <br /><br />
-					-  For example, if the plan had a deductible of $1,000 and an out-of-pocket maximum of $2,500 in March 2010, it could increase the deductible to $1,200 and the out-of-pocket limit to $3,100 without losing grandfathered status. <br /><br />
-					Lower the employer contribution rate by more than 5 percent for any group of covered persons <br /><br />
-					-  For example, if the employer contributed 80 percent of the cost of employee-only coverage and 60 percent of the cost of family coverage in March 2010, if the employer keeps its contribution percentage for employee-only coverage at 80 percent but reduces its contribution for family coverage to 50 percent, the plan will lose grandfathered status. <br /><br />
-					Add or reduce an annual limit <br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A plan is considered grandfathered if it met all PPACA requirements to remain grandfathered for the year that is being reported. <br><br>
+					To be considered grandfathered, a plan must look at its benefits and contribution levels as of March 23, 2010 and must not: <br><br>
+					Eliminate or substantially eliminate benefits for a particular condition<br><br>
+					-  For example, if a plan covered counseling and prescription drugs to treat certain mental and nervous disorders and eliminates coverage for counseling, the plan will lose grandfathered status. <br><br>
+					Increase cost-sharing percentages <br><br>
+					-  For example, if the plan had an 80 percent coinsurance rate in March 2010 and decreases the rate to 70 percent, the plan will lose grandfathered status. <br><br>
+					Increase co-pays by more than $5 or a percentage equal to medical inflation (currently 9.5 percent*) plus 15 percent, whichever is greater <br><br>
+					-  For example, if the plan had an office visit copay of $30 in March 2010, it could increase it to $37.35 without losing grandfathered status. <br><br>
+					Raise fixed amount cost-sharing other than co-pays by more than medical inflation (currently 9.5 percent*) plus 15 percent <br><br>
+					-  For example, if the plan had a deductible of $1,000 and an out-of-pocket maximum of $2,500 in March 2010, it could increase the deductible to $1,200 and the out-of-pocket limit to $3,100 without losing grandfathered status. <br><br>
+					Lower the employer contribution rate by more than 5 percent for any group of covered persons <br><br>
+					-  For example, if the employer contributed 80 percent of the cost of employee-only coverage and 60 percent of the cost of family coverage in March 2010, if the employer keeps its contribution percentage for employee-only coverage at 80 percent but reduces its contribution for family coverage to 50 percent, the plan will lose grandfathered status. <br><br>
+					Add or reduce an annual limit <br><br>
 					-  For example, a plan that previously had no limit on MRIs could not impose a $10,000 per year maximum on MRIs without losing grandfathered status.">
 				3.Is this a grandfathered plan?
 			</a></label>
@@ -57,7 +72,7 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A Grandmothered Plan is a plan that does not meet the 2014 insurance market requirements of PPACA, but which the federal government and state insurance department have allowed as a permitted renewal of an existing policy. If permitted by the state, grandmothered plans may be renewed through October 1, 2016 renewals. Carriers are not required to offer grandmothered plans even if the state allows it.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A Grandmothered Plan is a plan that does not meet the 2014 insurance market requirements of PPACA, but which the federal government and state insurance department have allowed as a permitted renewal of an existing policy. If permitted by the state, grandmothered plans may be renewed through October 1, 2016 renewals. Carriers are not required to offer grandmothered plans even if the state allows it.">
 			4.Is this a grandmothered plan (pre-PPACA plan allowed by your state)?
 			</a></label>
             <div class="radio">
@@ -66,18 +81,18 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The Survey will designate a plan as a CDHP (Consumer Directed Health Plans) if it includes either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account).<br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="The Survey will designate a plan as a CDHP (Consumer Directed Health Plans) if it includes either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account).<br><br>
 					A MERP is a Medical Expense Reimbursement Plan (Section 105(h))">
 				5. Does this Plan Include:
 			</a></label>
-			<div><input id="d_HRAIncluded" checked="checked" name="d_HRAIncluded" type="checkbox" ng-model="activePlan.IsHRAIncluded" /> HRA (Health Reimbursement Arrangement)</div>
-			<div><input id="d_HSAIncluded" checked="checked" name="d_HSAIncluded" type="checkbox" ng-model="activePlan.IsHSAIncluded" /> HSA (Health Savings Account)</div>
-			<div><input id="d_MERPIncluded" checked="checked" name="d_MERPIncluded" type="checkbox" ng-model="activePlan.IsMERPIncluded" /> MERP (Medical Expense Reimbursement Plan)</div>
-			<div><input id="d_IsHRAHSAMERP_NoneOfTheAbove" checked="checked" name="d_IsHRAHSAMERP_NoneOfTheAbove" type="checkbox" ng-model="activePlan.IsHRAHSAMERP_NoneOfTheAbove" /> None of the Above</div>
+			<div><input id="d_HRAIncluded" checked="checked" name="d_HRAIncluded" type="checkbox" value="1" ng-model="activePlan.IsHRAIncluded" /> HRA (Health Reimbursement Arrangement)</div>
+			<div><input id="d_HSAIncluded" checked="checked" name="d_HSAIncluded" type="checkbox" value="1" ng-model="activePlan.IsHSAIncluded" /> HSA (Health Savings Account)</div>
+			<div><input id="d_MERPIncluded" checked="checked" name="d_MERPIncluded" type="checkbox" value="1" ng-model="activePlan.IsMERPIncluded" /> MERP (Medical Expense Reimbursement Plan)</div>
+			<div><input id="d_IsHRAHSAMERP_NoneOfTheAbove" checked="checked" value="1" name="d_IsHRAHSAMERP_NoneOfTheAbove" type="checkbox" ng-model="activePlan.IsHRAHSAMERP_NoneOfTheAbove" /> None of the Above</div>
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check Fully Insured if the plan is fully insured even if the employer is self-funding a portion of the deductible (often called a split-funded plan). Most plans are fully insured.<br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Check Fully Insured if the plan is fully insured even if the employer is self-funding a portion of the deductible (often called a split-funded plan). Most plans are fully insured.<br><br>
 					Check Self-Funded if the employer’s liability consists of the full paid claims costs plus admin and stop loss insurance (if any).">
 				6.Funding Method
 			</a></label>
@@ -92,58 +107,66 @@
         </div>
         <div class="form-group" ng-controller="ReferenceController as premiumTier" tablename="PremiumTierType">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="You may select one of three types of premium tier structures:  Two-Tier, Three-Tier, or Four-Tier.  You may submit data on plans which have more than four tiers by converting all enrollment, premium rates, and contribution information into a Four-Tier format.<br /><br />
-					For example, if your plan has five tiers: Employee Only, Employee + one child, Employee + two or more children, Employee + Spouse, and Employee + Spouse + Child(ren), combine the two EE+CH tiers into one by multiplying the rate for each EE+CH tier by the number of employees electing that tier, add the results, and then divide by the total number of employees electing the two tiers.">
-				7. Please indicate the Number of Health Plan Premium Tiers
-			</a></label>
-            <select ng-model="response.PremiumTierTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in premiumTier.items" value="{{item.TypeId}}" ng-selected="response.PremiumTierTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+    			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="You may select one of three types of premium tier structures:  Two-Tier, Three-Tier, or Four-Tier.  You may submit data on plans which have more than four tiers by converting all enrollment, premium rates, and contribution information into a Four-Tier format.<br><br>
+    					For example, if your plan has five tiers: Employee Only, Employee + one child, Employee + two or more children, Employee + Spouse, and Employee + Spouse + Child(ren), combine the two EE+CH tiers into one by multiplying the rate for each EE+CH tier by the number of employees electing that tier, add the results, and then divide by the total number of employees electing the two tiers.">
+    				7. Please indicate the Number of Health Plan Premium Tiers
+    			</a></label>
+          <div class="row">
+            <div class="col-md-8">
+              <select ng-model="activePlan.PremiumTierTypeId" ng-options="item.TypeId as item.Name for item in premiumTier.items" class="selectpicker form-control show-tick"></select>
+            </div>
+          </div>
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The monthly unit rates for a group medical plan may be the same for employees of all ages or they may be based upon each employee's age or age band.<br /><br />
-					<u>Employee Age Banded Rated</u> - For grandmothered and grandfathered plans which are not subject to PPACA member level rates, these are where the dependents are based on the employee age.<br /><br />
-					<u>Member Level Age Rated</u> - Where every employee and dependent is rated for their age (PPACA compliant).<br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="The monthly unit rates for a group medical plan may be the same for employees of all ages or they may be based upon each employee's age or age band.<br><br>
+					<u>Employee Age Banded Rated</u> - For grandmothered and grandfathered plans which are not subject to PPACA member level rates, these are where the dependents are based on the employee age.<br><br>
+					<u>Member Level Age Rated</u> - Where every employee and dependent is rated for their age (PPACA compliant).<br><br>
 					<u>Composite Rates</u> - The carrier bills the employer the same rate for all employees who enroll in a particular tier, regardless of any specific employee's age.  This is the norm for nearly all plans with 50 or more covered employees and many smaller plans, as well.  For example, such a plan might have the following monthly unit rates:  Employee Only - $300, Employee Plus Child(ren) $450, Employee Plus Spouse - $600, Family $800.  Those rates would apply to all enrollees, regardless of age.">
 				8.Are the Unit Rates for this Plan based on Each Individual Employee's Age/Age Band or "Composite" Rates (i.e. the same for everyone in each tier of the plan regardless of age)?
 			</a></label>
             <div class="radio">
-                <label for="">
+                <div>
+                  <label for="">
                     <input type="radio" ng-model="activePlan.UnitRateTypeId" value="1">Employee Age Banded Rated
-                </label>
-                <label for="">
+                  </label>
+                </div>
+                <div>
+                  <label for="">
                     <input type="radio" ng-model="activePlan.UnitRateTypeId" value="2">Member Level Age Rated
-                </label>
-                <label for="">
+                  </label>
+                </div>
+                <div>
+                  <label for="">
                     <input type="radio" ng-model="activePlan.UnitRateTypeId" value="3">Composite
-                </label>
+                  </label>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the most common errors made when entering Premium information are:<br /><br />
-					1)  Not rounding to the nearest dollar amount.  2)  Entering the total premium for all employees enrolled in a tier, rather than the premium rate per unit applicable to each employee.  3)  For Self-Funded plans, entering only the fixed costs (administration and/or stop-loss premium), rather than the total premium equivalent rates (i.e. COBRA rates less 2%).<br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the most common errors made when entering Premium information are:<br><br>
+					1)  Not rounding to the nearest dollar amount.  2)  Entering the total premium for all employees enrolled in a tier, rather than the premium rate per unit applicable to each employee.  3)  For Self-Funded plans, entering only the fixed costs (administration and/or stop-loss premium), rather than the total premium equivalent rates (i.e. COBRA rates less 2%).<br><br>
 					For purposes of this survey, all non-single premium rates should include the premium rate for single coverage.  For example, if the Employee Only rate is $200 and the ADDITIONAL premium for the Spouse is $210, <u>the Employee + Spouse rate is $410</u>.">
 				9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate per Month (including Prescription Drugs) rounded to the nearest dollar.
 			</a></label>
             <div class="row">
-                <div class="col-md-4">&nbsp;</div>
-                <div class="col-md-4">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
                     <label for="">Number Enrolled</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Monthly Premium Rate</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Single</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input type="text" class="form-control" id="d_Enrolled_Single" name="d_Enrolled_Single" maxlength="6" size="13" ng-model="activePlan.NumberEnrolled_Single">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_Premium_Single" class="form-control" maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_Single">
@@ -152,13 +175,13 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Employee+1</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input id="d_Enrolled_EE_1" class="form-control" maxlength="6" name="d_Enrolled_EE_1" size="13" type="text" ng-model="activePlan.NumberEnrolled_EmployeePlusOne">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_Premium_EE_1" class="form-control" maxlength="6" name="d_Premium_EE_1" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusOne" />
@@ -167,13 +190,13 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Employee + Spouse</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input type="text" class="form-control" id="d_Enrolled_EE_SP" name="d_Enrolled_EE_SP" maxlength="6" size="13" ng-model="activePlan.NumberEnrolled_EmployeePlusSpouse">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input type="text" class="form-control" id="d_Premium_EE_SP" name="d_Premium_EE_SP" maxlength="6" size="13" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusSpouse">
@@ -182,13 +205,13 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Employee + Child/Children</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input id="d_Enrolled_EE_CH" class="form-control" maxlength="6" name="d_Enrolled_EE_CH" size="13" type="text" ng-model="activePlan.NumberEnrolled_EmployeePlusChild" />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_Premium_EE_CH" class="form-control" maxlength="6" name="d_Premium_EE_CH" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusChild" />
@@ -197,13 +220,13 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Family</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input id="d_Enrolled_Family" class="form-control" maxlength="6" name="d_Enrolled_Family" size="13" type="text" ng-model="activePlan.NumberEnrolled_Family" />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_Premium_Family" class="form-control" maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_Family" />
@@ -216,7 +239,7 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Selecting 'Yes' indicates that the plan bases employee contributions on a percentage of each employee's individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Selecting 'Yes' indicates that the plan bases employee contributions on a percentage of each employee's individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.">
                 10. Tobacco surcharge from carrier?
             </a></label>
             <div class="radio">
@@ -225,7 +248,7 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Selecting 'Yes' indicates that the plan bases employee contributions on a percentage of each employee's individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Selecting 'Yes' indicates that the plan bases employee contributions on a percentage of each employee's individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.">
                 11. Are Employee Contributions Based on a Percentage of Salary?
             </a></label>
             <div class="radio">
@@ -234,39 +257,41 @@
         </div>
         <div class="form-group" ng-controller="ReferenceController as contributionBasis" tablename="ContributionBasisType">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Remember that the question requests employEE contributions, not the employER share of premium.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Remember that the question requests employEE contributions, not the employER share of premium.">
                 12. Are Employee Contributions to be entered based on
             </a></label>
-            <select ng-model="activePlan.ContributionBasisTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in contributionBasis.items" value="{{item.TypeId}}" ng-selected="activePlan.ContributionBasisTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.ContributionBasisTypeId" ng-options="item.TypeId as item.Name for item in contributionBasis.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this survey, all non-single employee contributions should include the Employee Only contribution.  For example, if employees must contribute $75 of the Employee Only rate, their contribution will be <u>at least</u> $75 for the Employee + Spouse rate.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For purposes of this survey, all non-single employee contributions should include the Employee Only contribution.  For example, if employees must contribute $75 of the Employee Only rate, their contribution will be <u>at least</u> $75 for the Employee + Spouse rate.">
                 13. Employee Contributions per Month | <a href="Portals/0/UBAContributionCalculator.xls" target="_blank">Calculator</a>
             </a></label>
             <div class="row">
-                <div class="col-md-4">&nbsp;</div>
-                <div class="col-md-4">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
                     <label for="">Dollar Amount</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">Percentage of Premium</label>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Single</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpCont_Single_Amt" class="form-control" maxlength="6" name="d_EmpCont_Single_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_Single" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <input id="d_EmpCont_Single_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_Single_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_Single" />
                         <div class="input-group-addon">%</div>
@@ -275,16 +300,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee +1</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpCont_EE_1_Amt" class="form-control" maxlength="6" name="d_EmpCont_EE_1_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusOne" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <input id="d_EmpCont_EE_1_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_EE_1_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusOne" />
                         <div class="input-group-addon">%</div>
@@ -293,16 +318,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Spouse</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpCont_EE_SP_Amt" class="form-control" maxlength="6" name="d_EmpCont_EE_SP_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusSpouse" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <input id="d_EmpCont_EE_SP_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_EE_SP_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusSpouse" />
                         <div class="input-group-addon">%</div>
@@ -311,16 +336,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Child/Children</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpCont_EE_CH_Amt" class="form-control" maxlength="6" name="d_EmpCont_EE_CH_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusChild" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <input id="d_EmpCont_EE_CH_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_EE_CH_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusChild" />
                         <div class="input-group-addon">%</div>
@@ -329,16 +354,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Family</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpCont_Family_Amt" class="form-control" maxlength="6" name="d_EmpCont_Family_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_Family" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <input id="d_EmpCont_Family_PcntOfPremium" class="form-control" maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_Family" />
                         <div class="input-group-addon">%</div>
@@ -346,32 +371,44 @@
                 </div>
             </div>
         </div>
+        <div class="form-group" ng-controller="ReferenceController as aleEmployerStrategy" tablename="AleEmployerStrategyType">
+            <label for="">
+			        <a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Selecting "Yes" indicates that the plan bases employee contributions on a percentage of each employee's individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.">
+                14. If you are an "applicable large employer" (generally, over 100 full-time/full-time equivalent employees) is your strategy to
+              </a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.AleEmployerStrategy" ng-options="item.TypeId as item.Name for item in aleEmployerStrategy.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
+        </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the question requests the employER contribution only, not any employEE contributions. Also, please be certain to enter an ANNUAL amount, not a monthly or per-pay amount.">
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the question requests the employER contribution only, not any employEE contributions. Also, please be certain to enter an ANNUAL amount, not a monthly or per-pay amount.">
 				15. Amount of Annual Employer HRA or HSA Contribution
 			</a></label>
             <div class="row">
-                <div class="col-md-4">&nbsp;</div>
-                <div class="col-md-4">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
                     <label for="">HRA</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <label for="">HSA</label>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Single</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHRACont_Single" class="form-control" maxlength="6" name="d_EmpHRACont_Single" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Single" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHSACont_Single" class="form-control" maxlength="6" name="d_EmpHSACont_Single" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Single" />
@@ -380,16 +417,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + 1</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHRACont_EE_1" class="form-control" maxlength="6" name="d_EmpHRACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusOne" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHSACont_EE_1" class="form-control" maxlength="6" name="d_EmpHSACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusOne" />
@@ -398,16 +435,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Spouse</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHRACont_EE_SP" class="form-control" maxlength="6" name="d_EmpHRACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusSpouse" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHSACont_EE_SP" class="form-control" maxlength="6" name="d_EmpHSACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusSpouse" />
@@ -416,16 +453,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Child/Children</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHRACont_EE_CH" class="form-control" maxlength="6" name="d_EmpHRACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusChild" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHSACont_EE_CH" class="form-control" maxlength="6" name="d_EmpHSACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusChild" />
@@ -434,16 +471,16 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Family</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHRACont_Family" class="form-control" maxlength="6" name="d_EmpHRACont_Family" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Family" />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_EmpHSACont_Family" class="form-control" maxlength="6" name="d_EmpHSACont_Family" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Family" />
@@ -483,10 +520,10 @@
         <div class="form-group">
             <label for="">19.Specific Stop-Loss Premium</label>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Single</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_StopLoss_Single_Amt" class="form-control" maxlength="6" name="d_StopLoss_Single_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Single" />
@@ -496,10 +533,10 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + 1</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_StopLoss_EE_1_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_1_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusOne" />
@@ -509,10 +546,10 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Child/Children</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_StopLoss_EE_CH_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_CH_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusChild" />
@@ -522,10 +559,10 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Employee + Spouse</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_StopLoss_EE_SP_Amt" class="form-control" maxlength="6" name="d_StopLoss_EE_SP_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusSpouse" />
@@ -535,10 +572,10 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <p>Family</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_StopLoss_Family_Amt" class="form-control" maxlength="6" name="d_StopLoss_Family_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Family" />
@@ -549,12 +586,13 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="">
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This is the increase or decrease initially proposed by the insurer or administrator PRIOR TO any negotiations or changes in plan design.">
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="This is the increase or decrease initially proposed by the insurer or administrator PRIOR TO any negotiations or changes in plan design.">
 						20. Initial Proposed Percentage Increase for most similar Plan or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date
 					</a></label>
+                    <br>
                     <div class="input-group">
                         <input id="d_ProposedIncreasePct" class="form-control" tabindex="1" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="activePlan.ProposedIncreasePct" />
                         <div class="input-group-addon">%</div>
@@ -562,13 +600,12 @@
                     <span id="helpBlock" class="help-block"><strong>Prior to</strong> Any Plan or Carrier Changes</span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="">
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This is the increase or decrease actually implemented AFTER any negotiations, changes to plan design, or change of insurer or administrator.">
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="This is the increase or decrease actually implemented AFTER any negotiations, changes to plan design, or change of insurer or administrator.">
 						21. Final Percentage Increase or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date
 					</a></label>
-                    <br><br>
                     <div class="input-group">
                         <input id="d_FinalPcntIncrease" class="form-control" tabindex="2" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="activePlan.FinalIncreasePct" />
                         <div class="input-group-addon">%</div>
@@ -579,26 +616,25 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group" ng-controller="ReferenceController as medicalExpenseReimbursementRenewalRate" tablename="MedicalExpenseReimbursementRenewalRateType">
                     <label for="">
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For HRA or HSA plan renewal rates, is this the first year for the HRA/HSA plan?">
+					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For HRA or HSA plan renewal rates, is this the first year for the HRA/HSA plan?">
                         22. For Plans that include an HRA or HSA
                     </a></label>
-            <select ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in medicalExpenseReimbursementRenewalRate.items" value="{{item.TypeId}}" ng-selected="activePlan.MedicalExpenseReimbursementRenewalRateTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+                    <select ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId" ng-options="item.TypeId as item.Name for item in medicalExpenseReimbursementRenewalRate.items" class="selectpicker form-control show-tick"></select>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="">
-					<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This information is essential in order to insure that your plan is compared to other plans which renew in the same period. It is not used in any fashion for any marketing or other purpose.">
+			                <a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="This information is essential in order to insure that your plan is compared to other plans which renew in the same period. It is not used in any fashion for any marketing or other purpose.">
                         23. Most Recent Plan Anniversary (Renewal) Date
-                    </a></label>
-                    <select name="" id="basic" class="selectpicker form-control show-tick" ng-model="survey.GeneralResponse.RenewalDate" ng-options="x for (x,y) in RenewalDate"></select>
+                      </a>
+                    </label>
+                    <input class="form-control" ng-model="activePlan.RenewalDate" type="date" value="{{activePlan.RenewalDate | date: 'yyyy-MM-dd'}}"/>
                     <span id="helpBlock" class="help-block">
-                        If a plan renews <strong>on or before</strong> the 15th of the month, please use the first of that month. If a plan renews <strong>after</strong> the 15th of the month, please use the first of the <strong>next</strong> month.
+                        If a plan renews <strong>on or before</strong> the 15th of the month, please use that month. If a plan renews <strong>after</strong> the 15th of the month, please use the <strong>next</strong> month.
                     </span>
                 </div>
             </div>

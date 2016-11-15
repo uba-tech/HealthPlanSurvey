@@ -15,8 +15,6 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //private UserInfo _currentUser =
         //           DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
         ////private int _userId = _currentUser.UserID;
-        ////TODO: remove hardcoded userid
-        //private int _userId = 2900;
 
         #region "Web Methods"
 

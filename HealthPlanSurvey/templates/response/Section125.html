@@ -1,13 +1,20 @@
 ﻿<div>
     <div class="page-header">
-        <h4>Section 125 (FSA) Plan</h4><br>
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Section 125 (FSA) Plan</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{survey.GeneralResponse.ResponseId}}</h4>
+            </div>
+        </div>
     </div>
 
     <form action="">
         <!-- Q1 Does Your Organization Offer? -->
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="A simple Section 125 plan known as a 'premium-only plan' or 'P.O.P' is not a Medical FSA (Flexible Spending Account). If the plan provides only this type of plan, please answer 'Premium-Only Plan.'<br /><br />
+			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A simple Section 125 plan known as a 'premium-only plan' or 'P.O.P' is not a Medical FSA (Flexible Spending Account). If the plan provides only this type of plan, please answer 'Premium-Only Plan.'<br><br>
 					The survey allows the choice of 'Limited Purpose Medical FSA' only if you indicated that the employer offers a plan which enables participation in an HSA (Healthcare Savings Account).">
 				1. Does Your Organization Offer?
 			</a></label>
@@ -45,7 +52,7 @@
                 <div class="col-md-4">
                     <p>Maximum Annual Contribution Allowed</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_Med_MaxAnnualContribution" tabindex="6" maxlength="6" name="d_FSA_Med_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_TraditionalMedical_FSA" class="form-control">
@@ -57,7 +64,7 @@
                 <div class="col-md-4">
                     <p>Number of Employees Enrolled</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <input id="d_FSA_Med_EmployeesEnrolled" tabindex="7" maxlength="6" name="d_FSA_Med_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_TraditionalMedical_FSA" class="form-control">
                 </div>
             </div>
@@ -66,7 +73,7 @@
                 <div class="col-md-4">
                     <p>Average Annual Contribution</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_Med_AvgAnnualContribution" tabindex="8" maxlength="6" name="d_FSA_Med_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_TraditionalMedical_FSA" class="form-control">
@@ -82,7 +89,7 @@
                 <div class="col-md-4">
                     <p>Maximum Annual Contribution Allowed</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_LimMed_MaxAnnualContribution" tabindex="9" maxlength="6" name="d_FSA_LimMed_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_LtdPurposeMedical_FSA" class="form-control">
@@ -94,7 +101,7 @@
                 <div class="col-md-4">
                     <p>Number of Employees Enrolled</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <input id="d_FSA_LimMed_EmployeesEnrolled" tabindex="10" maxlength="6" name="d_FSA_LimMed_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_LtdPurposeMedical_FSA" class="form-control">
                 </div>
             </div>
@@ -103,7 +110,7 @@
                 <div class="col-md-4">
                     <p>Average Annual Contribution</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_LimMed_AvgAnnualContribution" tabindex="11" maxlength="6" name="d_FSA_LimMed_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_LtdPurposeMedical_FSA" class="form-control">
@@ -119,7 +126,7 @@
                 <div class="col-md-4">
                     <p>Maximum Annual Contribution Allowed</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_ChildCare_MaxAnnualContribution" tabindex="12" maxlength="6" name="d_FSA_ChildCare_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_DependentCare_FSA" class="form-control">
@@ -131,7 +138,7 @@
                 <div class="col-md-4">
                     <p>Number of Employees Enrolled</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <input id="d_FSA_ChildCare_EmployeesEnrolled" tabindex="13" maxlength="6" name="d_FSA_ChildCare_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_DependentCare_FSA" class="form-control">
                 </div>
             </div>
@@ -140,7 +147,7 @@
                 <div class="col-md-4">
                     <p>Average Annual Contribution</p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
                         <input id="d_FSA_ChildCare_AvgAnnualContribution" tabindex="14" maxlength="6" name="d_FSA_ChildCare_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_DependentCare_FSA" class="form-control">
@@ -148,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-controller="ReferenceController as presentationInterest" tablename="PresentationInterestType">
             <div class="well">
                 <p>
                     Metropolitan Area, State and Regional Benchmarks will be prepared wherever the sample size is adequate to ensure the confidentiality of individual companies.
@@ -156,21 +163,7 @@
                 </p>
             </div>
             <label for="">I would prefer to be presented any Applicable Metropolitan Area, State or Regional Results Via:</label>
-            <select class="selectpicker form-control show-tick">
-                <option value="0">Nothing Selected</option>
-                <option id="d_PresentationInterest_0" tabindex="15" name="d_PresentationInterest" value="1" ng-model="survey.GeneralResponse.PresentationInterestTypeId">
-                    A Seminar Highlighting Aggregate Results for All Area Survey Participants
-                </option>
-                <option id="d_PresentationInterest_1" tabindex="16" name="d_PresentationInterest" value="2" ng-model="survey.GeneralResponse.PresentationInterestTypeId">
-                    An Individual Meeting to Directly Compare my Organization's Plans with Area Benchmarks
-                </option>
-                <option id="d_PresentationInterest_2" tabindex="17" name="d_PresentationInterest" value="3" ng-model="survey.GeneralResponse.PresentationInterestTypeId">
-                    Both
-                </option>
-                <option id="d_PresentationInterest_3" tabindex="18" name="d_PresentationInterest" value="4" ng-model="survey.GeneralResponse.PresentationInterestTypeId">
-                    Neither/No Interest in Area Benchmarks
-                </option>
-            </select>
+            <select ng-model="response.PresentationInterestTypeId" ng-options="item.TypeId as item.Name for item in presentationInterest.items" class="selectpicker form-control show-tick"></select>
         </div>
 
     </form>

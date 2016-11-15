@@ -1,5 +1,9 @@
 ﻿angular.module('SurveyWrangler').config(function ($routeProvider) {
     $routeProvider
+        .when('', {
+            redirectTo: '/surveys'
+        })
+
         .when('/', {
             redirectTo: '/surveys'
         })

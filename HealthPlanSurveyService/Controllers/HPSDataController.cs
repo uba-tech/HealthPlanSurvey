@@ -252,7 +252,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         string SurveyResponse_RxPlanTierSql = @"SELECT [RxPlanTierId]
                           ,[RxPlanId]
                           ,[TierNumber]
-                          ,[RxPlanTypeId]
+                          ,[RxPlanTierTypeId]
                           ,[EmployeeCopayAmt]
                           ,[HasEmployeeCopay]
                           ,[EmployeeCoinsurancePctTypeId]
@@ -311,7 +311,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                       ,[DontSendSaveEmail]
                       ,[AllowPTG]
                       ,b.[MemberFirmID]
-                      FROM[dbo].[Brokers]  b 
+                      FROM [dbo].[Brokers]  b 
                       INNER JOIN wm4dnn_scott.[dbo].[uba_MemberFirm] f 
                       ON b.[MemberFirmID] = f.[MemberFirmID] 
                       WHERE f.[Active] = 1 ";
@@ -486,45 +486,113 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
                 // get section125 
                 var section125 = db.SingleOrDefault<SurveyResponse_Section125>(SurveyResponse_Section125Sql, responseId);
+                item.Section125 = section125;
 
             }
             return item;
         }
 
-        public void SaveSurveyResponse(SurveyResponseItem survey)
+        public SurveyResponseItem GetSurveyTemplate()
+        {
+            SurveyResponseItem item = new SurveyResponseItem();
+            // initialize general response
+            var general = new SurveyResponse_General();
+            item.GeneralResponse = general;
+
+            // initialize active plans with RxPlan
+            for(int i=1; i < 5; i++)
+            {
+                var srvyActivePlan = new SurveyActivePlan();
+                var activePlan = new SurveyResponse_ActivePlan();
+                activePlan.PlanName = "Plan #" + i.ToString();
+                activePlan.PlanNumber = i;
+                activePlan.RenewalDate = DateTime.Now.Date;
+                srvyActivePlan.ActivePlan = activePlan;
+                var rxPlan = new SurveyResponse_RxPlan();
+                var rxTiers = new List<SurveyResponse_RxPlanTier>();
+                for (int j=1; j < 7; j++)
+                {
+                    var rxTier = new SurveyResponse_RxPlanTier();
+                    rxTiers.Add(rxTier);
+                }
+                var surveyRxPlan = new SurveyRxPlan(rxPlan, rxTiers);
+                srvyActivePlan.RxPlan = surveyRxPlan;
+                item.ActivePlans.Add(srvyActivePlan);
+            }
+
+            // get retiree plan
+            var retiree = new SurveyResponse_RetireePlan();
+            item.RetireePlan = retiree;
+
+            // get section125 
+            var section125 = new SurveyResponse_Section125();
+            item.Section125 = section125;
+
+            return item;
+        }
+
+        public void SaveSurveyResponse(SurveyResponseItem survey, UserInfo curUser)
         {
             using (hpsDB db = new hpsDB())
             {
                 if(survey.GeneralResponse.ResponseId <= 0)
                 {
+                    // create new response
+
+                    // get current Survey record
+                    var srvy = db.FirstOrDefault<Survey>("SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC");
+
                     // create SurveyResponse_General record
+                    survey.GeneralResponse.CreatedBy = curUser.UserID;
+                    survey.GeneralResponse.CreatedOn = DateTime.Now;
+                    survey.GeneralResponse.UpdatedBy = curUser.UserID;
+                    survey.GeneralResponse.UpdatedOn = DateTime.Now;
+                    survey.GeneralResponse.SurveyId = srvy.SurveyId;
                     db.Insert(survey.GeneralResponse);
                     int responseId = survey.GeneralResponse.ResponseId;
 
                     // create SurveyResponse_ActivePlan and Rx Plan records
+                    int i = 1;
+                    DateTime renewal = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                     foreach (SurveyActivePlan plan in survey.ActivePlans)
                     {
-                        // create Active Plan
-                        plan.ActivePlan.ResponseId = responseId;
-                        db.Insert(plan.ActivePlan);
-                        int planId = plan.ActivePlan.ActivePlanId;
+                        //if (plan.ActivePlan.EnterPlanData)
+                        //{
+                            // create Active Plan
+                            plan.ActivePlan.ResponseId = responseId;
+                            plan.ActivePlan.PlanNumber = i;
+                            plan.ActivePlan.RenewalDate = renewal;
+                            plan.ActivePlan.UpdatedByUserID = curUser.UserID;
+                            db.Insert(plan.ActivePlan);
+                            int planId = plan.ActivePlan.ActivePlanId;
 
-                        // create Rx plan record
-                        plan.RxPlan.RxPlan.ActivePlanId = planId;
-                        db.Insert(plan.RxPlan.RxPlan);
-                        int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
+                            // create Rx plan record
+                            plan.RxPlan.RxPlan.ActivePlanId = planId;
+                            db.Insert(plan.RxPlan.RxPlan);
+                            int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
 
-                        // create Rx tier records
-                        foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
-                        {
-                            db.Insert(tier);
-                        }
+                            // create Rx tier records
+                            short j = 1;
+                            foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
+                            {
+                                //if (tier.RxPlanTypeId > 0)
+                                //{
+                                tier.RxPlanId = rxPlanId;
+                                tier.TierNumber = j;
+                                tier.ActivePlanId = planId;
+                                db.Insert(tier);
+                                //}
+                                j++;
+                            }
+                        //}
+                        i++;
                     }
 
                     // create retiree plan record
                     if(survey.GeneralResponse.HasEarlyRetireeCoverageInActivePlans)
                     {
                         survey.RetireePlan.ResponseId = responseId;
+                        survey.RetireePlan.UpdatedByUserID = curUser.UserID;
                         db.Insert(survey.RetireePlan);
                     }
 
@@ -535,8 +603,9 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 }
                 else
                 {
-                    //db.Update(survey);
                     // update SurveyResponse_General record
+                    survey.GeneralResponse.UpdatedBy = curUser.UserID;
+                    survey.GeneralResponse.UpdatedOn = DateTime.Now;
                     db.Update(survey.GeneralResponse);
 
                     // update SurveyResponse_ActivePlan and Rx Plan records
@@ -576,7 +645,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             using (hpsDB db = new hpsDB())
             {
                 // set survey response status
-                db.Execute("UPDATE SurveyResponse_General SET [SurveyResponseStatusTypeId] = @0 WHERE ResponseId = @1", new { status, responseId } );
+                string sql = string.Format("UPDATE SurveyResponse_General SET [SurveyResponseStatusTypeId] = @0 WHERE ResponseId = @1", responseId, status);
+                db.Execute(sql);
             }
 
         }
@@ -591,7 +661,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 sql += string.Format(@" AND EXISTS (
                             SELECT NULL
                             FROM wm4dnn_scott.dbo.uba_Users u
-                            WHERE r.MemberFirmId = u.MemberFirmId
+                            WHERE b.MemberFirmId = u.MemberFirmId
                             AND u.UserID = {0}
                         )", curUser.UserID);
 
@@ -698,8 +768,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             {
                 var result = db.Fetch<Person>(@"SELECT
                                                 u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
-                                                u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId, 
-                                                FROM Users u 
+                                                u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId 
+                                                FROM dnn_Users u 
                                                 LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
                                                 ORDER BY u.LastName, u.FirstName");
                 t = result;
@@ -713,8 +783,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         {
             string sql = string.Format(@"SELECT
                             u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
-                            u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId, 
-                            FROM Users u 
+                            u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId 
+                            FROM dnn_Users u 
                             LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
                             AND u.UserID = {0}
                             ORDER BY u.LastName, u.FirstName", userId);
@@ -774,7 +844,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             {
                 var result = db.Fetch<ReferenceTable>(@"SELECT [TypeId]
                                                   ,[Name]
-                                              FROM " + TableName);
+                                              FROM " + TableName + " WHERE TypeId >= 0");
                 t = result;
             }
             return t;

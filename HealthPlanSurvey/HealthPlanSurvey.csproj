@@ -75,7 +75,7 @@
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\ItemController.cs" />
     <Compile Include="Components\Item.cs" />
-    <Compile Include="HealthPlanSurvesModuleBase.cs">
+    <Compile Include="HealthPlanSurveyModuleBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="HealthPlanSurveyModuleSettingsBase.cs">
@@ -114,6 +114,8 @@
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
+    <Content Include="controllers\PersonController.js" />
+    <Content Include="controllers\RenewalDateController.js" />
     <Content Include="controllers\SurveyCarryForwardController.js" />
     <Content Include="controllers\SurveyEditController.js" />
     <Content Include="controllers\SurveyCreateController.js" />
@@ -927,6 +929,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
+    <Content Include="services\person.js" />
     <Content Include="services\reference.js" />
     <Content Include="services\client.js" />
     <Content Include="services\broker.js" />

@@ -1,45 +1,48 @@
 ﻿<div>
-    ﻿﻿<div class="page-header">
-        <h4>Medical Plan - General Information</h4><br>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Medical Plan - General Information</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{response.ResponseId}}</h4>
+            </div>
+        </div>
     </div>
 
     <form action="">
         <div class="form-group" ng-controller="ReferenceController as numberActivePlansOffered" tablename="NumberActivePlansOfferedType">
             <label for="">1.Total Number of Medical Plans Offered to Active Employees</label>
-            <select ng-model="response.NumberActivePlansOfferedTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in numberActivePlansOffered.items" value="{{item.TypeId}}" ng-selected="response.NumberActivePlansOfferedTypeId == item.TypeId">{{item.Name}}</option>
+            <select ng-model="response.NumberActivePlansOfferedTypeId"
+                    ng-options="item.TypeId as item.Name for item in numberActivePlansOffered.items"
+                    ng-change="changePlanCount()"
+                    class="selectpicker form-control show-tick">
             </select>
         </div>
         <div class="form-group" ng-controller="ReferenceController as numberRetireePlansOffered" tablename="NumberRetireePlansOfferedType">
             <label for="">2.Medicare-Eligible Retirees</label>
-            <select ng-model="response.NumberRetireePlansOfferedTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in numberRetireePlansOffered.items" value="{{item.TypeId}}" ng-selected="response.NumberRetireePlansOfferedTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+            <select ng-model="response.NumberRetireePlansOfferedTypeId" ng-options="item.TypeId as item.Name for item in numberRetireePlansOffered.items" class="selectpicker form-control show-tick"></select>
         </div>
         <div class="form-group" ng-controller="ReferenceController as premiumContributionStrategy" tablename="PremiumContributionStrategyType">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="ER means employer. EE means employee.">
-				3. Premium Contribution Strategy (for companies offering multiple plans)
-			</a></label>
-            <select ng-model="response.PremiumContributionStrategyTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in premiumContributionStrategy.items" value="{{item.TypeId}}" ng-selected="response.PremiumContributionStrategyTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+      			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="ER means employer. EE means employee.">
+      				3. Premium Contribution Strategy (for companies offering multiple plans)
+      			</a></label>
+            <select ng-model="response.PremiumContributionStrategyTypeId" ng-options="item.TypeId as item.Name for item in premiumContributionStrategy.items" class="selectpicker form-control show-tick"></select>
         </div>
         <div class="form-group" ng-controller="ReferenceController as fullTimeHoursPerWeek" tablename="FullTimeHoursPerWeekType">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The minimum number of hours per week required for an employee to be considered a full-time employee.  If your company's definition of full-time eligibility is based on a period other than per week, please convert the number of hours to a per week equivalent.<br /><br />For example, if the company's definition of full-time eligibility is '80 hours within a two-week period', please select '40 hours per week'.">
-				4. Minimum Number of Hours per Week for Full-Time Eligibility <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
-			</a></label>
-            <select ng-model="response.FullTimeHoursPerWeekTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in fullTimeHoursPerWeek.items" value="{{item.TypeId}}" ng-selected="response.FullTimeHoursPerWeekTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+          <label for="">
+      			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="The minimum number of hours per week required for an employee to be considered a full-time employee.  If your company's definition of full-time eligibility is based on a period other than per week, please convert the number of hours to a per week equivalent.<br><br>For example, if the company's definition of full-time eligibility is '80 hours within a two-week period', please select '40 hours per week'.">
+      				4. Minimum Number of Hours per Week for Full-Time Eligibility <br> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
+      			</a></label>
+            <select ng-model="response.FullTimeHoursPerWeekTypeId" ng-options="item.TypeId as item.Name for item in fullTimeHoursPerWeek.items" class="selectpicker form-control show-tick"></select>
         </div>
         <div class="form-group" ng-controller="ReferenceController as eligibleWaitingPeriod" tablename="EligibleWaitingPeriodType">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The period of time between the date hired and the earliest date coverage under the medical plan can begin.">
-				5. Eligibility Waiting Period for Full-Time Employees: <br /> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
-			</a></label>
-            <select ng-model="response.EligibleWaitingPeriodTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in eligibleWaitingPeriod.items" value="{{item.TypeId}}" ng-selected="response.EligibleWaitingPeriodTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+          <label for="">
+    			     <a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="The period of time between the date hired and the earliest date coverage under the medical plan can begin.">
+    				5. Eligibility Waiting Period for Full-Time Employees: <br> (For Plans with differing requirements for two or more classes of employees, select the value that applies to the largest number of employees.)
+    			</a></label>
+      <select ng-model="response.EligibleWaitingPeriodTypeId" ng-options="item.TypeId as item.Name for item in eligibleWaitingPeriod.items" class="selectpicker form-control show-tick"></select>
         </div>
         <div class="form-group">
             <label for="">6. Provide Bonus for Waiving or Opting Out of Health Plan Coverage?</label>
@@ -48,9 +51,9 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Please note that the question requests an ANNUAL amount, not a monthly or per-pay amount.">
-				7. If yes, how much per year? (round to nearest dollar)
-			</a></label>
+        			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the question requests an ANNUAL amount, not a monthly or per-pay amount.">
+        				7. If yes, how much per year? (round to nearest dollar)
+        			</a></label>
             <label for="">Single</label>
             <input id="d_OptOutBonus_Single" tabindex="20" maxlength="6" name="d_OptOutBonus_Single" size="13" type="text" ng-model="response.OptOutBonusAmt_Single" class="form-control">
             <label for="">Family</label>
@@ -58,9 +61,7 @@
         </div>
         <div class="form-group" ng-controller="ReferenceController as domesticPartnerCoverage" tablename="DomesticPartnerCoverageType">
             <label for="">8. Offer Domestic Partner Coverage?</label>
-            <select ng-model="response.DomesticPartnerCoverageTypeId" class="selectpicker form-control show-tick">
-                <option ng-repeat="item in domesticPartnerCoverage.items" value="{{item.TypeId}}" ng-selected="response.DomesticPartnerCoverageTypeId == item.TypeId">{{item.Name}}</option>
-            </select>
+            <select ng-model="response.DomesticPartnerCoverageTypeId" ng-options="item.TypeId as item.Name for item in domesticPartnerCoverage.items" class="selectpicker form-control show-tick"></select>
         </div>
     </form>
 

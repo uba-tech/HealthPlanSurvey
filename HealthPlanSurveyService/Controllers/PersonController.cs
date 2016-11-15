@@ -63,16 +63,16 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// <summary>
         /// Get Survey Summary Item
         /// </summary>
-        /// <param name="UserId"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
-        public HttpResponseMessage Person(int UserId)
+        public HttpResponseMessage Person(int userId)
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetUserById(UserId);
+                var item = dataController.GetUserById(userId);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)

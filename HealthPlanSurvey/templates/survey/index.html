@@ -1,7 +1,7 @@
 ﻿<style>
     .surveyGrid {
         width: 95%;
-        height: 650px;
+        height: 450px;
       }
     .header-filtered {
         color: darkgreen;
@@ -24,7 +24,7 @@
                 <label><input type="radio" ng-model="startType" name="startType" value="1">Start a new survey with an existing client (load last year's data if available )</label>
             </div>
             <div class="form-group" ng-show="startType == 1">
-                <label for=""><!--<input type="checkbox" ng-model="checkLoad" ng-checked="true"> Load last year's data if available--></label><br />
+                <br />
                 <label for="">Client  </label>
                 <select ng-init="clientResponse = clientResponse || options[0]"
                         ng-options="client as client.Name for client in clients" ng-model="slientList">
@@ -36,6 +36,3 @@
         <button type="button" class="btn btn-primary" ng-click="startSurvey(startType, slientList.ResponseId)">Start Survey</button>
     </div>
 </div>
-    <script>
-        $("[data-toggle=popover]").popover();
-    </script>

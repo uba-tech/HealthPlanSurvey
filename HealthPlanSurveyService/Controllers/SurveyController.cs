@@ -109,8 +109,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         /// </summary>
         /// <param name="responseId"></param>
         /// <returns></returns>
-        //[DnnAuthorize()]
-        [AllowAnonymous]
+        [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Survey(int responseId)
         {
@@ -118,6 +117,26 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             {
                 HPSDataController dataController = new HPSDataController();
                 var item = dataController.GetSurvey(responseId);
+                return Request.CreateResponse(HttpStatusCode.OK, item);
+            }
+            catch (Exception ex)
+            {
+                //Log to DotNetNuke and reply with Error
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+        }
+
+        //[DnnAuthorize(StaticRoles = "Registered Users")]
+        [AllowAnonymous]
+        [HttpGet()]
+        public HttpResponseMessage ResponseTemplate()
+        {
+            try
+            {
+                HPSDataController dataController = new HPSDataController();
+                var item = dataController.GetSurveyTemplate();
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)
@@ -177,32 +196,6 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         }
 
-        /// <summary>
-        /// Get Survey Summary Item
-        /// </summary>
-        /// <param name="responseId"></param>
-        /// <returns></returns>
-        //[DnnAuthorize()]
-        //[AllowAnonymous]
-        //[HttpGet()]
-        //public HttpResponseMessage Survey(SurveyFilter filter)
-        //{
-        //    try
-        //    {
-        //        HPSDataController dataController = new HPSDataController();
-        //        var item = dataController.GetSurveyResponse_Summary(filter);
-        //        return Request.CreateResponse(HttpStatusCode.OK, item);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //Log to DotNetNuke and reply with Error
-        //        Exceptions.LogException(ex);
-        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-        //    }
-
-        //}
-
-
         [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpPut()]
         public HttpResponseMessage Survey(SurveyResponseItem survey)
@@ -210,7 +203,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                dataController.SaveSurveyResponse(survey);
+                dataController.SaveSurveyResponse(survey, _currentUser);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -239,6 +232,23 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
         }
 
+        [DnnAuthorize(StaticRoles = "Registered Users")]
+        [HttpPost()]
+        public HttpResponseMessage Validate(int responseId)
+        {
+            try
+            {
+                HPSDataController dataController = new HPSDataController();
+                dataController.ChangeStatus(responseId, 5);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                //Log to DotNetNuke and reply with Error
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
         #endregion
     }
 }

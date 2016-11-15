@@ -103,7 +103,7 @@
 [uib-popover-popup].popover,
 [uib-popover-html-popup].popover,
 [uib-popover-template-popup].popover {
-  display: block !important;
+  
 }
 
 .uib-time input {
