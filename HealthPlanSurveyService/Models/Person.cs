@@ -11,8 +11,8 @@ namespace UBA.Modules.HealthPlanSurveyService.Models
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string DisplaytName { get; set; }
-        public string EmailAdress { get; set; }
+        public string DisplayName { get; set; }
+        public string EmailAddress { get; set; }
         public string OfficePhoneNumber { get; set; }
         public string CellPhoneNumber { get; set; }
         public string JobTitle { get; set; }

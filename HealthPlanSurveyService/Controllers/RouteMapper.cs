@@ -6,6 +6,31 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
     {
         public void RegisterRoutes(IMapRoute mapRouteManager)
         {
+
+            mapRouteManager.MapHttpRoute(
+            "HealthPlanSurveyService",
+            "Delete",
+            "Survey/BrokerDelete/{responseId}",
+            new
+            {
+                controller = "Survey",
+                action = "BrokerDelete",
+                responseId = ""
+            },
+            new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+
+            mapRouteManager.MapHttpRoute(
+            "HealthPlanSurveyService",
+            "Validate",
+            "Survey/Validate/{responseId}",
+            new
+            {
+                controller = "Survey",
+                action = "Validate",
+                responseId = ""
+            },
+            new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+
             mapRouteManager.MapHttpRoute(
             "HealthPlanSurveyService",
             "SurveySummary",
@@ -19,20 +44,27 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
             mapRouteManager.MapHttpRoute(
             "HealthPlanSurveyService",
-            "ById",
-            "{controller}/{action}/{id}",
+            "index",
+            "{controller}/{action}",
             new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
 
-            //mapRouteManager.MapHttpRoute(
-            //moduleFolderName: "HealthPlanSurveyService",
-            //routeName: "ById",
-            //url: "{controller}/{action}/{id}",
-            //namespaces: new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+            mapRouteManager.MapHttpRoute(
+            "HealthPlanSurveyService",
+            "person",
+            "{controller}/{action}/{personId}",
+            new
+            {
+                controller = "Person",
+                action = "Person",
+                personId = ""
+            },
+            new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
+
 
             mapRouteManager.MapHttpRoute(
             "HealthPlanSurveyService",
             "default",
-            "{controller}/{action}",
+            "{controller}/{action}/{id}",
             new string[] { "UBA.Modules.HealthPlanSurveyService.Services" });
 
         }

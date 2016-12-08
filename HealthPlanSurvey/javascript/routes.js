@@ -1,4 +1,5 @@
 ﻿angular.module('SurveyWrangler').config(function ($routeProvider) {
+
     $routeProvider
         .when('', {
             redirectTo: '/surveys'
@@ -8,16 +9,18 @@
             redirectTo: '/surveys'
         })
 
-        .when('/#', {
+
+        .when('#', {
             redirectTo: '/surveys'
         })
 
     .when('/surveys', {
-        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/index.html",
-        controller: "SurveyIndexController"
+        controller: "SurveyIndexController",
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/index.html"
+
     })
 
-    .when('/surveys/new', {
+    .when('/surveys/new/:brokerId', {
         templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/create.html",
         controller: "SurveyCreateController"
     })
@@ -32,8 +35,9 @@
         controller: "SurveyEditController"
     })
 
-    .when('/surveys/:id/carryforward', {
-        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/carryForward.html",
+    .when('/surveys/:clientId/carryforward', {
+        templateUrl: "/DesktopModules/HealthPlanSurvey/templates/survey/create.html",
         controller: "SurveyCarryForwardController"
     })
+
 });

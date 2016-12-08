@@ -9,7 +9,6 @@
             </div>
         </div>
     </div>
-
     <form action="">
         <div class="form-group">
             <label for="">34. Does This Plan Provide Any Form of Prescription Drug Coverage?</label>
@@ -19,8 +18,9 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">
-				35. Funding Method
+              35. Funding Method
+			<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'This question refers only to the funding method for the prescription drug plan. In most, but not all, cases, the Rx plan is funded in the same way as the accompanying major medical plan.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
             <div class="radio">
               <input type="checkbox" ng-model="rxPlan.RxPlan.FundingMethodTypeId" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -28,8 +28,9 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">
-				36. Are Prescription Drugs Covered under Major Medical Deductible and Co-insurance (i.e. No Separate Prescription Drug Card Plans)?
+              36. Are Prescription Drugs Covered under Major Medical Deductible and Co-insurance<br>(i.e. No Separate Prescription Drug Card Plans)?
+			<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Prescription drugs (Rx) are considered \'\covered under the major medical plan\'\ if expenses for Rx are combined with other medical expenses (hospital charges, lab tests, etc.) toward meeting the medical plan\'\s annual deductible, Co-insurance, and Out-of-Pocket Maximum.  In today\'\s plan designs, Rx is usually not covered this way.<br>If the Rx plan has CoPays, Co-insurance which varies by drug category (generic, brand, etc.), or a deductible just for Rx which is separate from the medical deductible, the plans is NOT considered \'\covered under major medical.\'\  Answer \'\No\'\ to this question.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
             <div class="radio">
               <input type="checkbox" ng-model="rxPlan.RxPlan.IsCoveredUnderMajorMedical" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -43,8 +44,9 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">
-				38. Is a Separate Annual Deductible Applied to Prescription Drugs Only?
+              38. Is a Separate Annual Deductible Applied to Prescription Drugs Only?
+			<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'The deductible referred to in this question is separate from the major medical annual deductible. It applies only to prescription drug expenses.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
             <div class="radio">
               <input type="checkbox" ng-model="rxPlan.RxPlan.HasSeparateAnnualDeductibleApplied" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -58,8 +60,9 @@
         </div>
         <div class="form-group">
             <label for="">
-			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">
-				40. What is the Separate Annual Prescription Drug Deductible Amount?
+              40. What is the Separate Annual Prescription Drug Deductible Amount?
+			<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Separate annual Rx deductibles are often accumulated like the deductibles in a major medical plan with a Single deductible and a Family deductible. However, some Rx plans have only a Family deductible. In these plans, there is no Single deductible and the eligible Rx expenses for all individuals in a family accumulate toward that Family deductible amount. If this plan has only a Family deductible, check the box labeled <i><b>Family Only.</b></i><br>Other Rx plans have both Single and Family deductibles, but the Family deductible is not expressed as a fixed dollar amount. Instead, it is expressed as the Single deductible times the number of covered members in the family. If the plan has this type of Family deductible, check the box labeled <i><b>xEE.</b></i>'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
 						<div class="row">
 							<div class="col-md-3">
@@ -68,7 +71,7 @@
 							<div class="col-md-3">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-								  <input class="form-control" id="d_Rx_Deductible_Single" tabindex="11" maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Single" />
+								  <input class="form-control" id="d_Rx_Deductible_Single" tabindex="11" ng-maxlength="6" name="d_Rx_Deductible_Single" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Single" />
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -83,7 +86,7 @@
 							<div class="col-md-3">
 								<div class="input-group">
 								  <span class="input-group-addon">$</span>
-									<input class="form-control" id="d_Rx_Deductible_Family" tabindex="13" maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Family" />
+									<input class="form-control" id="d_Rx_Deductible_Family" tabindex="13" ng-maxlength="6" name="d_Rx_Deductible_Family" size="13" type="text" ng-model="rxPlan.RxPlan.SeparateAnnualDeductibleAmt_Family" />
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -104,8 +107,9 @@
 					<div class="col-md-12">
 						<div class="form-group" ng-controller="ReferenceController as rxPlanTierCount" tablename="RxPlanTierCountType">
 							<label for="">
-							<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">
-								42. Please indicate the Number of Separate Prescription Drug CoPay and/or Co-insurance Tiers
+                42. Please indicate the Number of Separate Prescription Drug CoPay and/or Co-insurance Tiers
+							<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'A tier must have a different CoPay than any other tier.<br>Example: if an Rx plan has a $10 CoPay for generics, $25 CoPay for formulary brand drugs, and $40 for non-formulary brand drugs, it is a 3-tier plan.  Likewise, if an Rx plan has a $10 CoPay for generics, $25 CoPay for formulary brand drugs, $40 for non-formulary brand drugs, and $40 for a fourth tier (i.e. lifestyle/injectable drugs), it is a 3-tier plan because the CoPays for tiers 3 and 4 are not different.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 							</a></label>
               <select ng-model="rxPlan.RxPlan.RxPlanTierCountTypeId" ng-options="item.TypeId as item.Name for item in rxPlanTierCount.items" class="selectpicker form-control show-tick"></select>
 						</div>
@@ -133,7 +137,7 @@
 					</div>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 1">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier One</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier One</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType1" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[0].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType1.items" class="selectpicker form-control show-tick"></select>
@@ -142,7 +146,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier1Copay" tabindex="2" maxlength="6" name="d_Tier1Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[0].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier1Copay" tabindex="2" ng-maxlength="6" name="d_Tier1Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[0].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -157,14 +161,14 @@
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier1CoinsuranceMax" tabindex="6" maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier1CoinsuranceMax" tabindex="6" ng-maxlength="6" name="d_Tier1CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
 							</div>
 						</div>
+            <hr>
 					</div>
-					<hr>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 2">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier Two</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier Two</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType2" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[1].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType2.items" class="selectpicker form-control show-tick"></select>
@@ -172,7 +176,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-							  <input class="form-control" id="d_Tier2Copay" tabindex="8" maxlength="6" name="d_Tier2Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[1].EmployeeCopayAmt" />
+							  <input class="form-control" id="d_Tier2Copay" tabindex="8" ng-maxlength="6" name="d_Tier2Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[1].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -187,14 +191,14 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier2CoinsuranceMax" tabindex="12" maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[1].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier2CoinsuranceMax" tabindex="12" ng-maxlength="6" name="d_Tier2CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[1].MaxCoinsuranceAmt" />
 							</div>
 						</div>
+            <hr>
 					</div>
-					<hr>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 3">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier Three</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier Three</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType3" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[2].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType3.items" class="selectpicker form-control show-tick"></select>
@@ -202,7 +206,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier3Copay" tabindex="14" maxlength="6" name="d_Tier3Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[2].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier3Copay" tabindex="14" ng-maxlength="6" name="d_Tier3Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[2].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -217,14 +221,14 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier3CoinsuranceMax" tabindex="18" maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[2].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier3CoinsuranceMax" tabindex="18" ng-maxlength="6" name="d_Tier3CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[2].MaxCoinsuranceAmt" />
 							</div>
 						</div>
+            <hr>
 					</div>
-					<hr>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 4">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier Four</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier Four</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType4" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[3].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType4.items" class="selectpicker form-control show-tick"></select>
@@ -232,7 +236,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier4Copay" tabindex="20" maxlength="6" name="d_Tier4Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[3].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier4Copay" tabindex="20" ng-maxlength="6" name="d_Tier4Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[3].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -247,14 +251,14 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier4CoinsuranceMax" tabindex="24" maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[3].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier4CoinsuranceMax" tabindex="24" ng-maxlength="6" name="d_Tier4CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[3].MaxCoinsuranceAmt" />
 							</div>
 						</div>
+            <hr>
 					</div>
-					<hr>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 5">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier Five</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier Five</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType5" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[4].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType5.items" class="selectpicker form-control show-tick"></select>
@@ -262,7 +266,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 							  <span class="input-group-addon">$</span>
-							  <input class="form-control" id="d_Tier5Copay" tabindex="26" maxlength="6" name="d_Tier5Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[4].EmployeeCopayAmt" />
+							  <input class="form-control" id="d_Tier5Copay" tabindex="26" ng-maxlength="6" name="d_Tier5Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[4].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -277,14 +281,14 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier5CoinsuranceMax" tabindex="30" maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[4].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier5CoinsuranceMax" tabindex="30" ng-maxlength="6" name="d_Tier5CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[4].MaxCoinsuranceAmt" />
 							</div>
 						</div>
+            <hr>
 					</div>
-					<hr>
 					<div class="row" ng-hide="rxPlan.RxPlan.RxPlanTierCountTypeId < 6">
 						<div class="col-md-1">
-							<p><a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="">Tier Six</a></p>
+							<p><a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="''">Tier Six</a></p>
 						</div>
 						<div class="col-md-2" ng-controller="ReferenceController as rxPlanType6" tablename="RxType">
               <select ng-model="rxPlan.PlanTiers[5].RxPlanTypeId" ng-options="item.TypeId as item.Name for item in rxPlanType6.items" class="selectpicker form-control show-tick"></select>
@@ -292,7 +296,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier6Copay" tabindex="32" maxlength="6" name="d_Tier6Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[5].EmployeeCopayAmt" />
+								<input class="form-control" id="d_Tier6Copay" tabindex="32" ng-maxlength="6" name="d_Tier6Copay" size="13" type="text" ng-model="rxPlan.PlanTiers[5].EmployeeCopayAmt" />
 							</div>
 						</div>
 						<div class="col-md-1">
@@ -307,7 +311,7 @@
 						<div class="col-md-2">
 							<div class="input-group">
 								<span class="input-group-addon">$</span>
-								<input class="form-control" id="d_Tier6CoinsuranceMax" tabindex="36" maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
+								<input class="form-control" id="d_Tier6CoinsuranceMax" tabindex="36" ng-maxlength="6" name="d_Tier6CoinsuranceMax" size="7" type="text" ng-model="rxPlan.PlanTiers[0].MaxCoinsuranceAmt" />
 							</div>
 						</div>
 					</div>

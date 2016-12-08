@@ -172,6 +172,27 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             }
 
         }
+
+        [DnnAuthorize(StaticRoles = "Registered Users")]
+        [HttpPut()]
+        public HttpResponseMessage SurveyCarryForward(SurveyResponseItem survey)
+        {
+            try
+            {
+                HPSDataController dataController = new HPSDataController();
+                int id = dataController.SaveSurveyResponse(survey, _currentUser);
+                //return new HttpResponseMessage(HttpStatusCode.OK);
+                NewSurveyId respId = new NewSurveyId() { ResponseId = id };
+                return Request.CreateResponse(HttpStatusCode.OK, respId);
+            }
+            catch (Exception ex)
+            {
+                //Log to DotNetNuke and reply with Error
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
         /// <summary>
         /// Get Survey Summary Item
         /// </summary>
@@ -203,8 +224,10 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                dataController.SaveSurveyResponse(survey, _currentUser);
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                int id = dataController.SaveSurveyResponse(survey, _currentUser);
+                //return new HttpResponseMessage(HttpStatusCode.OK);
+                NewSurveyId respId = new NewSurveyId() { ResponseId = id };
+                return Request.CreateResponse(HttpStatusCode.OK, respId);
             }
             catch (Exception ex)
             {
@@ -249,6 +272,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+        
         #endregion
     }
 }

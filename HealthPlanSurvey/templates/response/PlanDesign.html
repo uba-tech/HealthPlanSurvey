@@ -9,7 +9,6 @@
             </div>
         </div>
     </div>
-
     <form action="">
         <div class="form-group">
             <label for="">
@@ -30,16 +29,17 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A Separate Inpatient Deductible or CoPay is a portion of the covered expenses for each hospital stay which must be paid by the patient. It is separate from, and in addition to the plan's annual deductible. Some plans (many HMO's, for example) have a Separate In-Hospital Deductible or CoPay, but no annual deductible.<br><br>
-							If the plan has a Separate In-Hospital Deductible or CoPay that is assessed per day of the stay, check the 'Per Day' box.<br><br>
-							If the plan has no Separate In-Hospital Deductible or CoPay, check the 'None' box.">
-						Separate In-Hospital Ded. or copay
+                      Separate In-Hospital Ded. or copay
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'A Separate Inpatient Deductible or CoPay is a portion of the covered expenses for each hospital stay which must be paid by the patient. It is separate from, and in addition to the plan\'\s annual deductible. Some plans (many HMO\'\s, for example) have a Separate In-Hospital Deductible or CoPay, but no annual deductible.<br><br>
+							If the plan has a Separate In-Hospital Deductible or CoPay that is assessed per day of the stay, check the \'\Per Day\'\ box.<br><br>
+							If the plan has no Separate In-Hospital Deductible or CoPay, check the \'\None\'\ box.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 					</a></p>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Inpatient_Copay_InNetwork" class="form-control" tabindex="1" maxlength="6" name="d_Inpatient_Copay_InNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_InNetwork" />
+                        <input id="d_Inpatient_Copay_InNetwork" class="form-control" tabindex="1" ng-maxlength="6" name="d_Inpatient_Copay_InNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_InNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -59,7 +59,7 @@
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Inpatient_Copay_OutNetwork" class="form-control" tabindex="4" maxlength="6" name="d_Inpatient_Copay_OutNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_OutOfNetwork" />
+                        <input id="d_Inpatient_Copay_OutNetwork" class="form-control" tabindex="4" ng-maxlength="6" name="d_Inpatient_Copay_OutNetwork" size="11" type="text" ng-model="design.CopayAmt_Inpatient_OutOfNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -81,15 +81,16 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.<br><br>
-							If the plan does not require an Annual Deductible before Co-insurance is applied, check the 'None' box.">
-						Annual Plan Deductible (Single)
+                      Annual Plan Deductible (Single)
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee\'\s portion of it.<br><br>
+							If the plan does not require an Annual Deductible before Co-insurance is applied, check the \'\None\'\ box.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 					</a></p>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_SingleDeductible_InNetwork" class="form-control" tabindex="7" maxlength="6" name="d_SingleDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_InNetwork" />
+                        <input id="d_SingleDeductible_InNetwork" class="form-control" tabindex="7" ng-maxlength="6" name="d_SingleDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_InNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -99,7 +100,7 @@
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_SingleDeductible_OutNetwork" class="form-control" tabindex="9" maxlength="6" name="d_SingleDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_OutOfNetwork" />
+                        <input id="d_SingleDeductible_OutNetwork" class="form-control" tabindex="9" ng-maxlength="6" name="d_SingleDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Single_OutOfNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -111,15 +112,16 @@
             <div class="row">
                 <div class="col-md-2">
                     <p>
-					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee’s portion of it.  If the family deductible is equal to the single deductible times the number of covered members, check the box labled 'xEE.'<br><br>
-							If the plan does not require an Annual Deductible before Co-insurance is applied, check the 'None' box.">
-						Annual Plan Deductible (Family)
+                      Annual Plan Deductible (Family)
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'An Annual Plan Deductible is the portion of the covered expenses which must be paid each year before Co-insurance is applied. In split-funded plans, this is the full plan deductible, not just the employee\'\s portion of it.  If the family deductible is equal to the single deductible times the number of covered members, check the box labled \'\xEE.\'\<br><br>
+							If the plan does not require an Annual Deductible before Co-insurance is applied, check the \'\None\'\ box.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 					</a></p>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_FamilyDeductible_InNetwork" class="form-control" tabindex="11" maxlength="6" name="d_FamilyDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_InNetwork" />
+                        <input id="d_FamilyDeductible_InNetwork" class="form-control" tabindex="11" ng-maxlength="6" name="d_FamilyDeductible_InNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_InNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -131,7 +133,7 @@
                 <div class="col-md-2">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_FamilyDeductible_OutNetwork" class="form-control" tabindex="14" maxlength="6" name="d_FamilyDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_OutOfNetwork" />
+                        <input id="d_FamilyDeductible_OutNetwork" class="form-control" tabindex="14" ng-maxlength="6" name="d_FamilyDeductible_OutNetwork" size="11" type="text" ng-model="design.AnnualPlanDeductibleAmt_Family_OutOfNetwork" />
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -191,10 +193,11 @@
             <div class="row">
                 <div class="col-md-2">
                     <p for="">
-					<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the definition of Annual Out-of-Pocket Maximum (Single) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Annual Out-of-Pocket Maximum means the annual maximum amount an employee actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).  It is very important to enter an amount consistent with the definition provided for this Survey.<br><br>
-							Example: The Plan has a $500 deductible, then pays 80% of the next $5,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $1,500 ($500 deductible plus $1,000 (the employee's 20% share of the next $5,000)).<br><br>
-							If there is no Out-of-Pocket Maximum, check 'None'.">
-						Annual Out-of-Pocket Maximum (Single)
+                      Annual Out-of-Pocket Maximum (Single)
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Please note that the definition of Annual Out-of-Pocket Maximum (Single) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Annual Out-of-Pocket Maximum means the annual maximum amount an employee actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).  It is very important to enter an amount consistent with the definition provided for this Survey.<br><br>
+							Example: The Plan has a $500 deductible, then pays 80% of the next $5,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $1,500 ($500 deductible plus $1,000 (the employee\'\s 20% share of the next $5,000)).<br><br>
+							If there is no Out-of-Pocket Maximum, check \'\None\'\.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 					</a></p>
                 </div>
                 <div class="col-md-2">
@@ -229,13 +232,14 @@
             <hr>
             <div class="row">
                 <div class="col-md-2">
-				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="Please note that the definition of Annual Out-of-Pocket Maximum (Family) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Out-of-Pocket = The annual maximum amount a family actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).<br><br>
+                  <p>Annual Out-of-Pocket Maximum (Family)
+				<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Please note that the definition of Annual Out-of-Pocket Maximum (Family) used by certain insurance companies might differ from the definition used in this Survey for creating benchmarks.  In this Survey, the Out-of-Pocket = The annual maximum amount a family actually pays out of their pocket in deductible costs plus their share of Co-insurance (and CoPays if included).<br><br>
 						The Annual Out-of-Pocket Maximum (Family) limit is often two times or three times the single Annual Out-of-Pocket Maximum (Single).<br><br>
-						Example: The Plan has a $1,000 family deductible, then pays 80% of the next $10,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $3,000 ($1,000 deductible plus $2,000 (the family's 20% share of the next $10,000)).<br><br>
-						If the Family Out-of-Pocket Maximum is equal to the Single Out-of-Pocket Maximum times the number of covered members, check the box labeled 'xEE.'<br><br>
-						If there is no Out-of-Pocket Maximum, check 'None'.">
-					Annual Out-of-Pocket Maximum (Family)
-				</a></div>
+						Example: The Plan has a $1,000 family deductible, then pays 80% of the next $10,000 in expenses, and then pays 100% of all other expenses.  The Annual Out-of-Pocket Maximum is $3,000 ($1,000 deductible plus $2,000 (the family\'\s 20% share of the next $10,000)).<br><br>
+						If the Family Out-of-Pocket Maximum is equal to the Single Out-of-Pocket Maximum times the number of covered members, check the box labeled \'\xEE.\'\<br><br>
+						If there is no Out-of-Pocket Maximum, check \'\None\'\.'">
+          <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+				</a></p></div>
                 <div class="col-md-2">
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
@@ -282,9 +286,11 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2">
-          				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="'Minimum value coverage' is coverage with an actuarial value of at least 60% – this means that on average the plan is designed to pay at least 60% of covered charges.">
-          					Minimum Value Coverage
+                  <p>Minimum Value Coverage
+          				<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Minimum value coverage is coverage with an actuarial value of at least 60% – this means that on average the plan is designed to pay at least 60% of covered charges.'">
+                    <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
           				</a>
+                </p>
                 </div>
                 <div class="col-md-2">
                     <div class="radio">
@@ -295,9 +301,10 @@
             <br>
             <div class="row">
                 <div class="col-md-2">
-				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="'Minimum essential coverage' includes any plan offered in the small or large group market in a state, as well as self-funded plans, unless the plan only provides “excepted benefits.” Excepted benefits are those that provide very limited medical coverage, like hospital indemnity, long-term care and cancer plans, on-site medical clinics, disability income and accident plans, and dental- and vision-only coverage. A health reimbursement arrangement (HRA) is considered minimum essential coverage.">
-					Minimum Essential Coverage
-				</a></div>
+                  <p>Minimum Essential Coverage
+				<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Minimum essential coverage includes any plan offered in the small or large group market in a state, as well as self-funded plans, unless the plan only provides “excepted benefits.” Excepted benefits are those that provide very limited medical coverage, like hospital indemnity, long-term care and cancer plans, on-site medical clinics, disability income and accident plans, and dental- and vision-only coverage. A health reimbursement arrangement (HRA) is considered minimum essential coverage.'">
+          <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+				</a></p></div>
                 <div class="col-md-2">
                     <div class="radio">
                       <input type="checkbox" ng-model="design.HasMinEssentialCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -360,9 +367,11 @@
             <br>
             <div class="form-group">
                 <label for="">
-				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="A CoPay is a small payment required each time a service is provided.  Covered charges in excess of the CoPay amount do not apply to the annual deductible and may be covered and reimbursed at 100% or less.<br><br>
-						If the services are subject to the annual deductible and Co-insurance, check 'No CoPay.'">
-					26. Copay amounts for in-network benefits (if your plan does not require a copay for the copay service listed, please check the "No Copay" box)
+                  26. Copay amounts for in-network benefits<br>
+                  (if your plan does not require a copay for the copay service listed, please check the "No Copay" box)
+				<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'A CoPay is a small payment required each time a service is provided.  Covered charges in excess of the CoPay amount do not apply to the annual deductible and may be covered and reimbursed at 100% or less.<br><br>
+						If the services are subject to the annual deductible and Co-insurance, check \'\No CoPay\'\.'">
+          <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 				</a></label>
                 <div class="row">
                     <div class="col-md-3">&nbsp;</div>
@@ -378,7 +387,7 @@
                     <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input id="d_Copay_PCP" class="form-control" tabindex="47" maxlength="4" name="d_Copay_PCP" size="13" type="text" ng-model="design.CopayAmt_PCP" />
+                            <input id="d_Copay_PCP" class="form-control" tabindex="47" ng-maxlength="4" name="d_Copay_PCP" size="13" type="text" ng-model="design.CopayAmt_PCP" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -391,7 +400,7 @@
                     <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input id="d_Copay_SCP" class="form-control" tabindex="49" maxlength="4" name="d_Copay_SCP" size="13" type="text" ng-model="design.CopayAmt_SCP" />
+                            <input id="d_Copay_SCP" class="form-control" tabindex="49" ng-maxlength="4" name="d_Copay_SCP" size="13" type="text" ng-model="design.CopayAmt_SCP" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -404,7 +413,7 @@
                     <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input id="d_Copay_UR" class="form-control" tabindex="51" maxlength="4" name="d_Copay_UR" size="13" type="text" ng-model="design.CopayAmt_UrgentCare" />
+                            <input id="d_Copay_UR" class="form-control" tabindex="51" ng-maxlength="4" name="d_Copay_UR" size="13" type="text" ng-model="design.CopayAmt_UrgentCare" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -417,7 +426,7 @@
                     <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input id="d_Copay_ER" class="form-control" tabindex="53" maxlength="4" name="d_Copay_ER" size="13" type="text" ng-model="design.CopayAmt_ER" />
+                            <input id="d_Copay_ER" class="form-control" tabindex="53" ng-maxlength="4" name="d_Copay_ER" size="13" type="text" ng-model="design.CopayAmt_ER" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -431,8 +440,9 @@
             </div>
             <div class="form-group">
                 <label for="">
-				<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For purposes of this survey, a wellness plan must contain at least one of the elements noted in the question.  If your plan does not contain any of these elements, please select 'No'.">
-					30. Has your Company implemented a Wellness Program that contains any of these: Health Risk Assessment Seminars/Workshops, Physical Exam, Blood Draw, or Other Biometric Testing, Coaching - either telephone or on-site, or Incentives/Rewards?
+                  30. Has your Company implemented a Wellness Program that contains any of these: Health Risk Assessment Seminars/Workshops, Physical Exam, Blood Draw, or Other Biometric Testing, Coaching - either telephone or on-site, or Incentives/Rewards?
+				<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'For purposes of this survey, a wellness plan must contain at least one of the elements noted in the question.  If your plan does not contain any of these elements, please select \'\No\'\.'">
+          <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 				</a></label>
                 <div class="radio">
                   <input type="checkbox" ng-model="design.HasWellnessProgram" data-on-text="Yes" data-off-text="No" bs-switch>
@@ -470,5 +480,4 @@
                 </div>
             </div>
     </form>
-
 </div>

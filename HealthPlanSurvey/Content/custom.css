@@ -1,0 +1,143 @@
+.fixed {
+  position: fixed;
+  top:70px;
+}
+
+.absolute{
+  position: absolute;
+}
+
+/* sidebar */
+.bs-docs-sidebar {
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bs-docs-sidebar-top {
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  top:50px;
+}
+
+/* all links */
+.bs-docs-sidebar .nav>li>a {
+  color: #999;
+  border-left: 2px solid transparent;
+  padding: 4px 20px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* nested links */
+.bs-docs-sidebar .nav .nav>li>a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 30px;
+  font-size: 12px;
+}
+
+/* active & hover links */
+.bs-docs-sidebar .nav>.active>a,
+.bs-docs-sidebar .nav>li>a:hover,
+.bs-docs-sidebar .nav>li>a:focus {
+  color: #2486c7;
+  text-decoration: none;
+  background-color: transparent;
+  border-left-color: #2486c7;
+}
+/* all active links */
+.bs-docs-sidebar .nav>.active>a,
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+  font-weight: 700;
+}
+/* nested active links */
+.bs-docs-sidebar .nav .nav>.active>a,
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+  font-weight: 500;
+}
+
+/* hide inactive nested list */
+.bs-docs-sidebar .nav ul.nav {
+  display: none;
+}
+/* show active nested list */
+.bs-docs-sidebar .nav>.active>ul.nav {
+  display: block;
+}
+
+
+.navbar-fixed-left {
+  width: 200px;
+  border-radius: 0;
+  height: 50%;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+  float: none; /* Cancel default li float: left */
+  width: 200px;
+}
+
+.navbar-fixed-left + .container {
+  padding-left: 240px;
+}
+
+        /* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+  margin-top: -100px;
+  margin-left: 140px;
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-top .navbar-nav > li > .dropdown-menu {
+margin-top: -50px;
+margin-left: 140px;
+}
+
+.surveys {
+  font-family: sans-serif;
+}
+
+/* Side notes for calling out things
+-------------------------------------------------- */
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+  /*margin: 20px 0;*/
+  /*padding: 15px 30px 15px 15px;*/
+  border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+  background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+  /*background-color: #fcf2f2; */
+  border-left-color:#AB0900;
+}
+.bs-callout-warning {
+  background-color: #fefbed;
+  border-color: #f1e7bc;
+}
+.bs-callout-info {
+  background-color: #f0f7fd;
+  border-color: #d0e3f0;
+}
+
+.dnntitle{
+  white-space:nowrap;
+  border-bottom:2px solid #e8e8e8;
+  padding:0px;
+  margin-bottom:15px;
+}

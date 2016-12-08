@@ -7,4 +7,3 @@ C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\UB
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HealthPlanSurveyService.csproj.GenerateResource.Cache
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HealthPlanSurveyService.dll
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HealthPlanSurveyService.pdb
-C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurveyService\obj\Debug\HealthPlanSurveyService.csprojResolveAssemblyReference.cache

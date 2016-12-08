@@ -1,44 +1,36 @@
-﻿<style>
-    .navbar-fixed-left {
-        width: 140px;
-        position: fixed;
-        border-radius: 0;
-        height: 50%;
-    }
-
-        .navbar-fixed-left .navbar-nav > li {
-            float: none; /* Cancel default li float: left */
-            width: 139px;
-        }
-
-        .navbar-fixed-left + .container {
-            padding-left: 160px;
-        }
-
-        /* On using dropdown menu (To right shift popuped) */
-        .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-            margin-top: -50px;
-            margin-left: 140px;
-        }
-</style>
+﻿
 <h3>New Survey</h3>
-<section ng-init="tab = 10">
-    <div class="navbar navbar-fixed-left">
-        <ul class="nav navbar-nav">
-            <li ng-class="{ active:tab === 10 }"><a href ng-click="tab = 10">Client Details</a></li>
-            <li ng-class="{ active:tab === 20 }"><a href ng-click="tab = 20">General Info</a></li>
-            <li ng-repeat="plan in survey.ActivePlans">{{plan.ActivePlan.PlanName}}
-                <ul>
-                    <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30)">Medical Plan</a></li>
-                    <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40)">Plan Design</a></li>
-                    <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50)">Prescription Drug Plan</a></li>
+<section ng-init="setSelected(10)">
+
+    <nav class="col-md-3 bs-docs-sidebar navbar-fixed-left" id="nav_bar">
+          <ul class="nav nav-stacked absolute" id="position">
+              <li ng-class="{ active:tab === 10 }">
+                <a href ng-click="tab = 10; gotoTop()" class="active">Client Details</a>
+              </li>
+              <li ng-class="{ active:tab === 20 }">
+                <a href ng-click="tab = 20; gotoTop()">General Info</a>
+              </li>
+              <li ng-repeat="plan in survey.ActivePlans" uib-dropdown>
+                <a href uib-dropdown-toggle>{{plan.ActivePlan.PlanName}}</a>
+                <ul uib-dropdown-menu>
+                    <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30); gotoTop()">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40); gotoTop()">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50); gotoTop()">Prescription Drug Plan</a></li>
                 </ul>
-            </li>
-            <li ng-class="{ active:tab === 600 }"><a href ng-click="tab = 600">Retiree Plan</a></li>
-            <li ng-class="{ active:tab === 700 }"><a href ng-click="tab = 700">Section 125</a></li>
-        </ul>
-    </div>
-    <div class="container">
+              </li>
+              <li ng-class="{ active:tab === 600 }">
+                <a href ng-click="tab = 600; gotoTop()">Retiree Plan</a>
+              </li>
+              <li ng-class="{ active:tab === 700 }">
+                <a href ng-click="tab = 700; gotoTop()">Section 125</a>
+              </li>
+              <hr>
+              <a href="#/surveys" aria-label="Close" title="All Surveys" class="btn btn-link surveys">
+                <i class="fa fa-angle-left" style="font-size:14pt;"></i> <span style="font-size:11pt;">All Surveys</span></a>
+          </ul>
+    </nav>
+
+    <div class="container" id="scrollArea">
         <sw-Company-Details class="panel" ng-show="tab === 10" ng-model="survey.GeneralResponse"></sw-Company-Details>
         <sw-General-Info class="panel" ng-show="tab === 20" ng-model="survey.GeneralResponse" action="changePlanCount()"></sw-General-Info>
         <div class="container" ng-repeat="plan in survey.ActivePlans">
@@ -48,7 +40,31 @@
         </div>
         <sw-Retiree-Plan class="panel" ng-show="tab === 600" ng-model="survey"></sw-Retiree-Plan>
         <sw-Section-125 class="panel" ng-show="tab === 700" ng-model="survey.Section125"></sw-Section-125>
-        <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
-        <!-- <a class="btn btn-default" ng-click="(tab > 50)? setSelected(600) : setSelected(tab+10)">Next</a> -->
+        <a id="Submit" class="btn btn-default" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</a>
+        <!-- <a class="btn btn-default" ng-click="(tab > 50)? setSelected(600) : setSelected(tab+10)">Next</a> value="{{isSubmitting ? 'saving...' : 'Save'}}" -->
     </div>
+
 </section>
+
+<script>
+$(document).ready(function() {
+
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the
+      //nav bar to stick.
+      //console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 210) {
+      $('#nav_bar').addClass('bs-docs-sidebar-top');
+      $('#position').addClass('fixed');
+      $('#position').removeClass('absolute');
+    }
+    if ($(window).scrollTop() < 211) {
+      $('#nav_bar').removeClass('bs-docs-sidebar-top');
+      $('#nav_bar').addClass('bs-docs-sidebar');
+      $('#position').removeClass('fixed');
+      $('#position').addClass('absolute');
+    }
+  });
+});
+</script>

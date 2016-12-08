@@ -1,1 +1,1 @@
-﻿angular.module('SurveyWrangler', ['ngRoute', 'ngResource', 'ui.grid', 'ui.bootstrap']);
+﻿angular.module('SurveyWrangler', ['ngRoute', 'ngResource', 'ngSanitize', 'ui.grid', 'ui.bootstrap']);

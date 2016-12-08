@@ -19,19 +19,18 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         string SurveyListSql = @"SELECT r.ResponseId,  r.MemberFirmId, f.Name as 'Broker', r.OrganizationName, r.City, us.StateCode, 
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
-                        st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
+                        st.[Name] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
                         FROM SurveyResponse_General r 
-						INNER JOIN wm4dnn_scott.dbo.uba_MemberFirm f on r.MemberFirmId = f.MemberFirmId 
+						INNER JOIN wm4dnn.dbo.uba_MemberFirm f on r.MemberFirmId = f.MemberFirmId 
                         INNER JOIN US_State us on r.US_StateId = us.TypeId 
                         INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.TypeId 
                         INNER JOIN Survey s on r.SurveyId = s.SurveyId 
-                        WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
-                        AND f.[Active] = 1 ";
+                        WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) ";
 
         string SurveySummaryModelSql = @"SELECT r.ResponseId, '' as 'Broker', r.OrganizationName, r.City, s.StateCode, 
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
-                        st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
+                        st.[Name] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
                         FROM SurveyResponse_General r 
                         INNER JOIN US_State s on r.US_StateId = s.TypeId 
                         INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.TypeId 
@@ -39,7 +38,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         string SurveyFilteredListSql = @"SELECT TOP 25 r.ResponseId, '' as 'Broker', r.OrganizationName, r.City, s.StateCode, 
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
                         r.PersonCompletingSurvey_Phone, r.PersonCompletingSurvey_PhoneExt, 
-                        st.[Description] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
+                        st.[Name] as 'ResponseStatus', r.CompletedBy, r.CreatedOn, r.UpdatedOn, r.CompletedOn  
                         FROM SurveyResponse_General r 
                         INNER JOIN US_State s on r.US_StateId = s.TypeId 
                         INNER JOIN SurveyResponseStatusType st on r.SurveyResponseStatusTypeId = st.TypeId 
@@ -312,7 +311,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                       ,[AllowPTG]
                       ,b.[MemberFirmID]
                       FROM [dbo].[Brokers]  b 
-                      INNER JOIN wm4dnn_scott.[dbo].[uba_MemberFirm] f 
+                      INNER JOIN wm4dnn.[dbo].[uba_MemberFirm] f 
                       ON b.[MemberFirmID] = f.[MemberFirmID] 
                       WHERE f.[Active] = 1 ";
         string BrokersByMemberFirmIdSql = @"SELECT [BrokerNo]
@@ -336,13 +335,11 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //Get the paginated list of surveys for a partner firm.
         public IEnumerable<SurveySummaryModel> GetSurveyListData(UserInfo curUser)
         {
-            //TODO
-            //TODO:  convert this to use pagination
             string sql = SurveyListSql;
-            if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers")))
+            if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers") | curUser.IsInRole("UBASuperUser")))
                 sql += string.Format(@" AND EXISTS (
                             SELECT NULL
-                            FROM wm4dnn_scott.dbo.uba_Users u
+                            FROM UserSettings u
                             WHERE r.MemberFirmId = u.MemberFirmId
                             AND u.UserID = {0}
                         )", curUser.UserID);
@@ -497,6 +494,18 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             SurveyResponseItem item = new SurveyResponseItem();
             // initialize general response
             var general = new SurveyResponse_General();
+            general.NotParticipatingReasonTypeId = 4;
+            general.SurveyResponseStatusTypeId = 4;
+            general.US_StateId = -1;
+            general.OrganizationTypeId = -1;
+            general.NumberActivePlansOfferedTypeId = -1;
+            general.NumberRetireePlansOfferedTypeId = -1;
+            general.PremiumContributionStrategyTypeId = -1;
+            general.FullTimeHoursPerWeekTypeId = -1;
+            general.EligibleWaitingPeriodTypeId = -1;
+            general.DomesticPartnerCoverageTypeId = -1;
+            general.EarlyRetireePremiumShareTypeId = -1;
+            general.PresentationInterestTypeId = -1;
             item.GeneralResponse = general;
 
             // initialize active plans with RxPlan
@@ -506,13 +515,30 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 var activePlan = new SurveyResponse_ActivePlan();
                 activePlan.PlanName = "Plan #" + i.ToString();
                 activePlan.PlanNumber = i;
+                activePlan.ActivePlanTypeId = -1;
+                activePlan.FundingMethodTypeId = -1;
+                activePlan.PremiumTierTypeId = -1;
+                activePlan.ContributionBasisTypeId = -1;
+                activePlan.UnitRateTypeId = -1;
+                activePlan.MedicalExpenseReimbursementRenewalRateTypeId = -1;
                 activePlan.RenewalDate = DateTime.Now.Date;
+                activePlan.PlanDesignMetalLevelTypeId = -1;
+                activePlan.InfertilityCoverageTypeId = -1;
+                activePlan.WellnessProgramProviderTypeId = -1;
+                activePlan.AleEmployerStrategyTypeId = -1;
                 srvyActivePlan.ActivePlan = activePlan;
                 var rxPlan = new SurveyResponse_RxPlan();
+                rxPlan.FundingMethodTypeId = -1;
+                rxPlan.CoPayCoinsuranceStructureTypeId = -1;
+                rxPlan.RxPlanTierCountTypeId = -1;
+                rxPlan.AddedCostForBrandDrugsTypeId = -1;
+                rxPlan.MailOrderPlanDesignTypeId = -1;
                 var rxTiers = new List<SurveyResponse_RxPlanTier>();
                 for (int j=1; j < 7; j++)
                 {
                     var rxTier = new SurveyResponse_RxPlanTier();
+                    rxTier.RxPlanTierTypeId = -1;
+                    rxTier.EmployeeCoinsurancePctTypeId = -1;
                     rxTiers.Add(rxTier);
                 }
                 var surveyRxPlan = new SurveyRxPlan(rxPlan, rxTiers);
@@ -522,6 +548,10 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
             // get retiree plan
             var retiree = new SurveyResponse_RetireePlan();
+            retiree.RetireePlanTypeId = -1;
+            retiree.FundingMethodTypeId = -1;
+            retiree.RetireePlanArrangementTypeId = -1;
+            retiree.RetireePlanOfferedToTypeId = -1;
             item.RetireePlan = retiree;
 
             // get section125 
@@ -531,7 +561,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             return item;
         }
 
-        public void SaveSurveyResponse(SurveyResponseItem survey, UserInfo curUser)
+        public int SaveSurveyResponse(SurveyResponseItem survey, UserInfo curUser)
         {
             using (hpsDB db = new hpsDB())
             {
@@ -540,9 +570,15 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                     // create new response
 
                     // get current Survey record
-                    var srvy = db.FirstOrDefault<Survey>("SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC");
+                    var srvy = db.FirstOrDefault<Survey>("SELECT TOP 1 * FROM Survey ORDER BY SurveyYear DESC");
+
+                    // get user's memberfirmid
+                    var firmId = 1;
+                    if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers") | curUser.IsInRole("UBASuperUser")))
+                        firmId = db.ExecuteScalar<int>("SELECT ISNULL(MemberFirmId,0) FROM UserSettings WHERE UserId = @0", curUser.UserID);
 
                     // create SurveyResponse_General record
+                    survey.GeneralResponse.MemberFirmId = firmId;
                     survey.GeneralResponse.CreatedBy = curUser.UserID;
                     survey.GeneralResponse.CreatedOn = DateTime.Now;
                     survey.GeneralResponse.UpdatedBy = curUser.UserID;
@@ -597,12 +633,23 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                     }
 
                     // create section 125 record
-                    survey.Section125.ResponseId = responseId;
-                    db.Insert(survey.Section125);
+                    if(survey.Section125 != null)
+                    { 
+                        survey.Section125.ResponseId = responseId;
+                        if (survey.Section125.Offers_FSA_NoneOfTheAbove.HasValue && survey.Section125.Offers_FSA_NoneOfTheAbove.Value)
+                        {
+                            survey.Section125.Offers_FSA_DependentCare = false;
+                            survey.Section125.Offers_FSA_LimitedPurposeMedical = false;
+                            survey.Section125.Offers_FSA_PremiumOnlyPlan = false;
+                            survey.Section125.Offers_FSA_TraditionalMedical = false;
+                        }
+                        db.Insert(survey.Section125);
+                    }
 
                 }
                 else
                 {
+                    int responseId = survey.GeneralResponse.ResponseId;
                     // update SurveyResponse_General record
                     survey.GeneralResponse.UpdatedBy = curUser.UserID;
                     survey.GeneralResponse.UpdatedOn = DateTime.Now;
@@ -616,28 +663,64 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                         int planId = plan.ActivePlan.ActivePlanId;
 
                         // update Rx plan record
-                        db.Update(plan.RxPlan.RxPlan);
+                        if (plan.RxPlan.RxPlan.RxPlanId > 0)
+                            db.Update(plan.RxPlan.RxPlan);
+                        else
+                        {
+                            plan.RxPlan.RxPlan.ActivePlanId = planId;
+                            db.Insert(plan.RxPlan.RxPlan);
+                        }
                         int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
 
                         // update Rx tier records
                         foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
                         {
-                            db.Update(tier);
+                            if(tier.RxPlanTierId > 0)
+                                db.Update(tier);
+                            else
+                            {
+                                tier.RxPlanId = rxPlanId;
+                                db.Insert(tier);
+                            }
                         }
                     }
 
                     // update retiree plan record
                     if (survey.GeneralResponse.HasEarlyRetireeCoverageInActivePlans)
                     {
-                        db.Update(survey.RetireePlan);
+                        if (survey.RetireePlan.RetireePlanId > 0)
+                            db.Update(survey.RetireePlan);
+                        else
+                        {
+                            survey.RetireePlan.ResponseId = responseId;
+                            survey.RetireePlan.UpdatedByUserID = curUser.UserID;
+                            db.Insert(survey.RetireePlan);
+                        }
                     }
 
                     // update section 125 record
-                    db.Update(survey.Section125);
+                    if (survey.Section125 != null)
+                    {
+                        if (survey.Section125.Offers_FSA_NoneOfTheAbove.HasValue && survey.Section125.Offers_FSA_NoneOfTheAbove.Value)
+                        {
+                            survey.Section125.Offers_FSA_DependentCare = false;
+                            survey.Section125.Offers_FSA_LimitedPurposeMedical = false;
+                            survey.Section125.Offers_FSA_PremiumOnlyPlan = false;
+                            survey.Section125.Offers_FSA_TraditionalMedical = false;
+                        }
+                        if(survey.Section125.Section125Id > 0)
+                            db.Update(survey.Section125);
+                        else
+                        {
+                            survey.Section125.ResponseId = responseId;
+                            db.Insert(survey.Section125);
+                        }
+                    }
 
                 }
             }
 
+            return survey.GeneralResponse.ResponseId;
         }
 
         public void ChangeStatus(int responseId, int status)
@@ -645,7 +728,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             using (hpsDB db = new hpsDB())
             {
                 // set survey response status
-                string sql = string.Format("UPDATE SurveyResponse_General SET [SurveyResponseStatusTypeId] = @0 WHERE ResponseId = @1", responseId, status);
+                string sql = string.Format("UPDATE SurveyResponse_General SET [SurveyResponseStatusTypeId] = {0} WHERE ResponseId = {1}", status, responseId);
                 db.Execute(sql);
             }
 
@@ -660,7 +743,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers")))
                 sql += string.Format(@" AND EXISTS (
                             SELECT NULL
-                            FROM wm4dnn_scott.dbo.uba_Users u
+                            FROM UserSettings u
                             WHERE b.MemberFirmId = u.MemberFirmId
                             AND u.UserID = {0}
                         )", curUser.UserID);
@@ -700,7 +783,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //    if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers")))
         //        sql += string.Format(@" AND EXISTS (
         //                    SELECT NULL
-        //                    FROM wm4dnn_scott.dbo.uba_Users u
+        //                    FROM wm4dnn.dbo.uba_Users u
         //                    WHERE r.MemberFirmId = u.MemberFirmId
         //                    AND u.UserID = {0}
         //                )", curUser.UserID);
@@ -721,10 +804,11 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             IEnumerable<Client> t;
             using (hpsDB db = new hpsDB())
             {
+                //get last year's client list
                 var result = db.Fetch<Client>(@"SELECT DISTINCT OrganizationName as Name
                                                 FROM SurveyResponse_General rg 
                                                 INNER JOIN Survey s on rg.SurveyId = s.SurveyId 
-                                                WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) 
+                                                WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) - 1
                                                 AND MemberFirmId = @0 
                                                 ORDER BY OrganizationName ", memberFirmId);
                 t = result;
@@ -739,11 +823,11 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             string sql = @"SELECT DISTINCT r.ResponseId, r.OrganizationName as Name
                             FROM SurveyResponse_General r  
                             INNER JOIN Survey s on r.SurveyId = s.SurveyId 
-                            WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) ";
+                            WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) - 1 ";
             if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers")))
                 sql += string.Format(@" AND EXISTS (
                             SELECT NULL
-                            FROM wm4dnn_scott.dbo.uba_Users u
+                            FROM UserSettings u
                             WHERE r.MemberFirmId = u.MemberFirmId
                             AND u.UserID = {0}
                         )", curUser.UserID);
@@ -770,7 +854,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                                                 u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
                                                 u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId 
                                                 FROM dnn_Users u 
-                                                LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
+                                                LEFT OUTER JOIN wm4dnn.dbo.[vw_uba_Users] uu on u.email = uu.email 
                                                 ORDER BY u.LastName, u.FirstName");
                 t = result;
             }
@@ -781,12 +865,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         //Get this User.
         public Person GetUserById(int userId)
         {
+
             string sql = string.Format(@"SELECT
-                            u.UserID, u.Username, u.FirstName, u.LastName, u.DisplayName, 
-                            u.Email, uu.PhoneOffice, uu.PhoneCell, uu.Title, uu.MemberFirmId 
+                            u.UserID as PersonId, u.Username, u.FirstName, u.LastName, u.DisplayName, 
+                            u.Email as EmailAddress, uu.PhoneOffice as OfficePhoneNumber, 
+                            uu.PhoneCell as CellPhoneNumber, uu.Title as JobTitle, uu.MemberFirmId 
                             FROM dnn_Users u 
-                            LEFT OUTER JOIN wm4dnn_scott.dbo.[vw_uba_Users] uu on u.email = uu.email 
-                            AND u.UserID = {0}
+                            LEFT OUTER JOIN wm4dnn.dbo.[vw_uba_Users] uu on u.email = uu.email 
+                            WHERE u.UserID = {0}
                             ORDER BY u.LastName, u.FirstName", userId);
 
             Person t;

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DesignerTab.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="lblDropFile.Text" xml:space="preserve">
+    <value>Drop Fields Here</value>
+  </data>
+  <data name="SubmissionTab.Text" xml:space="preserve">
+    <value>Submissions</value>
+  </data>
+  <data name="CopyHints.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Hint: &lt;/strong&gt;Paste form share code to quickly generate a duplicate form.</value>
+  </data>
+  <data name="MaskValueHints.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Note: &lt;/strong&gt;Use 0 symbol to mask inputs.</value>
+  </data>
+  <data name="MaxSizeHints.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Note: &lt;/strong&gt;Specify Max Size in Megabytes.</value>
+  </data>
+  <data name="OptionHints.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Hint: &lt;/strong&gt;Use Shift + Enter for each new option.</value>
+  </data>
+  <data name="ResonsiveDesign.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Note: &lt;/strong&gt;Specify 0 for responsive design.</value>
+  </data>
+  <data name="ShareHints.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Hint: &lt;/strong&gt;Copy and share this code to quickly duplicate this form.&lt;br&gt;&lt;strong&gt;Note:&lt;/strong&gt; Server Actions are not copied and must be created individually.</value>
+  </data>
+  <data name="ThemeStyle.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Note: &lt;/strong&gt;Use 0 for theme design.</value>
+  </data>
+  <data name="TooltiipMiddle.Text" xml:space="preserve">
+    <value>Ask for middle name.</value>
+  </data>
+  <data name="TooltiipThankYou.Text" xml:space="preserve">
+    <value>Redirect user to a page after submission</value>
+  </data>
+  <data name="TooltipAllowMultiple.Text" xml:space="preserve">
+    <value>Allow user to upload more than one file.</value>
+  </data>
+  <data name="TooltipAllowOther.Text" xml:space="preserve">
+    <value>Let users type a text.</value>
+  </data>
+  <data name="TooltipButtonAlign.Text" xml:space="preserve">
+    <value>Align submit button to left, center or right.</value>
+  </data>
+  <data name="TooltipColumns.Text" xml:space="preserve">
+    <value>Width of textarea.</value>
+  </data>
+  <data name="TooltipDateFormat.Text" xml:space="preserve">
+    <value>Set a format for date: EU or US.</value>
+  </data>
+  <data name="TooltipDefaultValue.Text" xml:space="preserve">
+    <value>Pre-populate a value.</value>
+  </data>
+  <data name="TooltipEntryLimit.Text" xml:space="preserve">
+    <value>Set this value from toolbar.</value>
+  </data>
+  <data name="TooltipExcellent.Text" xml:space="preserve">
+    <value>Change the ending point text.</value>
+  </data>
+  <data name="TooltipExtension.Text" xml:space="preserve">
+    <value>Allowed file type.</value>
+  </data>
+  <data name="TooltipHeading.Text" xml:space="preserve">
+    <value>Text below heading.</value>
+  </data>
+  <data name="TooltipHeadingSize.Text" xml:space="preserve">
+    <value>Size of heading.</value>
+  </data>
+  <data name="TooltipHover.Text" xml:space="preserve">
+    <value>Show description about question.</value>
+  </data>
+  <data name="TooltipInputType.Text" xml:space="preserve">
+    <value>Define input method for matrix.</value>
+  </data>
+  <data name="TooltipLabelAlign.Text" xml:space="preserve">
+    <value>Align question label.</value>
+  </data>
+  <data name="TooltipList.Text" xml:space="preserve">
+    <value>Collection of predefined values to be used on your form. Such as &lt;u&gt;Countries&lt;/u&gt;.</value>
+  </data>
+  <data name="TooltipMaskValue.Text" xml:space="preserve">
+    <value>Masking format.&lt;br/&gt;ex: (000) 000-0000.</value>
+  </data>
+  <data name="TooltipMatrixColumn.Text" xml:space="preserve">
+    <value>Labels at the top of the matrix.</value>
+  </data>
+  <data name="TooltipMatrixRow.Text" xml:space="preserve">
+    <value>Labels at the left side of the matrix.</value>
+  </data>
+  <data name="TooltipMaxFileSize.Text" xml:space="preserve">
+    <value>Maximum file size allowed. Defined as Mega Bytes.</value>
+  </data>
+  <data name="TooltipMaxLength.Text" xml:space="preserve">
+    <value>Maximum allowed characters for this field.</value>
+  </data>
+  <data name="TooltipMaxSize.Text" xml:space="preserve">
+    <value>Users will be unable to select a value higher than this number.</value>
+  </data>
+  <data name="TooltipMinSize.Text" xml:space="preserve">
+    <value>Users will be unable to select a value lower than this number.</value>
+  </data>
+  <data name="TooltipOption.Text" xml:space="preserve">
+    <value>Users can choose from these options</value>
+  </data>
+  <data name="TooltipPoor.Text" xml:space="preserve">
+    <value>Change the starting point text.</value>
+  </data>
+  <data name="TooltipPrefix.Text" xml:space="preserve">
+    <value>Ask for prefix: Mr., Mrs., Dr.</value>
+  </data>
+  <data name="TooltipRequired.Text" xml:space="preserve">
+    <value>Require completing question</value>
+  </data>
+  <data name="TooltipRows.Text" xml:space="preserve">
+    <value>Number of lines on textarea.</value>
+  </data>
+  <data name="TooltipSelectCountry.Text" xml:space="preserve">
+    <value>Set a country to select by default.</value>
+  </data>
+  <data name="TooltipSelected.Text" xml:space="preserve">
+    <value>Default selected answer.</value>
+  </data>
+  <data name="TooltipsEmailAlert.Text" xml:space="preserve">
+    <value>Send notification and confirmation emails on submissions.</value>
+  </data>
+  <data name="TooltipSize.Text" xml:space="preserve">
+    <value>Allow user to select more than one option.</value>
+  </data>
+  <data name="TooltipSpreadColumn.Text" xml:space="preserve">
+    <value>Spread inputs into multiple columns. Useful if you have lots of options.</value>
+  </data>
+  <data name="TooltipSubLabel.Text" xml:space="preserve">
+    <value>Small description below the input field.</value>
+  </data>
+  <data name="TooltipSuffix.Text" xml:space="preserve">
+    <value>Ask for suffix: Ph.D, M.D., Jr, VII.</value>
+  </data>
+  <data name="TooltipText.Text" xml:space="preserve">
+    <value>Label of your question.</value>
+  </data>
+  <data name="TooltipTime.Text" xml:space="preserve">
+    <value>Enable/Disable time section.</value>
+  </data>
+  <data name="TooltipTimeFormat.Text" xml:space="preserve">
+    <value>Choose 12 Hours or 24 Hours format.</value>
+  </data>
+  <data name="TooltipValidation.Text" xml:space="preserve">
+    <value>Validate entry format.</value>
+  </data>
+  <data name="TooltipWaterMark.Text" xml:space="preserve">
+    <value>Show an example in gray</value>
+  </data>
+  <data name="TooltipWidth.Text" xml:space="preserve">
+    <value>Set number of characters users can enter.</value>
+  </data>
+  <data name="TooptipScaleAmount.Text" xml:space="preserve">
+    <value>Choose how may points used in scale.</value>
+  </data>
+  <data name="MobileHint.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Note: &lt;/strong&gt;Forms will appear in mobile view under specified width.</value>
+  </data>
+</root>

@@ -6,26 +6,31 @@
     </div>
     <div class="col-md-2" align="right">
       <h4>
-      <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" title="Edit Survey">
+      <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" tooltip-placement="top" uib-tooltip="Edit">
         <span class="fa fa-pencil" aria-hidden="true"></span>
       </a>
-      <a ng-click="deleteSurvey(survey.GeneralResponse.ResponseId)" ng-disabled="isSubmitting" class="btn btn-danger" aria-label="Delete" title="Delete Survey">
-        <span class="fa fa-trash" aria-hidden="true"></span>
-      </a>
-    </h4>
+          <!-- <a ng-click="deleteSurvey(survey.GeneralResponse.ResponseId)" ng-disabled="isSubmitting" class="btn btn-danger" aria-label="Delete" title="Delete Survey"> -->
+        <a sw-confirm-click="deleteSurvey(survey.GeneralResponse.ResponseId)" sw-confirm-click-message="You are about to delete this survey! Are you sure you want to delete?" class="btn btn-danger" aria-label="Delete" tooltip-placement="top" uib-tooltip="Delete">
+            <span class="fa fa-trash" aria-hidden="true"></span>
+        </a>
+        <span>&nbsp;</span>
+        <a ng-href="#/surveys" class="btn btn-default" aria-label="Back" tooltip-placement="top" uib-tooltip="Back">
+          <span class="fa fa-arrow-left" aria-hidden="true"></span>
+        </a>
+        </h4>
     </div>
   </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-3">
     <h4>Broker</h4>
   </div>
-  <!-- <div class="col-md-3">
+  <div class="col-md-3">
     <h4><small>{{survey.GeneralResponse.Broker}}</small></h4>
-  </div>  -->
-</div>
-<hr>
+  </div>
+</div>  -->
+<!--<hr>-->
 <div class="row">
   <div class="col-md-3">
     <h4>Location</h4>
@@ -73,8 +78,8 @@
   <div class="col-md-3">
     <h4>Survey Link</h4>
   </div>
-  <div class="col-md-3">
-    <h4><small><a href="/survey?response={{survey.GeneralResponse.WebId}}">http://healthplansurvey.ubabenefits.com/survey?response={{survey.GeneralResponse.WebId}}</a></small></h4>
+  <div class="col-md-9">
+    <h4><small><a href="/survey?response={{survey.GeneralResponse.WebID}}">http://healthplansurvey.ubabenefits.com/survey?response={{survey.GeneralResponse.WebID}}</a></small></h4>
   </div>
 </div>
 <hr>
@@ -88,15 +93,15 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-3" ng-controller="PersonController as person" id="{{survey.GeneralResponse.CompletedBy}}">
-    <h4>Completed By</h4>
+  <div class="col-md-3" ng-controller="PersonController as person" ng-init="init(survey.GeneralResponse.CompletedBy)">
+    <h4>Completed By - {{survey.GeneralResponse.CompletedBy}}</h4> - {{person.DisplayName}}
   </div>
   <div class="col-md-3">
-    <h4><small ng-if="survey.GeneralResponse.CompletedOn > 0">{{person.person.DisplayName}}</small></h4>
+    <h4><small ng-if="survey.GeneralResponse.CompletedOn > 0">{{person.DisplayName}}</small></h4>
   </div>
 </div>
 <hr>
-<a ng-href="#/surveys" class="btn btn-primary" aria-label="Close" title="Close"><span class="fa  fa-chevron-circle-left">  Back to Surveys</a>
+<a ng-href="#/surveys" class="btn btn-primary" aria-label="Close" title="Close"><span class="fa  fa-chevron-circle-left"></span>  Back to Surveys</a>
 <!-- <script>
     $("[data-toggle=popover]").popover();
 </script>

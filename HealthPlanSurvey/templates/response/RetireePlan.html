@@ -9,7 +9,6 @@
             </div>
         </div>
     </div>
-
     <form action="">
         <div class="form-group">
             <label for="">1. Do you allow Early (Non-Medicare-Eligible) Retirees to continue coverage under your active plan(s) until they become Medicare-Eligible?</label>
@@ -19,12 +18,13 @@
         </div>
         <div class="form-group" ng-controller="ReferenceController as earlyRetireePremiumShare" tablename="EarlyRetireeSharePremiumType">
             <label for="">
-			<a popover-title="Help" popover-trigger="'mouseenter'" popover-placement="above" uib-popover="For purposes of this Survey, plan types are defined as:<br><br>
-					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.<br><br>
-					HMO (Health Maintenance Organization) - A plan which provides benefits ONLY when care is obtained from network providers.  Benefits are not provided for care obtained from non-network providers.  In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br><br>
-					POS (Point-of-Service) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.  This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br><br>
-					FFS (Fee-for-Service/Indemnity) - A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network.  By definition, then, there can be no 'out-of-network' benefits.">
-				2. What is the Early Retiree's Share of the Premium?
+              2. What is the Early Retiree's Share of the Premium?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="bottom" uib-popover-html="'For purposes of this Survey, plan types are defined as:<br><br>
+					<b>PPO (Preferred Provider Organization)</b><br>A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.<br><br>
+					<b>HMO (Health Maintenance Organization)</b><br>A plan which provides benefits ONLY when care is obtained from network providers.  Benefits are not provided for care obtained from non-network providers.  In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br><br>
+					<b>POS (Point-of-Service)</b><br>A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.  This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br><br>
+					<b>FFS (Fee-for-Service/Indemnity)</b><br>A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network.  By definition, then, there can be no \'\out-of-network\'\ benefits.'">
+				<i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
       <select ng-model="survey.GeneralResponse.EarlyRetireePremiumShareTypeId" ng-options="item.TypeId as item.Name for item in earlyRetireePremiumShare.items" class="selectpicker form-control show-tick" ng-disabled="!survey.GeneralResponse.HasEarlyRetireeCoverageInActivePlans"></select>
         </div>
@@ -76,7 +76,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Premium_Single" class="form-control" tabindex="1" maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
+                        <input id="d_Premium_Single" class="form-control" tabindex="1" ng-maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Premium_Family" class="form-control" tabindex="2" maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
+                        <input id="d_Premium_Family" class="form-control" tabindex="2" ng-maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
+                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" ng-maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
+                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" ng-maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
                     </div>
                 </div>
             </div>
@@ -133,14 +133,14 @@
         <div class="form-group">
             <label for="">9. Initial Proposed Percentage Increase or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
             <div class="input-group">
-                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
+                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" ng-maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
                 <div class="input-group-addon">%</div>
             </div>
         </div>
         <div class="form-group">
             <label for="">10. Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
             <div class="input-group">
-                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
+                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" ng-maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
                 <div class="input-group-addon">%</div>
             </div>
         </div>
@@ -201,7 +201,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Premium_Single" class="form-control" tabindex="1" maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
+                        <input id="d_Premium_Single" class="form-control" tabindex="1" ng-maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_Premium_Family" class="form-control" tabindex="2" maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
+                        <input id="d_Premium_Family" class="form-control" tabindex="2" ng-maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
                     </div>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
+                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" ng-maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
+                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" ng-maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
                     </div>
                 </div>
             </div>
@@ -258,14 +258,14 @@
         <div class="form-group">
             <label for="">8. Proposed Percentage Increase or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
             <div class="input-group">
-                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
+                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" ng-maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
                 <div class="input-group-addon">%</div>
             </div>
         </div>
         <div class="form-group">
             <label for="">9. Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
             <div class="input-group">
-                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
+                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" ng-maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
                 <div class="input-group-addon">%</div>
             </div>
         </div>

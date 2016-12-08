@@ -45,7 +45,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
         public HttpResponseMessage Client()
         {
             //TODO:  figure out security
-            
+
             try
             {
                 HPSDataController dataController = new HPSDataController();
@@ -61,12 +61,6 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         }
 
-
-        /// <summary>
-        /// Get Client Item
-        /// </summary>
-        /// <param name="brokerId"></param>
-        /// <returns></returns>
         [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
         public HttpResponseMessage Client(int brokerId)

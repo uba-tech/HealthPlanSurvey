@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web.Http;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
+using DotNetNuke.Security;
 using DotNetNuke.Entities.Users;
 using UBA.Modules.HealthPlanSurveyService.Models;
 
@@ -11,14 +12,14 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 {
     public class PersonController : ControllerBase
     {
-        //private UserInfo _currentUser;
+        private UserInfo _currentUser;
 
-        //private UserController()
-        //{
-        //    _currentUser = DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
-        //    //_userId = _currentUser.UserID;
-        //    //_isAdminUser = _currentUser.IsInRole("Administrators") | _currentUser.IsInRole("");
-        //}
+        private PersonController()
+        {
+            _currentUser = DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo();
+            //_userId = _currentUser.UserID;
+            //_isAdminUser = _currentUser.IsInRole("Administrators") | _currentUser.IsInRole("");
+        }
 
         #region "Web Methods"
 
@@ -61,18 +62,18 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
 
         /// <summary>
-        /// Get Survey Summary Item
+        /// Get Person
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="personId"></param>
         /// <returns></returns>
         [DnnAuthorize(StaticRoles = "Registered Users")]
         [HttpGet()]
-        public HttpResponseMessage Person(int userId)
+        public HttpResponseMessage Person(int personId)
         {
             try
             {
                 HPSDataController dataController = new HPSDataController();
-                var item = dataController.GetUserById(userId);
+                var item = dataController.GetUserById(personId);
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)

@@ -137,6 +137,7 @@
     <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Models\NewSurveyId.cs" />
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\ReferenceTable.cs" />
     <Compile Include="Models\Client.cs" />

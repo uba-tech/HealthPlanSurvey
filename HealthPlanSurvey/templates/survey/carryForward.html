@@ -48,6 +48,7 @@
         </div>
         <sw-Retiree-Plan class="panel" ng-show="tab === 666" ng-model="survey.RetireePlan"></sw-Retiree-Plan>
         <sw-Section-125 class="panel" ng-show="tab === 777" ng-model="survey.Section125"></sw-Section-125>
-        <button id="Submit" class="btn btn-default" value="{{isSubmitting ? 'saving...' : 'Save'}}" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</button>
+        <a id="Submit" class="btn btn-default" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</a>
+        <!-- value="{{isSubmitting ? 'saving...' : 'Save'}}" -->
     </div>
 </section>
