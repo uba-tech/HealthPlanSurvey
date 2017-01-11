@@ -10,6 +10,20 @@
         console.log(error.statusText)
     });
 
+    $scope.validateSurvey = function (responseId) {
+        console.log(responseId)
+        $http({
+            method: "POST",
+            url: '/DesktopModules/HealthPlanSurveyService/API/survey/validate/' + responseId,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            //data: { 'responseId' : id }
+        })
+        .success(function (response) {
+            //console.log(response)
+            alert("Your survey has been validated.");
+            $location.path("/surveys");
+        })
+    };
 
     $scope.deleteSurvey = function (responseId) {
         console.log(responseId)

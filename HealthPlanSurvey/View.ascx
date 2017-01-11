@@ -33,6 +33,14 @@
     <script src="/DesktopModules/HealthPlanSurvey/javascript/app.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/javascript/routes.js"></script>
     <script src="/DesktopModules/HealthPlanSurvey/javascript/validation.js"></script>
+    <script>
+        $(function(){           
+            $('input[type=date]').datepicker({
+                      dateFormat : 'yyyy-mm-dd'
+                    }
+            );
+        });
+    </script>
 
     <!-- Directives -->
     <script src="/DesktopModules/HealthPlanSurvey/directives/swConfirmClick.js"></script>

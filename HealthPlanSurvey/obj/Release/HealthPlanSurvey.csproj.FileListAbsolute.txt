@@ -1,6 +1,6 @@
 C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.dll.config
 C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.dll
 C:\websites\HealthPlanSurvey\bin\HealthPlanSurvey.pdb
-C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Release\HealthPlanSurvey.csprojResolveAssemblyReference.cache
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Release\HealthPlanSurvey.dll
 C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Release\HealthPlanSurvey.pdb
+C:\websites\HealthPlanSurvey\DesktopModules\HealthPlanSurvey\obj\Release\HealthPlanSurvey.csprojResolveAssemblyReference.cache

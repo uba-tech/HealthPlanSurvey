@@ -15,6 +15,33 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
 
         #endregion
 
+        /// <summary>
+        /// An initial pass at a method to verify whether a value is 
+        /// kosher for SQL Server datetime
+        /// </summary>
+        /// <param name="someval">A date string that may parse</param>
+        /// <returns>true if the parameter is valid for SQL Sever datetime</returns>
+        static bool IsValidSqlDatetime(string someval)
+        {
+            bool valid = false;
+            DateTime testDate = DateTime.MinValue;
+            DateTime minDateTime = DateTime.MaxValue;
+            DateTime maxDateTime = DateTime.MinValue;
+
+            minDateTime = new DateTime(1753, 1, 1);
+            maxDateTime = new DateTime(9999, 12, 31, 23, 59, 59, 997);
+
+            if (DateTime.TryParse(someval, out testDate))
+            {
+                if (testDate >= minDateTime && testDate <= maxDateTime)
+                {
+                    valid = true;
+                }
+            }
+
+            return valid;
+        }
+
         #region SQL Strings
         string SurveyListSql = @"SELECT r.ResponseId,  r.MemberFirmId, f.Name as 'Broker', r.OrganizationName, r.City, us.StateCode, 
                         r.PersonCompletingSurvey, r.PersonCompletingSurvey_Title, r.PersonCompletingSurvey_Email, 
@@ -468,7 +495,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 {
                     // get RxPlan for each active plan
                     var rxPlan = db.SingleOrDefault<SurveyResponse_RxPlan>(SurveyResponse_RxPlanSql, plan.ActivePlanId);
-                    var rxTiers = db.Fetch<SurveyResponse_RxPlanTier>(SurveyResponse_RxPlanTierSql, plan.ActivePlanId);
+                    var rxTiers = db.Fetch<SurveyResponse_RxPlanTier>(SurveyResponse_RxPlanTierSql, rxPlan.RxPlanId);
                     var surveyRxPlan = new SurveyRxPlan(rxPlan, rxTiers);
                     // create new SurveyActivePlan(plan, rxPlan) 
                     var surveyActivePlan = new SurveyActivePlan();
@@ -659,6 +686,9 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                     foreach (SurveyActivePlan plan in survey.ActivePlans)
                     {
                         // update Active Plan
+                        // check Renewal Date
+                        if (!IsValidSqlDatetime(plan.ActivePlan.RenewalDate.ToString()))
+                            plan.ActivePlan.RenewalDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                         db.Update(plan.ActivePlan);
                         int planId = plan.ActivePlan.ActivePlanId;
 
@@ -673,15 +703,15 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                         int rxPlanId = plan.RxPlan.RxPlan.RxPlanId;
 
                         // update Rx tier records
+                        short j = 1;
                         foreach (SurveyResponse_RxPlanTier tier in plan.RxPlan.PlanTiers)
                         {
-                            if(tier.RxPlanTierId > 0)
-                                db.Update(tier);
-                            else
-                            {
-                                tier.RxPlanId = rxPlanId;
-                                db.Insert(tier);
-                            }
+                            if (tier.TierNumber == 0)
+                                tier.TierNumber = j;
+                            if (tier.RxPlanTierId == 0)
+                                tier.RxPlanTierTypeId = -1;
+                            db.Update(tier);
+                            j++;
                         }
                     }
 

@@ -1,21 +1,23 @@
 <div class="page-header">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
           <h3>{{survey.GeneralResponse.OrganizationName}}<br>
           <small>{{survey.GeneralResponse.PersonCompletingSurvey}} - {{survey.GeneralResponse.PersonCompletingSurvey_Email}}</small></h3>
     </div>
-    <div class="col-md-2" align="right">
+    <div class="col-md-3" align="right">
       <h4>
-      <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" tooltip-placement="top" uib-tooltip="Edit">
-        <span class="fa fa-pencil" aria-hidden="true"></span>
-      </a>
-          <!-- <a ng-click="deleteSurvey(survey.GeneralResponse.ResponseId)" ng-disabled="isSubmitting" class="btn btn-danger" aria-label="Delete" title="Delete Survey"> -->
+        <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" tooltip-placement="top" uib-tooltip="Edit">
+            <span class="fa fa-pencil" aria-hidden="true"></span>
+        </a>
+        <a sw-confirm-click="validateSurvey(survey.GeneralResponse.ResponseId)" sw-confirm-click-message="You are about to validate this survey! Are you sure you want to validate?" class="btn btn-default" aria-label="Validate" tooltip-placement="top" uib-tooltip="Validate">
+            <span class="fa fa-lock" aria-hidden="true"></span>
+        </a>
         <a sw-confirm-click="deleteSurvey(survey.GeneralResponse.ResponseId)" sw-confirm-click-message="You are about to delete this survey! Are you sure you want to delete?" class="btn btn-danger" aria-label="Delete" tooltip-placement="top" uib-tooltip="Delete">
             <span class="fa fa-trash" aria-hidden="true"></span>
         </a>
-        <span>&nbsp;</span>
+        <span>&nbsp;&nbsp;</span>
         <a ng-href="#/surveys" class="btn btn-default" aria-label="Back" tooltip-placement="top" uib-tooltip="Back">
-          <span class="fa fa-arrow-left" aria-hidden="true"></span>
+            <span class="fa fa-arrow-left" aria-hidden="true"></span>
         </a>
         </h4>
     </div>
@@ -73,7 +75,7 @@
     <h4><small>{{survey.GeneralResponse.UpdatedOn | date : 'shortDate'}}</small></h4>
   </div>
 </div>
-<hr>
+<!-- <hr>
 <div class="row">
   <div class="col-md-3">
     <h4>Survey Link</h4>
@@ -81,7 +83,7 @@
   <div class="col-md-9">
     <h4><small><a href="/survey?response={{survey.GeneralResponse.WebID}}">http://healthplansurvey.ubabenefits.com/survey?response={{survey.GeneralResponse.WebID}}</a></small></h4>
   </div>
-</div>
+</div> -->
 <hr>
 <div class="row">
   <div class="col-md-3">

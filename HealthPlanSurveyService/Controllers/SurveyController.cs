@@ -162,6 +162,7 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
                 HPSDataController dataController = new HPSDataController();
                 var item = dataController.GetSurvey(responseId);
                 item.GeneralResponse.ResponseId = 0;
+                item.GeneralResponse.SurveyResponseStatusTypeId = 4;
                 return Request.CreateResponse(HttpStatusCode.OK, item);
             }
             catch (Exception ex)

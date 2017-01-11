@@ -12,7 +12,6 @@
     };
 
     var linkCellTemplate = '<div><a href="#/surveys/{{row.entity.ResponseId}}">{{row.entity.OrganizationName}}</a></div>';
-    var validationCellTemplate = '<div><a ng-click="grid.appScope.validateSurvey(row.entity.ResponseId)" class="btn btn-success btn-xs" aria-label="Validate" title="Validate Survey"><span class="fa fa-check" aria-hidden="true"></span></a></div>';
     $scope.gridOptions = {
         data: $scope.surveys,
         enableFiltering: true,
@@ -22,14 +21,13 @@
         columnDefs: [
             //{ field: 'ResponseId' },
             //{ field: 'MemberFirmId' },
-            { field: 'Broker', width: '22%', headerCellClass: $scope.highlightFilteredHeader },
-            { name: 'Organization', field: 'OrganizationName', width: '22%', headerCellClass: $scope.highlightFilteredHeader, cellTemplate: linkCellTemplate },
+            { field: 'Broker', width: '25%', headerCellClass: $scope.highlightFilteredHeader },
+            { name: 'Organization', field: 'OrganizationName', width: '27%', headerCellClass: $scope.highlightFilteredHeader, cellTemplate: linkCellTemplate },
             { field: 'City', width: '12%', headerCellClass: $scope.highlightFilteredHeader },
             { name: 'State', field: 'StateCode', width: '6%', headerCellClass: $scope.highlightFilteredHeader },
-            { name: 'Status', field: 'ResponseStatus', width: '10%', headerCellClass: $scope.highlightFilteredHeader },
             { name: 'Created On', field: 'CreatedOn', width: '10%', headerCellClass: $scope.highlightFilteredHeader, type: 'date', cellFilter: 'date:\'MM/dd/yyyy\'' },
             { name: 'Updated On', field: 'UpdatedOn', width: '10%', headerCellClass: $scope.highlightFilteredHeader, type: 'date', cellFilter: 'date:\'MM/dd/yyyy\'' },
-            { name: 'Validate', width: '7%', cellClass: 'ui-grid-vcenter', cellTemplate: validationCellTemplate }
+            { name: 'Status', field: 'ResponseStatus', width: '10%', headerCellClass: $scope.highlightFilteredHeader }
         ]
     };
 
@@ -46,18 +44,6 @@
         $scope.isStarting = false;
     };
 
-    $scope.validateSurvey = function (responseId) {
-        console.log(responseId)
-        $http({
-            method: "POST",
-            url: '/DesktopModules/HealthPlanSurveyService/API/survey/validate/' + responseId,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            //data: { 'responseId' : id }
-        })
-        .success(function(response){
-            console.log(response)
-        })
-    };
 
     console.log($scope.surveys)
     console.log($scope.brokers)

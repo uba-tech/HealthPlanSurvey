@@ -129,8 +129,7 @@
         <div class="form-inline">
             <div class="form-group" style="padding-right:60px;" ng-class="{ 'has-error': companyDetailForm.d_ZipCode.$touched && companyDetailForm.d_ZipCode.$invalid }">
                 <label for="">City:</label>
-                <input class="form-control bs-callout bs-callout-danger" id="d_LargestLocCity" tabindex="15" ng-maxlength="50" name="d_LargestLocCity" size="26" type="text" ng-model="response.LargestLocationCity" />
-                <span class="help-block" ng-show="companyDetailForm.d_LargestLocCity.$touched && companyDetailForm.d_LargestLocCity.$error.required">This field is required.</span>
+                <input class="form-control" id="d_LargestLocCity" tabindex="15" ng-maxlength="50" name="d_LargestLocCity" size="26" type="text" ng-model="response.LargestLocationCity" />
                 <span class="help-block" ng-show="companyDetailForm.d_LargestLocCity.$dirty && companyDetailForm.d_LargestLocCity.$error.maxlength">This field is too large.</span>
             </div>
             <div class="form-group" ng-controller="ReferenceController as largeStates" tablename="US_State" style="padding-right:45px;">
@@ -139,8 +138,7 @@
             </div>
             <div class="form-group" style="padding-right:50px;" ng-class="{ 'has-error': companyDetailForm.d_ZipCode.$touched && companyDetailForm.d_ZipCode.$invalid }">
                 <label for="">Zip Code:</label>
-                <input class="form-control bs-callout bs-callout-danger" id="d_LargestLocZipCode" tabindex="17" ng-maxlength="5" name="d_LargestLocZipCode" size="5" type="text" ng-model="response.LargestLocationZipCode" />
-                <span class="help-block" ng-show="companyDetailForm.d_LargestLocZipCode.$touched && companyDetailForm.d_LargestLocZipCode.$error.required">This field is required.</span>
+                <input class="form-control" id="d_LargestLocZipCode" tabindex="17" ng-maxlength="5" name="d_LargestLocZipCode" size="5" type="text" ng-model="response.LargestLocationZipCode" />
                 <span class="help-block" ng-show="companyDetailForm.d_LargestLocZipCode.$dirty && companyDetailForm.d_LargestLocZipCode.$error.maxlength">This field is too large.</span>
             </div>
             <div class="form-group">
