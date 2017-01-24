@@ -20,10 +20,15 @@
             <label for="">
               35. Funding Method
 			<a popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'This question refers only to the funding method for the prescription drug plan. In most, but not all, cases, the Rx plan is funded in the same way as the accompanying major medical plan.'">
-        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
 			</a></label>
             <div class="radio">
-              <input type="checkbox" ng-model="rxPlan.RxPlan.FundingMethodTypeId" data-on-text="Yes" data-off-text="No" bs-switch>
+                <label for="">
+                    <input type="radio" ng-model="rxPlan.RxPlan.FundingMethodTypeId" value="1">Fully Insured
+                </label>
+                <label for="">
+                    <input type="radio" ng-model="rxPlan.RxPlan.FundingMethodTypeId" value="2">Self-Funded
+                </label>
             </div>
         </div>
         <div class="form-group">
@@ -93,17 +98,17 @@
 								<input id="d_Rx_Deductible_xEE" tabindex="14" checked="checked" name="d_Rx_Deductible_xEE" type="checkbox" value="1" ng-model="rxPlan.RxPlan.HasSeparateAnnualDeductibleAmt_xEE" /> xEE
 							</div>
 						</div>
-        </div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group" ng-controller="ReferenceController as coPayCoinsuranceStructure" tablename="CoPayCoinsuranceStructureType">
-							<label for="">41. Does your Prescription Drug Plan have</label>
-							<br><br>
-              <select ng-model="rxPlan.RxPlan.CoPayCoinsuranceStructureTypeId" ng-options="item.TypeId as item.Name for item in coPayCoinsuranceStructure.items" class="selectpicker form-control show-tick"></select>
-						</div>
-					</div>
-        </div>
-        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" ng-controller="ReferenceController as coPayCoinsuranceStructure" tablename="CoPayCoinsuranceStructureType">
+                                    <label for="">41. Does your Prescription Drug Plan have</label>
+                                    <br><br>
+                                    <select ng-model="rxPlan.RxPlan.CoPayCoinsuranceStructureTypeId" ng-options="item.TypeId as item.Name for item in coPayCoinsuranceStructure.items" class="selectpicker form-control show-tick"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-controller="ReferenceController as rxPlanTierCount" tablename="RxPlanTierCountType">
 							<label for="">

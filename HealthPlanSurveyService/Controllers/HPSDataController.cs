@@ -853,7 +853,13 @@ namespace UBA.Modules.HealthPlanSurveyService.Services
             string sql = @"SELECT DISTINCT r.ResponseId, r.OrganizationName as Name
                             FROM SurveyResponse_General r  
                             INNER JOIN Survey s on r.SurveyId = s.SurveyId 
-                            WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) - 1 ";
+                            WHERE s.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC) - 1 
+							AND NOT EXISTS (
+								SELECT NULL 
+								FROM SurveyResponse_General i 
+	                            INNER JOIN Survey si on i.SurveyId = si.SurveyId 
+								WHERE si.SurveyYear = (SELECT TOP 1 SurveyYear FROM Survey ORDER BY SurveyYear DESC)
+								AND r.ClientId = i.ClientId )";
             if (!(curUser.IsInRole("Administrators") | curUser.IsInRole("SuperUsers")))
                 sql += string.Format(@" AND EXISTS (
                             SELECT NULL
