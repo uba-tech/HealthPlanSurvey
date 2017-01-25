@@ -2,7 +2,8 @@
     console.log($routeParams)
     var brokerNo = $routeParams.brokerId;
     $scope.isSubmitting = false;
-
+    //$scope.tab = 10;
+    $scope.setSelected(10);
     Survey.getTemplate().$promise.then(function(data){
         data.GeneralResponse.BrokerNo = brokerNo;
         data.ActivePlans.forEach(function (plan) {

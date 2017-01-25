@@ -1,6 +1,7 @@
 ﻿angular.module('SurveyWrangler').controller('SurveyEditController', function ($scope, Survey, $route, $routeParams, $location, $anchorScroll) {
     var id = $routeParams.id;
-    $scope.tab = 10;
+    //$scope.tab = 10;
+    $scope.setSelected(10);
     $scope.isSubmitting = false;
     Survey.get({ responseId: id }).$promise.then(function(data){
       data.ActivePlans.forEach(function(plan){
