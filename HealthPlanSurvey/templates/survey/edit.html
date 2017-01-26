@@ -1,1 +1,67 @@
-﻿<h1>Surveys Edit</h1>
+﻿<section ng-init="setSelected(10)">
+
+    <nav class="col-md-3 bs-docs-sidebar navbar-fixed-left" id="nav_bar">
+          <ul class="nav nav-stacked absolute" id="position">
+              <li ng-class="{ active:tab === 10 }">
+                <a href ng-click="tab = 10; gotoTop()" class="active">Client Details</a>
+              </li>
+              <li ng-class="{ active:tab === 20 }">
+                <a href ng-click="tab = 20; gotoTop()">General Info</a>
+              </li>
+              <li ng-repeat="plan in survey.ActivePlans" uib-dropdown>
+                <a href uib-dropdown-toggle>{{plan.ActivePlan.PlanName}}</a>
+                <ul uib-dropdown-menu>
+                    <li ng-class="{ active:tab === ($index + 30) }"><a href ng-click="setSelected($index + 30); gotoTop()">Medical Plan</a></li>
+                    <li ng-class="{ active:tab === ($index + 40) }"><a href ng-click="setSelected($index + 40); gotoTop()">Plan Design</a></li>
+                    <li ng-class="{ active:tab === ($index + 50) }"><a href ng-click="setSelected($index + 50); gotoTop()">Prescription Drug Plan</a></li>
+                </ul>
+              </li>
+              <li ng-class="{ active:tab === 600 }">
+                <a href ng-click="tab = 600; gotoTop()">Retiree Plan</a>
+              </li>
+              <li ng-class="{ active:tab === 700 }">
+                <a href ng-click="tab = 700; gotoTop()">Section 125</a>
+              </li>
+              <hr>
+              <a href="#/surveys" aria-label="Close" title="All Surveys" class="btn btn-link surveys">
+                <i class="fa fa-angle-left" style="font-size:14pt;"></i> <span style="font-size:11pt;">All Surveys</span></a>
+          </ul>
+    </nav>
+
+    <div class="container" id="scrollArea">
+        <sw-Company-Details class="panel" ng-show="tab === 10" ng-model="survey.GeneralResponse"></sw-Company-Details>
+        <sw-General-Info class="panel" ng-show="tab === 20" ng-model="survey.GeneralResponse" action="changePlanCount()"></sw-General-Info>
+        <div class="container" ng-repeat="plan in survey.ActivePlans">
+            <sw-Medical-Plan class="panel" ng-show="tab === ($index + 30)" ng-model="plan.ActivePlan"></sw-Medical-Plan>
+            <sw-Plan-Design class="panel" ng-show="tab === ($index + 40)" ng-model="plan.ActivePlan"></sw-Plan-Design>
+            <sw-Rx-Plan class="panel" ng-show="tab === ($index + 50)" ng-model="plan.RxPlan"></sw-Rx-Plan>
+        </div>
+        <sw-Retiree-Plan class="panel" ng-show="tab === 600" ng-model="survey"></sw-Retiree-Plan>
+        <sw-Section-125 class="panel" ng-show="tab === 700" ng-model="survey.Section125"></sw-Section-125>
+        <a id="Submit" class="btn btn-default" ng-click="saveSurvey(survey)" ng-disabled="isSubmitting">Save</a>
+        <!-- <a class="btn btn-default" ng-click="(tab > 50)? setSelected(600) : setSelected(tab+10)">Next</a> value="{{isSubmitting ? 'saving...' : 'Save'}}" -->
+    </div>
+</section>
+
+<script>
+$(document).ready(function() {
+
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the
+      //nav bar to stick.
+      //console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 210) {
+      $('#nav_bar').addClass('bs-docs-sidebar-top');
+      $('#position').addClass('fixed');
+      $('#position').removeClass('absolute');
+    }
+    if ($(window).scrollTop() < 211) {
+      $('#nav_bar').removeClass('bs-docs-sidebar-top');
+      $('#nav_bar').addClass('bs-docs-sidebar');
+      $('#position').removeClass('fixed');
+      $('#position').addClass('absolute');
+    }
+  });
+});
+</script>

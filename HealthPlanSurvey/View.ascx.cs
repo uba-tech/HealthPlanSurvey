@@ -1,4 +1,5 @@
-﻿using DotNetNuke.Entities.Modules;
+﻿using DotNetNuke;
+using DotNetNuke.Entities.Modules;
 using System;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.Localization;
