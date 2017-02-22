@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblFolder.Text" xml:space="preserve">
+    <value>Report Folder</value>
+  </data>
+  <data name="lblFolder.Help" xml:space="preserve">
+    <value>Select the folder of the report server (e.g. /SampleReports). You can only select the list once the report service and authentication has been provided and saved.</value>
+  </data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Reporting Services Settings</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>Please specify the report or directory the report module will display.</value>
+  </data>
+  <data name="lblReport.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="lblReport.Help" xml:space="preserve">
+    <value>Select the report you want to show in the module.</value>
+  </data>
+  <data name="lblViewerOptions.Help" xml:space="preserve">
+    <value>These settings determine what controls and options are available when viewing a report.</value>
+  </data>
+  <data name="lblViewerOptions.Text" xml:space="preserve">
+    <value>Report Options</value>
+  </data>
+  <data name="lblHeight.Help" xml:space="preserve">
+    <value>This sets the pixel height of the report within the module (e.g. 400 would set the report height to 400 pixels).</value>
+  </data>
+  <data name="lblHeight.Text" xml:space="preserve">
+    <value>Report Height Pixels</value>
+  </data>
+  <data name="lblWidth.Help" xml:space="preserve">
+    <value>This sets the pixel or percentage width of the report within the module (e.g. 400 would be 400 pixels wide or 100% would make the control adjust to the full width of the space available.)</value>
+  </data>
+  <data name="lblWidth.Text" xml:space="preserve">
+    <value>Report Width</value>
+  </data>
+  <data name="lblZoomMode.Help" xml:space="preserve">
+    <value>This sets the method used to size the report within the module. PageWidth zooms the report to the width of the page, FullPage sets the zoom to show the entire page within the module view and Percent allows you to specify a percentage to be used in the zoom.</value>
+  </data>
+  <data name="lblZoomMode.Text" xml:space="preserve">
+    <value>Zoom Mode</value>
+  </data>
+  <data name="lblZoomPercent.Help" xml:space="preserve">
+    <value>This sets the percentage that the report will be zoomed to when displayed.  (e.g. a value of 75 would show the report at a 75% zoom level).  This is only used when the Zoom Mode is set to Percent.</value>
+  </data>
+  <data name="lblZoomPercent.Text" xml:space="preserve">
+    <value>Zoom Percent</value>
+  </data>
+  <data name="lblReportServer.Help" xml:space="preserve">
+    <value>Select a report server. You need to setup one or more report servers from the server administration page.</value>
+  </data>
+  <data name="lblReportServer.Text" xml:space="preserve">
+    <value>Report Server</value>
+  </data>
+  <data name="chkAllowPassUserInfo.Help" xml:space="preserve">
+    <value>If you check this, you will be able to link to a page containing the module and the module will accept the UserId and PortalId from the URL rather than the default logged in User.</value>
+  </data>
+  <data name="chkAllowPassUserInfo.Text" xml:space="preserve">
+    <value>Allow Pass UserId and PortalId from URL</value>
+  </data>
+  <data name="lblParms.Help" xml:space="preserve">
+    <value>You can set parameter values that will be inserted into a report if a matching parameter is found at runtime, the value supplied here will be inserted.  You can specify literal values or profile properties. If you want to use a profile property specify the property name in brackets as the value e.g. [FirstName].  You can also enter session variable tokens surrounded by double brakets, e.g. [[SessionVar]].  Please note profile property names and session variables are case sensitive. We have also integrated our module with the DNNSharp.com My Tokens module and you can enter tokens created with this module.</value>
+  </data>
+  <data name="lblParms.Text" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="chkShowTableNavigation.Help" xml:space="preserve">
+    <value>Checking this option will show the reports and subfolders as a table that can be navigated.  If you do not check this option, the report selection will be done via a combobox.</value>
+  </data>
+  <data name="chkShowTableNavigation.Text" xml:space="preserve">
+    <value>Display Report Navigation as a Table</value>
+  </data>
+  <data name="chkDisplayReportName.Help" xml:space="preserve">
+    <value>Checking this will display the report name at the top of the module window as a label.</value>
+  </data>
+  <data name="chkDisplayReportName.Text" xml:space="preserve">
+    <value>Display Report Name</value>
+  </data>
+  <data name="lblFilter.Help" xml:space="preserve">
+    <value>You can filter reports for inclusion or exclusion in the list based on a regular expression pattern match.  There are a variety of resources available on the internet for understanding Regex patterns.</value>
+  </data>
+  <data name="lblFilter.Text" xml:space="preserve">
+    <value>Report Name Filter (Regex)</value>
+  </data>
+  <data name="lblFilterInclude.Help" xml:space="preserve">
+    <value>If you select include, only reports which match the regex pattern will be included in report selection.  If you choose exclude, only reports which do not match the regex filter will be displayed in the report list.</value>
+  </data>
+  <data name="lblFilterInclude.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="chkDisplayFolderName.Help" xml:space="preserve">
+    <value>Checking this will display the folder name and navigation link at the top of the page when in table navigation mode.</value>
+  </data>
+  <data name="chkDisplayFolderName.Text" xml:space="preserve">
+    <value>Display Folder Name</value>
+  </data>
+  <data name="lblDocumentMapWidth.Help" xml:space="preserve">
+    <value>This sets the pixel or percentage width of the document map (e.g. 150 would be 150 pixels wide or 25% would make the map adjust to the 25% width of available space.)</value>
+  </data>
+  <data name="lblDocumentMapWidth.Text" xml:space="preserve">
+    <value>Document Map Width</value>
+  </data>
+  <data name="chkSizeToReportContent.Help" xml:space="preserve">
+    <value>If checked, the report control will size to the data contained in the report regardless of skin / container boundaries within DNN.</value>
+  </data>
+  <data name="chkSizeToReportContent.Text" xml:space="preserve">
+    <value>Size to Report Content</value>
+  </data>
+  <data name="lblAsyncPostbackTimeout.Help" xml:space="preserve">
+    <value>This is the number of seconds that will be allowed before a timeout happens. If you have a long running report, you may need to increase this.</value>
+  </data>
+  <data name="lblAsyncPostbackTimeout.Text" xml:space="preserve">
+    <value>Async Postback Timeout</value>
+  </data>
+  <data name="lblExportFileName.Help" xml:space="preserve">
+    <value>You can set a name to be used when auto exporting a report to a chosen export format.  The name can contain one or more tokens along with static text.  The extension does not need to be included as the extension is set by the Export Format that is chosen.  You can specify literal values or profile properties. If you want to use a profile property specify the property name in brackets as the value e.g. [FirstName].  You can also enter session variable tokens surrounded by double brakets, e.g. [[SessionVar]].  Please note profile property names and session variables are case sensitive. We have also integrated our module with the DNNSharp.com My Tokens module and you can enter tokens created with this module e.g. [GET:pid]. To leverage the actual report name as part of the file name, the token of [ReportName] can be used.</value>
+  </data>
+  <data name="lblExportFileName.Text" xml:space="preserve">
+    <value>Export File Name</value>
+  </data>
+</root>

@@ -1,0 +1,318 @@
+<div>
+    <div class="page-header">
+        <h4>Retiree Plan</h4>
+    </div>
+    <form action="">
+        <div class="form-group">
+            <label for="">1. Do you allow Early (Non-Medicare-Eligible) Retirees to continue coverage under your active plan(s) until they become Medicare-Eligible?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasEarlyRetireeCoverageInActivePlans" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+			<a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="For purposes of this Survey, plan types are defined as:<br /><br />
+					PPO (Preferred Provider Organization) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.<br /><br />
+					HMO (Health Maintenance Organization) - A plan which provides benefits ONLY when care is obtained from network providers.  Benefits are not provided for care obtained from non-network providers.  In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br /><br />
+					POS (Point-of-Service) - A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network.  Care provided by non-network providers is reimbursed at a lower level.  This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br /><br />
+					FFS (Fee-for-Service/Indemnity) - A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network.  By definition, then, there can be no 'out-of-network' benefits.">
+				2. What is the Early Retiree's Share of the Premium?
+			</a></label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_EarlyRetireeSharePremium_0" tabindex="3" name="d_EarlyRetireeSharePremium" value="4" ng-model="retireePlan.RetireePlanTypeId">The same percentage or dollar amount as Active Employees</option>
+                <option id="d_EarlyRetireeSharePremium_1" tabindex="4" name="d_EarlyRetireeSharePremium" value="2" ng-model="retireePlan.RetireePlanTypeId">Less than Active Employees</option>
+                <option id="d_EarlyRetireeSharePremium_2" tabindex="5" name="d_EarlyRetireeSharePremium" value="3" ng-model="retireePlan.RetireePlanTypeId">More than the percentage or dollar amount of Active Employees, but less than 100%</option>
+                <option id="d_EarlyRetireeSharePremium_3" tabindex="6" name="d_EarlyRetireeSharePremium" value="1" ng-model="retireePlan.RetireePlanTypeId">Early Retiree pays 100% of the premium</option>
+            </select>
+        </div>
+        <hr>
+        <p class="lead">
+            Medicare Eligible Retiree Benefits Plan #1
+        </p>
+        <p>
+            For organizations offering multiple medical plans: Please provide information on each medical plan offered (maximum of 2 plans) which have the <strong>largest</strong> enrollments.
+        </p>
+        <div class="form-group">
+            <label for="">1. Do you wish to enter benefits for this plan?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">2. Type of Plan?</label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_TypeOfPlan_0" tabindex="9" name="d_TypeOfPlan" value="4" ng-model="retireePlan.RetireePlanTypeId">PPO (Preferred Provider Organization)</option>
+                <option id="d_TypeOfPlan_1" tabindex="10" name="d_TypeOfPlan" value="1" ng-model="retireePlan.RetireePlanTypeId">HMO (Health Maintenance Organization)</option>
+                <option id="d_TypeOfPlan_2" tabindex="11" name="d_TypeOfPlan" value="3" ng-model="retireePlan.RetireePlanTypeId">POS (Point-of-Service)</option>
+                <option id="d_TypeOfPlan_3" tabindex="12" name="d_TypeOfPlan" value="2" ng-model="retireePlan.RetireePlanTypeId">FFS (Fee-for-Service/Indemnity)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">3. Funding Method</label>
+            <div class="radio">
+                <label for="">
+                    <input id="d_FundingMethod_0" tabindex="13" checked="checked" name="d_FundingMethod" type="radio" value="1" ng-model="retireePlan.FundingMethodTypeId">Fully Insured
+                </label>
+            </div>
+            <div class="radio">
+                <label for="">
+                    <input id="d_FundingMethod_1" tabindex="14" checked="checked" name="d_FundingMethod" type="radio" value="2" ng-model="retireePlan.FundingMethodTypeId">Self-Funded
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">4. Plan Arrangement</label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_PlanArrangement_0" tabindex="15" name="d_PlanArrangement" value="1" ng-model="retireePlan.RetireePlanArrangementTypeId">Private Plan</option>
+                <option id="d_PlanArrangement_1" tabindex="15" name="d_PlanArrangement" value="2" ng-model="retireePlan.RetireePlanArrangementTypeId">Medicare</option>
+                <option id="d_PlanArrangement_2" tabindex="15" name="d_PlanArrangement" value="3" ng-model="retireePlan.RetireePlanArrangementTypeId">Medigap</option>
+                <option id="d_PlanArrangement_3" tabindex="15" name="d_PlanArrangement" value="4" ng-model="retireePlan.RetireePlanArrangementTypeId">Medicare Exchange</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">5. To Whom Offered</label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_OfferedTo_0" tabindex="15" name="d_OfferedTo" value="1" ng-model="retireePlan.RetireePlanOfferedToTypeId">All Qualified (including Current Employees)</option>
+                <option id="d_OfferedTo_1" tabindex="16" name="d_OfferedTo" value="4" ng-model="retireePlan.RetireePlanOfferedToTypeId">Only those Hired and/or Retired Prior to Certain Year</option>
+                <option id="d_OfferedTo_2" tabindex="17" name="d_OfferedTo" value="3" ng-model="retireePlan.RetireePlanOfferedToTypeId">Grandfathered Prior Retirees Only</option>
+                <option id="d_OfferedTo_3" tabindex="18" name="d_OfferedTo" value="2" ng-model="retireePlan.RetireePlanOfferedToTypeId">Don't Know</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">6. Total Individual Retiree and Family Retiree Premium Rates per Month (including Prescription Drugs) rounded to the nearest dollar.</label>
+            <p>(For Self-Funded Plans, use COBRA Premium Equivalent Rate minus the 2%, if otherwise included)</p>
+            <label for="">Monthly Premium Rate</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Single</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Single" class="form-control" tabindex="1" maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Family</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Family" class="form-control" tabindex="2" maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label for="d_Premium_Retiree_Only">
+                    <input id="d_Premium_Retiree_Only" tabindex="3" checked="checked" name="d_Premium_Retiree_Only" type="checkbox" value="1" ng-model="retireePlan.IsMonthlyPremiumRetireeOnly"> Retiree Only
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">7. Are Employer Contributions Based on the Retiree's Age or Years of Service?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">8. Monthly Employer Contribution (rounded to the nearest dollar)</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Single</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Family</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">9. Initial Proposed Percentage Increase or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
+            <div class="input-group">
+                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">10. Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
+            <div class="input-group">
+                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">11. Is Prescription Drug Coverage Provided by Retiree Plan?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">12. Is your plan reimbursed for Prescription Drugs by Medicare Part D?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasMedicarePartDReimbursment" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="lead">
+            For organizations offering multiple medical plans: Please provide information on each medical plan offered (maximum of 2 plans) which have the largest enrollments.
+        </p>
+
+        <div class="form-group">
+            <label for="">1. Do you wish to enter benefits for this plan?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">2. Type of Plan?</label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_TypeOfPlan_0" tabindex="9" name="d_TypeOfPlan" value="4" ng-model="retireePlan.RetireePlanTypeId">PPO (Preferred Provider Organization)</option>
+                <option id="d_TypeOfPlan_1" tabindex="10" name="d_TypeOfPlan" value="1" ng-model="retireePlan.RetireePlanTypeId">HMO (Health Maintenance Organization)</option>
+                <option id="d_TypeOfPlan_2" tabindex="11" name="d_TypeOfPlan" value="3" ng-model="retireePlan.RetireePlanTypeId">POS (Point-of-Service)</option>
+                <option id="d_TypeOfPlan_3" tabindex="12" name="d_TypeOfPlan" value="2" ng-model="retireePlan.RetireePlanTypeId">FFS (Fee-for-Service/Indemnity)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">3. Funding Method</label>
+            <div class="radio">
+                <label for="">
+                    <input id="d_FundingMethod_0" tabindex="13" checked="checked" name="d_FundingMethod" type="radio" value="1" ng-model="retireePlan.FundingMethodTypeId">Fully-Insured
+                </label>
+            </div>
+            <div class="radio">
+                <label for="">
+                    <input id="d_FundingMethod_1" tabindex="14" checked="checked" name="d_FundingMethod" type="radio" value="2" ng-model="retireePlan.FundingMethodTypeId">Self-Funded
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">4. To Whom Offered</label>
+            <select name="" id="" class="selectpicker form-control show-tick">
+                <option value="0">Nothing Selected</option>
+                <option id="d_OfferedTo_0" tabindex="15" name="d_OfferedTo" value="1" ng-model="retireePlan.RetireePlanOfferedToTypeId">All Qualified (including Current Employees)</option>
+                <option id="d_OfferedTo_1" tabindex="16" name="d_OfferedTo" value="4" ng-model="retireePlan.RetireePlanOfferedToTypeId">Only those Hired and/or Retired Prior to Certain Year</option>
+                <option id="d_OfferedTo_2" tabindex="17" name="d_OfferedTo" value="3" ng-model="retireePlan.RetireePlanOfferedToTypeId">Grandfathered Prior Retirees Only</option>
+                <option id="d_OfferedTo_3" tabindex="18" name="d_OfferedTo" value="2" ng-model="retireePlan.RetireePlanOfferedToTypeId">Don't Know</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">5. Total Individual Retiree and Family Retiree Premium Rates per Month (including Prescription Drugs) rounded to the nearest dollar.</label>
+            <p>(For Self-Funded Plans, use COBRA Premium Equivalent Rate minus the 2%, if otherwise included)</p>
+            <label for="">Monthly Premium Rate</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Single</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Single" class="form-control" tabindex="1" maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Single" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Family</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Family" class="form-control" tabindex="2" maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="retireePlan.MonthlyPremiumAmt_Family" />
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label for="d_Premium_Retiree_Only">
+                    <input id="d_Premium_Retiree_Only" tabindex="3" checked="checked" name="d_Premium_Retiree_Only" type="checkbox" value="1" ng-model="retireePlan.IsMonthlyPremiumRetireeOnly"> Retiree Only
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">6. Are Employer Contributions Based on the Retiree's Age or Years of Service?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.IsEmployerContribBasedOnAgeOrYearsOfSvc" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">7. Monthly Employer Contribution (rounded to the nearest dollar)</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Single</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Single" class="form-control" tabindex="6" maxlength="6" name="d_EmpCont_Single" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Single" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Family</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Family" class="form-control" tabindex="7" maxlength="6" name="d_EmpCont_Family" size="13" type="text" ng-model="retireePlan.MonthlyEmployerContribAmt_Family" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">8. Proposed Percentage Increase or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
+            <div class="input-group">
+                <input id="d_ProposedIncreasePct" class="form-control" tabindex="8" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="retireePlan.ProposedPremiumChangePct" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">9. Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date</label>
+            <div class="input-group">
+                <input class="form-control" id="d_FinalPcntIncrease" tabindex="9" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="retireePlan.FinalPremiumChangePct" />
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">10. Is Prescription Drug Coverage Provided by Retiree Plan?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <!-- TODO Connect ng-model -->
+        <div class="form-group">
+            <label for="">11. Is your plan reimbursed for Prescription Drugs by Medicare Part D?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="retireePlan.HasRxPlan" data-on-text="Yes" data-off-text="No" bs-switch>
+                <label for=""><input id="d_MedicarePartDReimbursment_0" tabindex="12" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="1" ng-model="">Yes</label>
+                <label for=""><input id="d_MedicarePartDReimbursment_0" tabindex="12" checked="checked" name="d_MedicarePartDReimbursment" type="radio" value="0" ng-model="">No</label>
+            </div>
+        </div>
+    </form>
+
+</div>

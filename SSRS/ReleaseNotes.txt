@@ -1,0 +1,24 @@
+﻿<h3>SQL Reporting Services</h3>
+<p class="Contributor">
+	Module Masters<br />
+	<a href="mailto:service@modulemasters..com">service@modulemasters.com</a><br />
+	<a href="http://modulemasters.com">http://modulemasters.com</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>SQL Reporting Services integrates Microsoft SSRS into the DotNetNuke framework</h3>
+	<p class="Owner">
+		<b>Version 09.00.00</b><br />
+	</p>
+	<p>This version adds an updated report viewer control and fies some different issues. Please notify us if there are any issues during your installation copying any error messages in an email to service@modulemasters.com.</p>
+	
+	<h4>Bug Fixes & Changes</h4>
+	<ul>
+		<li>Updated to the 2015 Report Viewer control</li>
+		<li>Added support for DNN Evoq & 8.X platform</li>
+		<li>Added ability to specify export file name</li>
+		<li>Fixed IE11 compatibility issues</li>
+		<li>Fixed parameter passing issues</li>
+	</ul>
+	
+</div>

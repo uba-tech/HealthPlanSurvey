@@ -1,0 +1,102 @@
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo]    Script Date: 09/15/2014 11:19:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo](
+	[SubmissionInfoID] [int] IDENTITY(1,1) NOT NULL,
+	[SubmissionID] [int] NOT NULL,
+	[FieldGUID] [nvarchar](50) NOT NULL,
+	[FieldValue] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}LiveForms_{objectQualifier}SubmissionInfo] PRIMARY KEY CLUSTERED 
+(
+	[SubmissionInfoID] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_Submission]    Script Date: 09/15/2014 11:19:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_Submission]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}LiveForms_Submission](
+	[SubmissionID] [int] IDENTITY(1,1) NOT NULL,
+	[ModuleID] [int] NOT NULL,
+	[CreatedOn] [datetime] NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}LiveForms_{objectQualifier}Submission] PRIMARY KEY CLUSTERED 
+(
+	[SubmissionID] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_List]    Script Date: 09/15/2014 11:19:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_List]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}LiveForms_List](
+	[ListID] [int] IDENTITY(1,1) NOT NULL,
+	[IsSystem] [bit] NOT NULL,
+	[PortalID] [int] NULL,
+	[ModuleID] [int] NULL,
+	[ParentList] [int] NULL,
+	[ParentValue] [nvarchar](max) NULL,
+	[ListName] [nvarchar](50) NOT NULL,
+	[Value] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}LiveForms_{objectQualifier}List] PRIMARY KEY CLUSTERED 
+(
+	[ListID] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms]    Script Date: 09/15/2014 11:19:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}LiveForms](
+	[ModuleId] [int] NOT NULL,
+	[FormDefinition] [nvarchar](max) NOT NULL,
+	[Actions] [nvarchar](max) NOT NULL,
+	[Localization] [nvarchar](max) NULL,
+ CONSTRAINT [PK_{objectQualifier}LiveFormInfo{objectQualifier}] PRIMARY KEY CLUSTERED 
+(
+	[ModuleId] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+END
+GO
+/****** Object:  Default [DF_LiveForms_Actions]    Script Date: 09/15/2014 11:19:31 ******/
+IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'{databaseOwner}[DF_{objectQualifier}LiveForms_Actions]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms]'))
+Begin
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[DF_{objectQualifier}LiveForms_Actions]') AND type = 'D')
+BEGIN
+ALTER TABLE {databaseOwner}[{objectQualifier}LiveForms] ADD  CONSTRAINT [DF_{objectQualifier}LiveForms_Actions]  DEFAULT (N'') FOR [Actions]
+END
+
+
+End
+GO
+
+INSERT {databaseOwner}[{objectQualifier}LiveForms_List] ([IsSystem], [PortalID], [ModuleID], [ParentList], [ParentValue], [ListName], [Value]) VALUES (1, NULL, NULL, 0, NULL, N'Days', N'{"AllLists":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"ListByLocale":{}}')
+GO
+INSERT {databaseOwner}[{objectQualifier}LiveForms_List] ([IsSystem], [PortalID], [ModuleID], [ParentList], [ParentValue], [ListName], [Value]) VALUES (1, NULL, NULL, 0, NULL, N'Months', N'{"AllLists":["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],"ListByLocale":{}}')
+GO
+INSERT {databaseOwner}[{objectQualifier}LiveForms_List] ([IsSystem], [PortalID], [ModuleID], [ParentList], [ParentValue], [ListName], [Value]) VALUES (1, NULL, NULL, 0, NULL, N'Countries', N'{"AllLists":["Afghanistan","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antarctica","Antigua and Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Bouvet Island","Brazil","British Indian Ocean Territory","British Virgin Islands","Brunei Darussalam","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central African Republic","Chad","Chile","China","Christmas Island","Cocos","Colombia","Comoros","Congo","Cook Islands","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Guiana","French Polynesia","French Southern Territories","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Heard and McDonald Islands","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","Norfolk Island","North Korea","Northern Mariana Islands","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Pitcairn","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russian Federation","Rwanda","S. Georgia and S. Sandwich Islands","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and The Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","Soviet Union","Spain","Sri Lanka","St. Helena","St. Pierre and Miquelon","Sudan","Suriname","Svalbard and Jan Mayen Islands","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tokelau","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","US Minor Outlying Islands","US Virgin Islands","Uzbekistan","Vanuatu","Venezuela","Viet Nam","Wallis and Futuna Islands","Western Sahara","Yemen","Yugoslavia","Zaire","Zambia","Zimbabwe"],"ListByLocale":{}}')
+GO
+INSERT {databaseOwner}[{objectQualifier}LiveForms_List] ([IsSystem], [PortalID], [ModuleID], [ParentList], [ParentValue], [ListName], [Value]) VALUES (1, NULL, NULL, 0, NULL, N'US States', N'{"AllLists":["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"],"ListByLocale":{}}')
+GO
+INSERT {databaseOwner}[{objectQualifier}LiveForms_List] ([IsSystem], [PortalID], [ModuleID], [ParentList], [ParentValue], [ListName], [Value]) VALUES (1, NULL, NULL, 0, NULL, N'Canadian Provinces', N' {"AllLists":["Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon Territory"],"ListByLocale":{}}')
+GO
+

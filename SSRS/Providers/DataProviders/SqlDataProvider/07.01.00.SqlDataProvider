@@ -1,0 +1,177 @@
+﻿
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSReportPermissions') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN 
+CREATE TABLE {databaseOwner}{objectQualifier}SSRSReportPermissions(
+	[ReportPermissionId] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[RoleId] [int] NOT NULL,
+	[ServerId] [int] NULL,
+	[Folder]   [varchar](4000) NULL,
+	[ItemPath] [varchar](4000) NULL,
+	[EnumType] [varchar](4000) NULL,
+ CONSTRAINT PK_{objectQualifier}SSRSReportPermissions PRIMARY KEY CLUSTERED 
+(
+	[ReportPermissionId] ASC
+) WITH (IGNORE_DUP_KEY = OFF)
+) 
+END
+GO
+
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSFolderPermissionsSelect') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSFolderPermissionsSelect 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSFolderPermissionsSelect 
+	@ServerId int,
+	@Folder varchar(4000)
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+
+	SELECT [PortalId], [ServerId], [Folder], [ItemPath], [EnumType], Count(*) As [PermissionCount] 
+	FROM   {databaseOwner}{objectQualifier}SSRSReportPermissions 
+	WHERE  ServerId = @ServerId
+		and Folder = @Folder
+	GROUP BY 
+		[PortalId], [ServerId], [Folder], [ItemPath], [EnumType]
+	
+GO
+
+
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSReportPermissionsSelect') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsSelect 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsSelect 
+	@ServerId int,
+	@ItemPath varchar(4000),
+	@EnumType varchar(4000)
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+
+	BEGIN TRAN
+
+	SELECT [ReportPermissionId], [PortalId], [RoleId], [ServerId], [Folder], [ItemPath], [EnumType] 
+	FROM   {databaseOwner}{objectQualifier}SSRSReportPermissions 
+	WHERE  ServerId = @ServerId
+		and ItemPath = @ItemPath
+		and EnumType = @EnumType
+
+	COMMIT
+GO
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSReportPermissionsInsert') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsInsert 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsInsert 
+	@PortalId int,
+	@RoleId int,
+	@ServerId int,
+	@Folder varchar(4000),
+	@ItemPath varchar(4000),
+	@EnumType varchar(4000)
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+	
+	BEGIN TRAN
+	
+	INSERT INTO {databaseOwner}{objectQualifier}SSRSReportPermissions ([PortalId], [RoleId], [ServerId], [Folder], [ItemPath], [EnumType])
+	SELECT @PortalId, @RoleId, @ServerId, @Folder, @ItemPath, @EnumType
+	
+	-- Begin Return Select <- do not remove
+	SELECT [ReportPermissionId], [PortalId], [RoleId], [ServerId], [Folder], [ItemPath], [EnumType]
+	FROM   {databaseOwner}{objectQualifier}SSRSReportPermissions
+	WHERE  [ReportPermissionId] = SCOPE_IDENTITY()
+	-- End Return Select <- do not remove
+			   
+	COMMIT
+GO
+
+
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSReportPermissionsDelete') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsDelete 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSReportPermissionsDelete 
+	@ServerId int,
+	@ItemPath varchar(4000),
+	@EnumType varchar(4000)
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+	
+	BEGIN TRAN
+
+	DELETE
+	FROM   {databaseOwner}{objectQualifier}SSRSReportPermissions
+	WHERE  ServerId = @ServerId
+		and ItemPath = @ItemPath
+		and EnumType = @EnumType
+
+	COMMIT
+GO
+
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSFolderPermissionsDelete') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSFolderPermissionsDelete 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSFolderPermissionsDelete 
+	@ServerId int,
+	@Folder varchar(4000)
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+	
+	BEGIN TRAN
+
+	DELETE
+	FROM   {databaseOwner}{objectQualifier}SSRSReportPermissions
+	WHERE  ServerId = @ServerId
+		and Folder = @Folder
+
+	COMMIT
+GO
+
+
+
+IF OBJECT_ID('{databaseOwner}{objectQualifier}SSRSUserItemPermissionsSelect') IS NOT NULL
+BEGIN 
+	DROP PROC {databaseOwner}{objectQualifier}SSRSUserItemPermissionsSelect 
+END 
+GO
+CREATE PROC {databaseOwner}{objectQualifier}SSRSUserItemPermissionsSelect 
+	@ServerId int
+AS 
+	SET NOCOUNT ON 
+	SET XACT_ABORT ON  
+	
+
+	BEGIN TRAN
+
+	SELECT
+		sr.ServerId,
+		sr.ItemPath,
+		sr.EnumType,
+		u.UserId
+	FROM
+		{databaseOwner}{objectQualifier}Roles r  
+		JOIN {databaseOwner}{objectQualifier}UserRoles ur on r.RoleId = ur.RoleId
+		JOIN {databaseOwner}{objectQualifier}Users u on u.Userid = ur.Userid
+		JOIN {databaseOwner}{objectQualifier}SSRSReportPermissions sr on sr.RoleId = r.RoleId
+	WHERE
+		sr.serverid = @serverid 
+
+	COMMIT
+GO

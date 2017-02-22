@@ -1,0 +1,53 @@
+﻿<div class="License">
+	<h3>License</h3>
+	<p class="Owner">
+		Module Masters, Inc  <a href=http://modulemasters.com>http://modulemasters.com</a></br>
+		Copyright (c) 2015</br>	
+		by Becker Solutions, Inc</br>
+	</p>
+<p>
+END USER LICENSE AGREEMENT<br/>
+<b>REDISTRIBUTION NOT PERMITTED</b><br/><br/>
+
+Software License for SQL Reporting Services (DNN Module)
+<br/>
+This License Agreement for the SQL Reporting Services DNN Module ("License Agreement") is a legal agreement between you (either an individual or an entity) and Module Masters for the SQL Reporting Services Module ("the Software") for the DotNetNuke framework. By installing, copying or otherwise using the Software, you agree to be bound by the terms of this License Agreement. If you do not agree to the terms of this License Agreement, do not install the Software.
+</p>
+<p>
+1. GRANT OF LICENSE. 
+Module Masters hereby grant to you a non-exclusive license to use the Software and related Documentation, if any, subject to the following terms: 
+a) You may: (i) use the Software within a single DNN instance install. 
+b) Module Masters may modify this agreement upon written notice to you.
+</p>
+<p>
+2. LICENSE RESTRICTIONS.
+You may not: (i) copy the Software or Documentation (except for back-up or archival purposes); (ii) transfer rights to the Software or Documentation; or (iii) remove any proprietary notices or labels on the Software or Documentation.
+</p>
+<p>
+3. COPIES OF SOFTWARE AND ENHANCEMENTS. 
+This license does not grant you any right to any enhancement or update. 
+</p>
+<p>
+4. TITLE. 
+Title, ownership, rights, and intellectual property rights in and to the Software and Documentation shall remain Module Masters.
+</p>
+<p>
+5. NO WARRANTY. 
+The Software is being delivered to you "AS IS" and Module Masters make no warranty as to its use or performance. MODULE MASTERS DOES NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY USING THE SOFTWARE. EXCEPT FOR ANY WARRANTY, CONDITION, REPRESENTATION OR TERM TO THE EXTENT TO WHICH THE SAME CANNOT OR MAY NOT BE EXCLUDED OR LIMITED BY LAW APPLICABLE TO YOU IN YOUR JURISDICTION, MODULE MASTERS MAKES NO WARRANTIES CONDITIONS, REPRESENTATIONS, OR TERMS (EXPRESS OR IMPLIED WHETHER BY STATUTE, COMMON LAW, CUSTOM, USAGE OR OTHERWISE) AS TO ANY MATTER INCLUDING WITHOUT LIMITATION NON-INFRINGEMENT OF THIRD PARTY RIGHTS, MERCHANTABILITY, INTEGRATION, SATISFACTORY QUALITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. 
+</p>
+<p> 
+6. LIMITATION OF LIABILITY. 
+IN NO EVENT WILL MODULE MASTERS BE LIABLE TO YOU FOR ANY DAMAGES, CLAIMS OR COSTS WHATSOEVER OR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL DAMAGES, OR ANY LOST PROFITS OR LOST SAVINGS OR FOR ANY CLAIM BY ANY THIRD PARTY. THE FOREGOING LIMITATIONS AND EXCLUSIONS APPLY TO THE EXTENT PERMITTED BY APPLICABLE LAW IN YOUR JURISDICTION. MODULE MASTERS AGGREGATE LIABILITY UNDER OR IN CONNECTION WITH THIS AGREEMENT SHALL BE LIMITED TO THE AMOUNT PAID FOR THE SOFTWARE, IF ANY. 
+</p>
+<p>
+7. TERMINATION.
+This License Agreement shall terminate automatically if you fail to comply with the limitations described in this license. No notice shall be required from Module Masters to effectuate such termination. Upon termination, you must destroy all copies of the Software and Documentation. 
+</p>
+<p>
+8. MISCELLANEOUS.
+Module Masters does not hereby consent to any of your general terms or conditions. The terms and conditions contained in this License Agreement may not be modified except in a writing duly signed by you and Module Masters. This License Agreement shall be governed by the laws of the USA, without regard to conflicts of law provisions, and you hereby consent to the exclusive jurisdiction of the court sitting in Indianapolis, IN.
+</p>
+<p>
+END USER LICENSE AGREEMENT
+</p>
+</div>

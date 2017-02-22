@@ -1,0 +1,75 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSServers') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}SSRSServers]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSParameters') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}SSRSParameters]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSReportPermissions') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}SSRSReportPermissions]
+GO
+
+
+/** Drop Stored Procedures **/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetServers') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSGetServers]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUpdateServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSUpdateServer]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSDeleteServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSDeleteServer]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSDeleteParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSDeleteParameters]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSGetParameters]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetParametersList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSGetParametersList]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSInsertParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSInsertParameters]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUpdateParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSUpdateParameters]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUpgrade') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSUpgrade]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSFolderPermissionsSelect') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSFolderPermissionsSelect]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSReportPermissionsSelect') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSReportPermissionsSelect]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSReportPermissionsInsert') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSReportPermissionsInsert]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSReportPermissionsDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSReportPermissionsDelete]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSFolderPermissionsDelete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSFolderPermissionsDelete]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUserItemPermissionsSelect') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}SSRSUserItemPermissionsSelect]
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

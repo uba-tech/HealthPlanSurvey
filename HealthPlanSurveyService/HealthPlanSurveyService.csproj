@@ -209,9 +209,9 @@
           <DevelopmentServerPort>53670</DevelopmentServerPort>
           <DevelopmentServerVPath>
           </DevelopmentServerVPath>
-          <IISUrl>http://hps_scott.office.ubabenefits.com/desktopmodules/HPS_API</IISUrl>
+          <IISUrl>http://localhost/desktopmodules/HPS_API</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://hps_scott.office.ubabenefits.com</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

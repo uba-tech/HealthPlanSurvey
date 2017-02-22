@@ -1,0 +1,392 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/************************************************************/
+/***** Create Base Tables                               *****/
+/************************************************************/
+
+
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSParameters') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN 
+CREATE TABLE {databaseOwner}{objectQualifier}SSRSParameters(
+	[ParmId] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NULL,
+	[ModuleId] [int] NULL,
+	[ParmName] [varchar](200) NULL,
+	[ParmValue] [varchar](200) NULL,
+ CONSTRAINT PK_{objectQualifier}SSRSParameters PRIMARY KEY CLUSTERED 
+(
+	[ParmId] ASC
+) WITH (IGNORE_DUP_KEY = OFF)
+) 
+END
+GO
+
+
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSServers') and OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN 
+CREATE TABLE {databaseOwner}{objectQualifier}SSRSServers(
+	[ServerId] [int] IDENTITY(1,1) NOT NULL,
+	[ServerName] [varchar](100) NULL,
+	[ServerURL] [varchar](500) NULL,
+	[ServerVersion] [varchar](50) NULL,
+	[UserName] [varchar](100) NULL,
+	[Password] [varchar](100) NULL,
+	[Domain] [varchar](100) NULL,
+	[PortalId] [int] NULL,
+ CONSTRAINT PK_{objectQualifier}SSRSServers PRIMARY KEY CLUSTERED 
+(
+	[ServerId] ASC
+) WITH (IGNORE_DUP_KEY = OFF)  
+) 
+END
+GO
+
+
+
+/************************************************************/
+/***** Drop Sprocs                                      *****/
+/************************************************************/
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSDeleteParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSDeleteParameters
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSGetParameters
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetParametersList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSGetParametersList
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSInsertParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSInsertParameters
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUpdateParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSUpdateParameters
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSDeleteServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSDeleteServer
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSGetServers') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSGetServers
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}SSRSUpdateServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}SSRSUpdateServer
+GO
+
+
+
+/************************************************************/
+/***** Create Sprocs                                    *****/
+/************************************************************/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSDeleteParameters
+	@ParmId int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}SSRSParameters
+WHERE
+	[ParmId] = @ParmId
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSDeleteServer
+	@ServerId as int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	DELETE FROM {databaseOwner}{objectQualifier}SSRSServers
+		  WHERE @ServerID = ServerId
+
+END
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSGetParameters
+	@ParmId int
+AS
+
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+
+SELECT
+	[ParmId],
+	[PortalId],
+	[ModuleId],
+	[ParmName],
+	[ParmValue]
+FROM
+	{databaseOwner}{objectQualifier}SSRSParameters
+WHERE
+	[ParmId] = @ParmId
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSGetParametersList
+  @ModuleId as int
+AS
+
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+
+SELECT
+	[ParmId],
+	[PortalId],
+	[ModuleId],
+	[ParmName],
+	[ParmValue]
+FROM
+	{databaseOwner}{objectQualifier}SSRSParameters
+WHERE
+	ModuleId = @ModuleId
+GO
+
+
+
+create PROCEDURE {databaseOwner}{objectQualifier}SSRSGetServers
+  @PortalId as int = -1
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	Select ServerId, ServerName, ServerURL, ServerVersion, UserName, Password, Domain
+	From {databaseOwner}{objectQualifier}SSRSServers
+	Where PortalId = @PortalId or PortalId is null --isnull is just for the upgarde where it is null
+	Order By ServerId
+
+END
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSInsertParameters
+	@PortalId int,
+	@ModuleId int,
+	@ParmName varchar(200),
+	@ParmValue varchar(200)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}SSRSParameters (
+	[PortalId],
+	[ModuleId],
+	[ParmName],
+	[ParmValue]
+) VALUES (
+	@PortalId,
+	@ModuleId,
+	@ParmName,
+	@ParmValue
+)
+
+SELECT @@IDENTITY
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}SSRSUpdateParameters
+	@ParmId int, 
+	@PortalId int, 
+	@ModuleId int, 
+	@ParmName varchar(200), 
+	@ParmValue varchar(200) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}SSRSParameters SET
+	[PortalId] = @PortalId,
+	[ModuleId] = @ModuleId,
+	[ParmName] = @ParmName,
+	[ParmValue] = @ParmValue
+WHERE
+	[ParmId] = @ParmId
+GO
+
+
+create PROCEDURE {databaseOwner}{objectQualifier}SSRSUpdateServer
+	-- Add the parameters for the stored procedure here
+	@PortalId as int = -1,
+	@ServerId as Int = 0,
+	@ServerName as varchar(500) = Null,
+	@ServerURL as varchar(500)= Null,
+	@ServerVersion as varchar(50) = NULL,
+	@UserName as varchar(100) = Null,
+	@Password as varchar(100) = Null,
+	@Domain as varchar(100) = Null
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+IF isnull(@ServerId,0) > 0 BEGIN
+UPDATE {databaseOwner}{objectQualifier}SSRSServers
+   SET [ServerName] = @ServerName
+	  ,[ServerURL] = @ServerURL
+	  ,[ServerVersion] = @ServerVersion
+	  ,[UserName] = @Username
+	  ,[Password] = @Password
+	  ,[Domain] = @Domain
+	  ,PortalId = @PortalId
+ WHERE @ServerId = ServerId
+END
+ELSE
+BEGIN
+INSERT INTO {databaseOwner}{objectQualifier}SSRSServers (
+  PortalId,
+  ServerName,
+  ServerURL,
+  ServerVersion,
+  Username,  
+  Password,
+  Domain)
+VALUES
+  (
+  @PortalId,
+  @ServerName,
+  @ServerURL,
+  @ServerVersion,
+  @Username,
+  @Password,
+  @Domain)
+END
+
+END
+GO
+
+
+
+create PROCEDURE {databaseOwner}{objectQualifier}SSRSUpgrade 
+	@Version varchar(200) = null
+AS 
+BEGIN
+
+/************************************************************/
+/***** If Upgrading from old RS2005 version,            *****/
+/***** need to migrate data and drop old objects        *****/
+/************************************************************/
+
+declare @OldPackageId as int = (select PackageId from {databaseOwner}{objectQualifier}Packages where Name = 'RS2005');
+declare @OldDesktopModuleId as int = (select DesktopModuleId from {databaseOwner}{objectQualifier}DesktopModules where FriendlyName = 'Reporting Services');
+declare @OldModuleDefId as int = (select moduledefid from {databaseOwner}{objectQualifier}ModuleDefinitions where FriendlyName = 'Reporting Services');
+declare @NewModuleDefId as int = (select moduledefid from {databaseOwner}{objectQualifier}ModuleDefinitions where FriendlyName = 'SQL Reporting Services');
+
+IF @OldModuleDefId IS NOT NULL 
+BEGIN /***** START OF LEGACY UPGRADE SCRIPT *****/
+
+/***** Migrate old module instances to use the new moduledefid *****/
+update {databaseOwner}{objectQualifier}Modules set moduledefid = @NewModuleDefId where moduledefid = @OldModuleDefId;
+
+
+/***** Delete old module definition *****/
+EXEC	{databaseOwner}{objectQualifier}DeleteModuleDefinition @ModuleDefId = @OldModuleDefId;
+EXEC	{databaseOwner}{objectQualifier}DeleteDesktopModule @DesktopModuleId = @OldDesktopModuleId;
+EXEC	{databaseOwner}{objectQualifier}DeletePackage @PackageId = @OldPackageId;
+
+
+/***** Migrate table data ******/
+SET IDENTITY_INSERT {databaseOwner}{objectQualifier}SSRSServers ON;
+IF (SELECT COUNT(*) FROM {databaseOwner}{objectQualifier}RS2005Servers) > 0 
+BEGIN
+INSERT INTO {databaseOwner}{objectQualifier}SSRSServers
+		   ([ServerId]
+		   ,[ServerName]
+		   ,[ServerURL]
+		   ,[ServerVersion]
+		   ,[UserName]
+		   ,[Password]
+		   ,[Domain]
+		   ,[PortalId])
+		SELECT
+			[ServerId]
+		   ,[ServerName]
+		   ,[ServerURL]
+		   ,[ServerVersion]
+		   ,[UserName]
+		   ,[Password]
+		   ,[Domain]
+		   ,[PortalId]
+		FROM
+			{databaseOwner}{objectQualifier}RS2005Servers;
+END;
+SET IDENTITY_INSERT {databaseOwner}{objectQualifier}SSRSServers OFF;
+
+SET IDENTITY_INSERT {databaseOwner}{objectQualifier}SSRSParameters ON;
+IF (SELECT COUNT(*) FROM {databaseOwner}{objectQualifier}RS2005Parameters) > 0 
+BEGIN
+INSERT INTO {databaseOwner}{objectQualifier}SSRSParameters
+		   ([ParmId]
+		   ,[PortalId]
+		   ,[ModuleId]
+		   ,[ParmName]
+		   ,[ParmValue])
+	 SELECT [ParmId]
+		   ,[PortalId]
+		   ,[ModuleId]
+		   ,[ParmName]
+		   ,[ParmValue]
+	 FROM
+			{databaseOwner}{objectQualifier}RS2005Parameters;
+END;
+SET IDENTITY_INSERT {databaseOwner}{objectQualifier}SSRSParameters OFF;
+
+
+/***** Drop Legacy Tables *****/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005Servers') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}RS2005Servers];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005Parameters') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}RS2005Parameters];
+
+/***** Drop Legacy Sprocs *****/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005GetServers') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005GetServers];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005UpdateServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005UpdateServer];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005DeleteServer') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005DeleteServer];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005DeleteParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005DeleteParameters];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005GetParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005GetParameters];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005GetParametersList') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005GetParametersList];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005InsertParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005InsertParameters];
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}RS2005UpdateParameters') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}RS2005UpdateParameters];
+
+END; /***** END OF LEGACY UPGRADE SCRIPT ******/
+
+
+END
+GO
+
+
+

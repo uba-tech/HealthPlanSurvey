@@ -1,0 +1,227 @@
+﻿<div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-10">
+                <h4>Client Details</h4>
+            </div>
+            <div class="col-md-2">
+                <p class="lead">ResponseId: {{response.ResponseId}}</p>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <div class="form-group" ng-controller="ReferenceController as notParticipatingReason" tablename="NotParticipatingReasonType">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This question applies to UBA partners only. The primary purpose of this question is to track what percentage of the respondents move to the marketplace">
+                    1.If this client will no longer be part of the UBA Health Plan Survey, is it due to:
+                </a>
+            </label>
+            <select ng-model="response.NotParticipatingReasonTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in notParticipatingReason.items" value="{{item.TypeId}}" ng-selected="response.NotParticipatingReasonTypeId == item.TypeId">{{item.Name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Your contact information will only be shared with the UBA Member Firm who invited you to participate in this Survey. In order to insure the integrity of the database, all responses must be validated by a UBA Member Firm.">
+                    2. Name of Organization:
+                </a>
+            </label>
+            <input class="form-control" id="d_Organization" tabindex="6" maxlength="100" name="d_Organization" size="60" type="text" ng-model="response.OrganizationName" />
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                    3. Name of Person Completing Survey:
+                </a>
+            </label>
+            <input class="form-control" id="d_PersonCompletingSurvey" tabindex="7" maxlength="100" name="d_PersonCompletingSurvey" size="60" type="text" ng-model="response.PersonCompletingSurvey" />
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                4. Title:
+            </label>
+            <input class="form-control" id="d_PersonCompletingSurvey_Title" tabindex="8" maxlength="75" name="d_PersonCompletingSurvey_Title" size="60" type="text" ng-model="response.PersonCompletingSurvey_Title" />
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                    5. Email Address:
+                </a>
+            </label>
+            <input class="form-control" id="d_PersonCompletingSurvey_Email" tabindex="9" maxlength="100" name="d_PersonCompletingSurvey_Email" size="60" type="text" ng-model="response.PersonCompletingSurvey_Email" />
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="In order to protect the integrity of the database, any missing or possibly incorrect responses must be validated by a UBA Member Firm. This information is used solely for that purpose and to deliver the resulting benchmark report.">
+                        6. Phone Number:
+                    </a>
+                </label>
+                <input class="form-control" id="d_PersonCompletingSurvey_Phone" tabindex="10" maxlength="14" name="d_PersonCompletingSurvey_Phone" size="11" type="text" ng-model="response.PersonCompletingSurvey_Phone" />
+                <label for="">Ext.:</label>
+                <input class="form-control" id="d_PersonCompletingSurvey_PhoneExt" tabindex="11" maxlength="10" name="d_PersonCompletingSurvey_PhoneExt" size="5" type="text" ng-model="response.PersonCompletingSurvey_PhoneExt" />
+            </div>
+        </div>
+        <br>
+        <div class="form-inline">
+            <div class="form-group" style="padding-right:30px;">
+                <label for="">7. City:</label>
+                <input class="form-control" id="d_City" tabindex="12" maxlength="50" name="d_City" size="26" type="text" ng-model="response.City" />
+            </div>
+
+            <div class="form-group" ng-controller="ReferenceController as states" tablename="US_State" style="padding-right:30px;">
+                <label for="">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
+                        8. State:
+                    </a>
+                </label>
+            <select ng-model="response.US_StateId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in states.items" value="{{item.TypeId}}" ng-selected="response.US_StateId == item.TypeId">{{item.Name}}</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.">
+                        9. Zip Code:
+                    </a>
+                </label>
+                <input class="form-control" id="d_ZipCode" tabindex="14" maxlength="5" name="d_ZipCode" size="5" type="text" ng-model="response.ZipCode" />
+            </div>
+        </div>
+        <br>
+
+        <label for="">
+            <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="For employers with multiple locations, the Survey attributes data based on the location with the largest employee population. This information is essential in order to develop accurate regional benchmarks.">
+                10. For organizations with multiple locations, please provide the city, state, and ZIP code of your location with the largest employee enrollment (only if other than the location noted above).
+            </a>
+        </label>
+        <div class="form-inline">
+            <div class="form-group" style="padding-right:60px;">
+                <label for="">City:</label>
+                <input class="form-control" id="d_LargestLocCity" tabindex="15" maxlength="50" name="d_LargestLocCity" size="26" type="text" ng-model="response.LargestLocationCity" />
+            </div>
+            <div class="form-group" ng-controller="ReferenceController as largeStates" tablename="US_State" style="padding-right:45px;">
+                <label for="">State:</label>
+            <select ng-model="response.LargestLocationStateId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in largeStates.items" value="{{item.TypeId}}" ng-selected="response.LargestLocationStateId == item.TypeId">{{item.Name}}</option>
+            </select>
+            </div>
+            <div class="form-group" style="padding-right:50px;">
+                <label for="">Zip Code:</label>
+                <input class="form-control" id="d_LargestLocZipCode" tabindex="17" maxlength="5" name="d_LargestLocZipCode" size="5" type="text" ng-model="response.LargestLocationZipCode" />
+            </div>
+            <div class="form-group">
+                <label for="">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Controlled groups are where there is common ownership of multiple companies, as defined by the IRS Section 414.">
+                        10a. Is this a Controlled Group:
+                    </a>
+                </label>
+                <div class="radio">
+                    <label><input type="radio" ng-model="response.IsControlledGroup" value="1">Yes</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" ng-model="response.IsControlledGroup" value="0">No</label>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="">
+                    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="If you need help determining your NAICS code or in converting an old SIC code into the correct NAICS code, please click on the button provided.  Note: The survey only uses the primary categories which are represented by the first 2 digits of any NAICS code.">
+                        11.NAICS Code:
+                    </a>
+                </label>
+                <span style="font-size: 13px;"> <input class="form-control" id="d_NAICSMaster" style="width: 75px;" tabindex="20" maxlength="6" name="d_NAICSMaster" type="text" ng-model="response.NAICSMasterCodeId" /> (enter all 6 characters) </span><span id="naicsLookup" style="color: #0000bc;"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default"> NAICS Webpage </button>
+            </div>
+        </div>
+        <br>
+        <div class="form-group" ng-controller="ReferenceController as organizationId" tablename="OrganizationType">
+            <label for="">12. Type of Organization:</label>
+            <select ng-model="response.OrganizationTypeId" class="selectpicker form-control show-tick">
+                <option ng-repeat="item in organizationId.items" value="{{item.TypeId}}" ng-selected="response.OrganizationTypeId == item.TypeId">{{item.Name}}</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">12a. Do the employees of this organization belong to a union?</label>
+					<br><br>
+
+                    <input type="checkbox" ng-model="response.HasUnionEmployees" data-on-text="Yes" data-off-text="No" bs-switch>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">12b. Does this organization employ Leased/Staffed employees?</label>
+                   <br><br>
+
+                    <input type="checkbox" ng-model="response.HasLeasedStaffed" data-on-text="Yes" data-off-text="No" bs-switch>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">12c. Is this an Applicable Large Employer (100 or more full-time equivalent employees)?</label>
+                    <input type="checkbox" ng-model="response.IsApplicableLargeEmployer" data-on-text="Yes" data-off-text="No" bs-switch>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="The purpose of this Survey is to develop benchmarks based on three categories: geographic region, industry category, and number of employees. This information is required in order to attribute the data correctly in each of these categories.<br /><br />For purposes of this Survey, 'active employees' includes all full-time employees and all part-time employees. Seasonal employees should only be included if they are in a class which is eligible for benefits. Former employees should be included if they are covered under COBRA or if they are early (pre-Medicare-eligible) retirees and they are covered under an active-employee plan.">
+                    13.Total Number of Active Employees:
+                </a>
+            </label>
+            <input class="form-control" id="d_Employees" tabindex="31" maxlength="6" name="d_Employees" size="7" type="text" ng-model="response.ActiveEmployeesCount" />
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="This information is necessary to establish medical plan participation and waiver percentages.<br /><br /> For purposes of this Survey, 'active eligible employees' includes all full-time employees, part-time employees, and seasonal employees who are eligible for medical benefits, as well as any former employees actually covered under COBRA or early (pre-Medicare-eligible) retiree plan.">
+                    14. Total Number of Active Employees<br />Eligible for Any Group Medical Plans<br />Offered: </span> <span>(Please click on the "i" help button for the definition of eligible employees.)
+                </a>
+            </label>
+            <input class="form-control" id="d_EligibleEmployees" tabindex="32" maxlength="6" name="d_EligibleEmployees" size="7" type="text" ng-model="response.EligibleEmployeesCount" />
+        </div>
+
+        <div class="form-group">
+            <label for="">
+                <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Employees not where number of hours is difficult to determine.">
+                    14a. Are there employees that work variable hours?
+                </a>
+            </label>
+            <input type="checkbox" ng-model="response.HasVariableHourEmployees" data-on-text="Yes" data-off-text="No" bs-switch>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="">14b. How many Part-Time, Full-Time Equivalent, and Other employees?</label><br>
+                <label>Part-Time:</label> <input style="margin-right:40px;" class="form-control" id="d_PartTimeCount" tabindex="35" maxlength="6" name="d_PartTimeCount" size="6" type="text" ng-model="response.PartTimeEmployeesCount" />
+                <label>Full-Time Equivalent:</label> <input style="margin-right:40px;" class="form-control" id="d_FullTimeCount" tabindex="36" maxlength="6" name="d_FullTimeCount" size="6" type="text" ng-model="response.FullTimeEmployeeCount" />
+                <label>Other (Contract, Lease, Seasonal):</label> <input class="form-control" id="d_EECount" tabindex="37" maxlength="6" name="d_EECount" size="6" type="text" ng-model="response.OtherEmployeeCount" />
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">15. Are Ancillary Products Offered?</label>
+            <input type="checkbox" ng-model="response.AreAncillaryProductsOffered" data-on-text="Yes" data-off-text="No" bs-switch>
+        </div>
+
+    </form>
+    <script>
+        $("[data-toggle=popover]").popover();
+    </script>
+</div>

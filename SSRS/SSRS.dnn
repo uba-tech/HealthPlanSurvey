@@ -1,0 +1,175 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="SSRS" type="Module" version="09.00.00">
+      <friendlyName>SQL Reporting Services</friendlyName>
+      <description>This module allows you to embed a SQL Reporting Services report within your portal.</description>
+      <iconFile>Images/ssrs_icon.png</iconFile>
+      <owner>
+        <name>Module Masters, Inc</name>
+        <organization>Module Masters, Inc</organization>
+        <url>http://modulemasters.com</url>
+        <email>service@modulemasters.com</email>
+      </owner>
+      <license src="License.txt"/>
+      <releaseNotes src="ReleaseNotes.txt" />
+      <azureCompatible>true</azureCompatible>
+      <dependencies>
+        <dependency type="CoreVersion">06.00.00</dependency>
+      </dependencies>
+
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\SSRS</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>06.01.00.SqlDataProvider</name>
+              <version>06.01.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>07.01.00.SqlDataProvider</name>
+              <version>07.01.00</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+          </scripts>
+        </component>
+
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/SSRS</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+
+        <component type="Module">
+          <desktopModule>
+            <moduleName>SSRS</moduleName>
+            <foldername>SSRS</foldername>
+            <businessControllerClass>BS.Modules.SSRS.Components.FeatureController</businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+              <supportedFeature type="Upgradeable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>SQL Reporting Services</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/SSRS/View.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl>http://modulemasters.com</helpUrl>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Servers</controlKey>
+                    <controlSrc>DesktopModules/SSRS/ServerAdmin.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Content</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl>http://modulemasters.com</helpUrl>
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>FolderPermissions</controlKey>
+                    <controlSrc>DesktopModules/SSRS/FolderPermissions.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Report Permissions</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl>http://modulemasters.com</helpUrl>
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>ModuleSettings</controlKey>
+                    <controlSrc>DesktopModules/SSRS/ModuleSettings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>SSRS Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl>http://modulemasters.com</helpUrl>
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>                  
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+          <eventMessage>
+            <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+            <processorCommand>UpgradeModule</processorCommand>
+            <attributes>
+              <businessControllerClass>BS.Modules.SSRS.Components.FeatureController</businessControllerClass>
+              <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+              <upgradeVersionsList>06.01.00,08.00.00</upgradeVersionsList>
+            </attributes>
+          </eventMessage>          
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <path>bin</path>
+            <assembly>
+              <name>SSRS.dll</name>
+            </assembly>
+            <assembly>
+              <name>Microsoft.ReportViewer.WebForms.dll</name>
+            </assembly>
+            <assembly>
+              <name>Microsoft.ReportViewer.Common.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/system.webServer/handlers" action="update" key="name" collision="overwrite">
+                    <add name="ReportViewerWebControlHandler" preCondition="integratedMode" verb="*" path="Reserved.ReportViewerWebControl.axd" type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"/>
+                  </node>
+                  <node path="/configuration/system.web/httpHandlers" action="update" key="path" collision="overwrite">
+                    <add path="Reserved.ReportViewerWebControl.axd" verb="*" type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" validate="false"/>
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/system.webServer/handlers/add[@name='ReportViewerWebControlHandler']" action="remove" />
+                  <node path="/configuration/system.web/httpHandlers/add[@path='Reserved.ReportViewerWebControl.axd']" action="remove" />
+                </nodes>
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+
+        <component type="Cleanup" version="08.00.00" >
+          <files>
+            <basePath>DesktopModules\SSRS</basePath>
+            <file>
+              <name>Settings.ascx</name>
+            </file>
+          </files>
+        </component >        
+        
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

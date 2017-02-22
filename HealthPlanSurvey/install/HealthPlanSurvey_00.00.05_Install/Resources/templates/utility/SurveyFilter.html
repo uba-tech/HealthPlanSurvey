@@ -1,0 +1,17 @@
+﻿<fieldset class="form-group">
+    <legend>Filter</legend>
+    <label for="">Broker</label>
+    <select ng-options="broker.id as broker.name for broker in brokers" ng-model="survey.GeneralResponse.BrokerId">
+        <option>-All-</option>
+    </select>
+    <label for="">Survey Status</label>
+    <select>
+        <option>-All-</option>
+    </select>
+    <label for="">Client</label>
+    <select ng-options="client.id as client.name for client in clients" ng-model="survey.GeneralResponse.OrganizationName">
+        <option value="">-All-</option>
+    </select>
+    <button>Apply Filter</button>
+    <button>Clear Filter</button>
+</fieldset>

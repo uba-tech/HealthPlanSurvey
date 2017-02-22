@@ -1,0 +1,114 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-md-10">
+          <h3>{{survey.GeneralResponse.OrganizationName}}<br>
+          <small>{{survey.GeneralResponse.PersonCompletingSurvey}} - {{survey.GeneralResponse.PersonCompletingSurvey_Email}}</small></h3>
+    </div>
+    <div class="col-md-2" align="right">
+      <h4>
+      <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" title="Edit Survey">
+        <span class="fa fa-pencil" aria-hidden="true"></span>
+      </a>
+      <a ng-click="deleteSurvey(survey.GeneralResponse.ResponseId, 2)" ng-disabled="isSubmitting" class="btn btn-danger" aria-label="Delete" title="Delete Survey">
+        <span class="fa fa-trash" aria-hidden="true"></span>
+      </a>
+    </h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <h4>Broker</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.Broker}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Location</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.City}}, {{survey.GeneralResponse.US_StateId}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Response Status</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.ResponseStatus}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Created</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.CreatedOn | date : 'shortDate' }}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Last Updated</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.UpdatedOn | date : 'shortDate'}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Link</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small><a href="#">Survey Link</a></small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Completion Date</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.CompletedOn | date : 'shortDate'}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Completed By</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.CompletedBy}}</small></h4>
+  </div>
+</div>
+<hr>
+<button type="button" class="btn btn-primary"><span class="fa  fa-chevron-circle-left"></span> Survey Management</button>
+<!--<button type="button" href="" ng-click="deleteSurvey(survey.GeneralResponse.ResponseId, 2)" class="btn btn-danger">Delete</button>-->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id=""></h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"></button>
+      </div>
+    </div>
+  </div>
+</div>

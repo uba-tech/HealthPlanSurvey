@@ -1,149 +1,170 @@
-﻿<div class="page-header">
-    <h4>Section 125 (FSA) Plan</h4><br>
-</div>
+﻿<div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Section 125 (FSA) Plan</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{section.ResponseId}}</h4>
+            </div>
+        </div>
+    </div>
+    <form action="">
+        <!-- Q1 Does Your Organization Offer? -->
+        <div class="form-group">
+            <label for="">
+              1. Does Your Organization Offer?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'A simple Section 125 plan known as a \'\premium-only plan\'\ or \'\P.O.P\'\ is not a Medical FSA (Flexible Spending Account). If the plan provides only this type of plan, please answer \'\Premium-Only Plan.\'\<br><br>
+					The survey allows the choice of \'\Limited Purpose Medical FSA\'\ only if you indicated that the employer offers a plan which enables participation in an HSA (Healthcare Savings Account).'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="checkbox">
+                <label for="d_FSA_Offered_PremiumOnlyPlan">
+                    <input id="d_FSA_Offered_PremiumOnlyPlan" tabindex="1" checked="checked" name="d_FSA_Offered_PremiumOnlyPlan" type="checkbox" value="1" ng-model="section.Offers_FSA_PremiumOnlyPlan">Premium-Only Plan
+                </label>
+            </div>
+            <div class="checkbox">
+                <label for="d_FSA_Offered_TraditionalMedical">
+                    <input id="d_FSA_Offered_TraditionalMedical" tabindex="2" checked="checked" name="d_FSA_Offered_TraditionalMedical" type="checkbox" value="1" ng-model="section.Offers_FSA_TraditionalMedical">Traditional Medical FSA
+                </label>
+            </div>
+            <div class="checkbox">
+                <label for="d_FSA_Offered_LimitedPurposeMedical">
+                    <input id="d_FSA_Offered_LimitedPurposeMedical" tabindex="3" checked="checked" name="d_FSA_Offered_LimitedPurposeMedical" type="checkbox" value="1" ng-model="section.Offers_FSA_LimitedPurposeMedical">Limited Purpose Medical FSA (only if paired with an HSA)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label for="d_FSA_Offered_DependentCare">
+                    <input id="d_FSA_Offered_DependentCare" tabindex="4" checked="checked" name="d_FSA_Offered_DependentCare" type="checkbox" value="1" ng-model="section.Offers_FSA_DependentCare">Dependent Care FSA
+                </label>
+            </div>
+            <div class="checkbox">
+                <label for="d_FSA_Offered_NoneOfTheAbove">
+                    <input id="d_FSA_Offered_NoneOfTheAbove" tabindex="5" checked="checked" name="d_FSA_Offered_NoneOfTheAbove" type="checkbox" value="1" ng-model="section.Offers_FSA_NoneOfTheAbove">None of the Above
+                </label>
+            </div>
+        </div>
+        <!--  Q2 Traditional Medical FSA Plan -->
+        <div class="form-group">
+            <label for="">2. Traditional Medical FSA Plan</label>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Maximum Annual Contribution Allowed</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_Med_MaxAnnualContribution" tabindex="6" ng-maxlength="6" name="d_FSA_Med_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_TraditionalMedical_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Number of Employees Enrolled</p>
+                </div>
+                <div class="col-md-4">
+                    <input id="d_FSA_Med_EmployeesEnrolled" tabindex="7" ng-maxlength="6" name="d_FSA_Med_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_TraditionalMedical_FSA" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Average Annual Contribution</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_Med_AvgAnnualContribution" tabindex="8" ng-maxlength="6" name="d_FSA_Med_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_TraditionalMedical_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">3. Limited Purpose Medical FSA (only if paired with an HSA)</label>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Maximum Annual Contribution Allowed</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_LimMed_MaxAnnualContribution" tabindex="9" ng-maxlength="6" name="d_FSA_LimMed_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_LtdPurposeMedical_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Number of Employees Enrolled</p>
+                </div>
+                <div class="col-md-4">
+                    <input id="d_FSA_LimMed_EmployeesEnrolled" tabindex="10" ng-maxlength="6" name="d_FSA_LimMed_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_LtdPurposeMedical_FSA" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Average Annual Contribution</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_LimMed_AvgAnnualContribution" tabindex="11" ng-maxlength="6" name="d_FSA_LimMed_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_LtdPurposeMedical_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="">4. Dependent Care FSA Plan</label>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Maximum Annual Contribution Allowed</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_ChildCare_MaxAnnualContribution" tabindex="12" ng-maxlength="6" name="d_FSA_ChildCare_MaxAnnualContribution" size="8" type="text" ng-model="section.MaxAnnualContribution_DependentCare_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Number of Employees Enrolled</p>
+                </div>
+                <div class="col-md-4">
+                    <input id="d_FSA_ChildCare_EmployeesEnrolled" tabindex="13" ng-maxlength="6" name="d_FSA_ChildCare_EmployeesEnrolled" size="8" type="text" ng-model="section.EmployeesEnrolledCount_DependentCare_FSA" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Average Annual Contribution</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_FSA_ChildCare_AvgAnnualContribution" tabindex="14" ng-maxlength="6" name="d_FSA_ChildCare_AvgAnnualContribution" size="8" type="text" ng-model="section.AvgAnnualContribution_DependentCare_FSA" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-controller="ReferenceController as presentationInterest" tablename="PresentationInterestType">
+            <div class="well">
+                <p>
+                    Metropolitan Area, State and Regional Benchmarks will be prepared wherever the sample size is adequate to ensure the confidentiality of individual companies.
+                    If you would like to receive area benchmarks (if available), please indicate your preferred method of delivery below.
+                </p>
+            </div>
+            <label for="">I would prefer to be presented any Applicable Metropolitan Area, State or Regional Results Via:</label>
+            <select ng-model="response.PresentationInterestTypeId" ng-options="item.TypeId as item.Name for item in presentationInterest.items" class="selectpicker form-control show-tick"></select>
+        </div>
 
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">1. Does Your Organization Offer?</span></strong></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_FSA_Offered_PremiumOnlyPlan" tabindex="1" checked="checked" name="d_FSA_Offered_PremiumOnlyPlan" type="checkbox" value="1" /> <label for="d_FSA_Offered_PremiumOnlyPlan">Premium-Only Plan</label></span></p>
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_FSA_Offered_TraditionalMedical" tabindex="2" checked="checked" name="d_FSA_Offered_TraditionalMedical" type="checkbox" value="1" /> <label for="d_FSA_Offered_TraditionalMedical">Traditional Medical FSA</label></span></p>
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_FSA_Offered_LimitedPurposeMedical" tabindex="3" checked="checked" name="d_FSA_Offered_LimitedPurposeMedical" type="checkbox" value="1" /> <label for="d_FSA_Offered_LimitedPurposeMedical">Limited Purpose Medical FSA (only if paired with an HSA)</label></span></p>
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_FSA_Offered_DependentCare" tabindex="4" checked="checked" name="d_FSA_Offered_DependentCare" type="checkbox" value="1" /> <label for="d_FSA_Offered_DependentCare">Dependent Care FSA</label></span></p>
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp; <input id="d_FSA_Offered_NoneOfTheAbove" tabindex="5" checked="checked" name="d_FSA_Offered_NoneOfTheAbove" type="checkbox" value="1" /> <label for="d_FSA_Offered_NoneOfTheAbove">None of the Above</label></span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"><strong> 2. Traditional Medical FSA Plan</strong></span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell">
-                                <p style="margin-top: 3px; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;">Maximum Annual Contribution Allowed:</span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_Med_MaxAnnualContribution" tabindex="6" maxlength="6" name="d_FSA_Med_MaxAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_Med_MaxAnnualContribution,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;"> Number of Employees Enrolled:</span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp; <input id="d_FSA_Med_EmployeesEnrolled" tabindex="7" maxlength="6" name="d_FSA_Med_EmployeesEnrolled" size="8" type="text" value="[|COALESCE,FSA_Med_EmployeesEnrolled,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">Average Annual Contribution:</span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_Med_AvgAnnualContribution" tabindex="8" maxlength="6" name="d_FSA_Med_AvgAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_Med_AvgAnnualContribution,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 0;"><span style="font-family: Tahoma; font-size: 13px;"><strong>3. Limited Purpose Medical FSA </strong> (only if paired with an HSA)</span></p>
-            </div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
+    </form>
 </div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 3px; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;">Maximum Annual Contribution Allowed:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_LimMed_MaxAnnualContribution" tabindex="9" maxlength="6" name="d_FSA_LimMed_MaxAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_LimMed_MaxAnnualContribution,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-            </div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;"> Number of Employees Enrolled:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp; <input id="d_FSA_LimMed_EmployeesEnrolled" tabindex="10" maxlength="6" name="d_FSA_LimMed_EmployeesEnrolled" size="8" type="text" value="[|COALESCE,FSA_LimMed_EmployeesEnrolled,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-            </div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">Average Annual Contribution:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_LimMed_AvgAnnualContribution" tabindex="11" maxlength="6" name="d_FSA_LimMed_AvgAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_LimMed_AvgAnnualContribution,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 0;"><span style="font-family: Tahoma; font-size: 13px;"><strong>4. Dependent Care FSA Plan</strong></span></p>
-            </div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 3px; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;">Maximum Annual Contribution Allowed:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_ChildCare_MaxAnnualContribution" tabindex="12" maxlength="6" name="d_FSA_ChildCare_MaxAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_ChildCare_MaxAnnualContribution,SurveyResponses," /> <span style="font-family: Tahoma; font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p>
-            </div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 12px;"><span style="font-family: Tahoma; font-size: 13px;"> Number of Employees Enrolled:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">&nbsp; <input id="d_FSA_ChildCare_EmployeesEnrolled" tabindex="13" maxlength="6" name="d_FSA_ChildCare_EmployeesEnrolled" size="8" type="text" value="[|COALESCE,FSA_ChildCare_EmployeesEnrolled,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-            </div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">Average Annual Contribution:</span></p>
-            </div>
-            <div class="divTableCell">
-                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$ <input id="d_FSA_ChildCare_AvgAnnualContribution" tabindex="14" maxlength="6" name="d_FSA_ChildCare_AvgAnnualContribution" size="8" type="text" value="[|COALESCE,FSA_ChildCare_AvgAnnualContribution,SurveyResponses," /> &nbsp;&nbsp;&nbsp;&nbsp; </span></p>
-            </div>
-        </div>
-    </div>
-</div>
-<p>&nbsp;</p>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Copperplate Gothic Bold; font-size: 18px; color: white; font-weight: bold;"> Metropolitan Area, State and Regional Benchmarks will be prepared wherever the sample size is adequate to ensure the confidentiality of individual companies. If you would like to receive area benchmarks (if available), please indicate your preferred method of delivery below.</span></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">I would prefer to be presented<br /> any Applicable Metropolitan<br /> Area, State or Regional <br /> Results Via:</span></strong></div>
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_PresentationInterest_0" tabindex="15" checked="checked" name="d_PresentationInterest" type="radio" value="A Seminar Highlighting Aggregate Results for All Area Survey Participants" />A Seminar Highlighting Aggregate Results for All Area Survey Participants</label><br /> <label><input id="d_PresentationInterest_1" tabindex="16" checked="checked" name="d_PresentationInterest" type="radio" value="Individual Meeting" />An Individual Meeting to Directly Compare my Organization's Plans with Area Benchmarks</label><br /> <label><input id="d_PresentationInterest_2" tabindex="17" checked="checked" name="d_PresentationInterest" type="radio" value="Both" />Both</label><br /> <label><input id="d_PresentationInterest_3" tabindex="18" checked="checked" name="d_PresentationInterest" type="radio" value="Neither / No Interest in Area Benchmarks" />Neither/No Interest in Area Benchmarks</label><br /> </span></div>
-        </div>
-    </div>
-</div>
-<p>&nbsp;</p>
-<p><input id="d_HSAIncluded" name="d_HSAIncluded" type="hidden" value="[|HSAIncluded,SurveyResponses]" /> <input id="SurveySection" name="CurrSurveySection" type="hidden" value="SurveyResponses" /> <input id="SurveySectionPage" name="CurrSurveySectionPage" type="hidden" value="3" /> [|NavigationFooter,Action]</p>

@@ -14,7 +14,7 @@
     <RootNamespace>UBA.Modules.HealthPlanSurvey</RootNamespace>
     <AssemblyName>HealthPlanSurvey</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -67,9 +67,7 @@
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\ItemController.cs" />
     <Compile Include="Components\Item.cs" />
-    <Compile Include="HealthPlanSurvesModuleBase.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="HealthPlanSurvesModuleBase.cs" />
     <Compile Include="HealthPlanSurveyModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1003,9 +1001,9 @@
           <DevelopmentServerPort>59326</DevelopmentServerPort>
           <DevelopmentServerVPath>
           </DevelopmentServerVPath>
-          <IISUrl>http://hps_scott.office.ubabenefits.com/DesktopModules/HealthPlanSurvey</IISUrl>
+          <IISUrl>http://localhost/DesktopModules/HealthPlanSurvey</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://hps_scott.office.ubabenefits.com</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

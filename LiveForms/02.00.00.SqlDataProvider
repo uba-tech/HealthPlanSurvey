@@ -1,0 +1,6 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='{databaseOwner}[{objectQualifier}LiveForms_Submission]' and COLUMN_NAME='IsDraft')
+BEGIN
+ALTER TABLE {databaseOwner}[{objectQualifier}LiveForms_Submission]
+ADD IsDraft int NULL
+END
+GO

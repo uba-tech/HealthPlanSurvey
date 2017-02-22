@@ -1,0 +1,21 @@
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms]    Script Date: 09/15/2014 11:24:29 ******/
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_{objectQualifier}LiveForms_Actions]') AND type = 'D')
+BEGIN
+ALTER TABLE {databaseOwner}[{objectQualifier}LiveForms] DROP CONSTRAINT [DF_{objectQualifier}LiveForms_Actions]
+END
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}LiveForms]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_List]    Script Date: 09/15/2014 11:24:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_List]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}LiveForms_List]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_Submission]    Script Date: 09/15/2014 11:24:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_Submission]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}LiveForms_Submission]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo]    Script Date: 09/15/2014 11:24:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}LiveForms_SubmissionInfo]
+GO

@@ -1,14 +1,110 @@
-﻿<div class="page-header">
-    <h3>{{survey.GeneralResponse.OrganizationName}}</h3><br>
-    <small>{{survey.GeneralResponse.PersonCompletingSurvey}} - {{survey.GeneralResponse.PersonCompletingSurvey_Email}}</small>
+<div class="page-header">
+  <div class="row">
+    <div class="col-md-9">
+          <h3>{{survey.GeneralResponse.OrganizationName}}<br>
+          <small>{{survey.GeneralResponse.PersonCompletingSurvey}} - {{survey.GeneralResponse.PersonCompletingSurvey_Email}}</small></h3>
+    </div>
+    <div class="col-md-3" align="right">
+      <h4>
+        <a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default" aria-label="Edit" tooltip-placement="top" uib-tooltip="Edit">
+            <span class="fa fa-pencil" aria-hidden="true"></span>
+        </a>
+        <a sw-confirm-click="validateSurvey(survey.GeneralResponse.ResponseId)" sw-confirm-click-message="You are about to validate this survey! Are you sure you want to validate?" class="btn btn-default" aria-label="Validate" tooltip-placement="top" uib-tooltip="Validate">
+            <span class="fa fa-lock" aria-hidden="true"></span>
+        </a>
+        <a sw-confirm-click="deleteSurvey(survey.GeneralResponse.ResponseId)" sw-confirm-click-message="You are about to delete this survey! Are you sure you want to delete?" class="btn btn-danger" aria-label="Delete" tooltip-placement="top" uib-tooltip="Delete">
+            <span class="fa fa-trash" aria-hidden="true"></span>
+        </a>
+        <span>&nbsp;&nbsp;</span>
+        <a ng-href="#/surveys" class="btn btn-default" aria-label="Back" tooltip-placement="top" uib-tooltip="Back">
+            <span class="fa fa-arrow-left" aria-hidden="true"></span>
+        </a>
+        </h4>
+    </div>
+  </div>
 </div>
-<p><span class="label label-info">{{survey.GeneralResponse.Broker}}</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.City}}, {{survey.GeneralResponse.US_StateId}}</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.ResponseStatus}}</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.CreatedOn | date : 'shortDate' }}</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.UpdatedOn | date : 'shortDate'}}</span></p>
-<p><span class="label label-info">Survey Link</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.CompletedOn | date : 'shortDate'}}</span></p>
-<p><span class="label label-info">{{survey.GeneralResponse.CompletedBy}}</span></p>
-<a ng-href="#/surveys/{{survey.GeneralResponse.ResponseId}}/edit" class="btn btn-default">Edit Survey</a>
-<a href="" ng-click="deleteSurvey(survey)" class="btn btn-danger">Delete</a>
+
+<!-- <div class="row">
+  <div class="col-md-3">
+    <h4>Broker</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.Broker}}</small></h4>
+  </div>
+</div>  -->
+<!--<hr>-->
+<div class="row">
+  <div class="col-md-3">
+    <h4>Location</h4>
+  </div>
+  <div class="col-md-3" ng-controller="ReferenceController as states" tablename="US_State">
+    <h4><small>{{survey.GeneralResponse.City}},
+    <div style="display:inline;" ng-model="survey.GeneralResponse.US_StateId" ng-repeat="item in states.items | filter: {TypeId : survey.GeneralResponse.US_StateId}">
+    {{item.Name}}</div></small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Response Status</h4>
+  </div>
+  <div class="col-md-3" ng-controller="ReferenceController as statuses" tablename="SurveyResponseStatusType" >
+    <a title="Help" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Possible Values:  Validated, Completed, Broker-Deleted">
+      <h4><small>
+        <div style="display:inline;" ng-model="survey.GeneralResponse.SurveyResponseStatusTypeId" ng-repeat="item in statuses.items | filter: {TypeId : survey.GeneralResponse.SurveyResponseStatusTypeId}">
+        {{item.Name}}</div>
+        </small></h4>
+    </a>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Created</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.CreatedOn | date : 'shortDate' }}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Last Updated</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.UpdatedOn | date : 'shortDate'}}</small></h4>
+  </div>
+</div>
+<!-- <hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Link</h4>
+  </div>
+  <div class="col-md-9">
+    <h4><small><a href="/survey?response={{survey.GeneralResponse.WebID}}">http://healthplansurvey.ubabenefits.com/survey?response={{survey.GeneralResponse.WebID}}</a></small></h4>
+  </div>
+</div> -->
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Survey Completion Date</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><small>{{survey.GeneralResponse.CompletedOn | date : 'shortDate'}}</small></h4>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3" ng-controller="PersonController as person" ng-init="init(survey.GeneralResponse.CompletedBy)">
+    <h4>Completed By - {{survey.GeneralResponse.CompletedBy}}</h4> - {{person.DisplayName}}
+  </div>
+  <div class="col-md-3">
+    <h4><small ng-if="survey.GeneralResponse.CompletedOn > 0">{{person.DisplayName}}</small></h4>
+  </div>
+</div>
+<hr>
+<a ng-href="#/surveys" class="btn btn-primary" aria-label="Close" title="Close"><span class="fa  fa-chevron-circle-left"></span>  Back to Surveys</a>
+<!-- <script>
+    $("[data-toggle=popover]").popover();
+</script>
+ -->

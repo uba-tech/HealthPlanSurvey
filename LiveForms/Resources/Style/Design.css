@@ -1,0 +1,1887 @@
+﻿#Designer {
+    margin: -10px -6px -13px -22px;
+}
+
+.LiveForm table td {
+    padding: 4px 4px 4px 0;
+}
+
+.LiveForm .caption {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: block;
+}
+
+.LiveForm .dnnTooltip label {
+    text-align: left;
+}
+
+/*Toolbar*/
+.LiveForm #Toolbar {
+    height: 65px;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #FFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E9E9E9));
+    background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+    background: -moz-linear-gradient(top, #FFF, #E9E9E9);
+    background: -ms-linear-gradient(top, #FFF, #E9E9E9);
+    background: -o-linear-gradient(top, #FFF, #E9E9E9);
+}
+
+.LiveForm #Toolbar-Inner .Toolbar-Item {
+    display: table-cell !important;
+    float: none !important;
+    line-height: normal;
+}
+
+ .Toolbar-Overlay {
+    background-color: Yellow;
+    border: 10px solid gray;
+    padding: 10px;
+    border-radius: 0 0 4px 4px;
+    margin-top: 23px;
+    background-color: #e9e9e9;
+    border-color: #ccc;
+    border-width: 0 1px 1px;
+    border-style: none solid solid;
+    font-size: 12px;
+    color: buttonshadow;
+}
+
+.Toolbar-Overlay input[type="text"],
+.Toolbar-Overlay textarea,
+.Toolbar-Overlay select {
+    display: block;
+    background: none repeat scroll 0 0 #f3f3f3;
+    border: 1px solid #bfbfbf;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.8), 0 1px 2px 0 rgba(0, 0, 0, 0.1) inset;
+    color: #666;
+    font-size: 13px;
+    margin: 0;
+    padding: 9px;
+}
+
+.Toolbar-Overlay input[type="radio"],
+.Toolbar-Overlay input[type="checkbox"] {
+    vertical-align: text-top;
+    margin-right: 5px;
+}
+
+.Toolbar-OverlayEmailAlertLi {
+    margin: 3px;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 3px;
+    cursor: pointer;
+    position: relative;
+    background: rgb(238, 238, 238);
+}
+
+.Toolbar-OverlayEmailAlertLi:hover {
+    background: #ccc;
+}
+
+/*Basic*/
+.LiveForm #Basic {
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    padding-right: 8px;
+    border-right-color: #ccc;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.LiveForm #Properties-Nav {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    padding-left: 8px;
+    border-left-color: #ccc;
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+
+.LiveForm #Properties-Inner {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-left: 200px;
+    margin-right: 180px;
+}
+
+/*Stage*/
+.LiveForm #Stage {
+    padding: 10px 35px 10px 10px;
+    margin-left: 192px;
+    min-height: 470px;
+}
+
+.LiveForm #accordion {
+    border: 1px solid #999;
+    border-top: 0;
+}
+
+/*Toolbox*/
+.LiveForm #Toolbox {
+    width: 191px;
+    float: left;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin-top: -1px;
+}
+
+.LiveForm #Toolbox ul, 
+.LiveForm #Toolbox ul li {
+    list-style: none outside none;
+}
+
+.DesignField {
+    padding: 10px;
+    margin: 0;
+    margin-left: 25px;
+    border: 0;
+    list-style-type: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.LiveForm #Stage ul li.ui-highlight {
+    border-bottom: 45px solid #eee;
+}
+
+.LiveForm #Stage ul li.ui-highlight-first {
+    border-top: 45px solid #eee;
+}
+
+.DesignField a {
+    width: 100% !important;
+}
+
+.LiveForm #Stage .LiveForm > ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+.LiveForm #Stage .LiveForm > ul > li {
+    padding: 10px;
+    margin: 0;
+    list-style: none outside none;
+    opacity: 1;
+    border: 1px solid transparent;
+}
+
+.LiveForm #Stage .LiveForm > ul > li.ui-state-highlight {
+    width: auto;
+}
+
+/*Field Edit control*/
+.LiveForm .editctls {
+    position: absolute;
+    right: 0;
+    height: 15px;
+    top: 0;
+    opacity: 1;
+    display: none;
+    z-index: 10000;
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+    border-color: #ccc;
+    padding: 5px;
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    font-size: 13px;
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+}
+
+.LiveForm .editctls .glyphicon {
+    margin: 0 2px;
+}
+
+.LiveForm .editctls .glyphicon-move {
+    cursor: move;
+    padding-right: 5px;
+    border-right: 1px solid #ccc;
+}
+
+.LiveForm .editctls .glyphicon-remove {
+    cursor: pointer;
+}
+
+.emailwizard-header {
+    background: none repeat scroll 0px 0px rgb(255, 161, 0);
+    border-bottom: 1px solid rgb(194, 122, 0);
+    border-radius: 3px 3px 0px 0px;
+    height: 35px;
+    padding: 2px;
+    position: relative;
+    z-index: 1000;
+    vertical-align: middle;
+    font-weight: bolder;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 11px 4px 0 12px;
+    font-size: 13px;
+    cursor: move;
+    color: rgb(255, 255, 255);
+}
+
+.emailwizard-header-label {
+    vertical-align: middle;
+    font-weight: bold;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+    font-size: 13px;
+    cursor: move;
+    color: rgb(255, 255, 255);
+}
+
+.ToolboxItem a, .Toolbar-Overlay input[type="button"] {
+    font-size: 12px;
+    padding: 4px 0 4px 0;
+    display: block;
+    position: relative;
+    border: 1px solid #eee;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #FFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E9E9E9));
+    background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+    background: -moz-linear-gradient(top, #FFF, #E9E9E9);
+    background: -ms-linear-gradient(top, #FFF, #E9E9E9);
+    background: -o-linear-gradient(top, #FFF, #E9E9E9);
+}
+
+.ToolboxItem.ui-draggable {
+    list-style-type: none;
+}
+
+.ToolboxItem a {
+    font-size: 12px;
+    padding: 2px 0 6px;
+    display: block;
+    position: relative;
+    border: 1px solid #eee;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #FFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E9E9E9));
+    background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+    background: -moz-linear-gradient(top, #FFF, #E9E9E9);
+    background: -ms-linear-gradient(top, #FFF, #E9E9E9);
+    background: -o-linear-gradient(top, #FFF, #E9E9E9);
+    width: 161px;
+    height: 18px;
+    cursor: move;
+    text-decoration: none;
+}
+
+.Toolbar-Overlay input[type="button"] {
+    padding: 5px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.ToolboxItem a:hover,
+.ToolboxItem a:active,
+.Toolbar-Overlay input[type="button"]:hover {
+    background: #ffffff;
+}
+
+.LiveForm #Toolbox ul {
+    padding: 15px;
+    border: 0;
+}
+
+.LiveForm .ToolboxItem img {
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.LiveForm .ToolboxItem {
+    margin: 0 0 5px;
+    vertical-align: top;
+}
+
+.LiveForm button.Toolbar-Item,
+.LiveForm button.Toolbar-Nav-Item {
+    margin: 0px;
+    border: none;
+    overflow: visible;
+    background: none;
+    outline: none !important;
+    margin: 0 0px 0 0px;
+    padding: 3px 3px;
+    text-shadow: 0px 1px 0px #e5e5e5, 0 0 5px rgba(255,255,255,0.6);
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.LiveForm button.Toolbar-Item {
+    margin: 0 2px;
+}
+
+.LiveForm button.Toolbar-Item .Toolbar-Text,
+.LiveForm button.Toolbar-Nav-Item .Toolbar-Text {
+    font-size: 11px;
+    line-height: 11px;
+    color: ButtonShadow;
+    font-weight: bold;
+}
+
+.LiveForm .line {
+    float: left;
+    width: 0px;
+    height: 45px;
+    margin: 0px 5px;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #eee;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.LiveForm #Toolbox .ui-accordion-content,
+.LiveForm #accordion .ui-accordion-content {
+    background: #e9e9e9;
+    top: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+.LiveForm #Toolbox .ui-accordion-header,
+.LiveForm #accordion .ui-accordion-header {
+    border: 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    webkit-border-radius: 0;
+    background: #CCCCCC;
+    font-size: 13px;
+    border-top: 1px solid #999;
+    cursor: pointer;
+}
+
+.LiveForm .Toolbar-Item .glyphicon,
+.LiveForm .Toolbar-Nav-Item .glyphicon {
+    font-size: 20px;
+    color: #555555;
+}
+
+.LiveForm .Toolbar-Item:hover .glyphicon,
+.LiveForm .Toolbar-Nav-Item:hover .glyphicon,
+.LiveForm .Toolbar-Nav-Item.active .glyphicon,
+.LiveForm button.Toolbar-Item:hover .Toolbar-Text,
+.LiveForm button.Toolbar-Nav-Item:hover .Toolbar-Text {
+    color: #000;
+}
+
+.LiveForm .Properties-Nav {
+    float: right;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('fonts/glyphicons-halflings-regular.eot');
+    src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.LiveForm .glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #000;
+}
+
+.LiveForm .glyphicon-asterisk:before {
+    content: "\2a";
+}
+
+.LiveForm .glyphicon-plus:before {
+    content: "\2b";
+}
+
+.LiveForm .glyphicon-euro:before,
+.LiveForm .glyphicon-eur:before {
+    content: "\20ac";
+}
+
+.LiveForm .glyphicon-minus:before {
+    content: "\2212";
+}
+
+.LiveForm .glyphicon-cloud:before {
+    content: "\2601";
+}
+
+.LiveForm .glyphicon-envelope:before {
+    content: "\2709";
+}
+
+.LiveForm .glyphicon-pencil:before {
+    content: "\270f";
+}
+
+.LiveForm .glyphicon-glass:before {
+    content: "\e001";
+}
+
+.LiveForm .glyphicon-music:before {
+    content: "\e002";
+}
+
+.LiveForm .glyphicon-search:before {
+    content: "\e003";
+}
+
+.LiveForm .glyphicon-heart:before {
+    content: "\e005";
+}
+
+.LiveForm .glyphicon-star:before {
+    content: "\e006";
+}
+
+.LiveForm .glyphicon-star-empty:before {
+    content: "\e007";
+}
+
+.LiveForm .glyphicon-user:before {
+    content: "\e008";
+}
+
+.LiveForm .glyphicon-film:before {
+    content: "\e009";
+}
+
+.LiveForm .glyphicon-th-large:before {
+    content: "\e010";
+}
+
+.LiveForm .glyphicon-th:before {
+    content: "\e011";
+}
+
+.LiveForm .glyphicon-th-list:before {
+    content: "\e012";
+}
+
+.LiveForm .glyphicon-ok:before {
+    content: "\e013";
+}
+
+.LiveForm .glyphicon-remove:before {
+    content: "\e014";
+}
+
+.LiveForm .glyphicon-zoom-in:before {
+    content: "\e015";
+}
+
+.LiveForm .glyphicon-zoom-out:before {
+    content: "\e016";
+}
+
+.LiveForm .glyphicon-off:before {
+    content: "\e017";
+}
+
+.LiveForm .glyphicon-signal:before {
+    content: "\e018";
+}
+
+.LiveForm .glyphicon-cog:before {
+    content: "\e019";
+}
+
+.LiveForm .glyphicon-trash:before {
+    content: "\e020";
+}
+
+.LiveForm .glyphicon-home:before {
+    content: "\e021";
+}
+
+.LiveForm .glyphicon-file:before {
+    content: "\e022";
+}
+
+.LiveForm .glyphicon-time:before {
+    content: "\e023";
+}
+
+.LiveForm .glyphicon-road:before {
+    content: "\e024";
+}
+
+.LiveForm .glyphicon-download-alt:before {
+    content: "\e025";
+}
+
+.LiveForm .glyphicon-download:before {
+    content: "\e026";
+}
+
+.LiveForm .glyphicon-upload:before {
+    content: "\e027";
+}
+
+.LiveForm .glyphicon-inbox:before {
+    content: "\e028";
+}
+
+.LiveForm .glyphicon-play-circle:before {
+    content: "\e029";
+}
+
+.LiveForm .glyphicon-repeat:before {
+    content: "\e030";
+}
+
+.LiveForm .glyphicon-refresh:before {
+    content: "\e031";
+}
+
+.LiveForm .glyphicon-list-alt:before {
+    content: "\e032";
+}
+
+.LiveForm .glyphicon-lock:before {
+    content: "\e033";
+}
+
+.LiveForm .glyphicon-flag:before {
+    content: "\e034";
+}
+
+.LiveForm .glyphicon-headphones:before {
+    content: "\e035";
+}
+
+.LiveForm .glyphicon-volume-off:before {
+    content: "\e036";
+}
+
+.LiveForm .glyphicon-volume-down:before {
+    content: "\e037";
+}
+
+.LiveForm .glyphicon-volume-up:before {
+    content: "\e038";
+}
+
+.LiveForm .glyphicon-qrcode:before {
+    content: "\e039";
+}
+
+.LiveForm .glyphicon-barcode:before {
+    content: "\e040";
+}
+
+.LiveForm .glyphicon-tag:before {
+    content: "\e041";
+}
+
+.LiveForm .glyphicon-tags:before {
+    content: "\e042";
+}
+
+.LiveForm .glyphicon-book:before {
+    content: "\e043";
+}
+
+.LiveForm .glyphicon-bookmark:before {
+    content: "\e044";
+}
+
+.LiveForm .glyphicon-print:before {
+    content: "\e045";
+}
+
+.LiveForm .glyphicon-camera:before {
+    content: "\e046";
+}
+
+.LiveForm .glyphicon-font:before {
+    content: "\e047";
+}
+
+.LiveForm .glyphicon-bold:before {
+    content: "\e048";
+}
+
+.LiveForm .glyphicon-italic:before {
+    content: "\e049";
+}
+
+.LiveForm .glyphicon-text-height:before {
+    content: "\e050";
+}
+
+.LiveForm .glyphicon-text-width:before {
+    content: "\e051";
+}
+
+.LiveForm .glyphicon-align-left:before {
+    content: "\e052";
+}
+
+.LiveForm .glyphicon-align-center:before {
+    content: "\e053";
+}
+
+.LiveForm .glyphicon-align-right:before {
+    content: "\e054";
+}
+
+.LiveForm .glyphicon-align-justify:before {
+    content: "\e055";
+}
+
+.LiveForm .glyphicon-list:before {
+    content: "\e056";
+}
+
+.LiveForm .glyphicon-indent-left:before {
+    content: "\e057";
+}
+
+.LiveForm .glyphicon-indent-right:before {
+    content: "\e058";
+}
+
+.LiveForm .glyphicon-facetime-video:before {
+    content: "\e059";
+}
+
+.LiveForm .glyphicon-picture:before {
+    content: "\e060";
+}
+
+.LiveForm .glyphicon-map-marker:before {
+    content: "\e062";
+}
+
+.LiveForm .glyphicon-adjust:before {
+    content: "\e063";
+}
+
+.LiveForm .glyphicon-tint:before {
+    content: "\e064";
+}
+
+.LiveForm .glyphicon-edit:before {
+    content: "\e065";
+}
+
+.LiveForm .glyphicon-share:before {
+    content: "\e066";
+}
+
+.LiveForm .glyphicon-check:before {
+    content: "\e067";
+}
+
+.LiveForm .glyphicon-move:before {
+    content: "\e068";
+}
+
+.LiveForm .glyphicon-step-backward:before {
+    content: "\e069";
+}
+
+.LiveForm .glyphicon-fast-backward:before {
+    content: "\e070";
+}
+
+.LiveForm .glyphicon-backward:before {
+    content: "\e071";
+}
+
+.LiveForm .glyphicon-play:before {
+    content: "\e072";
+}
+
+.LiveForm .glyphicon-pause:before {
+    content: "\e073";
+}
+
+.LiveForm .glyphicon-stop:before {
+    content: "\e074";
+}
+
+.LiveForm .glyphicon-forward:before {
+    content: "\e075";
+}
+
+.LiveForm .glyphicon-fast-forward:before {
+    content: "\e076";
+}
+
+.LiveForm .glyphicon-step-forward:before {
+    content: "\e077";
+}
+
+.LiveForm .glyphicon-eject:before {
+    content: "\e078";
+}
+
+.LiveForm .glyphicon-chevron-left:before {
+    content: "\e079";
+}
+
+.LiveForm .glyphicon-chevron-right:before {
+    content: "\e080";
+}
+
+.LiveForm .glyphicon-plus-sign:before {
+    content: "\e081";
+}
+
+.LiveForm .glyphicon-minus-sign:before {
+    content: "\e082";
+}
+
+.LiveForm .glyphicon-remove-sign:before {
+    content: "\e083";
+}
+
+.LiveForm .glyphicon-ok-sign:before {
+    content: "\e084";
+}
+
+.LiveForm .glyphicon-question-sign:before {
+    content: "\e085";
+}
+
+.LiveForm .glyphicon-info-sign:before {
+    content: "\e086";
+}
+
+.LiveForm .glyphicon-screenshot:before {
+    content: "\e087";
+}
+
+.LiveForm .glyphicon-remove-circle:before {
+    content: "\e088";
+}
+
+.LiveForm .glyphicon-ok-circle:before {
+    content: "\e089";
+}
+
+.LiveForm .glyphicon-ban-circle:before {
+    content: "\e090";
+}
+
+.LiveForm .glyphicon-arrow-left:before {
+    content: "\e091";
+}
+
+.LiveForm .glyphicon-arrow-right:before {
+    content: "\e092";
+}
+
+.LiveForm .glyphicon-arrow-up:before {
+    content: "\e093";
+}
+
+.LiveForm .glyphicon-arrow-down:before {
+    content: "\e094";
+}
+
+.LiveForm .glyphicon-share-alt:before {
+    content: "\e095";
+}
+
+.LiveForm .glyphicon-resize-full:before {
+    content: "\e096";
+}
+
+.LiveForm .glyphicon-resize-small:before {
+    content: "\e097";
+}
+
+.LiveForm .glyphicon-exclamation-sign:before {
+    content: "\e101";
+}
+
+.LiveForm .glyphicon-gift:before {
+    content: "\e102";
+}
+
+.LiveForm .glyphicon-leaf:before {
+    content: "\e103";
+}
+
+.LiveForm .glyphicon-fire:before {
+    content: "\e104";
+}
+
+.LiveForm .glyphicon-eye-open:before {
+    content: "\e105";
+}
+
+.LiveForm .glyphicon-eye-close:before {
+    content: "\e106";
+}
+
+.LiveForm .glyphicon-warning-sign:before {
+    content: "\e107";
+}
+
+.LiveForm .glyphicon-plane:before {
+    content: "\e108";
+}
+
+.LiveForm .glyphicon-calendar:before {
+    content: "\e109";
+}
+
+.LiveForm .glyphicon-random:before {
+    content: "\e110";
+}
+
+.LiveForm .glyphicon-comment:before {
+    content: "\e111";
+}
+
+.LiveForm .glyphicon-magnet:before {
+    content: "\e112";
+}
+
+.LiveForm .glyphicon-chevron-up:before {
+    content: "\e113";
+}
+
+.LiveForm .glyphicon-chevron-down:before {
+    content: "\e114";
+}
+
+.LiveForm .glyphicon-retweet:before {
+    content: "\e115";
+}
+
+.LiveForm .glyphicon-shopping-cart:before {
+    content: "\e116";
+}
+
+.LiveForm .glyphicon-folder-close:before {
+    content: "\e117";
+}
+
+.LiveForm .glyphicon-folder-open:before {
+    content: "\e118";
+}
+
+.LiveForm .glyphicon-resize-vertical:before {
+    content: "\e119";
+}
+
+.LiveForm .glyphicon-resize-horizontal:before {
+    content: "\e120";
+}
+
+.LiveForm .glyphicon-hdd:before {
+    content: "\e121";
+}
+
+.LiveForm .glyphicon-bullhorn:before {
+    content: "\e122";
+}
+
+.LiveForm .glyphicon-bell:before {
+    content: "\e123";
+}
+
+.LiveForm .glyphicon-certificate:before {
+    content: "\e124";
+}
+
+.LiveForm .glyphicon-thumbs-up:before {
+    content: "\e125";
+}
+
+.LiveForm .glyphicon-thumbs-down:before {
+    content: "\e126";
+}
+
+.LiveForm .glyphicon-hand-right:before {
+    content: "\e127";
+}
+
+.LiveForm .glyphicon-hand-left:before {
+    content: "\e128";
+}
+
+.LiveForm .glyphicon-hand-up:before {
+    content: "\e129";
+}
+
+.LiveForm .glyphicon-hand-down:before {
+    content: "\e130";
+}
+
+.LiveForm .glyphicon-circle-arrow-right:before {
+    content: "\e131";
+}
+
+.LiveForm .glyphicon-circle-arrow-left:before {
+    content: "\e132";
+}
+
+.LiveForm .glyphicon-circle-arrow-up:before {
+    content: "\e133";
+}
+
+.LiveForm .glyphicon-circle-arrow-down:before {
+    content: "\e134";
+}
+
+.LiveForm .glyphicon-globe:before {
+    content: "\e135";
+}
+
+.LiveForm .glyphicon-wrench:before {
+    content: "\e136";
+}
+
+.LiveForm .glyphicon-tasks:before {
+    content: "\e137";
+}
+
+.LiveForm .glyphicon-filter:before {
+    content: "\e138";
+}
+
+.LiveForm .glyphicon-briefcase:before {
+    content: "\e139";
+}
+
+.LiveForm .glyphicon-fullscreen:before {
+    content: "\e140";
+}
+
+.LiveForm .glyphicon-dashboard:before {
+    content: "\e141";
+}
+
+.LiveForm .glyphicon-paperclip:before {
+    content: "\e142";
+}
+
+.LiveForm .glyphicon-heart-empty:before {
+    content: "\e143";
+}
+
+.LiveForm .glyphicon-link:before {
+    content: "\e144";
+}
+
+.LiveForm .glyphicon-phone:before {
+    content: "\e145";
+}
+
+.LiveForm .glyphicon-pushpin:before {
+    content: "\e146";
+}
+
+.LiveForm .glyphicon-usd:before {
+    content: "\e148";
+}
+
+.LiveForm .glyphicon-gbp:before {
+    content: "\e149";
+}
+
+.LiveForm .glyphicon-sort:before {
+    content: "\e150";
+}
+
+.LiveForm .glyphicon-sort-by-alphabet:before {
+    content: "\e151";
+}
+
+.LiveForm .glyphicon-sort-by-alphabet-alt:before {
+    content: "\e152";
+}
+
+.LiveForm .glyphicon-sort-by-order:before {
+    content: "\e153";
+}
+
+.LiveForm .glyphicon-sort-by-order-alt:before {
+    content: "\e154";
+}
+
+.LiveForm .glyphicon-sort-by-attributes:before {
+    content: "\e155";
+}
+
+.LiveForm .glyphicon-sort-by-attributes-alt:before {
+    content: "\e156";
+}
+
+.LiveForm .glyphicon-unchecked:before {
+    content: "\e157";
+}
+
+.LiveForm .glyphicon-expand:before {
+    content: "\e158";
+}
+
+.LiveForm .glyphicon-collapse-down:before {
+    content: "\e159";
+}
+
+.LiveForm .glyphicon-collapse-up:before {
+    content: "\e160";
+}
+
+.LiveForm .glyphicon-log-in:before {
+    content: "\e161";
+}
+
+.LiveForm .glyphicon-flash:before {
+    content: "\e162";
+}
+
+.LiveForm .glyphicon-log-out:before {
+    content: "\e163";
+}
+
+.LiveForm .glyphicon-new-window:before {
+    content: "\e164";
+}
+
+.LiveForm .glyphicon-record:before {
+    content: "\e165";
+}
+
+.LiveForm .glyphicon-save:before {
+    content: "\e166";
+}
+
+.LiveForm .glyphicon-open:before {
+    content: "\e167";
+}
+
+.LiveForm .glyphicon-saved:before {
+    content: "\e168";
+}
+
+.LiveForm .glyphicon-import:before {
+    content: "\e169";
+}
+
+.LiveForm .glyphicon-export:before {
+    content: "\e170";
+}
+
+.LiveForm .glyphicon-send:before {
+    content: "\e171";
+}
+
+.LiveForm .glyphicon-floppy-disk:before {
+    content: "\e172";
+}
+
+.LiveForm .glyphicon-floppy-saved:before {
+    content: "\e173";
+}
+
+.LiveForm .glyphicon-floppy-remove:before {
+    content: "\e174";
+}
+
+.LiveForm .glyphicon-floppy-save:before {
+    content: "\e175";
+}
+
+.LiveForm .glyphicon-floppy-open:before {
+    content: "\e176";
+}
+
+.LiveForm .glyphicon-credit-card:before {
+    content: "\e177";
+}
+
+.LiveForm .glyphicon-transfer:before {
+    content: "\e178";
+}
+
+.LiveForm .glyphicon-cutlery:before {
+    content: "\e179";
+}
+
+.LiveForm .glyphicon-header:before {
+    content: "\e180";
+}
+
+.LiveForm .glyphicon-compressed:before {
+    content: "\e181";
+}
+
+.LiveForm .glyphicon-earphone:before {
+    content: "\e182";
+}
+
+.LiveForm .glyphicon-phone-alt:before {
+    content: "\e183";
+}
+
+.LiveForm .glyphicon-tower:before {
+    content: "\e184";
+}
+
+.LiveForm .glyphicon-stats:before {
+    content: "\e185";
+}
+
+.LiveForm .glyphicon-sd-video:before {
+    content: "\e186";
+}
+
+.LiveForm .glyphicon-hd-video:before {
+    content: "\e187";
+}
+
+.LiveForm .glyphicon-subtitles:before {
+    content: "\e188";
+}
+
+.LiveForm .glyphicon-sound-stereo:before {
+    content: "\e189";
+}
+
+.LiveForm .glyphicon-sound-dolby:before {
+    content: "\e190";
+}
+
+.LiveForm .glyphicon-sound-5-1:before {
+    content: "\e191";
+}
+
+.LiveForm .glyphicon-sound-6-1:before {
+    content: "\e192";
+}
+
+.LiveForm .glyphicon-sound-7-1:before {
+    content: "\e193";
+}
+
+.LiveForm .glyphicon-copyright-mark:before {
+    content: "\e194";
+}
+
+.LiveForm .glyphicon-registration-mark:before {
+    content: "\e195";
+}
+
+.LiveForm .glyphicon-cloud-download:before {
+    content: "\e197";
+}
+
+.LiveForm .glyphicon-cloud-upload:before {
+    content: "\e198";
+}
+
+.LiveForm .glyphicon-tree-conifer:before {
+    content: "\e199";
+}
+
+.LiveForm .glyphicon-tree-deciduous:before {
+    content: "\e200";
+}
+
+.LiveForm .Toolbar-Item.loading .glyphicon {
+    width: 20px;
+    height: 20px;
+    background-image: url('images/loader.gif');
+}
+
+.LiveForm .Toolbar-Item.loading .glyphicon-floppy-disk:before {
+    content: none;
+}
+
+.LiveForm #Toolbox .ui-accordion-header .ui-icon,
+.LiveForm #accordion .ui-accordion-header .ui-icon {
+    display: inline-block !important;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.LiveForm .mbutton {
+    font-family: Helvetica,Arial,sans-serif;
+    padding: 5px 10px;
+    background: #818181;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#818181, endColorstr=#656565);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#818181, endColorstr=#656565)";
+    background: -webkit-gradient(linear, left top, left bottom, from(#818181), to(#656565));
+    background: -moz-linear-gradient(center top, #818181 0%, #656565 100%) repeat scroll 0 0 transparent;
+    border-color: #FFFFFF;
+    border-radius: 3px;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #000000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.LiveForm .mbutton:hover {
+    background: #4E4E4E;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.LiveForm .mbutton2 {
+    font-weight: bold;
+    padding: 8px;
+    text-decoration: none;
+    color: #003366;
+    background-color: transparent;
+    border: 0;
+}
+
+.LiveForm .mbutton2:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+.LiveForm input, 
+.LiveForm select, 
+.LiveForm textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.LiveForm #menu {
+    margin: 0;
+    height: 36px;
+    display: table-cell;
+    background-color: #FFF;
+    border: 1px solid #BBB;
+    position: relative;
+    z-index: 4;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    padding: 0;
+}
+
+    .LiveForm #menu li {
+        padding: 0;
+        float: left;
+        position: relative;
+    }
+
+    .LiveForm #menu span {
+        padding: 0 30px 0 15px;
+        line-height: 36px;
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+        display: block;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        background: url(images/right.gif) no-repeat 180px center;
+    }
+
+    .LiveForm #menu > li > span {
+        background: url(images/arrow.gif) no-repeat right center;
+    }
+
+    .LiveForm #menu ul {
+        width: 200px;
+        position: absolute;
+        left: -9999px;
+        border: 1px solid #DDD;
+        border-top: 0;
+        background: #FFF;
+        text-align: left;
+        list-style: none;
+        margin: 0;
+        padding: 10px 0;
+        box-sizing: content-box;
+        border: 1px solid #BBB;
+        border-top-color: #eee;
+    }
+
+    .LiveForm #menu li li {
+        float: none;
+        white-space: nowrap;
+    }
+
+    .LiveForm #menu li li:hover {
+        background: #f7f7f7;
+    }
+
+    .LiveForm #menu ul a {
+        line-height: 36px;
+        display: block;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: #000;
+        text-decoration: none;
+        padding: 0 20px;
+    }
+
+    .LiveForm #menu ul a:hover,
+    .LiveForm #menu span:hover {
+        color: red;
+    }
+
+    .LiveForm #menu li:hover ul {
+        left: -1px;
+        top: auto;
+    }
+
+    .LiveForm #menu ul ul {
+        border-top: 1px solid #DDD;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .LiveForm #menu li:hover ul ul,
+    .LiveForm #menu li:hover ul ul ul,
+    .LiveForm #menu li:hover ul ul ul ul {
+        left: -9999px;
+        top: 0;
+    }
+
+    .LiveForm #menu li li:hover ul,
+    .LiveForm #menu li li li:hover ul,
+    .LiveForm #menu li li li li:hover ul {
+        left: 200px;
+    }
+
+    .LiveForm #menu ul {
+        -moz-border-radius: 0px 0px 4px 4px;
+        -webkit-border-radius: 0px 0px 4px 4px;
+        border-radius: 0 4px 4px 4px;
+        -moz-box-shadow: 4px 6px 6px #CCC;
+        -webkit-box-shadow: 4px 6px 6px #CCC;
+        box-shadow: 4px 6px 6px #CCC;
+        filter: alpha(opacity=90);
+        background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE);
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEEEEE));
+    }
+
+.LiveForm #Stage ul li.Field[active=true] {
+    background-color: #e9e9e9;
+}
+
+.LiveForm #Stage .LiveForm > ul > li.FieldSpacing:hover {
+    border: 1px solid #ccc;
+    background-color: #FFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E9E9E9));
+    background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+    background: -moz-linear-gradient(top, #FFF, #E9E9E9);
+    background: -ms-linear-gradient(top, #FFF, #E9E9E9);
+    background: -o-linear-gradient(top, #FFF, #E9E9E9);
+}
+
+/*! X-editable - v1.5.1 
+* In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
+* http://github.com/vitalets/x-editable
+* Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
+.editableform {
+    margin-bottom: 0; /* overwrites bootstrap margin */
+}
+
+    .editableform .control-group {
+        margin-bottom: 0; /* overwrites bootstrap margin */
+        white-space: nowrap; /* prevent wrapping buttons on new line */
+        line-height: 20px; /* overwriting bootstrap line-height. See #133 */
+    }
+
+    /* 
+  BS3 width:1005 for inputs breaks editable form in popup 
+  See: https://github.com/vitalets/x-editable/issues/393
+*/
+    .editableform .form-control {
+        width: auto;
+    }
+
+.editable-buttons {
+    display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
+    vertical-align: top;
+    margin-left: 7px;
+    /* inline-block emulation for IE7*/
+    zoom: 1;
+    *display: inline;
+}
+
+    .editable-buttons.editable-buttons-bottom {
+        display: block;
+        margin-top: 7px;
+        margin-left: 0;
+    }
+
+.editable-input {
+    vertical-align: top;
+    display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
+    width: auto; /* bootstrap-responsive has width: 100% that breakes layout */
+    white-space: normal; /* reset white-space decalred in parent*/
+    /* display-inline emulation for IE7*/
+    zoom: 1;
+    *display: inline;
+}
+
+.editable-buttons .editable-cancel {
+    margin-left: 7px;
+}
+
+/*for jquery-ui buttons need set height to look more pretty*/
+.editable-buttons button.ui-button-icon-only {
+    height: 24px;
+    width: 30px;
+}
+
+.editableform-loading {
+    background: url('../img/loading.gif') center center no-repeat;
+    height: 25px;
+    width: auto;
+    min-width: 25px;
+}
+
+.editable-inline .editableform-loading {
+    background-position: left 5px;
+}
+
+.editable-error-block {
+    max-width: 300px;
+    margin: 5px 0 0 0;
+    width: auto;
+    white-space: normal;
+}
+
+    /*add padding for jquery ui*/
+    .editable-error-block.ui-state-error {
+        padding: 3px;
+    }
+
+.editable-error {
+    color: red;
+}
+
+/* ---- For specific types ---- */
+
+.editableform .editable-date {
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+/* move datepicker icon to center of add-on button. See https://github.com/vitalets/x-editable/issues/183 */
+.editable-inline .add-on .icon-th {
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+
+/* checklist vertical alignment */
+.editable-checklist label input[type="checkbox"],
+.editable-checklist label span {
+    vertical-align: middle;
+    margin: 0;
+}
+
+.editable-checklist label {
+    white-space: nowrap;
+}
+
+/* set exact width of textarea to fit buttons toolbar */
+.editable-wysihtml5 {
+    width: 566px;
+    height: 250px;
+}
+
+/* clear button shown as link in date inputs */
+.editable-clear {
+    clear: both;
+    font-size: 0.9em;
+    text-decoration: none;
+    text-align: right;
+}
+
+/* IOS-style clear button for text inputs */
+.editable-clear-x {
+    background: url('../img/clear.png') center center no-repeat;
+    display: block;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    opacity: 0.6;
+    z-index: 100;
+    top: 50%;
+    right: 6px;
+    margin-top: -6px;
+}
+
+    .editable-clear-x:hover {
+        opacity: 1;
+    }
+
+.editable-pre-wrapped {
+    white-space: pre-wrap;
+}
+
+.editable-container.editable-popup {
+    max-width: none !important; /* without this rule poshytip/tooltip does not stretch */
+}
+
+.editable-container.popover {
+    width: auto; /* without this rule popover does not stretch */
+}
+
+.editable-container.editable-inline {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 150px;
+    zoom: 1;
+    margin-right: 10px;
+}
+
+.LiveForm .editable-container.editable-inline .editable-input input {
+    margin-right: 0;
+}
+
+.editable-container.ui-widget {
+    font-size: inherit; /* jqueryui widget font 1.1em too big, overwrite it */
+    z-index: 9990; /* should be less than select2 dropdown z-index to close dropdown first when click */
+}
+
+.editable-click,
+a.editable-click,
+a.editable-click:hover {
+    text-decoration: none;
+    /*border-bottom: dashed 1px #0088cc;*/
+}
+
+    .editable-click.editable-disabled,
+    a.editable-click.editable-disabled,
+    a.editable-click.editable-disabled:hover {
+        color: #585858;
+        cursor: default;
+        border-bottom: none;
+    }
+
+.editable-empty, .editable-empty:hover, .editable-empty:focus {
+    font-style: italic;
+    color: #DD1144;
+    /* border-bottom: none; */
+    text-decoration: none;
+}
+
+.editable-unsaved {
+    font-weight: bold;
+}
+
+    .editable-unsaved:after {
+        /*    content: '*'*/
+    }
+
+.editable-bg-transition {
+    -webkit-transition: background-color 1400ms ease-out;
+    -moz-transition: background-color 1400ms ease-out;
+    -o-transition: background-color 1400ms ease-out;
+    -ms-transition: background-color 1400ms ease-out;
+    transition: background-color 1400ms ease-out;
+}
+
+/*see https://github.com/vitalets/x-editable/issues/139 */
+.form-horizontal .editable {
+    padding-top: 5px;
+    display: inline-block;
+}
+
+.LiveForm .editable-container .ui-state-default {
+    background: #fff !important;
+}
+
+/* Condition CSS */
+.LiveForm .Conditions .mdelete {
+    background: url('../Images/delete.gif') no-repeat;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+
+.LiveForm .condition-set {
+    margin: 0;
+    padding: 0;
+}
+
+.LiveForm .personalize {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.LiveForm .personalize span {
+    border-radius: 5px 0 0 5px; 
+    display: inline-block; 
+    margin-right: -3px; 
+    font-weight: bold; 
+    background: black; 
+    padding: 7px 8px 6px; 
+    color: #fff;
+}
+
+.LiveForm .personalize select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width:200px;
+}
+
+.LiveForm .condition-set li {
+    list-style: none;
+    padding: 6px;
+    background-color: #ccc;
+    margin: 0;
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.LiveForm .Conditions .multiple-condition {
+    background-color: #999;
+    color: white;
+    margin-top: 10px;
+}
+
+.LiveForm .Conditions .mbutton2 {
+    padding-right: 0;
+}
+
+.LiveForm .condition-set li span {
+    padding: 0 5px;
+}
+
+.LiveForm .multiple-condition > span {
+    padding: 0;
+}
+
+.LiveForm .Field .lLocalization {
+    width: 200px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.LiveForm .Field h5 {
+    background-color: gray;
+    color: white;
+    padding: 5px;
+    margin-top: 2px;
+    border-radius: 2px;
+}
+
+.LiveForm .Languages select {
+    width: 208px;
+}
+
+.LiveForm .localizedfield input.tbLocalization {
+    width: 200px;
+}
+
+.LiveForm .Field .localizedfield {
+    margin: 10px 0 10px 0;
+}
+
+.LiveForm .Languages .dnnLabel {
+    width: 93px !important;
+}
+
+.LiveForm .dnnLabel {
+    float: left !important;
+    text-align: left !important;
+}
+
+.LiveForm td > .dnnLabel {
+    width: auto;
+}
+
+button.Toolbar-Item.property-active span {
+color:red !important;
+}
+
+.dnnEditState .DnnModule {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+}
+
+.Toolbar-Overlay span.Toolbar-Hint {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #333;
+    vertical-align: top;
+}
+
+.Toolbar-Overlay span.Toolbar-Message {
+color: #333;
+width:200px;
+display:block;
+}
+
+.Toolbar-Overlay .Hint-Container {
+    margin-top: 5px;
+    clear: both;
+}
+
+/*For DNN Version732 DDL, Textbox, margin-bottom issue */
+.LiveForm input[type="text"], 
+.LiveForm select, .LiveForm textarea, 
+.LiveForm input[type="email"], 
+.LiveForm input[type="search"], 
+.LiveForm input[type="password"] 
+{
+    margin-bottom:0;
+    background: #fff;
+}
+
+/*For DNN Version732 span float:left; issue */
+.LiveForm.FormVerticalTabs .ui-widget-content [class*="span"] {
+   float: none; 
+}
+
+.LiveForm .editable-input input {
+    width: 90px;
+}
+
+.LiveForm .RadGrid input[type="image"] {
+    border: 0;
+}
+
+.LiveForm .clientradio label {
+    font-weight: bold;
+}
+
+.LiveForm .ui-menu {
+    width: 250px;
+}
+
+.LiveForm .clientradiospan {
+    font-size: 10px;
+    margin: 0 0 10px 22px;
+    display: inline-block;
+}
+
+.LiveForm .operator-text {
+    color: #555;
+    font-weight: bold;
+}
+
+.LiveForm ul li, .LiveForm ul li li {
+    list-style-type: none;
+}
+
+.LiveForm .drop-msg {
+    position: relative;
+    margin: 0;
+    height: 345px;
+    background: #d9eeff;
+    border: 1px dashed #bbb;
+    box-shadow: 0px 1px 0px #fff;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    color: #4577a2;
+}
+
+.LiveForm .drop-msg span {
+    display: block;
+    position: absolute;
+    left: 40%;
+    top: 150px;
+    color: #fff;
+    font-size: 12px;
+    background: rgba(0,0,0,0.5);
+    padding: 5px 7px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px #fff, inset 1px 1px 0px #555;
+    opacity: 0.5;
+    cursor: default;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+.LiveForm .drop-msg:hover span {
+    opacity: 1;
+}
+
+.LiveForm .Toolbar-Item .Property-Tooltip {
+        position: absolute;
+        width: 125px;
+        border: 4px solid #333;
+        background: #fff;
+        border-radius: 6px 6px;
+        box-shadow: 0px 2px 4px #666;
+        white-space: normal;
+        z-index: 99999;
+        top: 60px;
+        margin-left: -40px;
+}
+
+    .LiveForm .Toolbar-Item .Property-Tooltip-Arrow {
+        border-color: transparent #333 transparent transparent;
+        border-style: solid;
+        border-width: 10px;
+        left: 50%;
+        margin-top: -24px;
+        position: absolute;
+        -webkit-transform: rotate(90deg);
+        display:none;
+}
+   .LiveForm .Toolbar-Item .Property-Tooltip-Content {
+        padding: 10px;
+        font-size: 10px;
+        color: #333;
+    }
+
+.LiveForm .glyphicon.glyphicon-floppy-save, .LiveForm .glyphicon.glyphicon-trash {
+    font-size: 16px;
+}

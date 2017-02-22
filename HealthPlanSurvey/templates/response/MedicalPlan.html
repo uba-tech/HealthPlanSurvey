@@ -1,488 +1,663 @@
-<!--<style>
-	/* DivTable.com */
-.divTable{
-	display: table;
-	width: 100%;
-}
-.divTableRow {
-	display: table-row;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-}
-.divTableCell, .divTableHead {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
-}
-</style>-->
-<div class="page-header">
-    <h4>Medical Plan - {{survey.ActivePlan[0].PlanName}} (Active Employees)</h4><br>
-</div>
-
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px; color: black;"> Do you wish to enter information on this plan? </span> </strong></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;">&nbsp; <input id="d_EnterPlanData_0" tabindex="1" checked="checked" name="d_EnterPlanData" type="radio" value="1" /><label>Yes</label> </span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;">&nbsp; <input id="d_EnterPlanData_1" tabindex="1" checked="checked" name="d_EnterPlanData" type="radio" value="0" /><label>No</label> </span></div>
-                        </div>
+<div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Medical Plan - {{activePlan.PlanName}} (Active Employees)</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <h4>ResponseId: {{activePlan.ResponseId}}</h4>
+            </div>
+        </div>
+    </div>
+    <form action="">
+        <div class="form-group">
+            <label for="">Do you wish to enter information on this plan?</label>
+            <div class="radio">
+              <input type="checkbox" ng-model="activePlan.EnterPlanData" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="">
+              1.Plan Name Or Number
+        			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Enter a name or number for the plan.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+        			</a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <input id="d_PlanNameOrNo" class="form-control" tabindex="1" name="d_PlanNameOrNo" type="text" ng-model="activePlan.PlanName" />
+              </div>
+            </div>
+        </div>
+        <div class="form-group" ng-controller="ReferenceController as anActivePlan" tablename="ActivePlanType">
+            <label for="">
+              2.Type of Plan
+        			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="bottom" uib-popover-html="'For purposes of this Survey, plan types are defined as:<br><br>
+        					<b>PPO (Preferred Provider Organization) -</b> A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level.<br><br>
+        					<b>HMO (Health Maintenance Organization) -</b> A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. In addition, specialty care is generally only available when authorized by a formal referral from a primary care physician.<br><br>
+        					<b>POS (Point-of-Service) -</b> A plan which provides better (richer or higher) benefits for participants who obtain care from a provider who is a member of a preferred network. Care provided by non-network providers is reimbursed at a lower level. This is different from a PPO in that many POS plans require a referral from a primary care physician in order to authorize specialty care.<br><br>
+        					<b>EPO (Exclusive Provider Organization) -</b> A plan which provides benefits ONLY when care is obtained from network providers. Benefits are not provided for care obtained from non-network providers. Generally, no referral is required for specialty care.<br><br>
+        					<b>FFS (Fee-for-Service/Indemnity) -</b> A plan which provides reimbursement for care obtained from providers without regard to their membership in a preferred network. By definition, then, there can be no \'\out-of-network\'\ benefits.<br><br>
+        					<b>Note:</b><br> Plans will be designated CDHP (Consumer Directed Health Plans) if they include either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account). All CDHP plans will also be reported as PPO, HMO, POS, EPO, or FFS, as defined above.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+        			</a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.ActivePlanTypeId" ng-options="item.TypeId as item.Name for item in anActivePlan.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              3.Is this a grandfathered plan?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="bottom" uib-popover-html="'A plan is considered grandfathered if it met all PPACA requirements to remain grandfathered for the year that is being reported. <br><br>
+					To be considered grandfathered, a plan must look at its benefits and contribution levels as of March 23, 2010 and must not: <br><br>
+					Eliminate or substantially eliminate benefits for a particular condition<br><br>
+					-  For example, if a plan covered counseling and prescription drugs to treat certain mental and nervous disorders and eliminates coverage for counseling, the plan will lose grandfathered status. <br><br>
+					Increase cost-sharing percentages <br><br>
+					-  For example, if the plan had an 80 percent coinsurance rate in March 2010 and decreases the rate to 70 percent, the plan will lose grandfathered status. <br><br>
+					Increase co-pays by more than $5 or a percentage equal to medical inflation (currently 9.5 percent*) plus 15 percent, whichever is greater <br><br>
+					-  For example, if the plan had an office visit copay of $30 in March 2010, it could increase it to $37.35 without losing grandfathered status. <br><br>
+					Raise fixed amount cost-sharing other than co-pays by more than medical inflation (currently 9.5 percent*) plus 15 percent <br><br>
+					-  For example, if the plan had a deductible of $1,000 and an out-of-pocket maximum of $2,500 in March 2010, it could increase the deductible to $1,200 and the out-of-pocket limit to $3,100 without losing grandfathered status. <br><br>
+					Lower the employer contribution rate by more than 5 percent for any group of covered persons <br><br>
+					-  For example, if the employer contributed 80 percent of the cost of employee-only coverage and 60 percent of the cost of family coverage in March 2010, if the employer keeps its contribution percentage for employee-only coverage at 80 percent but reduces its contribution for family coverage to 50 percent, the plan will lose grandfathered status. <br><br>
+					Add or reduce an annual limit <br><br>
+					-  For example, a plan that previously had no limit on MRIs could not impose a $10,000 per year maximum on MRIs without losing grandfathered status.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="radio">
+              <input type="checkbox" ng-model="activePlan.IsPlanGrandfathered" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              4.Is this a grandmothered plan (pre-PPACA plan allowed by your state)?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'A Grandmothered Plan is a plan that does not meet the 2014 insurance market requirements of PPACA, but which the federal government and state insurance department have allowed as a permitted renewal of an existing policy. If permitted by the state, grandmothered plans may be renewed through October 1, 2016 renewals. Carriers are not required to offer grandmothered plans even if the state allows it.'">
+      <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="radio">
+              <input type="checkbox" ng-model="activePlan.IsPlanGrandmothered" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              5. Does this Plan Include:
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'The Survey will designate a plan as a CDHP (Consumer Directed Health Plans) if it includes either an HRA (Healthcare Reimbursement Arrangement) or an HSA (Healthcare Savings Account).<br><br>
+					A MERP is a Medical Expense Reimbursement Plan (Section 105(h))'">
+			</a></label>
+			<div><input id="d_HRAIncluded" checked="checked" name="d_HRAIncluded" type="checkbox" value="1" ng-model="activePlan.IsHRAIncluded" /> HRA (Health Reimbursement Arrangement)</div>
+			<div><input id="d_HSAIncluded" checked="checked" name="d_HSAIncluded" type="checkbox" value="1" ng-model="activePlan.IsHSAIncluded" /> HSA (Health Savings Account)</div>
+			<div><input id="d_MERPIncluded" checked="checked" name="d_MERPIncluded" type="checkbox" value="1" ng-model="activePlan.IsMERPIncluded" /> MERP (Medical Expense Reimbursement Plan)</div>
+			<div><input id="d_IsHRAHSAMERP_NoneOfTheAbove" checked="checked" value="1" name="d_IsHRAHSAMERP_NoneOfTheAbove" type="checkbox" ng-model="activePlan.IsHRAHSAMERP_NoneOfTheAbove" /> None of the Above</div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              6.Funding Method
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Check Fully Insured if the plan is fully insured even if the employer is self-funding a portion of the deductible (often called a split-funded plan). Most plans are fully insured.<br><br>
+					Check Self-Funded if the employer’s liability consists of the full paid claims costs plus admin and stop loss insurance (if any).'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="radio">
+                <label for="">
+                    <input type="radio" ng-model="activePlan.FundingMethodTypeId" value="1">Fully Insured
+                </label>
+                <label for="">
+                    <input type="radio" ng-model="activePlan.FundingMethodTypeId" value="2">Self-Funded
+                </label>
+            </div>
+        </div>
+        <div class="form-group" ng-controller="ReferenceController as premiumTier" tablename="PremiumTierType">
+            <label for="">
+              7. Please indicate the Number of Health Plan Premium Tiers
+    			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'You may select one of three types of premium tier structures:  Two-Tier, Three-Tier, or Four-Tier.  You may submit data on plans which have more than four tiers by converting all enrollment, premium rates, and contribution information into a Four-Tier format.<br><br>
+    					For example, if your plan has five tiers: Employee Only, Employee + one child, Employee + two or more children, Employee + Spouse, and Employee + Spouse + Child(ren), combine the two EE+CH tiers into one by multiplying the rate for each EE+CH tier by the number of employees electing that tier, add the results, and then divide by the total number of employees electing the two tiers.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+    			</a></label>
+          <div class="row">
+            <div class="col-md-8">
+              <select ng-model="activePlan.PremiumTierTypeId" ng-options="item.TypeId as item.Name for item in premiumTier.items" class="selectpicker form-control show-tick"></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              8. Are the Unit Rates for this Plan based on Each Individual Employee's Age/Age Band or "Composite" Rates<br>
+              (i.e. the same for everyone in each tier of the plan regardless of age)?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'The monthly unit rates for a group medical plan may be the same for employees of all ages or they may be based upon each employee\'\s age or age band.<br><br>
+					<b>Employee Age Banded Rated</b><br>For grandmothered and grandfathered plans which are not subject to PPACA member level rates, these are where the dependents are based on the employee age.<br><br>
+					<b>Member Level Age Rated</b><br>Where every employee and dependent is rated for their age (PPACA compliant).<br><br>
+					<b>Composite Rates</b><br>The carrier bills the employer the same rate for all employees who enroll in a particular tier, regardless of any specific employee\'\s age.  This is the norm for nearly all plans with 50 or more covered employees and many smaller plans, as well.  For example, such a plan might have the following monthly unit rates:  Employee Only - $300, Employee Plus Child(ren) $450, Employee Plus Spouse - $600, Family $800.  Those rates would apply to all enrollees, regardless of age.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="radio">
+                <div>
+                  <label for="">
+                    <input type="radio" ng-model="activePlan.UnitRateTypeId" value="1">Employee Age Banded Rated
+                  </label>
+                </div>
+                <div>
+                  <label for="">
+                    <input type="radio" ng-model="activePlan.UnitRateTypeId" value="2">Member Level Age Rated
+                  </label>
+                </div>
+                <div>
+                  <label for="">
+                    <input type="radio" ng-model="activePlan.UnitRateTypeId" value="3">Composite
+                  </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate<br>
+              per Month (including Prescription Drugs) rounded to the nearest dollar.
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Please note that the most common errors made when entering Premium information are:<br><br>
+					<ol><li>Not rounding to the nearest dollar amount.</li>  <li>Entering the total premium for all employees enrolled in a tier, rather than the premium rate per unit applicable to each employee.</li>  <li>For Self-Funded plans, entering only the fixed costs (administration and/or stop-loss premium), rather than the total premium equivalent rates (i.e. COBRA rates less 2%).</li></ol><br>
+					For purposes of this survey, all non-single premium rates should include the premium rate for single coverage.  For example, if the Employee Only rate is $200 and the ADDITIONAL premium for the Spouse is $210, <u>the Employee + Spouse rate is $410</u>.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <label for="">Number Enrolled</label>
+                </div>
+                <div class="col-md-2">
+                    <label for="">Monthly Premium Rate</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Single</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="d_Enrolled_Single" name="d_Enrolled_Single" ng-maxlength="6" size="13" ng-model="activePlan.NumberEnrolled_Single">
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Single" class="form-control" ng-maxlength="6" name="d_Premium_Single" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_Single">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Employee+1</label>
+                </div>
+                <div class="col-md-2">
+                    <input id="d_Enrolled_EE_1" class="form-control" ng-maxlength="6" name="d_Enrolled_EE_1" size="13" type="text" ng-model="activePlan.NumberEnrolled_EmployeePlusOne">
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_EE_1" class="form-control" ng-maxlength="6" name="d_Premium_EE_1" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusOne" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Employee + Spouse</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="d_Enrolled_EE_SP" name="d_Enrolled_EE_SP" ng-maxlength="6" size="13" ng-model="activePlan.NumberEnrolled_EmployeePlusSpouse">
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input type="text" class="form-control" id="d_Premium_EE_SP" name="d_Premium_EE_SP" ng-maxlength="6" size="13" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusSpouse">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Employee + Child/Children</label>
+                </div>
+                <div class="col-md-2">
+                    <input id="d_Enrolled_EE_CH" class="form-control" ng-maxlength="6" name="d_Enrolled_EE_CH" size="13" type="text" ng-model="activePlan.NumberEnrolled_EmployeePlusChild" />
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_EE_CH" class="form-control" ng-maxlength="6" name="d_Premium_EE_CH" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="">Family</label>
+                </div>
+                <div class="col-md-2">
+                    <input id="d_Enrolled_Family" class="form-control" ng-maxlength="6" name="d_Enrolled_Family" size="13" type="text" ng-model="activePlan.NumberEnrolled_Family" />
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_Premium_Family" class="form-control" ng-maxlength="6" name="d_Premium_Family" size="13" type="text" ng-model="activePlan.MonthlyPremiumAmt_Family" />
+                    </div>
+                </div>
+            </div>
+            <span id="helpBlock" class="help-block">
+                For Self-Funded Plans, use COBRA Premium Equivalent Rate minus the 2%, if otherwise included
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="">
+              10. Tobacco surcharge from carrier?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Selecting \'\Yes\'\ indicates that the plan bases employee contributions on a percentage of each employee\'\s individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+            </a></label>
+            <div class="radio">
+              <input type="checkbox" ng-model="activePlan.HasTobaccoSurcharge" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              11. Are Employee Contributions Based on a Percentage of Salary?
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Selecting \'\Yes\'\ indicates that the plan bases employee contributions on a percentage of each employee\'\s individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+            </a></label>
+            <div class="radio">
+              <input type="checkbox" ng-model="activePlan.AreContributionsBasedOnPercentageOfSalary" data-on-text="Yes" data-off-text="No" bs-switch>
+            </div>
+        </div>
+        <div class="form-group" ng-controller="ReferenceController as contributionBasis" tablename="ContributionBasisType">
+            <label for="">
+              12. Are Employee Contributions to be entered based on
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Remember that the question requests employEE contributions, not the employER share of premium.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+            </a></label>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.ContributionBasisTypeId" ng-options="item.TypeId as item.Name for item in contributionBasis.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              13. Employee Contributions per Month |
+              <a href="Portals/0/UBAContributionCalculator.xls" target="_blank" class="btn btn-link">Calculator</a>
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'For purposes of this survey, all non-single employee contributions should include the Employee Only contribution.  For example, if employees must contribute $75 of the Employee Only rate, their contribution will be <u>at least</u> $75 for the Employee + Spouse rate.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+            </a></label>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <label for="">Dollar Amount</label>
+                </div>
+                <div class="col-md-2">
+                    <label for="">Percentage of Premium</label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Single</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Single_Amt" class="form-control" ng-maxlength="6" name="d_EmpCont_Single_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_Single" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input id="d_EmpCont_Single_PcntOfPremium" class="form-control" ng-maxlength="6" name="d_EmpCont_Single_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_Single" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee +1</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_EE_1_Amt" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_1_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusOne" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input id="d_EmpCont_EE_1_PcntOfPremium" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_1_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusOne" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Spouse</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_EE_SP_Amt" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_SP_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusSpouse" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input id="d_EmpCont_EE_SP_PcntOfPremium" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_SP_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusSpouse" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Child/Children</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_EE_CH_Amt" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_CH_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input id="d_EmpCont_EE_CH_PcntOfPremium" class="form-control" ng-maxlength="6" name="d_EmpCont_EE_CH_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_EmployeePlusChild" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Family</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpCont_Family_Amt" class="form-control" ng-maxlength="6" name="d_EmpCont_Family_Amt" size="13" type="text" ng-model="activePlan.EmployeeContributionAmt_Family" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input id="d_EmpCont_Family_PcntOfPremium" class="form-control" ng-maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" ng-model="activePlan.EmployeeContributionPctOfPremium_Family" />
+                        <div class="input-group-addon">%</div>
                     </div>
                 </div>
             </div>
         </div>
-<hr style="width: 100%;" />
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 1.Plan Name Or Number: </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> <input id="d_PlanNameOrNo" tabindex="1" name="d_PlanNameOrNo" type="text" value="[|COALESCE,PlanNameOrNo,ActivePlans," /> </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 2.Type of Plan: </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><label><input id="d_TypeOfPlan_0" tabindex="1" checked="checked" name="d_TypeOfPlan" type="radio" value="PPO" /> PPO (Preferred Provider Organization)</label></div>
-                            <div class="divTableCell"><label><input id="d_TypeOfPlan_1" tabindex="2" checked="checked" name="d_TypeOfPlan" type="radio" value="HMO" /> HMO (Health Maintenance Organization)</label></div>
-                            <div class="divTableCell"><label><input id="d_TypeOfPlan_2" tabindex="3" checked="checked" name="d_TypeOfPlan" type="radio" value="POS" /> POS (Point-of-Service)</label></div>
-                            <div class="divTableCell"><label><input id="d_TypeOfPlan_3" tabindex="4" checked="checked" name="d_TypeOfPlan" type="radio" value="EPO" /> EPO (Exclusive Provider Organization)</label></div>
-                            <div class="divTableCell"><label><input id="d_TypeOfPlan_4" tabindex="5" checked="checked" name="d_TypeOfPlan" type="radio" value="FFS" /> FFS (Fee-for-Service/Indemnity)</label></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 3.Is this a grandfathered plan? </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandfathered_0" tabindex="6" checked="checked" name="d_IsPlanGrandfathered" type="radio" value="1" /> <label>Yes</label> </span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandfathered_1" tabindex="7" checked="checked" name="d_IsPlanGrandfathered" type="radio" value="0" /> <label>No</label> </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;"> 4.Is this a grandmothered plan (pre-PPACA plan allowed by your state)? </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandmothered_0" tabindex="8" checked="checked" name="d_IsPlanGrandmothered" type="radio" value="1" /><label>Yes</label> </span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; color: black;"> <input id="d_IsPlanGrandmothered_1" tabindex="9" checked="checked" name="d_IsPlanGrandmothered" type="radio" value="0" /><label>No</label> </span></div>
-                        </div>
+        <div class="form-group" ng-controller="ReferenceController as aleEmployerStrategy" tablename="AleEmployerStrategyType">
+            <label for="">
+              14. If you are an "applicable large employer" (generally, over 100 full-time/full-time equivalent employees) is your strategy to:
+			        <a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Selecting \'\Yes\'\ indicates that the plan bases employee contributions on a percentage of each employee\'\s individual salary. This precludes entry of employee contributions by dollar amount or percentage of premium in the next question.'">
+                <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+              </a>
+            </label>
+            <div class="row">
+              <div class="col-md-8">
+                <select ng-model="activePlan.AleEmployerStrategy" ng-options="item.TypeId as item.Name for item in aleEmployerStrategy.items" class="selectpicker form-control show-tick"></select>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              15. Amount of Annual Employer HRA or HSA Contribution
+			<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'Please note that the question requests the employER contribution only, not any employEE contributions. Also, please be certain to enter an ANNUAL amount, not a monthly or per-pay amount.'">
+        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+			</a></label>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <label for="">HRA</label>
+                </div>
+                <div class="col-md-2">
+                    <label for="">HSA</label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Single</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_Single" class="form-control" ng-maxlength="6" name="d_EmpHRACont_Single" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Single" />
                     </div>
                 </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 5.Does this Plan Include: </span> </strong></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><label><input id="d_HRAIncluded" tabindex="10" checked="checked" name="d_HRAIncluded" type="checkbox" value="1" />HRA (Health Reimbursement Arrangement)</label></div>
-                            <div class="divTableCell"><label><input id="d_HSAIncluded" tabindex="11" checked="checked" name="d_HSAIncluded" type="checkbox" value="1" />HSA (Health Savings Account)</label></div>
-                            <div class="divTableCell"><label><input id="d_MERPIncluded" tabindex="12" checked="checked" name="d_MERPIncluded" type="checkbox" value="1" />MERP (Medical Expense Reimbursement Plan)</label></div>
-                            <div class="divTableCell"><label><input id="d_HRAHSAMERP_NoneOfTheAbove" tabindex="13" checked="checked" name="d_HRAHSAMERP_NoneOfTheAbove" type="checkbox" value="1" />None of the Above</label></div>
-                        </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_Single" class="form-control" ng-maxlength="6" name="d_EmpHSACont_Single" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Single" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + 1</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_1" class="form-control" ng-maxlength="6" name="d_EmpHRACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusOne" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_1" class="form-control" ng-maxlength="6" name="d_EmpHSACont_EE_1" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusOne" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Spouse</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_SP" class="form-control" ng-maxlength="6" name="d_EmpHRACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusSpouse" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_SP" class="form-control" ng-maxlength="6" name="d_EmpHSACont_EE_SP" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusSpouse" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Child/Children</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_EE_CH" class="form-control" ng-maxlength="6" name="d_EmpHRACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_EE_CH" class="form-control" ng-maxlength="6" name="d_EmpHSACont_EE_CH" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Family</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHRACont_Family" class="form-control" ng-maxlength="6" name="d_EmpHRACont_Family" size="13" type="text" ng-model="activePlan.Employer_HRA_ContributionAmt_Family" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_EmpHSACont_Family" class="form-control" ng-maxlength="6" name="d_EmpHSACont_Family" size="13" type="text" ng-model="activePlan.Employer_HSA_ContributionAmt_Family" />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;"> 6.Funding Method: </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><label><input id="d_FundingMethod_0" tabindex="14" checked="checked" name="d_FundingMethod" type="radio" value="Fully Insured" />Fully Insured</label></div>
-        </div>
-    </div>
-</div>
-<p><label><input id="d_FundingMethod_1" tabindex="15" checked="checked" name="d_FundingMethod" type="radio" value="Self-Funded" />Self-Funded</label></p>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 7.Please indicate the Number of Health Plan Premium<br /> Tiers: </span> </strong></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_2" tabindex="16" checked="checked" name="d_PremiumTiersOffered" type="radio" value="2" /> 2 (Single &amp; Family)</label></div>
-            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_3" tabindex="17" checked="checked" name="d_PremiumTiersOffered" type="radio" value="3" /> 3 (Single, Employee + 1, Employee + 2 or more)</label></div>
-            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_4" tabindex="18" checked="checked" name="d_PremiumTiersOffered" type="radio" value="4" /> 4 (Single, Employee + Child/Children, Employee + Spouse, Family)</label></div>
-            <div class="divTableCell"><label> <input id="d_PremiumTiersOffered_5" tabindex="19" checked="checked" name="d_PremiumTiersOffered" type="radio" value="5 or more" /> 5 or More</label></div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 8.Are the Unit Rates for this Plan based on Each Individual Employee's Age/Age Band or "Composite" Rates (i.e. the same for everyone in each tier of the plan regardless of age)? </span> </strong></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_0" tabindex="20" checked="checked" name="d_UnitRateType" type="radio" value="1" /> Employee Age Banded Rated</label></div>
-            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_1" tabindex="21" checked="checked" name="d_UnitRateType" type="radio" value="2" /> Member Level Age Rated</label></div>
-            <div class="divTableCell"><label><input id="d_PremiumTiersOffered_2" tabindex="22" checked="checked" name="d_UnitRateType" type="radio" value="3" /> Composite</label></div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;">9. Indicate the number of Employees Enrolled in each applicable coverage tier and the Individual Premium Rate per Month (including Prescription Drugs) rounded to the nearest dollar. <span style="font-size: 10px; font-weight: normal;">(For Self-Funded Plans, use COBRA Premium Equivalent Rate minus the 2%, if otherwise included):</span></span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">&nbsp;</div>
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Number Enrolled</span></strong></div>
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Monthly Premium Rate</span></strong></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_Single" maxlength="6" name="d_Enrolled_Single" size="13" type="text" value="[|COALESCE,Enrolled_Single,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_Single" maxlength="6" name="d_Premium_Single" size="13" type="text" value="[|COALESCE,Premium_Single,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee+1:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_1" maxlength="6" name="d_Enrolled_EE_1" size="13" type="text" value="[|COALESCE,Enrolled_EE_1,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_1" maxlength="6" name="d_Premium_EE_1" size="13" type="text" value="[|COALESCE,Premium_EE_1,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_SP" maxlength="6" name="d_Enrolled_EE_SP" size="13" type="text" value="[|COALESCE,Enrolled_EE_SP,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_SP" maxlength="6" name="d_Premium_EE_SP" size="13" type="text" value="[|COALESCE,Premium_EE_SP,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_EE_CH" maxlength="6" name="d_Enrolled_EE_CH" size="13" type="text" value="[|COALESCE,Enrolled_EE_CH,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_EE_CH" maxlength="6" name="d_Premium_EE_CH" size="13" type="text" value="[|COALESCE,Premium_EE_CH,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_Enrolled_Family" maxlength="6" name="d_Enrolled_Family" size="13" type="text" value="[|COALESCE,Enrolled_Family,ActivePlans," /> </span></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;" align="right"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_Premium_Family" maxlength="6" name="d_Premium_Family" size="13" type="text" value="[|COALESCE,Premium_Family,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
+        <br>
+        <div class="row" ng-show="activePlan.FundingMethodTypeId==2">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">16. Does your Plan have Specific Stop-Loss Insurance?</label>
+                    <div class="radio">
+                      <input type="checkbox" ng-model="activePlan.HasSpecificStopLossCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
                     </div>
                 </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">10. Tobacco surcharge from carrier?</span></strong></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_HasTobaccoSurcharge_0" checked="checked" name="d_HasTobaccoSurcharge" type="radio" value="1" />Yes</label>&nbsp;&nbsp;&nbsp;<span style="font-family: Tahoma; font-size: 13px;"><input id="d_TobaccoSurcharge" maxlength="3" name="d_TobaccoSurcharge" size="3" type="text" value="[|COALESCE,TobaccoSurcharge,ActivePlans," /> <span class="icons">%</span></span></span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_HasTobaccoSurcharge_1" checked="checked" name="d_HasTobaccoSurcharge" type="radio" value="0" />No</label></span></div>
-                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">17. Does your Plan have Aggregate Stop-Loss Insurance?</label>
+                    <div class="radio">
+                      <input type="checkbox" ng-model="activePlan.HasAggregateStopLossCoverage" data-on-text="Yes" data-off-text="No" bs-switch>
                     </div>
                 </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">11. Are Employee Contributions Based on a Percentage of Salary?</span></strong></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOnPercentageOfSalary_0" checked="checked" name="d_ContributionsBasedOnPercentageOfSalary" type="radio" value="1" />Yes</label></span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOnPercentageOfSalary_1" checked="checked" name="d_ContributionsBasedOnPercentageOfSalary" type="radio" value="0" />No</label></span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">12. Are Employee Contributions to be entered based on:</span></strong></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOn_0" checked="checked" name="d_ContributionsBasedOn" type="radio" value="Dollar Amount" />Dollar Amount</label></span></div>
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_ContributionsBasedOn_1" checked="checked" name="d_ContributionsBasedOn" type="radio" value="Percentage of Premium" />Percentage of Premium</label></span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;">13. Employee Contributions per Month:&nbsp;<a href="Portals/0/UBAContributionCalculator.xls" target="_blank">Calculator</a><a href="Portals/0/UBAContributionCalculator.xls" target="_blank"><img src="Portals/0/calculator.png" alt="" border="0" /></a></span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">&nbsp;</div>
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Dollar Amount</span></strong></div>
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;">Percentage of Premium</span></strong></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 2px; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_Single_Amt" maxlength="6" name="d_EmpCont_Single_Amt" size="13" type="text" value="[|COALESCE,EmpCont_Single_Amt,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 2px; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_Single_PcntOfPremium" maxlength="6" name="d_EmpCont_Single_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_Single_PcntOfPremium,ActivePlans," />% </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_1_Amt" maxlength="6" name="d_EmpCont_EE_1_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_1_Amt,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_1_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_1_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_1_PcntOfPremium,ActivePlans," />% </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_SP_Amt" maxlength="6" name="d_EmpCont_EE_SP_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_SP_Amt,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_SP_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_SP_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_SP_PcntOfPremium,ActivePlans," />% </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_EE_CH_Amt" maxlength="6" name="d_EmpCont_EE_CH_Amt" size="13" type="text" value="[|COALESCE,EmpCont_EE_CH_Amt,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 7px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_EE_CH_PcntOfPremium" maxlength="6" name="d_EmpCont_EE_CH_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_EE_CH_PcntOfPremium,ActivePlans," />% </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 0px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpCont_Family_Amt" maxlength="6" name="d_EmpCont_Family_Amt" size="13" type="text" value="[|COALESCE,EmpCont_Family_Amt,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 0px;" align="right"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_EmpCont_Family_PcntOfPremium" maxlength="6" name="d_EmpCont_Family_PcntOfPremium" size="11" type="text" value="[|COALESCE,EmpCont_Family_PcntOfPremium,ActivePlans," />% </span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                [ALEStrategy,Action]
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-weight: bold; font-size: 13px;">15. Amount of Annual Employer HRA or HSA Contribution:</span></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell">&nbsp;</div>
-                            <div class="divTableCell"><span style="font-weight: bold; font-family: Tahoma; font-size: 13px;"> HRA </span></div>
-                            <div class="divTableCell"><span style="font-weight: bold; font-family: Tahoma; font-size: 13px;"> HSA </span></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Single:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 4px; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_Single" maxlength="6" name="d_EmpHRACont_Single" size="13" type="text" value="[|COALESCE,EmpHRACont_Single,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 4px; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_Single" maxlength="6" name="d_EmpHSACont_Single" size="13" type="text" value="[|COALESCE,EmpHSACont_Single,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_1" maxlength="6" name="d_EmpHRACont_EE_1" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_1,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_1" maxlength="6" name="d_EmpHSACont_EE_1" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_1,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_SP" maxlength="6" name="d_EmpHRACont_EE_SP" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_SP,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_SP" maxlength="6" name="d_EmpHSACont_EE_SP" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_SP,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_EE_CH" maxlength="6" name="d_EmpHRACont_EE_CH" size="13" type="text" value="[|COALESCE,EmpHRACont_EE_CH,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 6px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_EE_CH" maxlength="6" name="d_EmpHSACont_EE_CH" size="13" type="text" value="[|COALESCE,EmpHSACont_EE_CH,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> Family:</span></strong></div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 4px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHRACont_Family" maxlength="6" name="d_EmpHRACont_Family" size="13" type="text" value="[|COALESCE,EmpHRACont_Family,ActivePlans," /> </span></p>
-                            </div>
-                            <div class="divTableCell">
-                                <p style="margin-top: 0; margin-bottom: 4px;"><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_EmpHSACont_Family" maxlength="6" name="d_EmpHSACont_Family" size="13" type="text" value="[|COALESCE,EmpHSACont_Family,ActivePlans," /> </span></p>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">18. Specific Stop-Loss Level</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLossLevel" class="form-control" ng-maxlength="6" name="d_StopLossLevel" type="text" ng-model="activePlan.SpecificStopLossLevelAmt" />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 16. Does your Plan have Specific Stop-Loss Insurance? </span> </strong></div>
-                        </div>
-                        <div class="divTableRow">
-                            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_SpecificStopLossCoverage_0" checked="checked" name="d_SpecificStopLossCoverage" type="radio" value="1" />Yes</label></span></div>
-                        </div>
+        <br>
+        <div class="form-group" ng-show='activePlan.FundingMethodTypeId==2'>
+            <label for="">19.Specific Stop-Loss Premium</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Single</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_Single_Amt" class="form-control" ng-maxlength="6" name="d_StopLoss_Single_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Single" />
                     </div>
                 </div>
+                <div class="col-md-4">&nbsp;</div>
             </div>
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_SpecificStopLossCoverage_1" checked="checked" name="d_SpecificStopLossCoverage" type="radio" value="0" />No</label></span></div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 17. Does your Plan have Aggregate Stop-Loss Insurance? </span> </strong></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_AggregateStopLossCoverage_0" checked="checked" name="d_AggregateStopLossCoverage" type="radio" value="1" />Yes</label></span></div>
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <label><input id="d_AggregateStopLossCoverage_1" checked="checked" name="d_AggregateStopLossCoverage" type="radio" value="0" />No</label></span></div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong> 18. Specific Stop-Loss Level: </strong>$<input id="d_StopLossLevel" maxlength="6" name="d_StopLossLevel" type="text" value="[|COALESCE,StopLossLevel,ActivePlans," /> </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px; font-weight: bold;">19.Specific Stop-Loss Premium:</span></div>
-        </div>
-    </div>
-</div>
-<p><span style="font-family: Tahoma; font-size: 13px;"> Single:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_Single_Amt" maxlength="6" name="d_StopLoss_Single_Amt" size="13" type="text" value="[|COALESCE,StopLoss_Single_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + 1:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_1_Amt" maxlength="6" name="d_StopLoss_EE_1_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_1_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + Child/Children:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_CH_Amt" maxlength="6" name="d_StopLoss_EE_CH_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_CH_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Employee + Spouse:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_EE_SP_Amt" maxlength="6" name="d_StopLoss_EE_SP_Amt" size="13" type="text" value="[|COALESCE,StopLoss_EE_SP_Amt,ActivePlans," /> </span><span style="font-family: Tahoma; font-size: 13px;"> Family:</span><span style="font-family: Tahoma; font-size: 13px;">$<input id="d_StopLoss_Family_Amt" maxlength="6" name="d_StopLoss_Family_Amt" size="13" type="text" value="[|COALESCE,StopLoss_Family_Amt,ActivePlans," /> </span></p>
-<p><big><strong>Medical Plan #[|@PlanNo,Variable] (Active Employees)</strong></big></p>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <div class="divTable">
-                    <div class="divTableBody">
-                        <div class="divTableRow">
-                            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 20. Initial Proposed Percentage Increase for most similar Plan or Decrease in Total Premiums (Prior to Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date: </span> </strong></div>
-                            <div class="divTableCell">&nbsp;</div>
-                        </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + 1</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_1_Amt" class="form-control" ng-maxlength="6" name="d_StopLoss_EE_1_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusOne" />
                     </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Child/Children</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_CH_Amt" class="form-control" ng-maxlength="6" name="d_StopLoss_EE_CH_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusChild" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Employee + Spouse</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_EE_SP_Amt" class="form-control" ng-maxlength="6" name="d_StopLoss_EE_SP_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_EmployeePlusSpouse" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Family</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input id="d_StopLoss_Family_Amt" class="form-control" ng-maxlength="6" name="d_StopLoss_Family_Amt" size="13" type="text" ng-model="activePlan.SpecificStopLossPremiumAmt_Family" />
+                    </div>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">
+                      20. Initial Proposed Percentage Increase for most similar Plan or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'This is the increase or decrease initially proposed by the insurer or administrator PRIOR TO any negotiations or changes in plan design.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+					</a></label>
+                    <br>
+                    <div class="input-group">
+                        <input id="d_ProposedIncreasePct" class="form-control" tabindex="1" ng-maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" ng-model="activePlan.ProposedIncreasePct" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                    <span id="helpBlock" class="help-block"><strong>Prior to</strong> Any Plan or Carrier Changes</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">
+                      21. Final Percentage Increase or Decrease in Total Premiums as of your Most Recent Plan Anniversary (Renewal) Date
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'This is the increase or decrease actually implemented AFTER any negotiations, changes to plan design, or change of insurer or administrator.'">
+            <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+					</a></label>
+                    <div class="input-group">
+                        <input id="d_FinalPcntIncrease" class="form-control" tabindex="2" ng-maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" ng-model="activePlan.FinalIncreasePct" />
+                        <div class="input-group-addon">%</div>
+                    </div>
+                    <span id="helpBlock" class="help-block"><strong>After</strong> Any Plan or Carrier Changes</span>
                 </div>
             </div>
         </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_ProposedIncreasePct" tabindex="1" maxlength="4" name="d_ProposedIncreasePct" size="13" type="text" value="[|COALESCE,ProposedIncreasePct,ActivePlans," />% </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><strong> <span style="font-family: Tahoma; font-size: 13px;"> 21.Final Percentage Increase or Decrease in Total Premiums (After Any Plan or Carrier Changes) as of your Most Recent Plan Anniversary (Renewal) Date: </span> </strong></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <input id="d_FinalPcntIncrease" tabindex="2" maxlength="4" name="d_FinalPcntIncrease" size="13" type="text" value="[|COALESCE,FinalPcntIncrease,ActivePlans," />% </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>22. For Plans that include an HRA or HSA:</strong> </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><label><input id="d_HRAHSARenewalRatesApplyTo_0" tabindex="3" checked="checked" name="d_HRAHSARenewalRatesApplyTo" type="radio" value="Last Year" />Renewal Rates apply to an HRA/HSA plan that was in place last year</label></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell"><label><input id="d_HRAHSARenewalRatesApplyTo_1" tabindex="4" checked="checked" name="d_HRAHSARenewalRatesApplyTo" type="radio" value="First Year" />Renewal Rates reflect a first-time move to a consumer-driven health plan (CDHP)</label></div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-    </div>
-</div>
-<div class="divTable">
-    <div class="divTableBody">
-        <div class="divTableRow">
-            <div class="divTableCell"><span style="font-family: Tahoma; font-size: 13px;"> <strong>23. Most Recent Plan Anniversary (Renewal) Date:</strong><br /> If a plan renews on or before the 15th of the month, please use the first of that month. If a plan renews after the 15th of the month, please use the first of the next month.) </span></div>
-            <div class="divTableCell">&nbsp;</div>
-        </div>
-        <div class="divTableRow">
-            <div class="divTableCell">
-                <span style="font-family: Tahoma; font-size: 13px;">
-                    <select id="d_RenewalDate" tabindex="5" name="d_RenewalDate">
-                        <option selected="selected" value=""></option>
-                        {SUBQUERY, Name="RenewalDate", Query="EXEC svy_DropDownList_GetNamedList 'HPS_RenewalDate'" , Header="", Footer="", NoResultFormat="", NoQueryFormat="", Format="
-                        <option value="[DropDownValue]">[DropDownValue]", SelectedFormat="</option>
-                        <option selected="selected" value="[DropDownValue]">[DropDownValue]", SelectedField="DropDownValue", SelectedItems="[|Format,[|RenewalDate,ActivePlans],{0:MM/dd/yy}]", UseCache="True"}</option>
-                    </select>
-                </span>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" ng-controller="ReferenceController as medicalExpenseReimbursementRenewalRate" tablename="MedicalExpenseReimbursementRenewalRateType">
+                    <label for="">
+                      22. For Plans that include an HRA or HSA
+					<a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'For HRA or HSA plan renewal rates, is this the first year for the HRA/HSA plan?'">
+                        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+                    </a></label>
+                    <select ng-model="activePlan.MedicalExpenseReimbursementRenewalRateTypeId" ng-options="item.TypeId as item.Name for item in medicalExpenseReimbursementRenewalRate.items" class="selectpicker form-control show-tick"></select>
+                </div>
             </div>
-            <div class="divTableCell">&nbsp;</div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">
+                      23. Most Recent Plan Anniversary (Renewal) Date (YYYY-MM-DD)
+			                <a style="cursor:pointer;" popover-title="Help" popover-trigger="'outsideClick'" popover-placement="above" uib-popover-html="'This information is essential in order to insure that your plan is compared to other plans which renew in the same period. It is not used in any fashion for any marketing or other purpose.'">
+                        <i class="fa fa-question-circle" style="color:#225887; font-size:14pt;"></i>
+                      </a>
+                    </label>
+                    <input class="form-control" ng-model="activePlan.RenewalDate" type="date" value="{{activePlan.RenewalDate | date: 'yyyy-MM-dd'}}"/>
+                    <span id="helpBlock" class="help-block">
+                        If a plan renews <strong>on or before</strong> the 15th of the month, please use that month. If a plan renews <strong>after</strong> the 15th of the month, please use the <strong>next</strong> month.
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
-<p>&nbsp;&nbsp;</p>
-<p><input id="SurveySection" name="CurrSurveySection" type="hidden" value="ActivePlans" /> <input id="SurveySectionPage" name="CurrSurveySectionPage" type="hidden" value="4" /> <input id="SurveySectionPlanNo" name="CurrSurveySectionPlanNo" type="hidden" value="[|@PlanNo,Variable]" /></p>
